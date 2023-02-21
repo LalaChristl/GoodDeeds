@@ -28,8 +28,8 @@ const helperSchema = new Schema(
     age: Number,
     gender: {
       type: String,
-      required: true,
     },
+    languages: String,
   },
   { timeStamps: true }
 );
