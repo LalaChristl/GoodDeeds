@@ -8,6 +8,8 @@ import HelperRegister from "./components/HelperRegister";
 import HelperLogin from "./components/HelperLogin";
 import EmailConfirm from "./components/EmailConfirm";
 import HelpeeRegister from "./components/HelpeeRegister";
+import Map from "./components/Map";
+import MarkerList from "./components/MarkerList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,6 +22,8 @@ root.render(
         <Route path="/helperregister" element={<HelperRegister />} />
         <Route path="/helpeeregister" element={<HelpeeRegister />} />
         <Route path="/emailconfirm/:token" element={<EmailConfirm />} />
+        <Route element={<Map />} path="/map" />
+        <Route element={<MarkerList />} path="/markerlist"></Route>
       </Routes>
     </BrowserRouter>
   </ContextProvider>
