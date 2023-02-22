@@ -1,9 +1,16 @@
 import express from "express";
-import { register, login } from "../controllers/helperController.js";
+import {
+  helperRegister,
+  login,
+  emailConfirm,
+} from "../controllers/helperController.js";
+import { helpeeRegister } from "../controllers/helpeeController.js";
 
 const router = express.Router();
 
-router.post("/helperregister", register);
+router.post("/helperregister", helperRegister);
 router.post("/helperlogin", login);
+router.post("/emailconfirm", emailConfirm);
+router.post("/helpeeregister", helpeeRegister);
 
 export default router;

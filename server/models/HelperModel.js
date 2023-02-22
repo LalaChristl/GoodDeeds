@@ -30,7 +30,12 @@ const helperSchema = new Schema(
       type: String,
     },
     languages: String,
+    verified: {
+      type: Boolean,
+      default: false,
+    },
   },
+
   { timeStamps: true }
 );
 

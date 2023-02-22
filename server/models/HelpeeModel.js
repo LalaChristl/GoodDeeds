@@ -26,4 +26,4 @@ const helpeeSchema = new Schema(
   { timeStamps: true }
 );
 
-export default mongoose.model("Helper", helpeeSchema);
+export default mongoose.model("Helpee", helpeeSchema);
