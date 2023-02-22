@@ -1,0 +1,152 @@
+.m-list-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+  background-color: #edc092fc;
+  background-image: url(../files/map.avif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.m-list {
+  color: #e2c278;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #354f52;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+  height: 20rem;
+  margin-top: 10px;
+
+  background: #ce5937;
+  background: -moz-linear-gradient(
+    -45deg,
+    #183a37 0%,
+    #183a37 50%,
+    #c44900 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #ce5937 0%,
+    #1c6ea4 50%,
+    #c59237 100%
+  );
+  background: linear-gradient(135deg, #c8c3bd 0%, #9b9184 30%, #183a37 100%);
+}
+
+.m-list h2:hover,
+.m-list p:hover {
+  color: #d7a487;
+  cursor: pointer;
+}
+.m-list a {
+  text-decoration: none;
+  color: #e2c278;
+}
+
+.m-delete-btn {
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.m-delete-btn:hover:hover {
+  color: #d7a487;
+}
+
+.map-icon {
+  color: red;
+  animation-name: example;
+  animation-name: flip-scale-up-ho;
+  animation-duration: 10s;
+  animation-iteration-count: 3;
+  -webkit-animation: flip-scale-up-hor 2.5s linear both;
+  animation: flip-scale-up-hor 2.5s linear both;
+}
+
+@keyframes example {
+  0% {
+    color: red;
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    color: #e0c47a;
+    left: 200px;
+    top: 0px;
+  }
+  50% {
+    color: #3ca6d7;
+    left: 200px;
+    top: 200px;
+  }
+  75% {
+    color: #8e845c;
+    left: 0px;
+    top: 200px;
+  }
+  100% {
+    color: red;
+    left: 0px;
+    top: 0px;
+  }
+}
+
+.flip-scale-up-hor {
+}
+
+@-webkit-keyframes flip-scale-up-hor {
+  0% {
+    -webkit-transform: scale(1) rotateX(0);
+    transform: scale(1) rotateX(0);
+    color: red;
+    left: 0px;
+    top: 0px;
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotateX(-90deg);
+    transform: scale(2.5) rotateX(-90deg);
+    color: #3ca6d7;
+    left: 200px;
+    top: 200px;
+  }
+  100% {
+    -webkit-transform: scale(1) rotateX(-180deg);
+    transform: scale(1) rotateX(-180deg);
+    color: red;
+    left: 0px;
+    top: 0px;
+  }
+}
+@keyframes flip-scale-up-hor {
+  0% {
+    -webkit-transform: scale(1) rotateX(0);
+    transform: scale(1) rotateX(0);
+    color: #8e845c;
+    left: 0px;
+    top: 200px;
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotateX(-90deg);
+    transform: scale(2.5) rotateX(-90deg);
+    color: #3ca6d7;
+    left: 200px;
+    top: 200px;
+  }
+  100% {
+    -webkit-transform: scale(1) rotateX(-180deg);
+    transform: scale(1) rotateX(-180deg);
+    color: red;
+    left: 0px;
+    top: 0px;
+  }
+}
