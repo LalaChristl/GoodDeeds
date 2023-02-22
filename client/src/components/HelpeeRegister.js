@@ -1,19 +1,15 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { Context } from "./Context";
 
 import axios from "axios";
 
-const HelperRegister = () => {
+const HelpeeRegister = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState({
     username: "",
     email: "",
-    address: "",
-    phonenumber: "",
-    gender: "",
     password: "",
     confirmPassword: "",
     languages: "",
@@ -30,7 +26,7 @@ const HelperRegister = () => {
 
   const handleRegister = async () => {
     const { password, confirmPassword } = data;
-    const response = await axios.post("/users/helperregister", data);
+    const response = await axios.post("/users/helpeeregister", data);
     console.log("🦩 ~ handleRegister ~ response", response);
     if (password !== confirmPassword) {
       alert("Wrong email or password");
@@ -75,7 +71,7 @@ const HelperRegister = () => {
   return (
     <div className="flex justify-center">
       <div className="helper-register-container flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2">
-        <h1>Helper Register</h1>
+        <h1>Helpee Register</h1>
         <input
           type="username"
           placeholder="Username"
@@ -88,21 +84,6 @@ const HelperRegister = () => {
           placeholder="Email"
           value={data.email}
           onChange={(e) => setData({ ...data, email: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
-        />
-
-        <input
-          type="text"
-          placeholder="Address"
-          value={data.address}
-          onChange={(e) => setData({ ...data, address: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
-        />
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          value={data.phonenumber}
-          onChange={(e) => setData({ ...data, phonenumber: e.target.value })}
           className="helper-register-input border-[1px] border-black"
         />
 
@@ -122,39 +103,7 @@ const HelperRegister = () => {
           }
           className="helper-register-input border-[1px] border-black"
         />
-        <div>
-          <p>Please select your gender</p>
-          <input
-            type="radio"
-            name="genders"
-            className="helper-register-gender"
-            value="woman"
-            onChange={(e) => setData({ ...data, gender: e.target.value })}
-          />
-          <label htmlFor="woman">Woman</label>
-          <input
-            type="radio"
-            name="genders"
-            className="helper-register-gender"
-            value="man"
-            onChange={(e) => setData({ ...data, gender: e.target.value })}
-          />
-          <label htmlFor="man">Man</label>
-          {/* <input
-            type="radio"
-            name="genders"
-            className="gender"
-            value="custom"
-            checked={selected === "custom"}
-            onChange={changeHandler}
-          />
-          <label htmlFor="custom">Custom</label>
-          <input
-            type="text"
-            aria-hidden={selected !== "male" ? true : false}
-            className="border-[1px] border-black"
-          /> */}
-        </div>
+
         <input
           type="text"
           placeholder="Spoken Languages"
@@ -194,4 +143,4 @@ const HelperRegister = () => {
   );
 };
 
-export default HelperRegister;
+export default HelpeeRegister;
