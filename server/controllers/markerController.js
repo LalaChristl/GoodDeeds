@@ -10,6 +10,7 @@ export const addMarker = async (req, res) => {
     const createdMarker = await Marker.create({
       address: req.body.address,
       coordinates: [req.body.lng, req.body.lat],
+      label: req.body.label,
     });
     console.log("🌞~ createdMarker", createdMarker);
 

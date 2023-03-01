@@ -171,12 +171,12 @@ const HelperRegister = () => {
             className="hidden"
             onChange={(e) => handleUpload(e.target.files[0])}
           />
+          <img
+            className="helper-register-image h-[200px] w-[200px]"
+            src={data.image}
+            alt=""
+          />
         </label>
-        <img
-          className="helper-register-image h-[200px] w-[200px]"
-          src={data.image}
-          alt=""
-        />
 
         <button
           type="submit"

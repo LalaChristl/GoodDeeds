@@ -10,13 +10,16 @@ function App() {
           Helper Register
         </button>
       </Link>
-      <Link to="/helperlogin">
+      <Link to="/login">
         <button className="border-[1px] border-black p-5">Login</button>
       </Link>
       <Link to="/helpeeregister">
         <button className="border-[1px] border-black p-5">
           Helpee Register
         </button>
+      </Link>
+      <Link to="/map">
+        <button className="border-[1px] border-black p-5">Map</button>
       </Link>
     </div>
   );
