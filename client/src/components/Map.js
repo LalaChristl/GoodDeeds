@@ -169,13 +169,13 @@ function Map() {
     libraries,
   }); // Loading function for Google maps
 
-  const pinView = {
-    url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-    //labelOrigin: new window.google.maps.Point(15, -10),
-    // scaledSize: new window.google.maps.Size(40, 40),client/src/files/people-support.png
-    // origin: new window.google.maps.Point(0, 0),
-    // anchor: new window.google.maps.Point(12, 12),
-  };
+  // const pinView = {
+  //   url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+  //   //labelOrigin: new window.google.maps.Point(15, -10),
+  //   // scaledSize: new window.google.maps.Size(40, 40),client/src/files/people-support.png
+  //   // origin: new window.google.maps.Point(0, 0),
+  //   // anchor: new window.google.maps.Point(12, 12),
+  // };
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading maps";
