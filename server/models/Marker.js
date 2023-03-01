@@ -9,6 +9,7 @@ const userSchema = new Schema(
       required: true,
     },
     address: String,
+    label: String,
   },
   { timestamps: true }
 );

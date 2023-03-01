@@ -7,6 +7,7 @@ const ContextProvider = ({ children }) => {
     user: {},
     marker: [],
     address: "",
+    address1: "",
   };
   const reducer = (state, action) => {
     switch (action.type) {
@@ -42,6 +43,11 @@ const ContextProvider = ({ children }) => {
         return {
           ...state,
           address: action.payload,
+        };
+      case "address1":
+        return {
+          ...state,
+          address1: action.payload,
         };
 
       default:
