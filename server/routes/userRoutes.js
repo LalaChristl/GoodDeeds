@@ -1,16 +1,19 @@
 import express from "express";
 import {
-  helperRegister,
+  register,
   login,
   emailConfirm,
-} from "../controllers/helperController.js";
-import { helpeeRegister } from "../controllers/helpeeController.js";
+  forgotPass,
+  changePass,
+} from "../controllers/userController.js";
+// import auth from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.post("/helperregister", helperRegister);
-router.post("/helperlogin", login);
+router.post("/register", register);
+router.post("/login", login);
 router.post("/emailconfirm", emailConfirm);
-router.post("/helpeeregister", helpeeRegister);
+router.post("/forgotpass", forgotPass);
+router.post("/changepass", changePass);
 
 export default router;

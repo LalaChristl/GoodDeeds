@@ -1,22 +1,23 @@
-import HelperUser from "../models/HelperModel.js";
+import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import verifyEmail from "../utilities/verifyEmail.js";
+import changePassEmail from "../utilities/changePassEmail.js";
 
 const SALT_ROUNDS = 10;
 
-export const helperRegister = async (req, res) => {
+export const register = async (req, res) => {
   try {
-    console.log("🦩~ Hello from Helper Register", req.body);
+    console.log("🦩~ Hello from Register", req.body);
 
     const salt = await bcrypt.genSalt(SALT_ROUNDS);
 
     const hashedPass = await bcrypt.hash(req.body.password, salt);
-    console.log("🦩~ Helper Register ~ hashedPass", hashedPass);
+    console.log("🦩~ Register ~ hashedPass", hashedPass);
 
     req.body.password = hashedPass;
 
-    const user = await HelperUser.create(req.body);
+    const user = await User.create(req.body);
 
     const token = jwt.sign(
       {
@@ -28,11 +29,11 @@ export const helperRegister = async (req, res) => {
 
     verifyEmail(token);
 
-    console.log("🦩~ Helper Register ~ user", user);
+    console.log("🦩~ Register ~ user", user);
 
     res.send({ success: true });
   } catch (error) {
-    console.log("🦩~ Helper Register Error", error.message);
+    console.log("🦩~ Register Error", error.message);
 
     res.send({ success: false, error: error.message });
   }
@@ -40,9 +41,9 @@ export const helperRegister = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    console.log("🦩~ Hello from Helper Login", req.body);
+    console.log("🦩~ Hello from Login", req.body);
 
-    const user = await HelperUser.findOne({
+    const user = await User.findOne({
       username: req.body.username,
     }).select("-__v");
     console.log("user", user);
@@ -85,7 +86,7 @@ export const emailConfirm = async (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT);
     console.log("🦩 ~ emailConfirm ~ decoded", decoded);
 
-    const user = await HelperUser.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
       { _id: decoded.id },
       { verified: true },
       { new: true }
@@ -95,6 +96,55 @@ export const emailConfirm = async (req, res) => {
     res.send({ success: true });
   } catch (error) {
     console.log("🦩 ~ emailConfirm ~ error", error.message);
+
+    res.send({ success: false, error: error.message });
+  }
+};
+
+export const forgotPass = async (req, res) => {
+  try {
+    console.log("🦩 ~ hello forgotPass ", req.body);
+
+    const user = await User.findOne({
+      email: req.body.email,
+    });
+    console.log("🦩 ~ forgotPass ~ user", user);
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT, {
+      expiresIn: "1h",
+    });
+
+    changePassEmail(token);
+
+    res.send({ success: true });
+  } catch (error) {
+    console.log("🦩 ~ forgotPass ~ error", error.message);
+
+    res.send({ success: false, error: error.message });
+  }
+};
+
+export const changePass = async (req, res) => {
+  try {
+    console.log("🦩 ~ hello changePass ", req.body);
+
+    const decoded = jwt.verify(req.body.token, process.env.JWT);
+    console.log("🦩 ~ changePass= ~ decoded", decoded);
+
+    const salt = await bcrypt.genSalt(SALT_ROUNDS);
+    const hashedPass = await bcrypt.hash(req.body.password, salt);
+    console.log("🦩 ~ changePass= ~ hashedPass", hashedPass);
+
+    const updatedPass = await User.findByIdAndUpdate(
+      decoded.id,
+      { password: hashedPass },
+      { new: true }
+    );
+    console.log("🦩 ~ changePass= ~ updatedPass", updatedPass);
+
+    res.send({ success: true });
+  } catch (error) {
+    console.log("🦩 ~ changePass ~ error", error.message);
 
     res.send({ success: false, error: error.message });
   }
