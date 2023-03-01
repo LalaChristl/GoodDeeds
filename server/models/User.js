@@ -2,11 +2,14 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const helperSchema = new Schema(
+const userSchema = new Schema(
   {
-    username: {
+    firstName: {
       type: String,
-      unique: true,
+      required: true,
+    },
+    lastName: {
+      type: String,
       required: true,
     },
     email: {
@@ -14,22 +17,21 @@ const helperSchema = new Schema(
       unique: true,
       required: true,
     },
-    phonenumber: {
-      type: Number,
-      unique: true,
-      required: true,
-    },
+
     password: {
       type: String,
       required: true,
     },
     image: String,
-    address: String,
+
     age: Number,
     gender: {
       type: String,
     },
-    languages: String,
+    languages: [],
+    isHelper: Boolean,
+    isHelpee: Boolean,
+    isActive: Boolean,
     verified: {
       type: Boolean,
       default: false,
@@ -39,4 +41,4 @@ const helperSchema = new Schema(
   { timeStamps: true }
 );
 
-export default mongoose.model("Helper", helperSchema);
+export default mongoose.model("User", userSchema);

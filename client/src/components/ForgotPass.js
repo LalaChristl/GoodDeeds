@@ -1,0 +1,73 @@
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import "../styles/ForgotPass.css";
+
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+// const notify = () =>
+//   toast.info(
+//     "We have sent you an email with instructions about how to change your password",
+//     {
+//       autoClose: 5000,
+//       hideProgressBar: false,
+//       closeOnClick: true,
+//       pauseOnHover: true,
+//       draggable: true,
+//       progress: undefined,
+//       theme: "colored",
+//     }
+//   );
+
+const ForgotPass = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    email: "",
+  });
+
+  const handleSubmit = async () => {
+    const response = await axios.post("/users/forgotpass", data);
+    console.log("🦩 ~ handleSubmit ~ response", response);
+
+    if (response.data.success)
+      alert(
+        "We have sent you an email with instructions about how to change your password"
+      );
+    // notify();
+  };
+
+  const handleNavLogin = () => {
+    navigate("/");
+  };
+
+  return (
+    <div className="forgot-container flex justify-center">
+      <div className="forgot-box flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2 p-[50px]">
+        <p>Please enter you email</p>
+        <input
+          type="email"
+          name="email"
+          value={data.email}
+          onChange={(e) => setData({ ...data, email: e.target.value })}
+          placeholder="Email"
+          className="forgot-input border-[1px] border-black"
+        />
+        <button
+          className="forgot-button border-[1px] border-black"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+
+        <p className="forgot-pass-p " onClick={handleNavLogin}>
+          Login
+        </p>
+        {/* <ToastContainer /> */}
+      </div>
+    </div>
+  );
+};
+
+export default ForgotPass;

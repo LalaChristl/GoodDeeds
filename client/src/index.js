@@ -4,10 +4,12 @@ import "./index.css";
 import App from "./App";
 import ContextProvider from "./components/Context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HelperRegister from "./components/HelperRegister";
-import HelperLogin from "./components/HelperLogin";
+import Register from "./components/Register";
+import Login from "./components/Login";
 import EmailConfirm from "./components/EmailConfirm";
-import HelpeeRegister from "./components/HelpeeRegister";
+import ForgotPass from "./components/ForgotPass";
+import ChangePass from "./components/ChangePass";
+
 import Map from "./components/Map";
 import MarkerList from "./components/MarkerList";
 
@@ -18,10 +20,13 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
 
-        <Route path="/login" element={<HelperLogin />} />
-        <Route path="/helperregister" element={<HelperRegister />} />
-        <Route path="/helpeeregister" element={<HelpeeRegister />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         <Route path="/emailconfirm/:token" element={<EmailConfirm />} />
+        <Route path="/forgotpass" element={<ForgotPass />} />
+        <Route path="/changepass/:token" element={<ChangePass />} />
+
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
       </Routes>

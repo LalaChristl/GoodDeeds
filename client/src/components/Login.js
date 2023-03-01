@@ -3,17 +3,17 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "./Context";
 
-const HelperLogin = () => {
+const Login = () => {
   const { dispatch } = useContext(Context);
   const navigate = useNavigate();
 
   const [data, setData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const handleLogin = async () => {
-    const response = await axios.post("/users/helperlogin", data);
+    const response = await axios.post("/users/login", data);
     console.log("🦩 ~ handleLogin= ~ response", response);
 
     if (response.data.success) {
@@ -27,37 +27,40 @@ const HelperLogin = () => {
   };
 
   const handleNotUser = () => {
-    navigate("/helperregister");
+    navigate("/register");
+  };
+  const handleForgotPass = () => {
+    navigate("/forgotpass");
   };
   return (
     <div className="flex justify-center">
-      <div className="container-helper-login flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2 p-[50px]">
-        <h1 className="h1-helper-login">Welcome to Volunteer Land!</h1>
+      <div className="container-login flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2 p-[50px]">
+        <h1 className="h1-login text-[15rem]">Welcome to Login!</h1>
         <input
           type="text"
-          placeholder="Username"
-          value={data.username}
-          onChange={(e) => setData({ ...data, username: e.target.value })}
-          className="helper-login-input border-[1px] border-black"
+          placeholder="Email"
+          value={data.email}
+          onChange={(e) => setData({ ...data, email: e.target.value })}
+          className="login-input border-[1px] border-black"
         />
         <input
           type="password"
           placeholder="Password"
           value={data.password}
           onChange={(e) => setData({ ...data, password: e.target.value })}
-          className="helper-login-input border-[1px] border-black"
+          className="login-input border-[1px] border-black"
         />
-        {/* <p className="p-2" onClick={handleForgotPass}>
+        <p className="p-2" onClick={handleForgotPass}>
           Forgot Password?
-        </p> */}
+        </p>
         <button
-          className="helper-login-button border-[1px] border-black"
+          className="login-button border-[1px] border-black"
           onClick={handleLogin}
         >
           Sign In
         </button>
 
-        <p className="helper-login-p" onClick={handleNotUser}>
+        <p className="login-p" onClick={handleNotUser}>
           Not a user yet?
         </p>
       </div>
@@ -65,4 +68,4 @@ const HelperLogin = () => {
   );
 };
 
-export default HelperLogin;
+export default Login;
