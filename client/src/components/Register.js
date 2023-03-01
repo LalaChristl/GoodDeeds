@@ -5,17 +5,19 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-const HelperRegister = () => {
+const Register = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState({
-    username: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    address: "",
-    phonenumber: "",
-    gender: "",
+    // address: "",
+    // phonenumber: "",
     password: "",
     confirmPassword: "",
+    gender: "",
+    age: "",
     languages: "",
     image:
       "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
@@ -30,7 +32,7 @@ const HelperRegister = () => {
 
   const handleRegister = async () => {
     const { password, confirmPassword } = data;
-    const response = await axios.post("/users/helperregister", data);
+    const response = await axios.post("/users/register", data);
     console.log("🦩 ~ handleRegister ~ response", response);
     if (password !== confirmPassword) {
       alert("Wrong email or password");
@@ -42,9 +44,6 @@ const HelperRegister = () => {
 
   const handleUpload = (img) => {
     if (!img) return;
-
-    // dispatch({ type: "loading_image" });
-    // dispatch({ type: "hide_popup" });
 
     if (img.type === "image/png" || img.type === "image/jpeg") {
       const data = new FormData();
@@ -61,7 +60,6 @@ const HelperRegister = () => {
         .then((data) => {
           console.log("Uploaded", data.url);
           setData((prev) => ({ ...prev, image: data.url }));
-          // dispatch({ type: "loading_image" });
         })
         .catch((err) => {
           console.log(err);
@@ -74,36 +72,28 @@ const HelperRegister = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="helper-register-container flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2">
-        <h1>Helper Register</h1>
+      <div className="register-container flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2">
+        <h1 className="register-h1 text-[15rem]">Register</h1>
         <input
-          type="username"
-          placeholder="Username"
-          value={data.username}
-          onChange={(e) => setData({ ...data, username: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
+          type="name"
+          placeholder="First Name"
+          value={data.firstName}
+          onChange={(e) => setData({ ...data, firstName: e.target.value })}
+          className="register-input border-[1px] border-black"
+        />
+        <input
+          type="name"
+          placeholder="Last Name"
+          value={data.lastName}
+          onChange={(e) => setData({ ...data, lastName: e.target.value })}
+          className="register-input border-[1px] border-black"
         />
         <input
           type="email"
           placeholder="Email"
           value={data.email}
           onChange={(e) => setData({ ...data, email: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
-        />
-
-        <input
-          type="text"
-          placeholder="Address"
-          value={data.address}
-          onChange={(e) => setData({ ...data, address: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
-        />
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          value={data.phonenumber}
-          onChange={(e) => setData({ ...data, phonenumber: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
+          className="register-input border-[1px] border-black"
         />
 
         <input
@@ -111,7 +101,7 @@ const HelperRegister = () => {
           placeholder="Password"
           value={data.password}
           onChange={(e) => setData({ ...data, password: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
+          className="register-input border-[1px] border-black"
         />
         <input
           type="password"
@@ -120,14 +110,14 @@ const HelperRegister = () => {
           onChange={(e) =>
             setData({ ...data, confirmPassword: e.target.value })
           }
-          className="helper-register-input border-[1px] border-black"
+          className="register-input border-[1px] border-black"
         />
         <div>
           <p>Please select your gender</p>
           <input
             type="radio"
             name="genders"
-            className="helper-register-gender"
+            className="register-gender"
             value="woman"
             onChange={(e) => setData({ ...data, gender: e.target.value })}
           />
@@ -135,7 +125,7 @@ const HelperRegister = () => {
           <input
             type="radio"
             name="genders"
-            className="helper-register-gender"
+            className="register-gender"
             value="man"
             onChange={(e) => setData({ ...data, gender: e.target.value })}
           />
@@ -156,14 +146,21 @@ const HelperRegister = () => {
           /> */}
         </div>
         <input
+          type="age"
+          placeholder="Age"
+          value={data.age}
+          onChange={(e) => setData({ ...data, age: e.target.value })}
+          className="register-input border-[1px] border-black"
+        />
+        <input
           type="text"
           placeholder="Spoken Languages"
           value={data.languages}
           onChange={(e) => setData({ ...data, languages: e.target.value })}
-          className="helper-register-input border-[1px] border-black"
+          className="register-input border-[1px] border-black"
         />
 
-        <label className="helper-label-register">
+        <label className="register-label">
           Select your profile image
           <input
             type="file"
@@ -171,22 +168,22 @@ const HelperRegister = () => {
             className="hidden"
             onChange={(e) => handleUpload(e.target.files[0])}
           />
-          <img
-            className="helper-register-image h-[200px] w-[200px]"
-            src={data.image}
-            alt=""
-          />
         </label>
+        <img
+          className="register-image h-[200px] w-[200px]"
+          src={data.image}
+          alt=""
+        />
 
         <button
           type="submit"
           onClick={handleRegister}
-          className="helper-register-button border-[1px] border-black"
+          className="register-button border-[1px] border-black"
         >
           Register
         </button>
 
-        <p className="p-3" onClick={handleAlreadyUser}>
+        <p className="register-p-3" onClick={handleAlreadyUser}>
           Already a user?
         </p>
       </div>
@@ -194,4 +191,4 @@ const HelperRegister = () => {
   );
 };
 
-export default HelperRegister;
+export default Register;
