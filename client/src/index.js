@@ -12,6 +12,8 @@ import ChangePass from "./components/ChangePass";
 
 import Map from "./components/Map";
 import MarkerList from "./components/MarkerList";
+import HelperProfile from "./components/HelperProfile";
+import HelpeeProfile from "./components/HelpeeProfile";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,10 +24,13 @@ root.render(
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
         <Route path="/emailconfirm/:token" element={<EmailConfirm />} />
         <Route path="/forgotpass" element={<ForgotPass />} />
         <Route path="/changepass/:token" element={<ChangePass />} />
+
+        <Route path="/helperProfile" element={<HelperProfile />} />
+
+        <Route path="/helpeeProfile" element={<HelpeeProfile />} />
 
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
