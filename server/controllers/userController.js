@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import verifyEmail from "../utilities/verifyEmail.js";
 import changePassEmail from "../utilities/changePassEmail.js";
+import express from "express";
+const router = express.Router();
 
 const SALT_ROUNDS = 10;
 
@@ -44,7 +46,7 @@ export const login = async (req, res) => {
     console.log("🦩~ Hello from Login", req.body);
 
     const user = await User.findOne({
-      username: req.body.username,
+      email: req.body.email,
     }).select("-__v");
     console.log("user", user);
 
@@ -149,3 +151,44 @@ export const changePass = async (req, res) => {
     res.send({ success: false, error: error.message });
   }
 };
+
+
+export const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params._id).select("-password -__v");
+    if (!user) return res.status(404).send("User not found");
+
+    res.send({ success: true, user })
+  } catch (error) {
+    console.log("Get user error", error.message);
+    res.send({ success: false, error: error.message }); }
+};
+
+export const getUser2 = async (req, res) => {
+  try {
+    const user = await User.findById(req.params._id).select("-password -__v");
+    if (!user) return res.status(404).send("User not found");
+
+    res.send({ success: true, user })
+  } catch (error) {
+    console.log("Get user error", error.message);
+    res.send({ success: false, error: error.message }); }
+};
+
+export const edit = async (req, res) => {
+    try {
+        console.log('Hello from user edit', req.body)
+        if (!req.body.firstName ||
+            !req.body.lastName ||
+            !req.body.email
+            ) return res.send({success: false, errorId: 3})
+        const {_id, ...user} = req.body
+        const updatedUser = await User.findByIdAndUpdate(_id, {...user}, {new: true})
+        console.log("=updatedUser", updatedUser)
+        if (!updatedUser) return res.send({success: false, errorId: 1})
+        res.send({success: true})
+    } catch (error) {
+        console.log("edit user error", error.message)
+        res.send({success: false, error: error.message})
+    }
+}

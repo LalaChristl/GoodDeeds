@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import EmailConfirm from "./components/EmailConfirm";
 import ForgotPass from "./components/ForgotPass";
 import ChangePass from "./components/ChangePass";
+import EditProfile from "./components/EditProfile";
 
 import Map from "./components/Map";
 import MarkerList from "./components/MarkerList";
@@ -28,9 +29,10 @@ root.render(
         <Route path="/forgotpass" element={<ForgotPass />} />
         <Route path="/changepass/:token" element={<ChangePass />} />
 
-        <Route path="/helperProfile" element={<HelperProfile />} />
+        <Route path="/helperProfile/getuser/:id" element={<HelperProfile />} />
 
-        <Route path="/helpeeProfile" element={<HelpeeProfile />} />
+        <Route path="/helpeeProfile/getuser2/:id" element={<HelpeeProfile />} />
+        <Route path="/helperProfile/users/editProfile/:id" element={<EditProfile/>} />
 
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
