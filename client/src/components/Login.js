@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "./Context";
 
+
 const Login = () => {
   const { dispatch } = useContext(Context);
   const navigate = useNavigate();
@@ -22,7 +23,16 @@ const Login = () => {
         payload: response.data.user,
       });
 
-      navigate("/");
+      const selectedProfileType = document.querySelector(
+        'input[name="profileType"]:checked'
+      ).value;
+      if (selectedProfileType === "helper") {
+        navigate(`/helperProfile/getuser/${response.data.user._id}`);
+      } else if (selectedProfileType === "helpee") {
+        navigate(`/helpeeProfile/getuser2/${response.data.user._id}`);
+      } else {
+        alert("Please select a profile type");
+      }
     }
   };
 
@@ -50,6 +60,17 @@ const Login = () => {
           onChange={(e) => setData({ ...data, password: e.target.value })}
           className="login-input border-[1px] border-black"
         />
+        <div className="flex flex-col gap-2">
+          <label>
+            <input type="radio" name="profileType" value="helper" />
+            Helper
+          </label>
+          <label>
+            <input type="radio" name="profileType" value="helpee" />
+            Helpee
+          </label>
+        </div>
+
         <p className="p-2" onClick={handleForgotPass}>
           Forgot Password?
         </p>
@@ -69,3 +90,5 @@ const Login = () => {
 };
 
 export default Login;
+
+
