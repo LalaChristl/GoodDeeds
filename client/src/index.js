@@ -12,6 +12,7 @@ import ChangePass from "./components/ChangePass";
 
 import Map from "./components/Map";
 import MarkerList from "./components/MarkerList";
+import AddTasks from "./components/AddTasks";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -29,6 +30,7 @@ root.render(
 
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
+        <Route element={<AddTasks />} path="/addtasks"></Route>
       </Routes>
     </BrowserRouter>
   </ContextProvider>

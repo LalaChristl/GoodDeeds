@@ -10,7 +10,7 @@ import {
 const router = express.Router();
 
 router.get("/list", auth, listTask);
-router.post("/add", auth, addTask);
+router.post("/add", addTask);
 router.delete("/delete", auth, deleteTask);
 router.put("/edit", auth, editTask);
 
