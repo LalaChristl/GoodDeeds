@@ -6,9 +6,15 @@ export const addTask = async (req, res) => {
 
     req.body.owner = req.user;
 
-    const task = await (
-      await Task.create(req.body)
-    ).populate({ path: "owner", select: "name email image age" });
+    const task = await Task.create({
+      owner: req.user,
+      task: req.body.task,
+      taskDate: req.body.taskDate,
+      taskTime: req.body.taskTime,
+      taskDetails: req.body.taskDetails,
+      location: req.body.location,
+      coordinates: [req.body.lng, req.body.lat],
+    });
 
     console.log("🦩 ~ addTask ~ task", task);
 

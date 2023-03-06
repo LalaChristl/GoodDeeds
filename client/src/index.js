@@ -15,6 +15,9 @@ import Map from "./components/Map";
 import MarkerList from "./components/MarkerList";
 import HelperProfile from "./components/HelperProfile";
 import HelpeeProfile from "./components/HelpeeProfile";
+import AddTasks from "./components/AddTasks";
+import ListTasks from "./components/ListTasks";
+import EditTasks from "./components/EditTasks";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -32,10 +35,16 @@ root.render(
         <Route path="/helperProfile/getuser/:id" element={<HelperProfile />} />
 
         <Route path="/helpeeProfile/getuser2/:id" element={<HelpeeProfile />} />
-        <Route path="/helperProfile/users/editProfile/:id" element={<EditProfile/>} />
+        <Route
+          path="/helperProfile/users/editProfile/:id"
+          element={<EditProfile />}
+        />
 
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
+        <Route path="/addtasks/" element={<AddTasks />}></Route>
+        <Route path="/listtasks/" element={<ListTasks />}></Route>
+        <Route path="/edittasks/:id" element={<EditTasks />}></Route>
       </Routes>
     </BrowserRouter>
   </ContextProvider>

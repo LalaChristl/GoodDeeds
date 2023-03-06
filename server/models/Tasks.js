@@ -13,21 +13,18 @@ const taskSchema = new Schema(
       required: true,
     },
     // Check this DATE/TIME input how it's working!
-    taskTime: {
-      type: Date,
-      required: true,
-    },
-    taskDate: {
-      type: Date,
-      required: true,
-    },
+    taskTime: String,
+    taskDate: String,
     // Difficulty level
-    taskCategory: {
-      type: String,
+    // taskCategory: {
+    //   type: String,
+    //   required: true,
+    // },
+    location: String,
+    coordinates: {
+      type: [Number],
       required: true,
     },
-    city: String,
-    zipcode: Number,
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",

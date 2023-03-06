@@ -152,16 +152,16 @@ export const changePass = async (req, res) => {
   }
 };
 
-
 export const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params._id).select("-password -__v");
     if (!user) return res.status(404).send("User not found");
 
-    res.send({ success: true, user })
+    res.send({ success: true, user });
   } catch (error) {
     console.log("Get user error", error.message);
-    res.send({ success: false, error: error.message }); }
+    res.send({ success: false, error: error.message });
+  }
 };
 
 export const getUser2 = async (req, res) => {
@@ -169,26 +169,29 @@ export const getUser2 = async (req, res) => {
     const user = await User.findById(req.params._id).select("-password -__v");
     if (!user) return res.status(404).send("User not found");
 
-    res.send({ success: true, user })
+    res.send({ success: true, user });
   } catch (error) {
     console.log("Get user error", error.message);
-    res.send({ success: false, error: error.message }); }
+    res.send({ success: false, error: error.message });
+  }
 };
 
 export const edit = async (req, res) => {
-    try {
-        console.log('Hello from user edit', req.body)
-        if (!req.body.firstName ||
-            !req.body.lastName ||
-            !req.body.email
-            ) return res.send({success: false, errorId: 3})
-        const {_id, ...user} = req.body
-        const updatedUser = await User.findByIdAndUpdate(_id, {...user}, {new: true})
-        console.log("=updatedUser", updatedUser)
-        if (!updatedUser) return res.send({success: false, errorId: 1})
-        res.send({success: true})
-    } catch (error) {
-        console.log("edit user error", error.message)
-        res.send({success: false, error: error.message})
-    }
-}
+  try {
+    console.log("Hello from user edit", req.body);
+    if (!req.body.firstName || !req.body.lastName || !req.body.email)
+      return res.send({ success: false, errorId: 3 });
+    const { _id, ...user } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      { ...user },
+      { new: true }
+    );
+    console.log("=updatedUser", updatedUser);
+    if (!updatedUser) return res.send({ success: false, errorId: 1 });
+    res.send({ success: true });
+  } catch (error) {
+    console.log("edit user error", error.message);
+    res.send({ success: false, error: error.message });
+  }
+};
