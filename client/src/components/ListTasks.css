@@ -1,10 +1,10 @@
-.task-form {
-  border: 2px solid red;
-  padding: 5px;
+.list-form {
+  padding: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 5px;
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a90329+0,8f0222+44,6d0019+100;Brown+Red+3D */
   background: rgb(169, 3, 41); /* Old browsers */
   background: -moz-linear-gradient(
@@ -32,7 +32,7 @@
   border-radius: 10px;
 }
 
-.task-input-div {
+.list-input-div {
   border: none;
   text-align: center;
   padding: 5px;
@@ -44,34 +44,32 @@
   border-radius: 10px;
   padding: 5px;
 }
-.task-input-1 {
+.list-input-1 {
   text-align: center;
   width: 100%;
   border-radius: 10px;
   padding: 5px;
-  color: white;
+  color: rgb(41, 20, 20);
   font-weight: 600;
+  margin-bottom: 2px;
 }
-.select {
-  text-align: center;
-  width: 100%;
+.list-main {
+  background-color: rgb(241, 209, 114);
   border-radius: 10px;
-  padding: 5px;
 }
 
-.option-input {
-  text-align: center;
-  width: 100%;
-  border-radius: 10px;
-  font-weight: 600;
-  color: green;
-}
-
-.task-btn {
-  width: 100%;
+.list-btn {
+  width: 50%;
+  margin-bottom: 2px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 5px;
   font-weight: 600;
   background-color: white;
+}
+
+.btn-container {
+  padding: 5px;
+  border: 2px solid red;
+  background-color: blue;
 }

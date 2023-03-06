@@ -1,17 +1,19 @@
 import React from "react";
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import "./AddTasks.css";
 import { useLoadScript } from "@react-google-maps/api";
 import { Autocomplete } from "@react-google-maps/api";
 import { Context } from "./Context";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const libraries = ["places"];
 
-function AddTasks() {
-  const { state } = useContext(Context);
-  const [taskData, setTaskData] = useState({
+function EditTasks() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { state, dispatch } = useContext(Context);
+  const [taskToEdit, setTaskToEdit] = useState({
     task: [],
     taskDate: "",
     taskTime: "",
@@ -20,6 +22,17 @@ function AddTasks() {
   });
   console.log("state", state);
   const autocompleteRef = useRef(null);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await axios.get("/tasks/findone/" + id);
+      console.log(" ~ getData ~ response", response);
+
+      if (response.data.success) setTaskToEdit(response.data.task);
+    }
+
+    getData();
+  }, []);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
@@ -36,20 +49,22 @@ function AddTasks() {
     };
 
     const data = {
-      task: taskData.task,
-      taskDate: taskData.taskDate,
-      taskTime: taskData.taskTime,
-      location: taskData.location,
-      taskDetails: taskData.taskDetails,
+      task: taskToEdit.task,
+      taskDate: taskToEdit.taskDate,
+      taskTime: taskToEdit.taskTime,
+      location: taskToEdit.location,
+      taskDetails: taskToEdit.taskDetails,
       lat: latLng.lat,
       lng: latLng.lng,
       owner: state.user._id,
+      _id: id,
     };
     console.log("addTasks data", data);
     try {
-      const response = await axios.post("/tasks/add", data);
+      const response = await axios.put("/tasks/edit", data);
 
-      console.log("🌞 AddTasks", response.data); // log the response from the server
+      console.log("🌞 EditTasks", response.data); // log the response from the server
+      if (response.data.success) navigate("/listtasks");
     } catch (error) {
       console.log(error);
     }
@@ -62,9 +77,9 @@ function AddTasks() {
           {
             <select
               name="tasks"
-              value={taskData.task}
+              value={taskToEdit.task}
               onChange={(e) =>
-                setTaskData({ ...taskData, task: e.target.value })
+                setTaskToEdit({ ...taskToEdit, task: e.target.value })
               }
               className="select"
               multiple={false}
@@ -88,9 +103,9 @@ function AddTasks() {
           <input
             type="date"
             name="date"
-            value={taskData.date}
+            value={taskToEdit.date}
             onChange={(e) =>
-              setTaskData({ ...taskData, taskDate: e.target.value })
+              setTaskToEdit({ ...taskToEdit, taskDate: e.target.value })
             }
             placeholder="date"
             className="task-input"
@@ -100,9 +115,9 @@ function AddTasks() {
           <input
             type="time"
             name="time"
-            value={taskData.time}
+            value={taskToEdit.time}
             onChange={(e) =>
-              setTaskData({ ...taskData, taskTime: e.target.value })
+              setTaskToEdit({ ...taskToEdit, taskTime: e.target.value })
             }
             placeholder="time"
             className="task-input"
@@ -113,9 +128,9 @@ function AddTasks() {
             placeholder="description"
             type="text"
             name="description"
-            value={taskData.details}
+            value={taskToEdit.details}
             onChange={(e) =>
-              setTaskData({ ...taskData, taskDetails: e.target.value })
+              setTaskToEdit({ ...taskToEdit, taskDetails: e.target.value })
             }
             className="task-input"
           ></textarea>
@@ -129,69 +144,17 @@ function AddTasks() {
               placeholder="Enter a location"
               type="text"
               name="location"
-              value={taskData.location}
+              value={taskToEdit.location}
               onChange={(e) =>
-                setTaskData({ ...taskData, location: e.target.value })
+                setTaskToEdit({ ...taskToEdit, location: e.target.value })
               }
               className="task-input"
             />
           </Autocomplete>
-        </div>
-        <div className="task-input-div">
-          <Link to="/listtasks/">
-            <button className="task-btn">List</button>
-          </Link>
-        </div>
-      </div>
-      <div className="task-form">
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="task"
-            disabled
-            value={state.task.task}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="date"
-            disabled
-            value={state.task.taskDate}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="time"
-            disabled
-            value={state.task.taskTime}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="details"
-            disabled
-            value={state.task.taskDetails}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="place"
-            disabled
-            value={state.task.location}
-            className="task-input-1"
-          />
         </div>
       </div>
     </div>
   );
 }
 
-export default AddTasks;
+export default EditTasks;
