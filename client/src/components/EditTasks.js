@@ -24,6 +24,7 @@ function EditTasks() {
   const autocompleteRef = useRef(null);
 
   useEffect(() => {
+    console.log("id useeffect", id);
     async function getData() {
       const response = await axios.get("/tasks/findone/" + id);
       console.log(" ~ getData ~ response", response);
@@ -32,7 +33,7 @@ function EditTasks() {
     }
 
     getData();
-  }, []);
+  }, [id]);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
@@ -103,7 +104,7 @@ function EditTasks() {
           <input
             type="date"
             name="date"
-            value={taskToEdit.date}
+            value={taskToEdit.taskDate}
             onChange={(e) =>
               setTaskToEdit({ ...taskToEdit, taskDate: e.target.value })
             }
@@ -115,7 +116,7 @@ function EditTasks() {
           <input
             type="time"
             name="time"
-            value={taskToEdit.time}
+            value={taskToEdit.taskTime}
             onChange={(e) =>
               setTaskToEdit({ ...taskToEdit, taskTime: e.target.value })
             }
@@ -128,7 +129,7 @@ function EditTasks() {
             placeholder="description"
             type="text"
             name="description"
-            value={taskToEdit.details}
+            value={taskToEdit.taskDetails}
             onChange={(e) =>
               setTaskToEdit({ ...taskToEdit, taskDetails: e.target.value })
             }
