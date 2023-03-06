@@ -10,7 +10,7 @@ const EditUserPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('/users/getusers/' + id);
+        const response = await axios.get('/users/getusers' + id);
         console.log(response);
         setUser(response.data.user);
       } catch (error) {
