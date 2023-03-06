@@ -44,12 +44,9 @@ export const listTask = async (req, res) => {
 
 export const deleteTask = async (req, res) => {
   try {
-    console.log("🦩 ~ hello deleteTask ", req.body);
-
     const deletedTask = await Task.findByIdAndDelete({
       _id: req.body.id,
-      owner: req.user,
-      // Using Thunderclient change to req.body.owner
+      owner: req.body.owner,
     });
 
     if (!deletedTask) return res.send({ success: false, errorId: 1 }); // not found
@@ -82,6 +79,23 @@ export const editTask = async (req, res) => {
   } catch (error) {
     console.log("🦩 ~ task edit error", error.message);
 
+    res.send({ success: false, error: error.message });
+  }
+};
+
+export const findOne = async (req, res) => {
+  try {
+    console.log("Hello from findOne", req.params);
+
+    const task = await Task.findById(req.params._id).select("-__v");
+
+    console.log("findOne", task);
+
+    if (!task) return res.send({ success: false, errorId: 1 });
+
+    res.send({ success: true, task });
+  } catch (error) {
+    console.log("Error findOne task", error.message);
     res.send({ success: false, error: error.message });
   }
 };
