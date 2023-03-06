@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 const EditUserPage = () => {
-  const [user, setUser] = useState();
+    const [user, setUser] = useState({ firstName: "", lastName: "", email: "" });
   const navigate = useNavigate();
   const { id } = useParams();
 

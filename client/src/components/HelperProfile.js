@@ -23,9 +23,9 @@ useEffect(() => {
   fetchData();
 }, []);
 
-const handleEdit = () => { 
-  navigate('/editProfile')
-}
+const handleEdit = () => {
+  navigate(`/helperProfile/users/editProfile/${user._id}`);
+} 
 return (
   <div>
     {user && (
