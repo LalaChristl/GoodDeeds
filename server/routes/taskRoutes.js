@@ -9,9 +9,9 @@ import {
 
 const router = express.Router();
 
-router.get("/list", auth, listTask);
-router.post("/add", auth, addTask);
-router.delete("/delete", auth, deleteTask);
-router.put("/edit", auth, editTask);
+router.get("/list", listTask);
+router.post("/add", addTask);
+router.delete("/delete", deleteTask);
+router.put("/edit", editTask);
 
 export default router;
