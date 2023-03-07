@@ -26,6 +26,10 @@ const ContextProvider = ({ children }) => {
           ...state,
           user: { ...action.payload },
         };
+      case "logout":
+        return {
+          user: {},
+        };
 
       case "loadCoords":
         return {

@@ -2,6 +2,7 @@ import express from "express";
 import {
   register,
   login,
+  logout,
   emailConfirm,
   forgotPass,
   changePass,
@@ -16,6 +17,8 @@ const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);
+router.get("/logout", logout);
+
 router.post("/emailconfirm", emailConfirm);
 router.post("/forgotpass", forgotPass);
 router.post("/changepass", changePass);
