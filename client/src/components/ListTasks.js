@@ -3,11 +3,11 @@ import { useContext, useEffect } from "react";
 import "./ListTasks.css";
 import { Context } from "./Context";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function ListTasks() {
   const { state, dispatch } = useContext(Context);
-  const { id } = useParams();
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -28,19 +28,26 @@ function ListTasks() {
   }, []);
   const handleDelete = async (id) => {
     console.log("🇯🇲 handleDelete ~ id", id);
+    const owner = state.user._id;
 
-    const response = await axios.delete("/tasks/delete/" + id);
-    console.log("🇯🇲 handleDelete ~ response", response);
-
-    if (response.data.success) {
-      dispatch({
-        type: "removeTask",
-        payload: id,
+    try {
+      const response = await axios.delete(`/tasks/delete/${id}`, {
+        data: { owner },
       });
-    } else {
-      if (response.data.errorId === 1) {
-        alert("User not found");
+      console.log("🇯🇲 handleDelete ~ response", response);
+
+      if (response.data.success) {
+        dispatch({
+          type: "removeTask",
+          payload: id,
+        });
+      } else {
+        if (response.data.errorId === 1) {
+          alert("User not found");
+        }
       }
+    } catch (error) {
+      console.log(error);
     }
   };
 
