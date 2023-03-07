@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
 
 const HelpeeProfile = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState();
 
   const { dispatch } = useContext(Context);
@@ -24,6 +26,9 @@ const HelpeeProfile = () => {
     };
     fetchData();
   }, []);
+  const handleEdit = () => {
+    navigate("/editprofile2/" + id);
+  };
 
   return (
     <div>
@@ -35,10 +40,11 @@ const HelpeeProfile = () => {
           <p>Age: {user.age}</p>
           <p>Gender: {user.gender}</p>
           <p>Languages: {user.languages}</p>
+          <button onClick={handleEdit}>Edit Profile</button>
         </>
       )}
       <Link to="/addtasks">
-        <button>Help reguest</button>
+        <button>Help request</button>
       </Link>
     </div>
   );
