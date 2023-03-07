@@ -32,7 +32,7 @@ export const listTask = async (req, res) => {
 
     const tasks = await Task.find()
       .select("-__v")
-      .populate({ path: "owner", select: "name email image" }); // post owner
+      .populate({ path: "owner", select: "firstName email image" }); // post owner
 
     res.send({ success: true, tasks });
   } catch (error) {
