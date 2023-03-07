@@ -10,7 +10,7 @@ const EditUserPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('/users/getusers' + id);
+        const response = await axios.get('/users/getusers/' + id);
         console.log(response);
         setUser(response.data.user);
       } catch (error) {
@@ -25,7 +25,7 @@ const EditUserPage = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = async () => {
-    const updatedUser = { ...user, firstName, lastName, email };
+    const updatedUser = { ...user, firstName: firstName || user.firstName, lastName: lastName || user.lastName, email: email || user.email };
     const response = await axios.patch('/users/editProfile', updatedUser);
     console.log("handleSave ~ response", response);
     if (response.data.success) navigate('/helperProfile');
@@ -33,7 +33,7 @@ const EditUserPage = () => {
 
   return (
     <div>
-      <h1>Edit User Information</h1>
+      <h1 className="text-black">Edit User Information</h1>
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
