@@ -79,6 +79,20 @@ export const login = async (req, res) => {
   }
 };
 
+export const logout = async (req, res) => {
+  try {
+    console.log("🦩 ~ hello logout ");
+
+    res.clearCookie("volunteer");
+
+    res.send({ success: true });
+  } catch (error) {
+    console.log("🦩 ~ logout ~ error", error.message);
+
+    res.send({ success: false, error: error.message });
+  }
+};
+
 export const emailConfirm = async (req, res) => {
   try {
     console.log("🦩 ~ hello emailConfirm ", req.body);
@@ -176,7 +190,27 @@ export const getUser2 = async (req, res) => {
   }
 };
 
-export const edit = async (req, res) => {
+export const editUser = async (req, res) => {
+  try {
+    console.log("Hello from user edit", req.body);
+    if (!req.body.firstName || !req.body.lastName || !req.body.email)
+      return res.send({ success: false, errorId: 3 });
+    const { _id, ...user } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(
+      _id,
+      { ...user },
+      { new: true }
+    );
+    console.log("=updatedUser", updatedUser);
+    if (!updatedUser) return res.send({ success: false, errorId: 1 });
+    res.send({ success: true });
+  } catch (error) {
+    console.log("edit user error", error.message);
+    res.send({ success: false, error: error.message });
+  }
+};
+
+export const editUser2 = async (req, res) => {
   try {
     console.log("Hello from user edit", req.body);
     if (!req.body.firstName || !req.body.lastName || !req.body.email)

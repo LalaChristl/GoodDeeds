@@ -26,6 +26,10 @@ const ContextProvider = ({ children }) => {
           ...state,
           user: { ...action.payload },
         };
+      case "logout":
+        return {
+          user: {},
+        };
 
       case "loadCoords":
         return {
@@ -63,6 +67,34 @@ const ContextProvider = ({ children }) => {
         return {
           ...state,
           user: action.payload,
+        };
+      case "editUser":
+        const editUser = [...state.user];
+
+        const idx = editUser.findIndex(
+          (item) => item._id === action.payload._id
+        );
+
+        editUser[idx] = { ...action.payload };
+        console.log("reducer ~ editUser", editUser[idx]);
+
+        return {
+          ...state,
+          user: [...editUser],
+        };
+      case "editUser2":
+        const editUser2 = [...state.user];
+
+        const idx2 = editUser2.findIndex(
+          (item) => item._id === action.payload._id
+        );
+
+        editUser2[idx2] = { ...action.payload };
+        console.log("reducer ~ editUser", editUser2[idx2]);
+
+        return {
+          ...state,
+          user: [...editUser2],
         };
       case "addTask":
         return {
