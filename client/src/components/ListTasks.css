@@ -73,3 +73,8 @@
   border: 2px solid red;
   background-color: blue;
 }
+img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}

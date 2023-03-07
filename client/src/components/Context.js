@@ -107,14 +107,15 @@ const ContextProvider = ({ children }) => {
           taskList: action.payload,
         };
       case "removeTask":
-        // filter state (tasks) to remove the deleted task
-        const oldTasks = [
-          ...state.tasks.filter((item) => item._id !== action.payload),
+        console.log("Removing task with ID:", action.payload);
+        // filter state (taskList) to remove the deleted task
+        const oldTaskList = [
+          ...state.taskList.filter((item) => item._id !== action.payload),
         ];
-
+        console.log("New task list:", oldTaskList);
         return {
           ...state,
-          tasks: [...oldTasks],
+          taskList: [...oldTaskList],
         };
 
       default:
