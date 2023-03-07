@@ -9,10 +9,12 @@ import Login from "./components/Login";
 import EmailConfirm from "./components/EmailConfirm";
 import ForgotPass from "./components/ForgotPass";
 import ChangePass from "./components/ChangePass";
+import EditProfileHelper from "./components/EditProfileHelper";
 import EditProfileHelpee from "./components/EditProfileHelpee";
 import Map from "./components/Map";
 import MarkerList from "./components/MarkerList";
 import HelperProfile from "./components/HelperProfile";
+import HelpeeProfile from "./components/HelpeeProfile";
 import AddTasks from "./components/AddTasks";
 import ListTasks from "./components/ListTasks";
 import EditTasks from "./components/EditTasks";
@@ -27,11 +29,10 @@ root.render(
         <Route path="/emailconfirm/:token" element={<EmailConfirm />} />
         <Route path="/forgotpass" element={<ForgotPass />} />
         <Route path="/changepass/:token" element={<ChangePass />} />
-
-        <Route path="/helperProfile/getuser/:id" element={<HelperProfile />} />
-
+        <Route path="/helperprofile/getuser/:id" element={<HelperProfile />} />
+        <Route path="/helpeeprofile/getuser2/:id" element={<HelpeeProfile />} />
+        <Route path="/editprofile/:id" element={<EditProfileHelper />} />
         <Route path="/editprofile2/:id" element={<EditProfileHelpee />} />
-
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
         <Route path="/addtasks/" element={<AddTasks />}></Route>

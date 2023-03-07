@@ -18,7 +18,6 @@ const HelperProfile = () => {
     };
     fetchData();
   }, []);
-
   const handleEdit = () => {
     navigate("/editprofile/" + id);
   };
