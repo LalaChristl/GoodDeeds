@@ -256,7 +256,7 @@ function Map() {
           options={options}
           onClick={onMapClick}
           onLoad={onMapLoad}
-          mapId="e3e570f7af62ed4d"
+          // mapId="e3e570f7af62ed4d"
         >
           <div>
             <MarkerClusterer>

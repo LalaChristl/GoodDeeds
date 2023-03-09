@@ -18,6 +18,16 @@ function AddTasks() {
     location: "",
     taskDetails: "",
   });
+
+  const resetInput = () => {
+    setTaskData({
+      task: [],
+      taskDate: "",
+      taskTime: "",
+      location: "",
+      taskDetails: "",
+    });
+  };
   console.log("state", state);
   const autocompleteRef = useRef(null);
 
@@ -50,6 +60,9 @@ function AddTasks() {
       const response = await axios.post("/tasks/add", data);
 
       console.log("🌞 AddTasks", response.data); // log the response from the server
+      if (response.data.success) {
+        resetInput(); // reset the input after successful response
+      }
     } catch (error) {
       console.log(error);
     }

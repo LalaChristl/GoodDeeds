@@ -4,10 +4,10 @@ export const addTask = async (req, res) => {
   try {
     console.log("🦩 ~ hello addTask", req.body);
 
-    req.body.owner = req.user;
+    // req.body.owner = req.user;
 
     const task = await Task.create({
-      owner: req.user,
+      owner: req.body.owner,
       task: req.body.task,
       taskDate: req.body.taskDate,
       taskTime: req.body.taskTime,
@@ -96,6 +96,41 @@ export const findOne = async (req, res) => {
     res.send({ success: true, task });
   } catch (error) {
     console.log("Error findOne task", error.message);
+    res.send({ success: false, error: error.message });
+  }
+};
+
+export const searchTask = async (req, res) => {
+  try {
+    console.log("---------------------------------- ");
+    console.log("🌞~ product search hello", req.body);
+
+    const filter = {};
+
+    if (req.body.task) {
+      const regExp = new RegExp(req.body.task, "i");
+
+      filter.task = regExp;
+    }
+
+    // if (req.body.minPrice > 0 || req.body.maxPrice > 0) {
+    //   filter.price = {
+    //     $gte: req.body.minPrice,
+    //     $lte: req.body.maxPrice,
+    //   };
+    // }
+    console.log("----------------------------");
+    console.log("🌞 ~ module.exports.search= ~ filter", filter);
+
+    const task = await Task.find(filter);
+
+    console.log("🌞 ~ module.exports.search= ~ tasks", task);
+
+    res.send({ success: true, task });
+  } catch (error) {
+    console.log("🌞 ~ module.exports.search= ~ tasks", tasks);
+    console.log(" 🌞~ tasks search error", error.message);
+
     res.send({ success: false, error: error.message });
   }
 };
