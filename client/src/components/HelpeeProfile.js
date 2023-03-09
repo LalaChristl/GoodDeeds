@@ -47,11 +47,13 @@ const HelpeeProfile = () => {
         {user && (
           <>
             <img src={user.image} alt="" className="h-[200px] w-[200px] " />
-            <p>First Name: {user.firstName}</p>
-            <p>Last Name: {user.lastName}</p>
+            <p>Name: {user.firstName}</p>
+            {/* <p>Last Name: {user.lastName}</p> */}
             <p>Age: {user.age}</p>
             <p>Gender: {user.gender}</p>
             <p>Languages: {user.languages}</p>
+            <p>About Me: {user.about}</p>
+
             <button
               onClick={handleEdit}
               className="helpee-profile-button border-[1px] border-black p-2"

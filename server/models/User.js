@@ -29,6 +29,7 @@ const userSchema = new Schema(
       type: String,
     },
     languages: [],
+    about: String,
     isHelper: Boolean,
     isHelpee: Boolean,
     isActive: Boolean,
