@@ -11,10 +11,27 @@ import {
   InfoWindow,
   Circle,
 } from "@react-google-maps/api";
+import { FaFilter } from "react-icons/fa";
+import { RiFilterOffFill } from "react-icons/ri";
 
 function ListTasks() {
   const { state, dispatch } = useContext(Context);
   const [map, setMap] = useState(null);
+
+  const [filter, setFilter] = useState({ task: "" });
+
+  const handleApplyFilter = async () => {
+    const response = await axios.post("/tasks/search", filter);
+    console.log("(🇯🇲 handleApplyFilter listTasks", response);
+    if (response.data.success) {
+      dispatch({ type: "listTask", payload: response.data.task });
+    }
+  };
+  const handleResetFilter = () => {
+    setFilter({
+      task: "",
+    });
+  };
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
   });
@@ -70,9 +87,9 @@ function ListTasks() {
       console.log(error);
     }
   };
-  const handleMapLoad = (map) => {
-    setMap(map);
-  };
+  // const handleMapLoad = (map) => {
+  //   setMap(map);
+  // };
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading maps";
   const center = {
@@ -119,6 +136,35 @@ function ListTasks() {
   console.log("state taskList", state.taskList);
   return (
     <div>
+      <div className="search-list">
+        <input
+          placeholder="Search task"
+          type="text"
+          id="base-input"
+          onChange={(e) => setFilter({ ...filter, task: e.target.value })}
+          value={filter.task}
+          className="list-input"
+        />
+      </div>
+      <div className="filter">
+        <button
+          type="button"
+          onClick={handleApplyFilter}
+          className="list-btn-1"
+        >
+          <FaFilter />
+          Apply filter
+        </button>
+        <button
+          type="button"
+          onClick={handleResetFilter}
+          className="list-btn-1"
+        >
+          <RiFilterOffFill />
+          Reset filter
+        </button>
+      </div>
+
       <div className="list-form">
         {state.taskList &&
           state.taskList.map((item) => (
@@ -154,6 +200,98 @@ function ListTasks() {
                 <p className="list-input-1">{item.taskTime}</p>
                 <p className="list-input-1">{item.taskDetails}</p>
                 <p className="list-input-1">{item.location}</p>
+
+                <GoogleMap
+                  mapContainerStyle={{ height: "500px", width: "100%" }}
+                  zoom={11}
+                  center={center}
+                  options={options}
+                  onLoad={onMapLoad}
+                  // mapId="e3e570f7af62ed4d"
+                >
+                  {state.taskList &&
+                    state.taskList.map((item) => (
+                      <div>
+                        <Marker
+                          key={item._id}
+                          position={{
+                            lat: item.coordinates[1],
+                            lng: item.coordinates[0],
+                          }}
+                          onClick={() => {
+                            setSelected(item);
+                            console.log("selected marker", item);
+                          }}
+                          icon={{
+                            // pinView,
+                            url: "https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/256/external-placeholder-location-vitaliy-gorbachev-flat-vitaly-gorbachev-1.png",
+                            scaledSize: new window.google.maps.Size(60, 60),
+                            origin: new window.google.maps.Point(0, 0),
+                            anchor: new window.google.maps.Point(37, 37),
+                          }}
+                        />
+
+                        {selected ? (
+                          <InfoWindow
+                            options={{
+                              pixelOffset: new window.google.maps.Size(
+                                -10,
+                                -10
+                              ),
+                            }}
+                            position={{
+                              lat: selected.coordinates[1],
+                              lng: selected.coordinates[0],
+                            }}
+                            onCloseClick={() => {
+                              setSelected(null);
+                            }}
+                          >
+                            <div
+                              style={{
+                                background:
+                                  "linear-gradient(to bottom, #B3FFE5 0%,#4DFFE1 50%,#4DFFE1 50%,#14DFFE 100%)",
+                                width: "100%",
+                                height: "10vh",
+                                textAlign: "center",
+                                alignItems: "center",
+                                display: "flex",
+                                justifyContent: "center",
+                                padding: "5px",
+                                borderRadius: "5px",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: "100%",
+                                  height: "10vh",
+                                  textAlign: "center",
+                                  alignItems: "center",
+                                  display: "flex",
+                                  justifyContent: "center",
+                                  padding: "5px",
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    width: "100%",
+                                    height: "10vh",
+                                    textAlign: "center",
+                                    alignItems: "center",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    padding: "5px",
+                                  }}
+                                >
+                                  <h2>{selected.location} </h2>
+                                </div>
+                              </div>
+                            </div>
+                          </InfoWindow>
+                        ) : null}
+                      </div>
+                    ))}
+                </GoogleMap>
                 <div>
                   <Link to={"/edittasks/" + item._id}>
                     <button className="list-btn">edit</button>
@@ -169,94 +307,6 @@ function ListTasks() {
             </div>
           ))}
       </div>
-      <GoogleMap
-        mapContainerStyle={{ height: "500px", width: "100%" }}
-        zoom={11}
-        center={center}
-        options={options}
-        onLoad={onMapLoad}
-        mapId="e3e570f7af62ed4d"
-      >
-        {state.taskList &&
-          state.taskList.map((item) => (
-            <div>
-              <Marker
-                key={item._id}
-                position={{
-                  lat: item.coordinates[1],
-                  lng: item.coordinates[0],
-                }}
-                onClick={() => {
-                  setSelected(item);
-                  console.log("selected marker", item);
-                }}
-                icon={{
-                  // pinView,
-                  url: "https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/256/external-placeholder-location-vitaliy-gorbachev-flat-vitaly-gorbachev-1.png",
-                  scaledSize: new window.google.maps.Size(60, 60),
-                  origin: new window.google.maps.Point(0, 0),
-                  anchor: new window.google.maps.Point(37, 37),
-                }}
-              />
-
-              {selected ? (
-                <InfoWindow
-                  options={{
-                    pixelOffset: new window.google.maps.Size(-10, -10),
-                  }}
-                  position={{
-                    lat: selected.coordinates[1],
-                    lng: selected.coordinates[0],
-                  }}
-                  onCloseClick={() => {
-                    setSelected(null);
-                  }}
-                >
-                  <div
-                    style={{
-                      background:
-                        "linear-gradient(to bottom, #B3FFE5 0%,#4DFFE1 50%,#4DFFE1 50%,#14DFFE 100%)",
-                      width: "100%",
-                      height: "10vh",
-                      textAlign: "center",
-                      alignItems: "center",
-                      display: "flex",
-                      justifyContent: "center",
-                      padding: "5px",
-                      borderRadius: "5px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "100%",
-                        height: "10vh",
-                        textAlign: "center",
-                        alignItems: "center",
-                        display: "flex",
-                        justifyContent: "center",
-                        padding: "5px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: "100%",
-                          height: "10vh",
-                          textAlign: "center",
-                          alignItems: "center",
-                          display: "flex",
-                          justifyContent: "center",
-                          padding: "5px",
-                        }}
-                      >
-                        <h2>{selected.location} </h2>
-                      </div>
-                    </div>
-                  </div>
-                </InfoWindow>
-              ) : null}
-            </div>
-          ))}
-      </GoogleMap>
     </div>
   );
 }
