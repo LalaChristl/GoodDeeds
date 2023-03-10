@@ -42,12 +42,15 @@ const HelperProfile = () => {
         {user && (
           <>
             <img src={user.image} alt="" className="h-[200px] w-[200px] " />
-            <p>First Name: {user.firstName}</p>
+            {/* <p>First Name: {user.firstName}</p> */}
             {/* <p>Last Name: {user.lastName}</p> */}
+            <p className="helper-profile-name text-[2rem]">{user.userName}</p>
+
             <p>Age: {user.age}</p>
-            <p>Gender: {user.gender}</p>
-            <p>Languages: {user.languages}</p>
+            {/* <p>Gender: {user.gender}</p> */}
+            <p>Language(s): {user.languages}</p>
             <p>About Me: {user.about}</p>
+            <p>Skills: {user.skills}</p>
 
             <button
               onClick={handleEdit}

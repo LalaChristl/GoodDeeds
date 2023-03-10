@@ -1,6 +1,9 @@
 import "./App.css";
 import { Link } from "react-router-dom";
 import Logo from "./images/Good Deeds.png";
+import { RiMentalHealthLine } from "react-icons/ri";
+import { GiInnerSelf } from "react-icons/gi";
+import { GiThreeFriends } from "react-icons/gi";
 
 function App() {
   return (
@@ -22,8 +25,62 @@ function App() {
       <Link to="/map">
         <button className="border-[1px] border-black p-5">Map</button>
       </Link>
+      <section className="benefits-container p-5">
+        <h3 className="benefits-h3 text-[3rem] ml-[330px]">
+          Benefits of Helping Others
+        </h3>
+        <br />
+        <div className="flex gap-20">
+          <div className="w-[350px] p-5">
+            <RiMentalHealthLine className="text-[100px] ml-[100px] text-red-600" />
+            <br />
+            <p className="benefits-p-header font-bold">
+              Improves Physical and Mental Health
+            </p>
+            <br />
+            <p>
+              Volunteering reduces stress and increases positive, relaxed
+              feelings by releasing dopamine. By spending time in service to
+              others, volunteers report feeling a sense of meaning and
+              appreciation, both given and received, which can have a
+              stress-reducing effect.
+            </p>
+          </div>
+          <div className="w-[350px] p-5">
+            <GiInnerSelf className="text-[100px] ml-[100px] text-blue-500" />
+            <br />
+            <p className="benefits-p-header font-bold ">
+              Provides a Sense of Purpose
+            </p>
+            <br />
+            <p>
+              The work that volunteers provide is essential to everyday
+              activities, which gives volunteers a sense of purpose, especially
+              when volunteering in the areas they find meaningful. Older
+              volunteers experience greater increases in life satisfaction and
+              self-esteem.
+            </p>
+          </div>
+          <div className="w-[350px] p-5">
+            <GiThreeFriends className="text-[100px] ml-[100px] text-purple-500" />
+            <br />
+            <p className="benefits-p-header font-bold">
+              Nurture New and Existing Relationships
+            </p>
+            <br />
+            <p>
+              Volunteering increases social interaction and helps build a
+              support system based on common interests. One of the best ways to
+              make new friends and strengthen existing relationships is to
+              participate in a shared activity. Dedicating time as a volunteer
+              helps expand social network and practice social skills with
+              others.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <section className="about-us-container border-[2px] border-pink-500 p-3">
+      <section className="about-us-container p-3 m-10">
         <h3 className="about-us-h3 text-[2rem]">ABOUT US:</h3>
         <p className="about-us-p">
           Welcome to Good Deeds, a community volunteer organisation dedicated to

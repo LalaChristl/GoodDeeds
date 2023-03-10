@@ -12,6 +12,7 @@ const EditUserPage = () => {
     email: "",
     languages: "",
     about: "",
+    skills: "",
   });
 
   const [firstName, setFirstName] = useState(user.firstName);
@@ -19,6 +20,7 @@ const EditUserPage = () => {
   const [email, setEmail] = useState(user.email);
   const [languages, setLanguages] = useState(user.languages);
   const [about, setAbout] = useState(user.about);
+  const [skills, setSkills] = useState(user.skills);
 
   useEffect(() => {
     async function fetchData() {
@@ -42,6 +44,7 @@ const EditUserPage = () => {
       email,
       languages,
       about,
+      skills,
     };
     const response = await axios.put("/users/edituser", updatedUser);
     console.log("handleSave ~ response", response.data);
@@ -101,6 +104,16 @@ const EditUserPage = () => {
           type="text"
           value={about || user.about}
           onChange={(e) => setAbout(e.target.value)}
+          className="edit-helper-profile-input border-[1px] border-black"
+        />
+      </label>
+      <br />
+      <label className="edit-helper-profile-label text-black text-[1.5rem]">
+        Skills:
+        <input
+          type="text"
+          value={skills || user.skills}
+          onChange={(e) => setSkills(e.target.value)}
           className="edit-helper-profile-input border-[1px] border-black"
         />
       </label>

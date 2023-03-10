@@ -12,6 +12,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    userName: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       unique: true,
@@ -29,6 +33,8 @@ const userSchema = new Schema(
       type: String,
     },
     languages: [],
+    skills: String,
+
     about: String,
     isHelper: Boolean,
     isHelpee: Boolean,
