@@ -48,7 +48,7 @@ export const login = async (req, res) => {
     const user = await User.findOne({
       email: req.body.email,
     }).select("-__v");
-    console.log("user", user);
+    console.log("🦩~ login user", user);
 
     if (!user) return res.send({ success: false, errorId: 1 });
 
