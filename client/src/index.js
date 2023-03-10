@@ -18,6 +18,7 @@ import HelpeeProfile from "./components/HelpeeProfile";
 import AddTasks from "./components/AddTasks";
 import ListTasks from "./components/ListTasks";
 import EditTasks from "./components/EditTasks";
+import Dashboard from "./components/Dashboard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ContextProvider>
@@ -38,6 +39,8 @@ root.render(
         <Route path="/addtasks/" element={<AddTasks />}></Route>
         <Route path="/listtasks/" element={<ListTasks />}></Route>
         <Route path="/edittasks/:id" element={<EditTasks />}></Route>
+        <Route path="/dashboard/helperprofile/getuser/:id" element={<Dashboard />}></Route>
+        <Route path="/dashboard/helpeeprofile/getuser2/:id" element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
   </ContextProvider>
