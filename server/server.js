@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
 import markerRoutes from "./routes/markerRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
+import cookieParser from "cookie-parser";
+
 // import helpeeRoutes from "./routes/helpeeRoutes.js";
 
 import db from "./config/db.js";
@@ -13,6 +15,7 @@ const app = express();
 
 db();
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/users", userRoutes);
 app.use("/markers", markerRoutes);
