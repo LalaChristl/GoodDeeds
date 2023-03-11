@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import "./AddTasks.css";
 import { useLoadScript } from "@react-google-maps/api";
 import { Autocomplete } from "@react-google-maps/api";
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const libraries = ["places"];
 
 function AddTasks() {
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   const [taskData, setTaskData] = useState({
     task: [],
     taskDate: "",
@@ -18,7 +18,25 @@ function AddTasks() {
     location: "",
     taskDetails: "",
   });
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(`/tasks/list`);
+        console.log("🇯🇲~ getData ~ response", response);
 
+        if (response.data.success) {
+          dispatch({
+            type: "addTask",
+            payload: response.data.tasks,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getData();
+  }, []);
   const resetInput = () => {
     setTaskData({
       task: [],
@@ -28,6 +46,7 @@ function AddTasks() {
       taskDetails: "",
     });
   };
+
   console.log("state", state);
   const autocompleteRef = useRef(null);
 
@@ -156,7 +175,7 @@ function AddTasks() {
           </Link>
         </div>
       </div>
-      <div className="task-form">
+      {/* <div className="task-form">
         <div className="task-input-div">
           <input
             type="text"
@@ -202,7 +221,7 @@ function AddTasks() {
             className="task-input-1"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
