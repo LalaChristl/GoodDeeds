@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 // import { Context } from "./Context";
 
 import axios from "axios";
@@ -71,9 +73,13 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center">
-      <div className="register-container flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2">
-        <h1 className="register-h1 text-[15rem]">Register</h1>
+    <>
+    <Navbar/>
+    <div className="flex max-w-full flex-col items-center bg-[#fff3e9] text-[#110931]">
+    <div className="flex mt-40 mb-60 ">
+      
+      <div className="register-container flex flex-col border w-96 items-center justify-center gap-4 p-10 bg-[#ffaf66] rounded-xl shadow-md" style={{ boxShadow: '0px 4px 8px rgba(25, 14, 3, 0.4)' }}>
+        <h1 className="register-h1 text-5xl font-bold pb-10 text-[#110931]">Register</h1>
         <input
           type="name"
           placeholder="First Name"
@@ -178,7 +184,7 @@ const Register = () => {
         <button
           type="submit"
           onClick={handleRegister}
-          className="register-button border-[1px] border-black"
+          className="register-button border border-black rounded-lg py-2 px-4 bg-[#0d2237] text-white hover:scale-110 duration-500"
         >
           Register
         </button>
@@ -188,6 +194,9 @@ const Register = () => {
         </p>
       </div>
     </div>
+    <Footer/>
+    </div>
+  </>
   );
 };
 
