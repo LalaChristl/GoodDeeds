@@ -20,6 +20,7 @@ import AddTasks from "./components/AddTasks";
 import ListTasks from "./components/ListTasks";
 import EditTasks from "./components/EditTasks";
 import CalendarFunction from "./components/Calendar";
+import AboutUs from "./components/AboutUs";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,15 +38,19 @@ root.render(
         <Route path="/helperprofile/getuser/:id" element={<HelperProfile />} />
 
         <Route path="/helpeeprofile/getuser2/:id" element={<HelpeeProfile />} />
+
         <Route path="/editprofile/:id" element={<EditProfileHelper />} />
 
         <Route path="/editprofile2/:id" element={<EditProfileHelpee />} />
 
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
+
         <Route path="/addtasks/" element={<AddTasks />}></Route>
         <Route path="/listtasks/" element={<ListTasks />}></Route>
         <Route path="/edittasks/:id" element={<EditTasks />}></Route>
+
+        <Route path="/aboutus/" element={<AboutUs />}></Route>
 
         <Route path="/calendar/" element={<CalendarFunction />} />
       </Routes>
