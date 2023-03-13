@@ -105,3 +105,9 @@ img {
   padding: 5px;
   border-radius: 5px;
 }
+
+.calendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
