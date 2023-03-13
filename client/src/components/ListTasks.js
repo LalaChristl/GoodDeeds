@@ -16,7 +16,6 @@ import { RiFilterOffFill } from "react-icons/ri";
 
 function ListTasks() {
   const { state, dispatch } = useContext(Context);
-  const [map, setMap] = useState(null);
 
   const [filter, setFilter] = useState({ task: "" });
 
@@ -27,6 +26,7 @@ function ListTasks() {
       dispatch({ type: "listTask", payload: response.data.task });
     }
   };
+
   const handleResetFilter = () => {
     setFilter({
       task: "",
@@ -87,9 +87,7 @@ function ListTasks() {
       console.log(error);
     }
   };
-  // const handleMapLoad = (map) => {
-  //   setMap(map);
-  // };
+
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading maps";
   const center = {
@@ -134,6 +132,12 @@ function ListTasks() {
   }; //Google  maps options  variable
 
   console.log("state taskList", state.taskList);
+  function sendEmail() {
+    const userEmail = document.getElementById("user-email").value;
+    const emailLink = "mailto:" + userEmail;
+    window.open(emailLink);
+  }
+
   return (
     <div>
       <div className="search-list">
@@ -188,7 +192,16 @@ function ListTasks() {
                   disabled
                   value={item.owner.email}
                   className="list-input-1"
+                  id="user-email"
                 />
+                <button
+                  value={item.owner.email}
+                  className="list-btn-1"
+                  onClick={sendEmail}
+                >
+                  Contact
+                </button>
+
                 <input
                   type="text"
                   name="place"
