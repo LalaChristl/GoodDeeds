@@ -26,7 +26,7 @@ function EditTasks() {
   useEffect(() => {
     console.log("id useeffect", id);
     async function getData() {
-      const response = await axios.get("/tasks/findone/" + id);
+      const response = await axios.get("/tasks/edit/" + id);
       console.log(" ~ getData ~ response", response);
 
       if (response.data.success) setTaskToEdit(response.data.task);

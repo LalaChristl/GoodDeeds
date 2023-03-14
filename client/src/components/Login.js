@@ -27,9 +27,9 @@ const Login = () => {
         'input[name="profileType"]:checked'
       ).value;
       if (selectedProfileType === "helper") {
-        navigate(`/helperProfile/getuser/${response.data.user._id}`);
+        navigate(`/dashboard/helperProfile/getuser/${response.data.user._id}`);
       } else if (selectedProfileType === "helpee") {
-        navigate(`/helpeeProfile/getuser2/${response.data.user._id}`);
+        navigate(`/dashboard/helpeeProfile/getuser2/${response.data.user._id}`);
       } else {
         alert("Please select a profile type");
       }
