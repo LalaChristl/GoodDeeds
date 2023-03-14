@@ -9,10 +9,10 @@ import {
   useLoadScript,
   Marker,
   InfoWindow,
-  Circle,
 } from "@react-google-maps/api";
 import { FaFilter } from "react-icons/fa";
 import { RiFilterOffFill } from "react-icons/ri";
+import CalendarFunction from "./Calendar";
 
 function ListTasks() {
   const { state, dispatch } = useContext(Context);
@@ -31,7 +31,26 @@ function ListTasks() {
     setFilter({
       task: "",
     });
+
+    async function fetchData() {
+      try {
+        const response = await axios.get("/tasks/list/");
+
+        console.log(" 🇯🇲 taskList response", response);
+        if (response.data.success) {
+          dispatch({
+            type: "listTask",
+            payload: response.data.tasks,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
   };
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
   });
@@ -319,6 +338,13 @@ function ListTasks() {
               </div>
             </div>
           ))}
+      </div>
+      <div className="calendar">
+        <CalendarFunction
+          // taskDate={item.taskDate}
+          // taskTime={item.taskTime}
+          tasks={state.taskList}
+        />
       </div>
     </div>
   );
