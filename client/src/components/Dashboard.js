@@ -3,41 +3,30 @@ import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
 
-
 const Dashboard = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
 
   const [user, setUser] = useState(null);
+  const [tasks, setTasks] = useState([]);
 
   const { id } = useParams();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("/users/getuser2/" + id);
-        console.log(response);
         setUser(response.data.user);
+
+        const tasksResponse = await axios.get("/tasks/list/");
+        setTasks(tasksResponse.data.tasks);
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchData();
   }, [id]);
-
-  useEffect(() => {
-    async function fetchTasks() {
-      try {
-        const response = await axios.get(`/tasks/list/${id}`);
-        dispatch({
-          type: "listTask",
-          payload: response.data.tasks,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchTasks();
-  }, [dispatch, id]);
 
   const handleLogout = async () => {
     const response = await axios.get("/users/logout");
@@ -64,18 +53,33 @@ const Dashboard = () => {
               className="h-48 w-48 rounded-full mx-auto mb-4"
             />
 
-           {/*  <div className="mt-8">
-              <div>
-                <h2>My Tasks</h2>
-                <ul>
-                  {state.tasks
-                    .filter((task) => task.userId === user._id)
-                    .map((task) => (
-                      <li key={task._id}>{task.title}</li>
+            <div className="mt-8">
+              <div className="bg-gray-100 p-4 rounded-lg">
+                <h2 className="text-xl font-bold mb-2">My Tasks</h2>
+                {tasks.length > 0 ? (
+                  <ul className="divide-y divide-gray-300">
+                    {tasks.map((task) => (
+                      <li key={task._id} className="py-2">
+                        <h3 className="text-lg font-bold text-gray-800">
+                          {task.task}
+                        </h3>
+                        <p className="text-sm text-gray-600 mb-1">
+                          {task.details}
+                        </p>
+                        <p className="text-sm text-gray-600 mb-1">
+                          Location: {task.location}
+                        </p>
+                        <p className="text-sm text-gray-600 mb-1">
+                          Date: {task.taskDate} | Time: {task.taskTime}
+                        </p>
+                      </li>
                     ))}
-                </ul>
+                  </ul>
+                ) : (
+                  <p className="text-sm text-gray-600">No tasks found.</p>
+                )}
               </div>
-            </div>  */}
+            </div>
           </>
         )}
 
@@ -98,7 +102,6 @@ const Dashboard = () => {
           Logout
         </button>
       </div>
-      
     </div>
   );
 };
