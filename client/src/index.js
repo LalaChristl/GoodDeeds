@@ -45,7 +45,14 @@ root.render(
         <Route path="/edittasks/:id" element={<EditTasks />}></Route>
 
         <Route path="/aboutus/" element={<AboutUs />}></Route>
-
+        <Route
+          path="/dashboard/helperprofile/getuser/:id"
+          element={<Dashboard />}
+        ></Route>
+        <Route
+          path="/dashboard/helpeeprofile/getuser2/:id"
+          element={<Dashboard />}
+        ></Route>
         <Route path="/calendar/" element={<CalendarFunction />} />
       </Routes>
     </BrowserRouter>
