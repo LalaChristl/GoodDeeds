@@ -77,7 +77,8 @@
 img {
   width: 60px;
   height: 60px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .list-input {
@@ -103,4 +104,10 @@ img {
   background-color: red;
   padding: 5px;
   border-radius: 5px;
+}
+
+.calendar {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
