@@ -2,7 +2,7 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./calendar.css";
-import { Popover, Button, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
+import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
 
 const CalendarFunction = ({ tasks }) => {
   const [value, onChange] = useState(new Date());
