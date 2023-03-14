@@ -13,6 +13,7 @@ const Register = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
+    userName: "",
     email: "",
     // address: "",
     // phonenumber: "",
@@ -92,6 +93,13 @@ const Register = () => {
           placeholder="Last Name"
           value={data.lastName}
           onChange={(e) => setData({ ...data, lastName: e.target.value })}
+          className="register-input border-[1px] border-black"
+        />
+        <input
+          type="name"
+          placeholder="User Name"
+          value={data.userName}
+          onChange={(e) => setData({ ...data, userName: e.target.value })}
           className="register-input border-[1px] border-black"
         />
         <input

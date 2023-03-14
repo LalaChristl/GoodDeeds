@@ -19,6 +19,7 @@ import HelpeeProfile from "./components/HelpeeProfile";
 import AddTasks from "./components/AddTasks";
 import ListTasks from "./components/ListTasks";
 import EditTasks from "./components/EditTasks";
+import CalendarFunction from "./components/Calendar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -45,6 +46,8 @@ root.render(
         <Route path="/addtasks/" element={<AddTasks />}></Route>
         <Route path="/listtasks/" element={<ListTasks />}></Route>
         <Route path="/edittasks/:id" element={<EditTasks />}></Route>
+
+        <Route path="/calendar/" element={<CalendarFunction />} />
       </Routes>
     </BrowserRouter>
   </ContextProvider>

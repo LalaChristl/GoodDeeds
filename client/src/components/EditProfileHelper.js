@@ -11,12 +11,16 @@ const EditUserPage = () => {
     lastName: "",
     email: "",
     languages: "",
+    about: "",
+    skills: "",
   });
 
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
   const [email, setEmail] = useState(user.email);
   const [languages, setLanguages] = useState(user.languages);
+  const [about, setAbout] = useState(user.about);
+  const [skills, setSkills] = useState(user.skills);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,8 +37,15 @@ const EditUserPage = () => {
   }, [id]);
 
   const handleSave = async () => {
-    console.log("hello");
-    const updatedUser = { ...user, firstName, lastName, email };
+    const updatedUser = {
+      ...user,
+      firstName,
+      lastName,
+      email,
+      languages,
+      about,
+      skills,
+    };
     const response = await axios.put("/users/edituser", updatedUser);
     console.log("handleSave ~ response", response.data);
     if (response.data.success) navigate("/helperprofile/getuser/" + id);
@@ -87,6 +98,25 @@ const EditUserPage = () => {
       </label>
 
       <br />
+      <label className="edit-helper-profile-label text-black text-[1.5rem]">
+        About Me:
+        <input
+          type="text"
+          value={about || user.about}
+          onChange={(e) => setAbout(e.target.value)}
+          className="edit-helper-profile-input border-[1px] border-black"
+        />
+      </label>
+      <br />
+      <label className="edit-helper-profile-label text-black text-[1.5rem]">
+        Skills:
+        <input
+          type="text"
+          value={skills || user.skills}
+          onChange={(e) => setSkills(e.target.value)}
+          className="edit-helper-profile-input border-[1px] border-black"
+        />
+      </label>
       <button
         type="submit"
         onClick={handleSave}
