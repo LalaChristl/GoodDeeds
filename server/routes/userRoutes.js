@@ -27,4 +27,5 @@ router.get("/getuser2/:_id", getUser2);
 router.put("/edituser", auth, editUser);
 router.put("/edituser2", auth, editUser2);
 
+
 export default router;

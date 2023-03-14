@@ -11,7 +11,6 @@ import ForgotPass from "./components/ForgotPass";
 import ChangePass from "./components/ChangePass";
 import EditProfileHelper from "./components/EditProfileHelper";
 import EditProfileHelpee from "./components/EditProfileHelpee";
-
 import Map from "./components/Map";
 import MarkerList from "./components/MarkerList";
 import HelperProfile from "./components/HelperProfile";
@@ -20,27 +19,22 @@ import AddTasks from "./components/AddTasks";
 import ListTasks from "./components/ListTasks";
 import EditTasks from "./components/EditTasks";
 import CalendarFunction from "./components/Calendar";
-
+import Dashboard from "./components/Dashboard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ContextProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/emailconfirm/:token" element={<EmailConfirm />} />
         <Route path="/forgotpass" element={<ForgotPass />} />
         <Route path="/changepass/:token" element={<ChangePass />} />
-
         <Route path="/helperprofile/getuser/:id" element={<HelperProfile />} />
-
         <Route path="/helpeeprofile/getuser2/:id" element={<HelpeeProfile />} />
         <Route path="/editprofile/:id" element={<EditProfileHelper />} />
-
         <Route path="/editprofile2/:id" element={<EditProfileHelpee />} />
-
         <Route element={<Map />} path="/map" />
         <Route element={<MarkerList />} path="/markerlist"></Route>
         <Route path="/addtasks/" element={<AddTasks />}></Route>
@@ -48,6 +42,8 @@ root.render(
         <Route path="/edittasks/:id" element={<EditTasks />}></Route>
 
         <Route path="/calendar/" element={<CalendarFunction />} />
+        <Route path="/dashboard/helperprofile/getuser/:id" element={<Dashboard />}></Route>
+        <Route path="/dashboard/helpeeprofile/getuser2/:id" element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
   </ContextProvider>
