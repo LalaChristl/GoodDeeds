@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 // import "../styles/ForgotPass.css";
 
 // import { ToastContainer, toast } from "react-toastify";
@@ -41,32 +43,44 @@ const ForgotPass = () => {
     navigate("/");
   };
 
+
   return (
+<>
+    <Navbar />
+    <div className="flex max-w-full flex-col items-center bg-[#fff3e9] text-[#110931]">
+    <div className="flex mt-40 mb-60 h-full">
     <div className="forgot-container flex justify-center">
-      <div className="forgot-box flex flex-col border-[1px] border-black w-[500px] items-center justify-center gap-2 p-[50px]">
-        <p>Please enter you email</p>
+      <div className="forgot-box flex flex-col border w-96 items-center justify-center gap-4 p-10  bg-[#ffaf66] rounded-xl shadow-md" style={{ boxShadow: '0px 4px 8px rgba(25, 14, 3, 0.4)' }}>
+      <h1 className="text-5xl font-bold text-[#110931]">Please enter your email</h1>
         <input
           type="email"
           name="email"
           value={data.email}
           onChange={(e) => setData({ ...data, email: e.target.value })}
           placeholder="Email"
-          className="forgot-input border-[1px] border-black"
+          className="border border-[#ffaf66] rounded-lg p-2 w-full text-[#110931]"
         />
         <button
-          className="forgot-button border-[1px] border-black"
+          className="forgot-button border border-black rounded-lg py-2 px-4 bg-[#0d2237] text-white hover:scale-110 duration-500 "
           type="submit"
           onClick={handleSubmit}
         >
           Submit
         </button>
 
-        <p className="forgot-pass-p " onClick={handleNavLogin}>
+        <p className="forgot-pass-p border border-black rounded-lg py-2 px-4 bg-[#0d2237] text-white hover:scale-110 duration-500  " onClick={handleNavLogin}>
           Login
         </p>
         {/* <ToastContainer /> */}
       </div>
     </div>
+    
+   
+    </div>
+    </div>
+    <Footer/>
+  </>
+  
   );
 };
 
