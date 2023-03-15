@@ -4,6 +4,8 @@ import Logo from "./images/Good Deeds.png";
 import { RiMentalHealthLine } from "react-icons/ri";
 import { GiInnerSelf } from "react-icons/gi";
 import { GiThreeFriends } from "react-icons/gi";
+
+import Footer2 from "./components/Footer2";
 // import Card from "react-bootstrap/Card";
 
 function App() {
@@ -145,6 +147,7 @@ function App() {
           a difference and create a brighter future for all.
         </p>
       </section>
+      <Footer2 />
     </div>
   );
 }

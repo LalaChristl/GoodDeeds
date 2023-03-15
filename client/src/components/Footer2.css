@@ -1,0 +1,22 @@
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: #e5e4e9;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  height: 100%;
+  width: 50%;
+}
+
+.play {
+  height: 50%;
+  width: 100%;
+}
