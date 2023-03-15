@@ -118,6 +118,25 @@ const ContextProvider = ({ children }) => {
           taskList: [...oldTaskList],
         };
 
+      case "taskConfirm":
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            task: [...action.payload],
+            // cart: [...state.user.cart, action.payload],
+          },
+        };
+
+      case "deleteFromConfirm":
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            task: [...action.payload],
+          },
+        };
+
       default:
         return;
     }

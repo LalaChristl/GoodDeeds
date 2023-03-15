@@ -13,6 +13,7 @@ import {
 import { FaFilter } from "react-icons/fa";
 import { RiFilterOffFill } from "react-icons/ri";
 import CalendarFunction from "./Calendar";
+import { VscGitPullRequestCreate } from "react-icons/vsc";
 
 function ListTasks() {
   const { state, dispatch } = useContext(Context);
@@ -213,14 +214,16 @@ function ListTasks() {
                   className="list-input-1"
                   id="user-email"
                 />
-                <button
-                  value={item.owner.email}
-                  className="list-btn-1"
-                  onClick={sendEmail}
-                >
-                  Contact
-                </button>
-
+                <div className="list-input-1">
+                  <button
+                    value={item.owner.email}
+                    className="list-btn-1"
+                    onClick={sendEmail}
+                  >
+                    Contact
+                  </button>
+                  <VscGitPullRequestCreate className="list-btn-2" />
+                </div>
                 <input
                   type="text"
                   name="place"

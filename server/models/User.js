@@ -43,6 +43,11 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    helpConfirm: [
+      {
+        taskList: { type: Schema.Types.ObjectId, ref: "Tasks" },
+      },
+    ],
   },
 
   { timeStamps: true }

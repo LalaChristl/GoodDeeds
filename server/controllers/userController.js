@@ -229,3 +229,79 @@ export const editUser2 = async (req, res) => {
     res.send({ success: false, error: error.message });
   }
 };
+
+export const taskConfirm = async (req, res) => {
+  try {
+    console.log("Hello from taskConfirm", req.body);
+
+    const user = await User.findByIdAndUpdate(
+      { _id: req.body.user }, // filter
+      {
+        // updating
+        $push: {
+          taskList: req.body.task,
+        },
+      },
+      { new: true } // options
+    );
+    console.log("taskConfirm user", user);
+
+    res.send({ success: true });
+  } catch (error) {
+    console.log(" taskCofrirm error", error.message);
+
+    res.send({ success: false, error: error.message });
+  }
+};
+
+export const removeFromConfirm = async (req, res) => {
+  try {
+    console.log("Hello from remove from Confirm", req.body);
+
+    const user = await User.findById(req.body.user); // step 1 find the user
+
+    const tasklist = user.taskList.filter((item) => {
+      // step 2 filter the wishlist array
+      return item.toString() !== req.body.task;
+    });
+
+    console.log(" module.exports.removeFromtasklist= ~ tasklist", tasklist);
+
+    // step 3 update the user in the db
+
+    const updatedUser = await User.findByIdAndUpdate(
+      { _id: req.body.user },
+      { tasklist },
+      { new: true }
+    );
+    console.log(
+      " module.exports.removeFromWishlist= ~ updatedUser",
+      updatedUser
+    );
+
+    res.send({ success: true, tasklist });
+  } catch (error) {
+    console.log("🚀 ~ remove from wishlist error", error.message);
+
+    res.send({ success: false, error: error.message });
+  }
+};
+
+export const listTaskConfirm = async (req, res) => {
+  try {
+    console.log("Hello from list wishlist", req.params);
+
+    const user = await User.findById(req.params.user).populate({
+      path: "taskList",
+      select: "-__v",
+    });
+
+    console.log("🚀 ~ module.exports.listWishlist= ~ user", user);
+
+    res.send({ success: true, tasks: user.taskList });
+  } catch (error) {
+    console.log("🚀 ~ list wishlist error", error.message);
+
+    res.send({ success: false, error: error.message });
+  }
+};
