@@ -21,7 +21,6 @@ const HelperProfile = () => {
     };
     fetchData();
   }, []);
-
   const handleEdit = () => {
     navigate("/editprofile/" + id);
   };
@@ -70,5 +69,4 @@ const HelperProfile = () => {
     </div>
   );
 };
-
 export default HelperProfile;

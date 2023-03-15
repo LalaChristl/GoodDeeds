@@ -9,14 +9,13 @@ import {
   useLoadScript,
   Marker,
   InfoWindow,
-  Circle,
 } from "@react-google-maps/api";
 import { FaFilter } from "react-icons/fa";
 import { RiFilterOffFill } from "react-icons/ri";
+import CalendarFunction from "./Calendar";
 
 function ListTasks() {
   const { state, dispatch } = useContext(Context);
-  const [map, setMap] = useState(null);
 
   const [filter, setFilter] = useState({ task: "" });
 
@@ -27,11 +26,31 @@ function ListTasks() {
       dispatch({ type: "listTask", payload: response.data.task });
     }
   };
+
   const handleResetFilter = () => {
     setFilter({
       task: "",
     });
+
+    async function fetchData() {
+      try {
+        const response = await axios.get("/tasks/list/");
+
+        console.log(" 🇯🇲 taskList response", response);
+        if (response.data.success) {
+          dispatch({
+            type: "listTask",
+            payload: response.data.tasks,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
   };
+
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
   });
@@ -87,9 +106,7 @@ function ListTasks() {
       console.log(error);
     }
   };
-  // const handleMapLoad = (map) => {
-  //   setMap(map);
-  // };
+
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading maps";
   const center = {
@@ -134,6 +151,12 @@ function ListTasks() {
   }; //Google  maps options  variable
 
   console.log("state taskList", state.taskList);
+  function sendEmail() {
+    const userEmail = document.getElementById("user-email").value;
+    const emailLink = "mailto:" + userEmail;
+    window.open(emailLink);
+  }
+
   return (
     <div>
       <div className="search-list">
@@ -188,7 +211,16 @@ function ListTasks() {
                   disabled
                   value={item.owner.email}
                   className="list-input-1"
+                  id="user-email"
                 />
+                <button
+                  value={item.owner.email}
+                  className="list-btn-1"
+                  onClick={sendEmail}
+                >
+                  Contact
+                </button>
+
                 <input
                   type="text"
                   name="place"
@@ -306,6 +338,13 @@ function ListTasks() {
               </div>
             </div>
           ))}
+      </div>
+      <div className="calendar">
+        <CalendarFunction
+          // taskDate={item.taskDate}
+          // taskTime={item.taskTime}
+          tasks={state.taskList}
+        />
       </div>
     </div>
   );
