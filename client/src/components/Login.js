@@ -2,11 +2,15 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "./Context";
+
+import { TextField, Button, RadioGroup, FormControlLabel, Radio, Paper, Typography, Box } from "@mui/material";
+
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-const Login = () => {
-  
+
+function Login() {
+ 
   const { dispatch } = useContext(Context);
   const navigate = useNavigate();
 
@@ -46,70 +50,72 @@ const Login = () => {
     navigate("/forgotpass");
   };
 
-
-
-  
- 
+  const handleInputChange = (e) => {
+    setData({ ...data, [e .target.name]: e.target.value });
+  };
 
   return (
     <>
-     <Navbar />
-     {/* Div for every page so we have a nice looking navbar */}
-    <div className="flex max-w-full flex-col items-center bg-[#fff3e9] text-[#110931]">
-      <div className="flex mt-40 mb-60 h-full">
-      <div className="container-login flex flex-col border w-96 items-center justify-center gap-4 p-10  bg-[#ffaf66] rounded-xl shadow-md" style={{ boxShadow: '0px 4px 8px rgba(25, 14, 3, 0.4)' }}>
-
-        <h1 className="text-5xl font-bold text-[#110931]">Login</h1>
-        <div className="flex flex-col gap-2 ">
-
-          <label className="flex items-center gap-2 p-2">
-            <input type="radio" name="profileType" value="helper" />
-            <span>Helper</span>
-          </label>
-          <label className="flex items-center gap-2 p-2">
-            <input type="radio" name="profileType" value="helpee" />
-            <span>Helpee</span>
-          </label>
-
-          <input
-          type="text"
-          placeholder="Email"
-          value={data.email}
-          onChange={(e) => setData({ ...data, email: e.target.value })}
-          className="border border-[#ffaf66] rounded-lg p-2 w-full text-[#110931]"
-          />
-          <input
-          type="password"
-          placeholder="Password"
-          value={data.password}
-          onChange={(e) => setData({ ...data, password: e.target.value })}
-          className="border border-[#ffaf66] rounded-lg p-2 w-full"
-          />
-        
-
-        
-          
-        </div>
-
-          <p className="py-2 text-[#110931] cursor-pointer " onClick={handleForgotPass}>
-            Forgot Password?
-            </p>
-          <button
-            className="border border-black rounded-lg py-2 px-4 bg-[#0d2237] text-white hover:scale-110 duration-500 "
-            onClick={handleLogin}>
-            Sign In
-          </button>
-          <p className="py-2 text-[#110931] cursor-pointer" onClick={handleNotUser}>
-            Not a user yet?
-          </p>
-
-      </div>
-      </div>
-      <Footer/>
-    </div>
+    <Navbar/>
+    <Box sx={{
+                height: '100vh',
+                display: 'flex',
+                gap: 5,
+                maxWidth: '100%',
+                flexDirection: 'column',
+                alignItems: 'center',
+                paddingTop: 10,
+                backgroundColor: '#fff3e9',
+                color: '#110931'
+              }}>
+       
+    <Paper  sx={{ p: 4, mt: 8, mb: 12, maxWidth: 460 ,backgroundColor:"#ffaf66 " }}>
+      <Typography variant="h2" 
+                  align="center" 
+                  mb={4} >
+        Login
+      </Typography>
+      <RadioGroup row name="profileType" value={data.profileType} onChange={handleInputChange}>
+        <FormControlLabel value="helper" control={<Radio />} label="Helper" />
+        <FormControlLabel value="helpee" control={<Radio />} label="Helpee"/>
+      </RadioGroup>
+      <TextField
+        fullWidth
+        label="Email"
+        name="email"
+        value={data.email}
+        onChange={(e) => setData({ ...data, email: e.target.value })}
+        margin="normal"
+        variant="outlined"
+        sx={{backgroundColor:"#fff3e9"}}
+      />
+      <TextField
+        fullWidth
+        label="Password"
+        name="password"
+        type="password"
+        value={data.password}
+        onChange={(e) => setData({ ...data, password: e.target.value })}
+        margin="normal"
+        variant="outlined"
+        sx={{backgroundColor:"#fff3e9"}}
+      />
+      <Typography align="center" mt={2} mb={1} sx={{ cursor: "pointer" }} onClick={handleForgotPass}>
+        Forgot Password?
+      </Typography>
+      <Button variant="contained"  onClick={handleLogin}
+      sx={{backgroundColor:"#0d2237"}} size="large" fullWidth  >
+        Sign In
+    </Button>
+      <Typography align="center" mt={2} sx={{ cursor: "pointer" }} onClick={handleNotUser}>
+        Not a user yet?
+      </Typography>
+    </Paper>
+    <Footer/>
+    </Box>
+    
     </>
   );
 };
 
 export default Login;
-

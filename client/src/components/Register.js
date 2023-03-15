@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TextField, Button, RadioGroup, FormControlLabel, Radio, Paper, Typography , Box} from "@mui/material";
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 // import { Context } from "./Context";
@@ -74,138 +76,161 @@ const Register = () => {
   };
 
   return (
-    <>
+  <>
     <Navbar/>
-    <div className="flex max-w-full flex-col items-center bg-[#fff3e9] text-[#110931]">
-    <div className="flex mt-40 mb-60 ">
-      
-      <div className="register-container flex flex-col border w-96 items-center justify-center gap-4 p-10 bg-[#ffaf66] rounded-xl shadow-md" style={{ boxShadow: '0px 4px 8px rgba(25, 14, 3, 0.4)' }}>
-        <h1 className="register-h1 text-5xl font-bold pb-10 text-[#110931]">Register</h1>
-        <input
-          type="name"
-          placeholder="First Name"
-          value={data.firstName}
-          onChange={(e) => setData({ ...data, firstName: e.target.value })}
-          className="register-input border-[1px] border-black"
-        />
-        <input
-          type="name"
-          placeholder="Last Name"
-          value={data.lastName}
-          onChange={(e) => setData({ ...data, lastName: e.target.value })}
-          className="register-input border-[1px] border-black"
-        />
-        <input
-          type="name"
-          placeholder="User Name"
-          value={data.userName}
-          onChange={(e) => setData({ ...data, userName: e.target.value })}
-          className="register-input border-[1px] border-black"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={data.email}
-          onChange={(e) => setData({ ...data, email: e.target.value })}
-          className="register-input border-[1px] border-black"
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={data.password}
-          onChange={(e) => setData({ ...data, password: e.target.value })}
-          className="register-input border-[1px] border-black"
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={data.confirmPassword}
-          onChange={(e) =>
-            setData({ ...data, confirmPassword: e.target.value })
-          }
-          className="register-input border-[1px] border-black"
-        />
-        <div>
-          <p>Please select your gender</p>
-          <input
-            type="radio"
-            name="genders"
-            className="register-gender"
-            value="woman"
-            onChange={(e) => setData({ ...data, gender: e.target.value })}
-          />
-          <label htmlFor="woman">Woman</label>
-          <input
-            type="radio"
-            name="genders"
-            className="register-gender"
-            value="man"
-            onChange={(e) => setData({ ...data, gender: e.target.value })}
-          />
-          <label htmlFor="man">Man</label>
-          {/* <input
-            type="radio"
-            name="genders"
-            className="gender"
-            value="custom"
-            checked={selected === "custom"}
-            onChange={changeHandler}
-          />
-          <label htmlFor="custom">Custom</label>
-          <input
-            type="text"
-            aria-hidden={selected !== "male" ? true : false}
-            className="border-[1px] border-black"
-          /> */}
-        </div>
-        <input
-          type="age"
-          placeholder="Age"
-          value={data.age}
-          onChange={(e) => setData({ ...data, age: e.target.value })}
-          className="register-input border-[1px] border-black"
-        />
-        <input
-          type="text"
-          placeholder="Spoken Languages"
-          value={data.languages}
-          onChange={(e) => setData({ ...data, languages: e.target.value })}
-          className="register-input border-[1px] border-black"
-        />
-
-        <label className="register-label">
-          Select your profile image
-          <input
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={(e) => handleUpload(e.target.files[0])}
-          />
-        </label>
-        <img
-          className="register-image h-[200px] w-[200px]"
-          src={data.image}
-          alt=""
-        />
-
-        <button
-          type="submit"
-          onClick={handleRegister}
-          className="register-button border border-black rounded-lg py-2 px-4 bg-[#0d2237] text-white hover:scale-110 duration-500"
-        >
-          Register
-        </button>
-
-        <p className="register-p-3" onClick={handleAlreadyUser}>
-          Already a user?
-        </p>
-      </div>
-    </div>
-    <Footer/>
-    </div>
+      <Box sx={{
+                height: 'vh',
+                display: 'flex',
+                gap: 5,
+                maxWidth: '100%',
+                flexDirection: 'column',
+                alignItems: 'center',
+                paddingTop: 10,
+                backgroundColor: '#fff3e9',
+                color: '#110931'
+              }}>
+        <Paper sx={{ p: 4, mt: 8, mb: 12, maxWidth: 460, backgroundColor: "#ffaf66" }}>
+            <Typography variant="h2" align="center" mb={4}>
+              Register
+            </Typography>
+            <RadioGroup row name="profileType" value={data.profileType} >
+              <FormControlLabel value="helper" control={<Radio />} label="Helper" />
+              <FormControlLabel value="helpee" control={<Radio />} label="Helpee" />
+            </RadioGroup>
+            <TextField
+              fullWidth
+              label="First Name"
+              name="firstName"
+              value={data.firstName}
+              onChange={(e) => setData({ ...data, firstName: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+            />
+            <TextField
+              fullWidth
+              label="Last Name"
+              name="lastName"
+              value={data.lastName}
+              onChange={(e) => setData({ ...data, lastName: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+            />
+            <TextField
+              fullWidth
+              label="Username"
+              name="userName"
+              value={data.userName}
+              onChange={(e) => setData({ ...data, userName: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              name="email"
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+            />
+            <TextField
+              fullWidth
+              label="Password"
+              name="password"
+              type="password"
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+            />
+            <TextField
+              fullWidth
+              label="Confirm Password"
+              name="confirmPassword"
+              type="password"
+              value={data.confirmPassword}
+              onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+            />
+            <TextField
+              fullWidth
+              label="Gender"
+              name="gender"
+              value={data.gender}
+              onChange={(e) => setData({ ...data, gender: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+              />
+              <TextField
+              fullWidth
+              label="Age"
+              name="age"
+              type="number"
+              value={data.age}
+              onChange={(e) => setData({ ...data, age: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+              />
+              <TextField
+              fullWidth
+              label="Languages"
+              name="languages"
+              value={data.languages}
+              onChange={(e) => setData({ ...data, languages: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+              />
+              <div className="flex justify-center items-center mt-10">
+                <img className="rounded-full h-28 w-28 border-4 border-white" src={data.image} alt="avatar" />
+              </div>
+              <div className="flex justify-center items-center mt-4">
+                <Button 
+                      variant="contained"    
+                      component="label" mt={2} mb={2}
+                      onChange={(e) => handleUpload(e.target.files[0])}
+                      sx={{backgroundColor:"#0d2237"}} 
+                      size="small" 
+                      
+                      >
+                  Upload Image
+              <input type="file" hidden />
+              </Button>
+              </div>
+              <div className="flex justify-center items-center mt-20">
+                <Button
+                        variant="contained"
+                        color="primary"
+                        sx={{backgroundColor:"#0d2237"}} 
+                        size="large" 
+                        fullWidth
+                        //disabled={!handlePasswordMatch()}
+                        onClick={handleRegister}>
+                  Register
+                </Button>
+              </div>
+              <div className="flex justify-center items-center mt-3">
+                <Typography variant="body2" align="center" mb={2}>
+                  Already have an account?{" "}
+                  <span className="text-blue-500 cursor-pointer" onClick={handleAlreadyUser}>
+                  Login
+              </span>
+                </Typography>
+              </div>
+        </Paper>
+      </Box>
+    <Footer />
   </>
-  );
+);
 };
-
-export default Register;
+            
+ export default Register;
