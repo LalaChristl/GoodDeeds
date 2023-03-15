@@ -6,9 +6,16 @@ import { GiInnerSelf } from "react-icons/gi";
 import { GiThreeFriends } from "react-icons/gi";
 // import Card from "react-bootstrap/Card";
 
+import Navbar from "./components/Navbar";
+
+
 function App() {
   return (
-    <div className="flex justify-center items-center flex-col gap-5">
+
+  <>
+  <Navbar/>
+    <div className="flex gap-5 max-w-full flex-col items-center bg-[#fff3e9] text-[#110931]">
+      <div className="container-login flex flex-col border items-center justify-center gap-4 p-10  bg-[#fff3e9] rounded-xl shadow-md" style={{ boxShadow: '0px 4px 8px rgba(25, 14, 3, 0.4)' }}>
       <img className="h-[200px] w-[200px]" src={Logo} alt="" />
 
       <p className="good-deeds-slogan">
@@ -145,8 +152,11 @@ function App() {
           a difference and create a brighter future for all.
         </p>
       </section>
+      </div>
     </div>
+    </>
   );
 }
 
 export default App;
+  
