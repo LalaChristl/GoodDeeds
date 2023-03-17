@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
+import TaskConfirm from "./TaskConfirm";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -43,8 +44,8 @@ const Dashboard = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="w-2/3 max-w-xl p-6 bg-white shadow-lg rounded-lg">
         {user && (
-          <>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">
+          <div style={{ marginTop: "4rem" }}>
+            <h2 className="text-lg font-bold text-gray-800 mb-4 ">
               Welcome to your Dashboard, {user.firstName}!
             </h2>
             <img
@@ -80,7 +81,7 @@ const Dashboard = () => {
                 )}
               </div>
             </div>
-          </>
+          </div>
         )}
 
         <Link to="/addtasks">
@@ -101,6 +102,12 @@ const Dashboard = () => {
         >
           Logout
         </button>
+      </div>
+      <div style={{ marginTop: "2.5rem" }}>
+        <h2 className="text-lg font-bold text-gray-800 mb-4 ">
+          Accepted Requests
+        </h2>
+        <TaskConfirm />
       </div>
     </div>
   );

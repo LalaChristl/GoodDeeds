@@ -1,65 +1,64 @@
 import { MdDeleteForever } from "react-icons/md";
-import { BsFillCartCheckFill } from "react-icons/bs";
+import "./TaskConfirmCard.css";
 import { Context } from "./Context";
 import { useContext } from "react";
 import axios from "axios";
+import { BsMailbox } from "react-icons/bs";
 
 function TaskConfirmCard({ task, cbDelete }) {
   const { state, dispatch } = useContext(Context);
-
-  const handleUpdate = async () => {
-    const response = await axios.post("/users/taskconfirm", {
-      _id: state.user._id,
-      task: task.task._id,
-    });
-    console.log(" handleupdate", response);
-
-    if (response.data.success) {
-      dispatch({
-        type: "taskConfirm",
-        payload: response.data.task,
-      });
-    }
-  };
-
+  function sendEmail() {
+    const userEmail = document.getElementById("user-email").value;
+    const emailLink = "mailto:" + userEmail;
+    window.open(emailLink);
+  }
   const handleDelete = async (taskId) => {
+    console.log("taskId", taskId);
     const response = await axios.post("/users/removefromconfirm", {
-      _id: state.user._id,
-      taskId,
+      user: state.user._id,
+      task: taskId,
     });
-    console.log("🚀 ~ handleDelete ~ response", response);
+    console.log("🇯🇲 handleDelete ~ response", response);
 
     if (response.data.success) {
-      dispatch({
+      await dispatch({
         type: "deleteFromConfirm",
-        payload: response.data.task,
+        payload: taskId, // pass the ID of the deleted task as payload
       });
       cbDelete(taskId);
     }
   };
+  const taskDate = new Date(task.taskDate);
+  const day = taskDate.getDate();
+  const month = taskDate.toLocaleString("default", { month: "long" });
+  const year = taskDate.getFullYear();
+
   return (
-    <div className="list-form">
+    <div className="accept-form">
       <div list-input-div>
-        <div className="list-main">
+        <div className="accept-main">
           <img
-            src={task.task.owner.image}
+            src={task.owner.image}
             alt="helpee"
-            className="list-image"
+            className="accept-image"
+            title="helpee-image"
           />
           <input
             type="text"
             name="place"
             disabled
-            value={task.task.owner.firstName}
-            className="list-input-1"
+            value={task.owner.firstName}
+            className="accept-input-1"
+            title="helpee"
           />
           <input
             type="text"
             name="place"
             disabled
-            value={task.task.owner.email}
-            className="list-input-1"
+            value={task.owner.email}
+            className="accept-input-1"
             id="user-email"
+            title="request email"
           />
         </div>
         <input
@@ -67,26 +66,34 @@ function TaskConfirmCard({ task, cbDelete }) {
           name="place"
           disabled
           value={task.task}
-          className="list-input-1"
+          className="accept-input-1"
+          title="request"
         />
-        <p className="list-input-1">{task.taskDate}</p>
-        <p className="list-input-1">{task.taskTime}</p>
-        <p className="list-input-1">{task.taskDetails}</p>
-        <p className="list-input-1">{task.task.location}</p>
-        <div>
-          <button
-            className="list-btn"
-            onClick={() => handleUpdate(task.task._id)}
-          >
-            Add Task
-          </button>
+        <p className="accept-input-1" title="date">
+          {`${day} ${month} ${year}`}
+        </p>
+        <p className="accept-input-1" title="time">
+          {task.taskTime}
+        </p>
+        <p className="accept-input-1" title="details">
+          {task.taskDetails}
+        </p>
+        <p className="accept-input-1" title="location">
+          {task.location}
+        </p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <MdDeleteForever
+            onClick={() => handleDelete(task._id)}
+            className="accept-icon"
+            title="delete-request"
+          />
 
-          <button
-            className="list-btn"
-            onClick={() => handleDelete(task.task._id)}
-          >
-            delete
-          </button>
+          <BsMailbox
+            value={task.owner.email}
+            className="accept-icon"
+            onClick={sendEmail}
+            title="Send Email"
+          />
         </div>
       </div>
     </div>
