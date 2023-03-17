@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 .about-us-hero-container {
-  height: 500px;
-  background: rgb(140, 71, 155);
+  /* height: 500px; */
+  background: rgb(207, 139, 222);
   background: linear-gradient(
     90deg,
-    rgba(140, 71, 155, 1) 7%,
+    rgb(191, 107, 210) 7%,
     rgba(158, 69, 141, 1) 66%,
     rgba(201, 80, 150, 1) 100%
   );
@@ -54,7 +54,7 @@
   gap: 120px;
   justify-content: center;
   align-items: center;
-  background-color: #ffbf48;
+  background-color: #fff3e9;
 }
 .about-us-mission-image {
   height: 500px;
@@ -173,6 +173,10 @@
   .about-us-card {
     width: 15rem;
   }
+
+  .about-us-hero-container {
+    height: 300px;
+  }
   .about-us-hero-p {
     font-size: 1.5rem;
     color: rgb(248, 227, 69);
@@ -180,19 +184,21 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .about-us-hero-container {
+    height: 400px;
+  }
   .about-us-hero-p {
     font-size: 2rem;
     color: rgb(248, 227, 69);
   }
 }
-
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 840px) {
   .about-us-card {
     width: 20rem;
   }
 }
 
-@media only screen and (min-width: 840px) {
+@media only screen and (min-width: 992px) {
   .about-us-card {
     width: 20rem;
   }
