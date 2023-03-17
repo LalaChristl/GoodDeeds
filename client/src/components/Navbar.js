@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Logo from "../images/Good Deeds.png";
+import Logo from "../images/Good Deeds.png";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -53,6 +54,9 @@ function Navbar() {
             </Button>
             <Button component={Link} to="/contact" className={classes.link}>
               Contact
+            </Button>
+            <Button component={Link} to="/login" className={classes.link}>
+              Login
             </Button>
           </div>
         </Toolbar>

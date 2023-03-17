@@ -6,10 +6,13 @@ import Lala from "../images/lala.jpg";
 import Maya from "../images/angelou.jpg";
 import GD from "../images/good-deeds.png";
 import Card from "react-bootstrap/Card";
+import Navbar from "./Navbar";
+import Footer2 from "./Footer2";
 
 const AboutUs = () => {
   return (
     <div className="flex max-w-full flex-col bg-[#FFF3E9] text-[#110931]">
+      <Navbar />
       <section>
         <div className="about-us-hero-container">
           <p className="about-us-hero-p">
@@ -124,7 +127,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <footer>FOOTER</footer>
+      {/* <Footer2 /> */}
     </div>
   );
 };
