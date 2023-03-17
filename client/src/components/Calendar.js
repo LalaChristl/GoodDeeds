@@ -4,15 +4,15 @@ import "react-calendar/dist/Calendar.css";
 import "./calendar.css";
 import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
 
-const CalendarFunction = ({ tasks }) => {
+const CalendarFunction = ({ task }) => {
   const [value, onChange] = useState(new Date());
-  console.log("tasks", tasks);
+  console.log("tasks", task);
   // Define a function to check if a task exists on a given date
   const [anchorEl, setAnchorEl] = useState(null);
   const [clickedTask, setClickedTask] = useState(null);
   // Define a function to render the content of a date tile
   const renderTileContent = ({ date, view }) => {
-    if (!tasks) {
+    if (!task) {
       return null;
     }
     // Show task information for month and year views only
@@ -20,7 +20,7 @@ const CalendarFunction = ({ tasks }) => {
       return null;
     }
 
-    const tasksOnDate = tasks.filter((task) => {
+    const tasksOnDate = task.filter((task) => {
       const taskDate = new Date(task.taskDate + "T" + task.taskTime);
       return (
         taskDate.getFullYear() === date.getFullYear() &&

@@ -4,9 +4,11 @@ import axios from "axios";
 import { Context } from "./Context";
 
 import TaskConfirmCard from "./TaskConfirmCard";
+import CalendarFunction from "./Calendar";
+import TaskMap from "./TaskMap";
 function TaskConfirm() {
   const { state } = useContext(Context);
-
+  console.log("state", state);
   const [task, setTask] = useState([]);
 
   const handleDeleteLocally = (id) => {
@@ -17,7 +19,9 @@ function TaskConfirm() {
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.get("/users/listtask/" + state.user._id);
+      const response = await axios.get(
+        "/users/listtaskconfirm/" + state.user._id
+      );
 
       console.log(" getData ~ response", response);
 
@@ -26,9 +30,9 @@ function TaskConfirm() {
 
     getData();
   }, []);
-
+  console.log("task", task);
   return (
-    <div className="flex items-center w-full h-[100vh] bg-slate-50 flex-col gap-[20px]">
+    <div className="flex items-center w-full h-[100vh] bg-slate-50 flex-col ">
       {task.length
         ? task.map((item, idx) => (
             <TaskConfirmCard
@@ -37,7 +41,13 @@ function TaskConfirm() {
               cbDelete={handleDeleteLocally}
             />
           ))
-        : "Your cart is empty"}
+        : "No accepted requests"}
+      <div className="calendar">
+        <CalendarFunction task={task} />
+      </div>
+      <div>
+        <TaskMap task={task} />
+      </div>
     </div>
   );
 }

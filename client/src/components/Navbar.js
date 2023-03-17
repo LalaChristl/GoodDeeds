@@ -54,7 +54,7 @@ function Navbar() {
             <Button component={Link} to="/contact" className={classes.link}>
               Contact
             </Button>
-          </div>
+                  </div>
         </Toolbar>
       </AppBar>
     </div>

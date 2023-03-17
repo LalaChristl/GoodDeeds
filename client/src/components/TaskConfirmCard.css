@@ -1,0 +1,52 @@
+.accept-form {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  background-color: rgb(245, 90, 33);
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.accept-input-1 {
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.accept-btn {
+  width: 50%;
+  margin-bottom: 2px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: 600;
+  background-color: white;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.accept-icon {
+  color: rgb(244, 236, 236);
+  padding: 5px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.accept-icon:hover {
+  color: rgb(57, 240, 170);
+  font-size: 2.5rem;
+}
