@@ -4,12 +4,20 @@ import Logo from "./images/Good Deeds.png";
 import { RiMentalHealthLine } from "react-icons/ri";
 import { GiInnerSelf } from "react-icons/gi";
 import { GiThreeFriends } from "react-icons/gi";
+// import Card from "react-bootstrap/Card";
+
+import Navbar from "./components/Navbar";
+
 
 function App() {
   return (
-    <div className="flex justify-center items-center flex-col gap-5">
+
+  <>
+  <Navbar/>
+    <div className="flex gap-5 max-w-full flex-col items-center bg-[#fff3e9] text-[#110931]">
+      <div className="container-login flex flex-col border items-center justify-center gap-4 p-10  bg-[#fff3e9] rounded-xl shadow-md" style={{ boxShadow: '0px 4px 8px rgba(25, 14, 3, 0.4)' }}>
       <img className="h-[200px] w-[200px]" src={Logo} alt="" />
-      {/* <h1 className="text-[5rem] text-purple-500"> Good Deeds</h1> */}
+
       <p className="good-deeds-slogan">
         Join the Movement for Positive Social Change: Volunteer Peer-to-Peer and
         make an impact in your area today!
@@ -25,57 +33,98 @@ function App() {
       <Link to="/map">
         <button className="border-[1px] border-black p-5">Map</button>
       </Link>
-      <section className="benefits-container p-5">
-        <h3 className="benefits-h3 text-[3rem] ml-[330px]">
-          Benefits of Helping Others
-        </h3>
-        <br />
-        <div className="flex gap-20">
-          <div className="w-[350px] p-5">
-            <RiMentalHealthLine className="text-[100px] ml-[100px] text-red-600" />
-            <br />
-            <p className="benefits-p-header font-bold">
-              Improves Physical and Mental Health
-            </p>
-            <br />
-            <p>
-              Volunteering reduces stress and increases positive, relaxed
-              feelings by releasing dopamine. By spending time in service to
-              others, volunteers report feeling a sense of meaning and
-              appreciation, both given and received, which can have a
-              stress-reducing effect.
-            </p>
-          </div>
-          <div className="w-[350px] p-5">
-            <GiInnerSelf className="text-[100px] ml-[100px] text-blue-500" />
-            <br />
-            <p className="benefits-p-header font-bold ">
-              Provides a Sense of Purpose
-            </p>
-            <br />
-            <p>
-              The work that volunteers provide is essential to everyday
-              activities, which gives volunteers a sense of purpose, especially
-              when volunteering in the areas they find meaningful. Older
-              volunteers experience greater increases in life satisfaction and
-              self-esteem.
-            </p>
-          </div>
-          <div className="w-[350px] p-5">
-            <GiThreeFriends className="text-[100px] ml-[100px] text-purple-500" />
-            <br />
-            <p className="benefits-p-header font-bold">
-              Nurture New and Existing Relationships
-            </p>
-            <br />
-            <p>
-              Volunteering increases social interaction and helps build a
-              support system based on common interests. One of the best ways to
-              make new friends and strengthen existing relationships is to
-              participate in a shared activity. Dedicating time as a volunteer
-              helps expand social network and practice social skills with
-              others.
-            </p>
+
+      {/* <section>
+        <div className="benefits-cards">
+          <Card className="benefits-card">
+            <Card.Img
+              className="benefits-images"
+              variant="top"
+              src={RiMentalHealthLine}
+            />
+            <Card.Body className="flex justify-center items-center">
+              <Card.Text className="benefits-card-text">
+                Lesley-Ann Christl
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card className="about-us-card">
+            <Card.Img
+              className="about-us-team-images"
+              variant="top"
+              src={<RiMentalHealthLine />}
+            />
+            <Card.Body className="flex justify-center items-center">
+              <Card.Text className="about-us-card-text">
+                Kirk McDowell
+              </Card.Text>
+            </Card.Body>
+          </Card>
+          <Card className="about-us-card">
+            <Card.Img
+              className="about-us-team-images"
+              variant="top"
+              src={GiThreeFriends}
+            />
+            <Card.Body className="flex justify-center items-center">
+              <Card.Text className="about-us-card-text">Rami Basheer</Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+      </section> */}
+      <section>
+        <div className="benefits-container">
+          <h3 className="benefits-h3 text-[3rem] ml-[330px]">
+            Benefits of Helping Others
+          </h3>
+
+          <div className="flex gap-20">
+            <div className="w-[350px] p-5">
+              <RiMentalHealthLine className="text-[100px] ml-[100px] text-red-600" />
+
+              <p className="benefits-p-header font-bold">
+                Improves Physical and Mental Health
+              </p>
+
+              <p>
+                Volunteering reduces stress and increases positive, relaxed
+                feelings by releasing dopamine. By spending time in service to
+                others, volunteers report feeling a sense of meaning and
+                appreciation, both given and received, which can have a
+                stress-reducing effect.
+              </p>
+            </div>
+            <div className="w-[350px] p-5">
+              <GiInnerSelf className="text-[100px] ml-[100px] text-blue-500" />
+
+              <p className="benefits-p-header font-bold ">
+                Provides a Sense of Purpose
+              </p>
+
+              <p>
+                The work that volunteers provide is essential to everyday
+                activities, which gives volunteers a sense of purpose,
+                especially when volunteering in the areas they find meaningful.
+                Older volunteers experience greater increases in life
+                satisfaction and self-esteem.
+              </p>
+            </div>
+            <div className="w-[350px] p-5">
+              <GiThreeFriends className="text-[100px] ml-[100px] text-purple-500" />
+
+              <p className="benefits-p-header font-bold">
+                Nurture New and Existing Relationships
+              </p>
+
+              <p>
+                Volunteering increases social interaction and helps build a
+                support system based on common interests. One of the best ways
+                to make new friends and strengthen existing relationships is to
+                participate in a shared activity. Dedicating time as a volunteer
+                helps expand social network and practice social skills with
+                others.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -103,8 +152,11 @@ function App() {
           a difference and create a brighter future for all.
         </p>
       </section>
+      </div>
     </div>
+    </>
   );
 }
 
 export default App;
+  
