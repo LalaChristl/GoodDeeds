@@ -21,6 +21,7 @@ import EditTasks from "./components/EditTasks";
 import CalendarFunction from "./components/Calendar";
 import AboutUs from "./components/AboutUs";
 import Dashboard from "./components/Dashboard";
+// import TaskConfirm from "./components/TaskConfirm";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ContextProvider>
@@ -54,6 +55,7 @@ root.render(
           element={<Dashboard />}
         ></Route>
         <Route path="/calendar/" element={<CalendarFunction />} />
+        {/* <Route path="/taskconfirm/" element={<TaskConfirm />} /> */}
       </Routes>
     </BrowserRouter>
   </ContextProvider>
