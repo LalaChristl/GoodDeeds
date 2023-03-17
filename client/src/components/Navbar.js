@@ -54,9 +54,6 @@ function Navbar() {
             <Button component={Link} to="/contact" className={classes.link}>
               Contact
             </Button>
-            <Button component={Link} to="/login" className={classes.link}>
-              Login
-            </Button>
           </div>
         </Toolbar>
       </AppBar>
