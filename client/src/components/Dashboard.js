@@ -2,13 +2,18 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import "./Dashboard.css"
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
-
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
+
+  console.log(tasks);
+  console.log(state.user._id);
 
   const { id } = useParams();
 
@@ -20,6 +25,7 @@ const Dashboard = () => {
 
         const tasksResponse = await axios.get("/tasks/list/");
         setTasks(tasksResponse.data.tasks);
+        console.log("Tasks", tasksResponse.data.tasks);
       } catch (error) {
         console.log(error);
       }
@@ -40,69 +46,61 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-2/3 max-w-xl p-6 bg-white shadow-lg rounded-lg">
-        {user && (
-          <>
-            <h2 className="text-lg font-bold text-gray-800 mb-4">
-              Welcome to your Dashboard, {user.firstName}!
-            </h2>
-            <img
-              src={user.image}
-              alt=""
-              className="h-48 w-48 rounded-full mx-auto mb-4"
-            />
+    <>
+    <Navbar />
+<div class="dashboard-container">
+  <div class="dashboard-card">
+    {user && (
+      <>
+        <h2 class="dashboard-heading">
+          Welcome to your Dashboard, {user.firstName}!
+        </h2>
+        <img src={user.image} alt="" class="dashboard-image" />
 
-            <div className="mt-8">
-              <div className="bg-gray-100 p-4 rounded-lg">
-                <h2 className="text-xl font-bold mb-2">My Tasks</h2>
-                {tasks.length > 0 ? (
-                  <ul className="divide-y divide-gray-300">
-                    {tasks.map((task) => (
-                      <li key={task._id} className="py-2">
-                        <h3 className="text-lg font-bold text-gray-800">
-                          {task.task}
-                        </h3>
-                        <p className="text-sm text-gray-600 mb-1">
-                          {task.details}
-                        </p>
-                        <p className="text-sm text-gray-600 mb-1">
-                          Location: {task.location}
-                        </p>
-                        <p className="text-sm text-gray-600 mb-1">
-                          Date: {task.taskDate} | Time: {task.taskTime}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-sm text-gray-600">No tasks found.</p>
-                )}
-              </div>
-            </div>
-          </>
-        )}
+        <div class="dashboard-tasks">
+          <div class="dashboard-tasks-header">
+            <h2 class="dashboard-tasks-heading">My Tasks</h2>
+          </div>
+          {tasks.length > 0 ? (
+            <ul class="dashboard-tasks-list">
+              {tasks.map(
+                (task) =>
+                  task.owner._id === state.user._id && (
+                    <li key={task._id} class="dashboard-task">
+                      <h3 class="dashboard-task-heading">{task.task}</h3>
+                      <p class="dashboard-task-details">{task.taskDetails}</p>
+                      <p class="dashboard-task-location">
+                        Location: {task.location}
+                      </p>
+                      <p class="dashboard-task-date">
+                        Date: {task.taskDate} | Time: {task.taskTime}
+                      </p>
+                    </li>
+                  )
+              )}
+            </ul>
+          ) : (
+            <p class="dashboard-no-tasks">No tasks found.</p>
+          )}
+        </div>
+      </>
+    )}
 
-        <Link to="/addtasks">
-          <button className="block w-full mt-4 py-2 px-4 border border-gray-400 rounded-md text-gray-700 font-bold hover:bg-gray-100">
-            Request Help
-          </button>
-        </Link>
+    <Link to="/addtasks" class="dashboard-button">
+      Request Help
+    </Link>
 
-        <Link to={`/helpeeprofile/getuser2/${id}`}>
-          <button className="block w-full mt-4 py-2 px-4 border border-gray-400 rounded-md text-gray-700 font-bold hover:bg-gray-100">
-            Go to profile
-          </button>
-        </Link>
+    <Link to={`/helpeeprofile/getuser2/${id}`} class="dashboard-button">
+      Go to profile
+    </Link>
 
-        <button
-          onClick={handleLogout}
-          className="block w-full mt-6 py-2 px-4 border border-gray-400 rounded-md text-gray-700 font-bold hover:bg-gray-100"
-        >
-          Logout
-        </button>
-      </div>
-    </div>
+    <button onClick={handleLogout} class="dashboard-logout-button">
+      Logout
+    </button>
+  </div>
+</div>
+<Footer />
+    </>
   );
 };
 
