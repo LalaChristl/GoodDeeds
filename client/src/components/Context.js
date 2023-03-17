@@ -124,18 +124,19 @@ const ContextProvider = ({ children }) => {
           ...state,
           user: {
             ...state.user,
-            task: [...action.payload],
+            task: [action.payload],
             // cart: [...state.user.cart, action.payload],
           },
         };
 
       case "deleteFromConfirm":
+        const updatedUser = { ...state.user };
+        updatedUser.taskList = updatedUser.taskList.filter(
+          (taskId) => taskId !== action.payload
+        );
         return {
           ...state,
-          user: {
-            ...state.user,
-            task: [...action.payload],
-          },
+          user: updatedUser,
         };
 
       default:

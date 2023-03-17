@@ -1,19 +1,17 @@
 import React from "react";
-import { useContext, useEffect, useState, useRef, useCallback } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./ListTasks.css";
 import { Context } from "./Context";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
+
 import { FaFilter } from "react-icons/fa";
 import { RiFilterOffFill } from "react-icons/ri";
-import CalendarFunction from "./Calendar";
-import { VscGitPullRequestCreate } from "react-icons/vsc";
+import { MdDeleteForever } from "react-icons/md";
+import { FiEdit } from "react-icons/fi";
+
+import Navbar from "./Navbar";
+import { FaHandsHelping } from "react-icons/fa";
 
 function ListTasks() {
   const { state, dispatch } = useContext(Context);
@@ -52,14 +50,6 @@ function ListTasks() {
     fetchData();
   };
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
-  });
-  const mapRef = useRef(); //Callback function to keep ref. of map position
-  const [selected, setSelected] = useState(null);
-  const onMapLoad = useCallback((map) => {
-    mapRef.current = map;
-  }, []); //Callback function to load map without rerender
   useEffect(() => {
     async function fetchData() {
       try {
@@ -108,58 +98,31 @@ function ListTasks() {
     }
   };
 
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading maps";
-  const center = {
-    lat: 52.531677,
-    lng: 13.381777,
-  }; //Google  maps mapContainerStyle  variable
-
-  const options = {
-    styles: [
-      {
-        featureType: "administrative.country",
-        elementType: "geometry.stroke",
-        stylers: [
-          {
-            visibility: "on",
-          },
-        ],
-      },
-      {
-        featureType: "administrative.province",
-        elementType: "geometry.stroke",
-        stylers: [
-          {
-            visibility: "on",
-          },
-        ],
-      },
-      {
-        featureType: "administrative.locality",
-        elementType: "geometry.stroke",
-        stylers: [
-          {
-            visibility: "on",
-          },
-        ],
-      },
-    ],
-    // mapTypeId: "satellite",
-    mapId: "11ca7f992f5b0841",
-    disableDefaultUI: false,
-    zoomControl: true,
-  }; //Google  maps options  variable
-
   console.log("state taskList", state.taskList);
-  function sendEmail() {
-    const userEmail = document.getElementById("user-email").value;
-    const emailLink = "mailto:" + userEmail;
-    window.open(emailLink);
-  }
+  console.log("state", state);
+
+  const handleAdd = async (item) => {
+    if (!state.user._id) {
+      alert("You must log in first");
+      return;
+    }
+
+    const response = await axios.post("/users/taskconfirm", {
+      _id: state.user._id,
+      task: item,
+    });
+    console.log("🚀 ~ handleAdd ~ response", response);
+
+    if (response.data.success)
+      dispatch({
+        type: "taskConfirm",
+        payload: response.data.task,
+      });
+  };
 
   return (
     <div>
+      <Navbar />
       <div className="search-list">
         <input
           placeholder="Search task"
@@ -214,16 +177,7 @@ function ListTasks() {
                   className="list-input-1"
                   id="user-email"
                 />
-                <div className="list-input-1">
-                  <button
-                    value={item.owner.email}
-                    className="list-btn-1"
-                    onClick={sendEmail}
-                  >
-                    Contact
-                  </button>
-                  <VscGitPullRequestCreate className="list-btn-2" />
-                </div>
+
                 <input
                   type="text"
                   name="place"
@@ -236,118 +190,23 @@ function ListTasks() {
                 <p className="list-input-1">{item.taskDetails}</p>
                 <p className="list-input-1">{item.location}</p>
 
-                <GoogleMap
-                  mapContainerStyle={{ height: "500px", width: "100%" }}
-                  zoom={11}
-                  center={center}
-                  options={options}
-                  onLoad={onMapLoad}
-                  // mapId="e3e570f7af62ed4d"
-                >
-                  {state.taskList &&
-                    state.taskList.map((item) => (
-                      <div>
-                        <Marker
-                          key={item._id}
-                          position={{
-                            lat: item.coordinates[1],
-                            lng: item.coordinates[0],
-                          }}
-                          onClick={() => {
-                            setSelected(item);
-                            console.log("selected marker", item);
-                          }}
-                          icon={{
-                            // pinView,
-                            url: "https://img.icons8.com/external-vitaliy-gorbachev-flat-vitaly-gorbachev/256/external-placeholder-location-vitaliy-gorbachev-flat-vitaly-gorbachev-1.png",
-                            scaledSize: new window.google.maps.Size(60, 60),
-                            origin: new window.google.maps.Point(0, 0),
-                            anchor: new window.google.maps.Point(37, 37),
-                          }}
-                        />
-
-                        {selected ? (
-                          <InfoWindow
-                            options={{
-                              pixelOffset: new window.google.maps.Size(
-                                -10,
-                                -10
-                              ),
-                            }}
-                            position={{
-                              lat: selected.coordinates[1],
-                              lng: selected.coordinates[0],
-                            }}
-                            onCloseClick={() => {
-                              setSelected(null);
-                            }}
-                          >
-                            <div
-                              style={{
-                                background:
-                                  "linear-gradient(to bottom, #B3FFE5 0%,#4DFFE1 50%,#4DFFE1 50%,#14DFFE 100%)",
-                                width: "100%",
-                                height: "10vh",
-                                textAlign: "center",
-                                alignItems: "center",
-                                display: "flex",
-                                justifyContent: "center",
-                                padding: "5px",
-                                borderRadius: "5px",
-                              }}
-                            >
-                              <div
-                                style={{
-                                  width: "100%",
-                                  height: "10vh",
-                                  textAlign: "center",
-                                  alignItems: "center",
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  padding: "5px",
-                                }}
-                              >
-                                <div
-                                  style={{
-                                    width: "100%",
-                                    height: "10vh",
-                                    textAlign: "center",
-                                    alignItems: "center",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    padding: "5px",
-                                  }}
-                                >
-                                  <h2>{selected.location} </h2>
-                                </div>
-                              </div>
-                            </div>
-                          </InfoWindow>
-                        ) : null}
-                      </div>
-                    ))}
-                </GoogleMap>
-                <div>
+                <div style={{ display: "flex" }}>
                   <Link to={"/edittasks/" + item._id}>
-                    <button className="list-btn">edit</button>
+                    <FiEdit className="list-btn-2" />
                   </Link>
-                  <button
-                    className="list-btn"
+
+                  <MdDeleteForever
+                    className="list-btn-2"
                     onClick={() => handleDelete(item._id)}
-                  >
-                    delete
-                  </button>
+                  />
+                  <FaHandsHelping
+                    className="list-btn-2"
+                    onClick={() => handleAdd(item)}
+                  />
                 </div>
               </div>
             </div>
           ))}
-      </div>
-      <div className="calendar">
-        <CalendarFunction
-          // taskDate={item.taskDate}
-          // taskTime={item.taskTime}
-          tasks={state.taskList}
-        />
       </div>
     </div>
   );

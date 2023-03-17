@@ -235,10 +235,10 @@ export const taskConfirm = async (req, res) => {
     console.log("Hello from taskConfirm", req.body);
 
     const user = await User.findByIdAndUpdate(
-      { _id: req.body.user }, // filter
+      req.body._id, // filter
       {
         // updating
-        $push: {
+        $addToSet: {
           taskList: req.body.task,
         },
       },
@@ -248,7 +248,7 @@ export const taskConfirm = async (req, res) => {
 
     res.send({ success: true });
   } catch (error) {
-    console.log(" taskCofrirm error", error.message);
+    console.log(" taskConfirm error", error.message);
 
     res.send({ success: false, error: error.message });
   }
@@ -256,32 +256,43 @@ export const taskConfirm = async (req, res) => {
 
 export const removeFromConfirm = async (req, res) => {
   try {
-    console.log("Hello from remove from Confirm", req.body);
+    console.log("Hello  removeFromConfirm", req.body);
 
-    const user = await User.findById(req.body.user); // step 1 find the user
+    const user = await User.findById(req.body.user);
+    if (!user) {
+      throw new Error("User not found");
+    }
+    // step 1 find the user
 
-    const tasklist = user.taskList.filter((item) => {
-      // step 2 filter the wishlist array
-      return item.toString() !== req.body.task;
-    });
+    // const tasklist = user.taskList.filter((item) => {
+    //   // step 2 filter the wishlist array
+    //   return item.toString() !== req.body.task;
+    // });
 
-    console.log(" module.exports.removeFromtasklist= ~ tasklist", tasklist);
+    // console.log(" removeFromtasklist= tasklist", tasklist);
 
-    // step 3 update the user in the db
+    // // step 3 update the user in the db
 
-    const updatedUser = await User.findByIdAndUpdate(
-      { _id: req.body.user },
-      { tasklist },
-      { new: true }
-    );
-    console.log(
-      " module.exports.removeFromWishlist= ~ updatedUser",
-      updatedUser
-    );
+    // const updatedUser = await User.findByIdAndUpdate(
+    //   { _id: req.body.user },
+    //   { tasklist },
+    //   { new: true }
 
-    res.send({ success: true, tasklist });
+    // Find the index of the task in the taskList array
+    const index = user.taskList.indexOf(req.body.task);
+    if (index !== -1) {
+      // Remove the task from the array using splice
+      user.taskList.splice(index, 1);
+    }
+
+    // Save the updated user to the database
+    const updatedUser = await user.save();
+    // );
+    console.log(" removeFromTasklist= ~ updatedUser", updatedUser);
+
+    res.send({ success: true, taskList: updatedUser.taskList });
   } catch (error) {
-    console.log("🚀 ~ remove from wishlist error", error.message);
+    console.log("remove from tasklist error", error.message);
 
     res.send({ success: false, error: error.message });
   }
@@ -289,18 +300,19 @@ export const removeFromConfirm = async (req, res) => {
 
 export const listTaskConfirm = async (req, res) => {
   try {
-    console.log("Hello from list wishlist", req.params);
+    console.log("Hello from listTasks", req.params);
 
     const user = await User.findById(req.params.user).populate({
       path: "taskList",
       select: "-__v",
+      populate: { path: "owner", select: "firstName email image" },
     });
 
-    console.log("🚀 ~ module.exports.listWishlist= ~ user", user);
+    console.log("taskList user", user);
 
     res.send({ success: true, tasks: user.taskList });
   } catch (error) {
-    console.log("🚀 ~ list wishlist error", error.message);
+    console.log("🚀 ~ listTasks error", error.message);
 
     res.send({ success: false, error: error.message });
   }

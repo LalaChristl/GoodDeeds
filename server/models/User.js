@@ -14,7 +14,7 @@ const userSchema = new Schema(
     },
     userName: {
       type: String,
-      required: true,
+      // default: "defaultUserName", // set a default value for userName
     },
     email: {
       type: String,
@@ -43,9 +43,10 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    helpConfirm: [
+    taskList: [
       {
-        taskList: { type: Schema.Types.ObjectId, ref: "Tasks" },
+        type: Schema.Types.ObjectId,
+        ref: "Task",
       },
     ],
   },
