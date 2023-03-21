@@ -10,8 +10,50 @@ import Hero from "./images/homepage-hero.jpg";
 import Footer2 from "./components/Footer2";
 
 import Navbar from "./components/Navbar";
+import { FaFilter } from "react-icons/fa";
+import { RiFilterOffFill } from "react-icons/ri";
+import { useState, useContext, useEffect, useCallback } from "react";
+import { Context } from "./components/Context";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Slider from "./components/Slider";
 
 function App() {
+  const [filter, setFilter] = useState({ task: "" });
+  const { state, dispatch } = useContext(Context);
+  const navigate = useNavigate();
+
+  // const handleResetFilter = () => {
+  //   setFilter({ task: "" });
+  // };
+
+  const handleApplyFilter = useCallback(async () => {
+    try {
+      const response = await axios.post("/tasks/search", filter);
+      console.log("(🇯🇲 handleApplyFilter listTasks", response);
+      if (response.data.success) {
+        dispatch({ type: "listTask", payload: response.data.task });
+        navigate("/listtasks");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("There is no request that match");
+      // handle the error here
+    }
+  }, [filter, dispatch, navigate]);
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        handleApplyFilter();
+      }
+    };
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [handleApplyFilter]);
+
   return (
     <div
       className="w-[screen] border-2 border-red-600
@@ -40,9 +82,34 @@ function App() {
           </Link> */}
 
         <section className="homepage-search-bar">
-          <div>
-            <p>SEARCH BAR GOES HERE</p>
+          <div className="home-search-bar">
+            <input
+              placeholder="Search Requests"
+              type="text"
+              id="base-input"
+              onChange={(e) => setFilter({ ...filter, task: e.target.value })}
+              value={filter.task}
+              className="home-search-input"
+            />
           </div>
+          {/* <div className="filter">
+            <button
+              type="button"
+              onClick={handleApplyFilter}
+              className="list-btn-1"
+            >
+              <FaFilter />
+              Apply filter
+            </button>
+            <button
+              type="button"
+              onClick={handleResetFilter}
+              className="list-btn-1"
+            >
+              <RiFilterOffFill />
+              Reset filter
+            </button>
+          </div> */}
         </section>
 
         <section>
@@ -121,6 +188,7 @@ function App() {
             make a difference and create a brighter future for all.
           </p>
         </section>
+        <Slider />
         <Footer2 />
         {/* </div> */}
       </div>

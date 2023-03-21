@@ -1,3 +1,8 @@
+.tasklist-container {
+  background-color: #fff3e9;
+  width: 100vw;
+}
+
 .list-form {
   padding: 10px;
   display: flex;
@@ -9,8 +14,14 @@
   width: 75%;
   margin: 5rem auto;
   border-radius: 10px;
+  -webkit-box-shadow: 2px 3px 12px 2px rgba(0, 0, 0, 0.43);
+  box-shadow: 2px 3px 12px 2px rgba(0, 0, 0, 0.43);
 }
-
+.list-link {
+  color: black;
+  text-align: center;
+  display: flex;
+}
 .list-input-div {
   border: none;
   text-align: center;
@@ -28,7 +39,7 @@
   width: 100%;
   border-radius: 10px;
   padding: 5px;
-  color: rgb(234, 252, 242);
+  color: #303f9f;
   font-weight: 600;
   margin-bottom: 2px;
 }
@@ -45,18 +56,35 @@ img {
 }
 
 .list-input {
-  border: 2px solid #ff8e25;
+  border: 1px solid #ff8e25;
   border-radius: 10px;
   text-align: center;
   margin-top: 2rem;
   padding: 5px;
+  -webkit-box-shadow: 2px 3px 10px 2px rgba(0, 0, 0, 0.43);
+  box-shadow: 2px 3px 10px 2px rgba(0, 0, 0, 0.43);
 }
 .search-list {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
+}
+.search-list-1 {
+  display: flex;
+  justify-content: center;
   margin-top: 5rem;
 }
-
+.dash-btn {
+  background-color: #ff8e25;
+  color: #303f9f;
+  padding: 5px;
+  border-radius: 10px;
+}
+.dash-btn:hover {
+  background-color: #303f9f;
+  color: #ff8e25;
+  font-size: 1.2rem;
+}
 .filter {
   display: flex;
   justify-content: center;
@@ -69,7 +97,7 @@ img {
 }
 .list-btn-2 {
   margin: 5px;
-  color: rgb(234, 252, 242);
+  color: #303f9f;
   padding: 5px;
   font-size: 2.5rem;
   cursor: pointer;

@@ -12,7 +12,7 @@
   -webkit-box-shadow: 7px 4px 15px -3px rgba(20, 20, 20, 0.59);
   box-shadow: 7px 4px 15px -3px rgba(20, 20, 20, 0.59);
   width: 30rem;
-  border: 2px solid #0088cc;
+  border: 2px solid #ff8e25;
   border-radius: 15px;
   margin-bottom: 20px;
 }
@@ -21,7 +21,7 @@
 .react-calendar__navigation {
   background-color: #edc1c1;
   border-radius: 15px;
-  border-bottom: 2px solid #0088cc;
+  border-bottom: 2px solid #ff8e25;
 }
 
 /* Change the font color of the navigation buttons */

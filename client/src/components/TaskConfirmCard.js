@@ -7,11 +7,15 @@ import { BsMailbox } from "react-icons/bs";
 
 function TaskConfirmCard({ task, cbDelete }) {
   const { state, dispatch } = useContext(Context);
+
+  // SendEmail Function
   function sendEmail() {
     const userEmail = document.getElementById("user-email").value;
     const emailLink = "mailto:" + userEmail;
     window.open(emailLink);
   }
+
+  // HandleDelete Function
   const handleDelete = async (taskId) => {
     console.log("taskId", taskId);
     const response = await axios.post("/users/removefromconfirm", {
@@ -25,9 +29,27 @@ function TaskConfirmCard({ task, cbDelete }) {
         type: "deleteFromConfirm",
         payload: taskId, // pass the ID of the deleted task as payload
       });
-      cbDelete(taskId);
+      // cbDelete(taskId); // delete the task from the local state
+      fetchTaskList(); // fetch the updated task list from the server
     }
   };
+  // Function to fetch task list
+  const fetchTaskList = async () => {
+    const response = await axios.get(
+      "/users/listtaskconfirm/" + state.user._id
+    );
+
+    console.log("fetchTaskList ~ response", response);
+
+    if (response.data.success) {
+      const updatedTasks = response.data.tasks;
+      dispatch({
+        type: "setTaskConfirm",
+        payload: updatedTasks, // update the task list in the global state
+      });
+    }
+  };
+  // Date Convert functions
   const taskDate = new Date(task.taskDate);
   const day = taskDate.getDate();
   const month = taskDate.toLocaleString("default", { month: "long" });
@@ -83,7 +105,10 @@ function TaskConfirmCard({ task, cbDelete }) {
         </p>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <MdDeleteForever
-            onClick={() => handleDelete(task._id)}
+            onClick={() => {
+              handleDelete(task._id);
+              cbDelete(task.task._id);
+            }}
             className="accept-icon"
             title="delete-request"
           />

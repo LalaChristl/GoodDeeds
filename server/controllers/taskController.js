@@ -42,7 +42,6 @@ export const listTask = async (req, res) => {
   }
 };
 
-
 export const deleteTask = async (req, res) => {
   try {
     const deletedTask = await Task.findByIdAndDelete({
@@ -104,7 +103,7 @@ export const findOne = async (req, res) => {
 export const searchTask = async (req, res) => {
   try {
     console.log("---------------------------------- ");
-    console.log("🌞~ product search hello", req.body);
+    console.log("🌞~ task search hello", req.body);
 
     const filter = {};
 
@@ -114,22 +113,19 @@ export const searchTask = async (req, res) => {
       filter.task = regExp;
     }
 
-    // if (req.body.minPrice > 0 || req.body.maxPrice > 0) {
-    //   filter.price = {
-    //     $gte: req.body.minPrice,
-    //     $lte: req.body.maxPrice,
-    //   };
-    // }
     console.log("----------------------------");
     console.log("🌞 ~ module.exports.search= ~ filter", filter);
 
     const task = await Task.find(filter);
 
-    console.log("🌞 ~ module.exports.search= ~ tasks", task);
-
-    res.send({ success: true, task });
+    console.log("🌞 ~ search= ~ tasks", task);
+    if (task.length === 0) {
+      res.send({ success: false, error: "No results found" });
+    } else {
+      res.send({ success: true, task });
+    }
   } catch (error) {
-    console.log("🌞 ~ module.exports.search= ~ tasks", tasks);
+    console.log("🌞 ~ search= ~ tasks", tasks);
     console.log(" 🌞~ tasks search error", error.message);
 
     res.send({ success: false, error: error.message });

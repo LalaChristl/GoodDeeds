@@ -5,12 +5,17 @@ import { useLoadScript } from "@react-google-maps/api";
 import { Autocomplete } from "@react-google-maps/api";
 import { Context } from "./Context";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer2 from "./Footer2";
 
 const libraries = ["places"];
 
 function EditTasks() {
+  // ID for the task to edit
   const { id } = useParams();
+
+  // useNavigate hook
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
   const [taskToEdit, setTaskToEdit] = useState({
@@ -70,7 +75,19 @@ function EditTasks() {
   };
 
   return (
-    <div>
+    <div
+      style={{ backgroundColor: "#fff3e9", width: "100vw", height: "100vh" }}
+    >
+      <Navbar />
+      <div className="search-list-1">
+        <Link
+          to="/dashboard/helpeeprofile/getuser2/:id"
+          className="list-link"
+          title="back to dashboard"
+        >
+          <button className="dash-btn">Dashboard</button>
+        </Link>
+      </div>
       <div className="task-form">
         <div className="task-input-div">
           {
@@ -82,6 +99,7 @@ function EditTasks() {
               }
               className="select"
               multiple={false}
+              title="request"
             >
               <option value="" className="option-input">
                 Choose a task
@@ -98,7 +116,7 @@ function EditTasks() {
             </select>
           }
         </div>
-        <div className="task-input-div">
+        <div className="task-input-div" title="date">
           <input
             type="date"
             name="date"
@@ -110,7 +128,7 @@ function EditTasks() {
             className="task-input"
           />
         </div>
-        <div className="task-input-div">
+        <div className="task-input-div" title="time">
           <input
             type="time"
             name="time"
@@ -122,7 +140,7 @@ function EditTasks() {
             className="task-input"
           />
         </div>
-        <div className="task-input-div">
+        <div className="task-input-div" title="details">
           <textarea
             placeholder="description"
             type="text"
@@ -134,7 +152,7 @@ function EditTasks() {
             className="task-input"
           ></textarea>
         </div>
-        <div className="task-input-div">
+        <div className="task-input-div" title="location">
           <Autocomplete
             onLoad={(autocomplete) => (autocompleteRef.current = autocomplete)}
             onPlaceChanged={handlePlaceSelect}
@@ -152,6 +170,7 @@ function EditTasks() {
           </Autocomplete>
         </div>
       </div>
+      <Footer2 />
     </div>
   );
 }

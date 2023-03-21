@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 
 import axios from "axios";
 import { Context } from "./Context";
@@ -6,17 +6,31 @@ import { Context } from "./Context";
 import TaskConfirmCard from "./TaskConfirmCard";
 import CalendarFunction from "./Calendar";
 import TaskMap from "./TaskMap";
+
 function TaskConfirm() {
   const { state } = useContext(Context);
-  console.log("state", state);
+
+  // State to set task locally
   const [task, setTask] = useState([]);
 
-  const handleDeleteLocally = (id) => {
-    const oldData = task.filter((item) => item.task._id !== id);
+  // Function to delete task locally
+  // const handleDeleteLocally = (id) => {
+  //   console.log("handleDeleteLocally ID", id);
+  //   const oldData = task.filter((item) => item.task._id !== id);
 
-    setTask(oldData);
-  };
+  //   setTask(oldData);
+  // };
+  const handleDeleteLocally = useCallback(
+    (id) => {
+      console.log("handleDeleteLocally ID", id);
+      const newData = task.filter((item) => item.task._id !== id);
+      setTask(newData);
+      return newData; // return the filtered array
+    },
+    [task] // depend on task state
+  );
 
+  // Function to display your tasks coming from the server
   useEffect(() => {
     async function getData() {
       const response = await axios.get(
@@ -30,7 +44,7 @@ function TaskConfirm() {
 
     getData();
   }, []);
-  console.log("task", task);
+
   return (
     <div className="flex items-center w-full h-[100vh] bg-slate-50 flex-col ">
       {task.length
