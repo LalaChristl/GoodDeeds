@@ -15,7 +15,7 @@ const AboutUs = () => {
       <Navbar />
       <section>
         <div className="about-us-hero-container">
-          <p className="about-us-hero-p">
+          <p className="about-us-hero-p text-[#5a125a]">
             Building Community One Good Deed At A Time
           </p>
         </div>
@@ -49,13 +49,13 @@ const AboutUs = () => {
               community. We looked into various volunteer opportunities, but we
               found that most organizations were focused on specific causes and
               required a long-term commitment, which didn't fit with our busy
-              schedules. We realized that there was a gap in the market for a
+              schedules. We realized that there was a gap in our community for a
               flexible, short-term volunteer organization that could match
               volunteers with a variety of different people and projects. So, we
               decided to start our own volunteer organization. Together, we
               formed a small team and started researching the needs of our
               community. We found that there are so many people that could
-              benefit from short-term volunteer help. We created a website to
+              benefit from short-term volunteer help. We created an app to
               spread the word and promote our cause. We are now able to match
               volunteers with a variety of people in their community. Over time,
               we hope our organization will grow and we are able to expand our

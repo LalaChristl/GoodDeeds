@@ -6,10 +6,13 @@ import { RiMentalHealthLine } from "react-icons/ri";
 import { GiInnerSelf } from "react-icons/gi";
 import { GiThreeFriends } from "react-icons/gi";
 import Hero from "./images/homepage-hero.jpg";
-
-import Footer2 from "./components/Footer2";
-
 import Navbar from "./components/Navbar";
+import Carousel from "./components/Carousel";
+import { IoIosPeople } from "react-icons/io";
+
+import { TbHeartHandshake } from "react-icons/tb";
+import { FaHands } from "react-icons/fa";
+import Footer2 from "./components/Footer2";
 import { FaFilter } from "react-icons/fa";
 import { RiFilterOffFill } from "react-icons/ri";
 import { useState, useContext, useEffect, useCallback } from "react";
@@ -56,10 +59,10 @@ function App() {
 
   return (
     <div
-      className="w-[screen] border-2 border-red-600
+      className="w-[screen] border-2 border-red-600 bg-[#eecdb2]
 "
     >
-      <div className="border-2 border-black gap-5 max-w-[1280px] mx-auto min-w-[375px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
+      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[375px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
         <Navbar />
         <header className="home-page-header w-[100%] min-w-[375px] relative">
           <div className="home-page-hero-content">
@@ -69,17 +72,6 @@ function App() {
             </p>
           </div>
         </header>
-
-        {/* <Link to="/register">
-            <button className="border-[1px] border-black p-5">Register</button>
-          </Link>
-          <Link to="/login">
-            <button className="border-[1px] border-black p-5">Login</button>
-          </Link>
-
-          <Link to="/map">
-            <button className="border-[1px] border-black p-5">Map</button>
-          </Link> */}
 
         <section className="homepage-search-bar">
           <div className="home-search-bar">
@@ -156,41 +148,59 @@ function App() {
                   Volunteering increases social interaction and helps build a
                   support system based on common interests. One of the best ways
                   to make new friends and strengthen existing relationships is
-                  to participate in a shared activity. Dedicating time as a
-                  volunteer helps expand social network and practice social
-                  skills with others.
+                  to participate in a shared activity.
                 </p>
               </div>
             </div>
           </div>
         </section>
-
-        <section className="about-us-container p-3 m-10">
-          <h3 className="about-us-h3 text-[2rem]">Who We Are</h3>
-          <p className="about-us-p">
-            Welcome to Good Deeds, a community volunteer organisation dedicated
-            to connecting people and making a positive impact in your local
-            area. Our organisation was founded on the belief that everyone has
-            the power to make a difference and that small acts of kindness can
-            have a big impact. We aim to bring people together and create a
-            sense of community through volunteering and giving back. At Good
-            Deeds, we offer a range of volunteer opportunities that cater to
-            different interests and skillsets. Whether you're passionate about
-            the environment, social justice, or helping those in need, we have a
-            role for you. We believe that volunteering should be accessible to
-            everyone, which is why we offer flexible hours and a supportive
-            community to help you get started. Our volunteers are the heart and
-            soul of our organisation, and we value their time and dedication. We
-            aim to create a positive and inclusive environment where everyone
-            feels welcome and valued. We believe that through our collective
-            efforts, we can create a stronger and more connected community. Join
-            us today and become a part of something bigger. Together, we can
-            make a difference and create a brighter future for all.
-          </p>
+        <section className="h-[500px]">
+          <Carousel />
         </section>
-        <Slider />
+
+        <section>
+          <div className="about-us-container">
+            <h3 className="about-us-h3">Who We Are</h3>
+            <p className="about-us-p">
+              Welcome to Good Deeds, a community volunteer organisation
+              dedicated to connecting people and making a positive impact in
+              your local area. Our organisation was founded on the belief that
+              everyone has the power to make a difference and that small acts of
+              kindness can have a big impact. We aim to bring people together
+              and create a sense of community through volunteering and giving
+              back. At Good Deeds, we offer a range of volunteer opportunities
+              that cater to different interests and skillsets. Whether you're
+              passionate about the environment, social justice, or helping those
+              in need, we have a role for you. We believe that volunteering
+              should be accessible to everyone, which is why we offer flexible
+              hours and a supportive community to help you get started. Our
+              volunteers are the heart and soul of our organisation, and we
+              value their time and dedication. We aim to create a positive and
+              inclusive environment where everyone feels welcome and valued. We
+              believe that through our collective efforts, we can create a
+              stronger and more connected community. Join us today and become a
+              part of something bigger. Together, we can make a difference and
+              create a brighter future for all.
+            </p>
+          </div>
+        </section>
+        <section>
+          <div className="home-icons-section flex gap-[300px] justify-center pt-[30px] pb-[30px]">
+            <div className="flex justify-center items-center flex-col">
+              <IoIosPeople className="h-[75px] w-[75px]" />
+              <p>Connect</p>
+            </div>
+            <div className="flex justify-center items-center flex-col">
+              <TbHeartHandshake className="h-[75px] w-[75px]" />
+              <p>Engage</p>
+            </div>
+            <div className="flex justify-center items-center flex-col">
+              <FaHands className="h-[75px] w-[75px]" />
+              <p>Empower</p>
+            </div>
+          </div>
+        </section>
         <Footer2 />
-        {/* </div> */}
       </div>
     </div>
   );
