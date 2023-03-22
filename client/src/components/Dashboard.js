@@ -90,6 +90,10 @@ const Dashboard = () => {
       Request Help
     </Link>
 
+    <Link to="/listtasks" class="dashboard-button">
+      Tasks List
+    </Link>
+
     <Link to={`/helpeeprofile/getuser2/${id}`} class="dashboard-button">
       Go to profile
     </Link>
