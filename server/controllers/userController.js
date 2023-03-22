@@ -264,20 +264,20 @@ export const removeFromConfirm = async (req, res) => {
     }
     // step 1 find the user
 
-    // const tasklist = user.taskList.filter((item) => {
-    //   // step 2 filter the wishlist array
-    //   return item.toString() !== req.body.task;
-    // });
+    const tasklist = user.taskList.filter((item) => {
+      // step 2 filter the wishlist array
+      return item.toString() !== req.body.task;
+    });
 
-    // console.log(" removeFromtasklist= tasklist", tasklist);
+    console.log(" removeFromtasklist= tasklist", tasklist);
 
-    // // step 3 update the user in the db
+    // step 3 update the user in the db
 
     // const updatedUser = await User.findByIdAndUpdate(
     //   { _id: req.body.user },
     //   { tasklist },
     //   { new: true }
-
+    // );
     // Find the index of the task in the taskList array
     const index = user.taskList.indexOf(req.body.task);
     if (index !== -1) {

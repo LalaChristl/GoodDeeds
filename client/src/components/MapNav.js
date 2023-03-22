@@ -55,12 +55,6 @@ function Navbar() {
             <Button component={Link} to="/contact" className={classes.link}>
               Contact
             </Button>
-            <Button component={Link} to="/map" className={classes.link}>
-              Map
-            </Button>
-            <Button component={Link} to="/login" className={classes.link}>
-              Login
-            </Button>
             {/* <Button
               component={Link}
               to="/dashboard/helpeeprofile/getuser2/:id"
@@ -68,6 +62,9 @@ function Navbar() {
             >
               Dashboard
             </Button> */}
+            <Button component={Link} to="/login" className={classes.link}>
+              Login
+            </Button>
           </div>
         </Toolbar>
       </AppBar>

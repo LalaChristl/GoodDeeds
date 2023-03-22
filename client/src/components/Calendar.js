@@ -6,7 +6,7 @@ import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import P
 
 const CalendarFunction = ({ task }) => {
   const [value, onChange] = useState(new Date());
-  console.log("tasks", task);
+
   // Define a function to check if a task exists on a given date
   const [anchorEl, setAnchorEl] = useState(null);
   const [clickedTask, setClickedTask] = useState(null);
@@ -40,7 +40,7 @@ const CalendarFunction = ({ task }) => {
               key={task._id}
               className="task-block"
               style={{
-                backgroundColor: "green",
+                backgroundColor: "#FF8E25",
                 marginBottom: "8px",
                 padding: "8px",
               }}

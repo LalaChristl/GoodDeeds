@@ -49,7 +49,7 @@ const HelpeeProfile = () => {
             <img src={user.image} alt="" className="h-[200px] w-[200px] " />
             {/* <p>Name: {user.firstName}</p> */}
             {/* <p>Last Name: {user.lastName}</p> */}
-            <p className="helpee-profile-name text-[2rem]">{user.userName}</p>
+            <p className="helpee-profile-name text-[2rem]">{user.firstName}</p>
             <p>Age: {user.age}</p>
             {/* <p>Gender: {user.gender}</p> */}
             <p>Language(s): {user.languages}</p>
