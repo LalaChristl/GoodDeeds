@@ -5,13 +5,13 @@
 }
 .about-us-hero-container {
   /* height: 500px; */
-  background: rgb(207, 139, 222);
-  background: linear-gradient(
+  background: #eecdb2;
+  /* background: linear-gradient(
     90deg,
     rgb(191, 107, 210) 7%,
     rgba(158, 69, 141, 1) 66%,
     rgba(201, 80, 150, 1) 100%
-  );
+  ); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@
 
 .about-us-hero-p {
   font-size: 3.5rem;
-  color: rgb(248, 227, 69);
+  color: #5722ab;
 }
 
 .about-us-mission-div-1,
@@ -37,14 +37,14 @@
 }
 
 .about-us-mission-h3 {
-  font-size: 3rem;
-  color: #5a125a;
+  font-size: 3.5rem;
+  color: #2257ab;
   margin-bottom: 30px;
 }
 
 .about-us-mission-p {
   font-size: 1.2rem;
-  color: #5a125a;
+  /* color: #5a125a; */
 }
 .about-us-mission-container,
 .about-us-history-container {
@@ -72,7 +72,7 @@
 
 .about-us-history-h3 {
   font-size: 3.5rem;
-  color: #2d7bd8;
+  color: #2257ab;
   margin-bottom: 30px;
 }
 
@@ -90,7 +90,7 @@
 
 .about-us-team-h3 {
   font-size: 3.5rem;
-  color: #2d7bd8;
+  color: #2257ab;
   margin-bottom: 50px;
 }
 
@@ -179,7 +179,7 @@
   }
   .about-us-hero-p {
     font-size: 1.5rem;
-    color: rgb(248, 227, 69);
+    /* color: rgb(248, 227, 69); */
   }
 }
 
@@ -189,7 +189,7 @@
   }
   .about-us-hero-p {
     font-size: 2rem;
-    color: rgb(248, 227, 69);
+    /* color: rgb(248, 227, 69); */
   }
 }
 @media only screen and (min-width: 840px) {
@@ -210,7 +210,7 @@
   }
   .about-us-hero-p {
     font-size: 2.5rem;
-    color: rgb(248, 227, 69);
+    /* color: rgb(248, 227, 69); */
   }
 }
 @media only screen and (min-width: 1176px) {
@@ -219,6 +219,6 @@
   }
   .about-us-hero-p {
     font-size: 3rem;
-    color: rgb(248, 227, 69);
+    /* color: rgb(248, 227, 69); */
   }
 }
