@@ -4,14 +4,9 @@
   box-sizing: border-box;
 }
 
-.benefits-container {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
 .home-page-header {
   width: 100%;
+  margin-top: 60px;
 }
 
 .home-page-hero-content {
@@ -37,13 +32,11 @@
 .benefits-container {
   width: 100%;
   min-width: 375px;
-  /* display: flex; */
-
-  /* flex-direction: column; */
-
   justify-content: center;
   align-items: center;
-  border: 1px solid yellow;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .benefits-card-container {
@@ -51,7 +44,6 @@
 
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
 }
 
 .benefits-h3 {
@@ -59,7 +51,6 @@
 }
 
 .benefits-card {
-  border: 1px solid blue;
   width: 350px;
   height: 350px;
   padding: 10px;
@@ -78,9 +69,22 @@
   font-weight: bold;
 }
 
-@media only screen and (max-width: 600px) {
+.about-us-container {
+  padding: 30px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.about-us-h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 360px) {
   .homepage-hero-image {
-    height: 300px;
+    height: 250px;
   }
 
   .homepage-hero-p {
@@ -115,11 +119,15 @@
   .benefits-p {
     display: none;
   }
+
+  .home-icons-section {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 414px) {
   .homepage-hero-image {
-    height: 300px;
+    height: 250px;
   }
 
   .homepage-hero-p {
@@ -128,10 +136,23 @@
     right: 2px;
     text-align: center;
   }
-
+  .benefits-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
   .benefits-h3 {
     font-size: 1.7rem;
     margin-bottom: 20px;
+  }
+
+  .about-us-h3 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  .home-icons-section {
+    display: none;
   }
 }
 
@@ -144,6 +165,11 @@
     font-size: 1.1rem;
     bottom: 50px;
     right: 12px;
+  }
+  .benefits-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
@@ -165,6 +191,7 @@
 
   .benefits-card-container {
     display: flex;
+    flex-direction: column;
     gap: 20px;
   }
 
@@ -179,6 +206,18 @@
 
   .benefits-p-header {
     font-size: 1.2rem;
+  }
+  .benefits-p {
+    display: block;
+  }
+  .about-us-h3 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+
+  .home-icons-section {
+    display: flex;
+    gap: 150px;
   }
 }
 @media only screen and (min-width: 820px) {
@@ -215,6 +254,18 @@
 
   .benefits-p-header {
     font-size: 1.2rem;
+  }
+  .benefits-p {
+    display: block;
+  }
+  .about-us-h3 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+  }
+
+  .home-icons-section {
+    display: flex;
+    gap: 170px;
   }
 }
 
@@ -256,6 +307,16 @@
   .benefits-p {
     font-size: 1.1rem;
   }
+
+  .about-us-h3 {
+    font-size: 2.9rem;
+    margin-bottom: 10px;
+  }
+
+  .home-icons-section {
+    display: flex;
+    gap: 200px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -271,10 +332,7 @@
 
   .benefits-card-container {
     display: flex;
-    /* flex-wrap: wrap; */
-    /* justify-content: center;
-    align-items: center; */
-    border: 1px solid red;
+    flex-direction: row;
   }
   .benefits-card {
     width: 300px;
@@ -292,6 +350,15 @@
   .benefits-p {
     font-size: 1.1rem;
   }
+
+  .about-us-container {
+    margin-top: 30px;
+  }
+
+  .home-icons-section {
+    display: flex;
+    gap: 250px;
+  }
 }
 
 @media only screen and (min-width: 1080px) {
@@ -304,6 +371,10 @@
     bottom: 50px;
     right: 55px;
   }
+
+  .about-us-container {
+    margin-top: 30px;
+  }
 }
 @media only screen and (min-width: 1280px) {
   .homepage-hero-image {
@@ -315,75 +386,18 @@
     bottom: 65px;
     right: 60px;
   }
-}
-/* 
-@media only screen and (min-width: 1250px) {
-  .homepage-hero-image {
-    height: 550px;
+
+  .benefits-card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+  }
+  .about-us-container {
+    margin-top: 50px;
   }
 
-  .homepage-hero-p {
-    font-size: 2.5rem;
-    bottom: 60px;
-    right: 50px;
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  .homepage-hero-image {
-    height: 550px;
-  }
-
-  .homepage-hero-p {
-    font-size: 2.7rem;
-    bottom: 60px;
-    right: 25px;
+  .home-icons-section {
+    display: flex;
+    gap: 300px;
   }
 }
-
-@media only screen and (min-width: 1350px) {
-  .homepage-hero-image {
-    height: 550px;
-  }
-
-  .homepage-hero-p {
-    font-size: 2.8rem;
-    bottom: 60px;
-    right: 35px;
-  }
-}
-
-@media only screen and (min-width: 1400px) {
-  .homepage-hero-image {
-    height: 550px;
-  }
-
-  .homepage-hero-p {
-    font-size: 2.8rem;
-    bottom: 50px;
-    right: 55px;
-  }
-} */
-
-/* @media only screen and (min-width: 1450px) {
-  .homepage-hero-image {
-    height: 550px;
-  }
-
-  .homepage-hero-p {
-    font-size: 2.8rem;
-    bottom: 40px;
-    right: 100px;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    .homepage-hero-image {
-      height: 550px;
-    }
-
-    .homepage-hero-p {
-      font-size: 3rem;
-      bottom: 30px;
-      right: 110px;
-    }
-  } */
