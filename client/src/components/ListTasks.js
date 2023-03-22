@@ -126,13 +126,13 @@ function ListTasks() {
     <div className="tasklist-container">
       <Navbar />
       <div className="search-list-1">
-        <Link
+        {/* <Link
           to="/dashboard/helpeeprofile/getuser2/:id"
           className="list-link"
           title="back to dashboard"
         >
           <button className="dash-btn">Dashboard</button>
-        </Link>
+        </Link> */}
       </div>
       <div className="search-list">
         <input
