@@ -9,17 +9,25 @@ import {
 } from "@react-google-maps/api";
 
 function TaskMap({ task }) {
+  // Map load
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
   });
+
+  // Map reference
   const mapRef = useRef(); //Callback function to keep ref. of map position
+
+  // State to select Marker
   const [selected, setSelected] = useState(null);
+
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []); //Callback function to load map without rerender
 
+  // Map load messages
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading maps";
+
   const center = {
     lat: 52.531677,
     lng: 13.381777,
@@ -56,7 +64,7 @@ function TaskMap({ task }) {
       },
     ],
     // mapTypeId: "satellite",
-    mapId: "11ca7f992f5b0841",
+    // mapId: "11ca7f992f5b0841",
     disableDefaultUI: false,
     zoomControl: true,
   }; //Google  maps options  variable
@@ -64,11 +72,18 @@ function TaskMap({ task }) {
   return (
     <div style={{ width: "30rem" }}>
       <GoogleMap
-        mapContainerStyle={{ height: "300px", width: "100%" }}
+        mapContainerStyle={{
+          height: "300px",
+          width: "100%",
+          border: "2px solid #ff8e25",
+          borderRadius: "10px",
+          boxShadow: "0 0 10px 2px rgba(0, 0, 0, 0.3)",
+        }}
         zoom={11}
         center={center}
         options={options}
         onLoad={onMapLoad}
+        className="map-container"
       >
         {task &&
           task.map((item) => (
