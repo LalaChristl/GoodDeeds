@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
+import Navbar from "./Navbar";
 
 const HelperProfile = () => {
   const navigate = useNavigate();
@@ -36,6 +37,8 @@ const HelperProfile = () => {
     navigate("/");
   };
   return (
+    <>
+      <Navbar />
     <div className="flex justify-center">
       <div className="helper-profile-container flex flex-col items-center gap-2">
         {user && (
@@ -67,6 +70,7 @@ const HelperProfile = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 export default HelperProfile;

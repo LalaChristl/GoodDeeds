@@ -42,8 +42,7 @@ function Login() {
         navigate(`/dashboard/helperProfile/getuser/${response.data.user._id}`);
       } else if (selectedProfileType === "helpee") {
         navigate(`/dashboard/helpeeProfile/getuser2/${response.data.user._id}`);
-      } else {
-        alert("Please select a profile type");
+     
       }
     }
   };
