@@ -42,9 +42,9 @@ function TaskConfirmCard({ task, cbDelete }) {
     console.log("fetchTaskList ~ response", response);
 
     if (response.data.success) {
-      const updatedTasks = response.data.tasks;
+      const updatedTasks = response.data.taskList;
       dispatch({
-        type: "setTaskConfirm",
+        type: "listTask",
         payload: updatedTasks, // update the task list in the global state
       });
     }

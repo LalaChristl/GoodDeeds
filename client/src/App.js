@@ -19,7 +19,6 @@ import { useState, useContext, useEffect, useCallback } from "react";
 import { Context } from "./components/Context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Slider from "./components/Slider";
 
 function App() {
   const [filter, setFilter] = useState({ task: "" });
