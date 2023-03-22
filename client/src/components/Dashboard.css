@@ -1,133 +1,141 @@
-/* Navbar styles here */
-
 .dashboard-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 80px); /* Subtract the height of the navbar and footer */
-    background-color: #f9fafb;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: flex-start;
+  margin-top: 30px;
+  background-color: #fff3e9;
   
-  .dashboard-card {
-    width: 100%;
-    max-width: 600px;
-    padding: 30px;
-    margin-top: 50px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .dashboard-heading {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-tasks {
-    margin-top: 30px;
-  }
-  
-  .dashboard-tasks-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-tasks-heading {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .dashboard-tasks-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .dashboard-task {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f2f2f2;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  
-  .dashboard-task-heading {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .dashboard-task-details {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 5px;
-  }
-  
-  .dashboard-task-location,
-  .dashboard-task-date {
-    font-size: 14px;
-    color: #999;
-    margin-bottom: 5px;
-  }
-  
-  .dashboard-no-tasks {
-    font-size: 16px;
-    color: #999;
-    margin-top: 20px;
-  }
-  
-  .dashboard-button {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background-color: #2d3b8e;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 20px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .dashboard-button:hover {
-    background-color: #1e265c;
-  }
-  
-  .dashboard-logout-button {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background-color: #fff;
-    color: #2d3b8e;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 20px;
-    border: 2px solid #2d3b8e;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .dashboard-logout-button:hover {
-    background-color: #2d3b8e;
-    color: #fff;
-  }
+ 
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300rem;
+  max-width: 600px;
+  margin-bottom: 50px;
+  padding: 40px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background-color: #FF8E25;
+  margin-top: 50px;
+}
+
+.dashboard-heading {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.dashboard-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.dashboard-tasks {
+  width: 100%;
+}
+
+.dashboard-tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dashboard-tasks-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dashboard-tasks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-task {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-task-heading {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.dashboard-task-details {
+  margin-bottom: 10px;
+}
+
+.dashboard-task-location,
+.dashboard-task-date {
+  margin-bottom: 5px;
+  color: #777;
+}
+
+.dashboard-no-tasks {
+  font-size: 16px;
+  font-style: italic;
+  color: #777;
+  text-align: center;
+}
+
+.dashboard-button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #d62828;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.dashboard-button:hover {
+  background-color: #ff9a67;
+}
+
+.dashboard-logout-button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.dashboard-logout-button:hover {
+  background-color: #555;
+}
