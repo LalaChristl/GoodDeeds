@@ -36,15 +36,7 @@ function Login() {
         payload: response.data.user,
       });
 
-      const selectedProfileType = document.querySelector(
-        'input[name="profileType"]:checked'
-      ).value;
-      if (selectedProfileType === "helper") {
-        navigate(`/dashboard/helperProfile/getuser/${response.data.user._id}`);
-      } else if (selectedProfileType === "helpee") {
-        navigate(`/dashboard/helpeeProfile/getuser2/${response.data.user._id}`);
-     
-      }
+      navigate(`/dashboard/helpeeProfile/getuser2/${response.data.user._id}`);
     }
   };
 
@@ -96,23 +88,7 @@ function Login() {
             <Typography variant="h2" align="center" mb={4}>
               Login
             </Typography>
-            <RadioGroup
-              row
-              name="profileType"
-              value={data.profileType}
-              onChange={handleInputChange}
-            >
-              <FormControlLabel
-                value="helper"
-                control={<Radio />}
-                label="Helper"
-              />
-              <FormControlLabel
-                value="helpee"
-                control={<Radio />}
-                label="Helpee"
-              />
-            </RadioGroup>
+            
             <TextField
               fullWidth
               label="Email"
