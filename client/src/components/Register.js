@@ -175,7 +175,7 @@ const Register = () => {
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
           />
-          <TextField
+          {/* <TextField
             fullWidth
             label="Gender"
             name="gender"
@@ -184,7 +184,7 @@ const Register = () => {
             margin="normal"
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
-          />
+          /> */}
           <TextField
             fullWidth
             label="Age"

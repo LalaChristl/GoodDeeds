@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const EditUserPage = () => {
   const navigate = useNavigate();
@@ -50,66 +51,68 @@ const EditUserPage = () => {
 
   return (
     <div>
-      <h1 className="edit-helpee-profile-h1 text-black text-[4rem]">
-        Edit User Information
-      </h1>
-
-      <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-        First Name:
-        <input
-          type="text"
-          value={firstName || user.firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          className="edit-helpee-profile-input border-[1px] border-black"
-        />
-      </label>
-      <br />
-      <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-        Last Name:
-        <input
-          type="text"
-          value={lastName || user.lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          className="edit-helpee-profile-input border-[1px] border-black"
-        />
-      </label>
-      <br />
-      <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-        Email:
-        <input
-          type="email"
-          value={email || user.email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="edit-helpee-profile-input border-[1px] border-black"
-        />
-      </label>
-      <br />
-      <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-        Languages:
-        <input
-          type="text"
-          value={languages || user.languages}
-          onChange={(e) => setLanguages(e.target.value)}
-          className="eedit-helpee-profile-input border-[1px] border-black"
-        />
-      </label>
-      <br />
-      <label className="edit-helper-profile-label text-black text-[1.5rem]">
-        About Me:
-        <input
-          type="text"
-          value={about || user.about}
-          onChange={(e) => setAbout(e.target.value)}
-          className="edit-helper-profile-input border-[1px] border-black"
-        />
-      </label>
-      <button
-        type="submit"
-        onClick={handleSave}
-        className="edit-helpee-profile-button border-[1px] border-black"
-      >
-        Save Changes
-      </button>
+      <Navbar />
+      <div className="flex justify-center items-center flex-col">
+        <h1 className="edit-helpee-profile-h1 text-black text-[4rem]">
+          Edit User Information
+        </h1>
+        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
+          First Name:
+          <input
+            type="text"
+            value={firstName || user.firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className="edit-helpee-profile-input border-[1px] border-black"
+          />
+        </label>
+        <br />
+        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
+          Last Name:
+          <input
+            type="text"
+            value={lastName || user.lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className="edit-helpee-profile-input border-[1px] border-black"
+          />
+        </label>
+        <br />
+        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
+          Email:
+          <input
+            type="email"
+            value={email || user.email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="edit-helpee-profile-input border-[1px] border-black"
+          />
+        </label>
+        <br />
+        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
+          Languages:
+          <input
+            type="text"
+            value={languages || user.languages}
+            onChange={(e) => setLanguages(e.target.value)}
+            className="eedit-helpee-profile-input border-[1px] border-black"
+          />
+        </label>
+        <br />
+        <label className="edit-helper-profile-label text-black text-[1.5rem]">
+          About Me:
+          <input
+            type="text"
+            value={about || user.about}
+            onChange={(e) => setAbout(e.target.value)}
+            className="edit-helper-profile-input border-[1px] border-black"
+          />
+        </label>
+        <button
+          type="submit"
+          onClick={handleSave}
+          className="edit-helpee-profile-button border-[1px] border-black"
+        >
+          Save Changes
+        </button>
+      </div>
     </div>
   );
 };
