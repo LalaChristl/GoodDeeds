@@ -15,6 +15,7 @@ const ContextProvider = ({ children }) => {
       location: "",
       taskDetails: "",
       coordinates: [],
+      
     },
     taskList: [], // Add taskList property here
   };

@@ -27,7 +27,7 @@ function Login() {
 
   const handleLogin = async () => {
     const response = await axios.post("/users/login", data);
-    console.log("🦩 ~ handleLogin= ~ response", response);
+    //
 
     if (response.data.success) {
       dispatch({
