@@ -55,13 +55,13 @@ function Navbar() {
             <Button component={Link} to="/contact" className={classes.link}>
               Contact
             </Button>
-            {/* <Button
+            <Button
               component={Link}
               to="/dashboard/helpeeprofile/getuser2/:id"
               className={classes.link}
             >
               Dashboard
-            </Button> */}
+            </Button>
             <Button component={Link} to="/login" className={classes.link}>
               Login
             </Button>

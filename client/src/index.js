@@ -22,6 +22,7 @@ import CalendarFunction from "./components/Calendar";
 import AboutUs from "./components/AboutUs";
 import Dashboard from "./components/Dashboard";
 import Contact from "./components/Contact";
+import AdminLayout from "./layouts/AdminLayout";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ContextProvider>
@@ -33,29 +34,36 @@ root.render(
         <Route path="/emailconfirm/:token" element={<EmailConfirm />} />
         <Route path="/forgotpass" element={<ForgotPass />} />
         <Route path="/changepass/:token" element={<ChangePass />} />
-        <Route path="/helperprofile/getuser/:id" element={<HelperProfile />} />
-        <Route path="/helpeeprofile/getuser2/:id" element={<HelpeeProfile />} />
-
-        <Route path="/editprofile/:id" element={<EditProfileHelper />} />
-        <Route path="/editprofile2/:id" element={<EditProfileHelpee />} />
-        <Route element={<Map />} path="/map" />
-        <Route element={<MarkerList />} path="/markerlist"></Route>
-
-        <Route path="/addtasks/" element={<AddTasks />}></Route>
-        <Route path="/listtasks/" element={<ListTasks />}></Route>
-        <Route path="/edittasks/:id" element={<EditTasks />}></Route>
-
-        <Route path="/aboutus/" element={<AboutUs />}></Route>
-        <Route
-          path="/dashboard/helperprofile/getuser/:id"
-          element={<Dashboard />}
-        ></Route>
-        <Route
-          path="/dashboard/helpeeprofile/getuser2/:id"
-          element={<Dashboard />}
-        ></Route>
-        <Route path="/calendar/" element={<CalendarFunction />} />
         <Route path="/contact/" element={<Contact />} />
+        <Route path="/aboutus/" element={<AboutUs />}></Route>
+        <Route element={<AdminLayout />}>
+          <Route
+            path="/helperprofile/getuser/:id"
+            element={<HelperProfile />}
+          />
+          <Route
+            path="/helpeeprofile/getuser2/:id"
+            element={<HelpeeProfile />}
+          />
+
+          <Route path="/editprofile/:id" element={<EditProfileHelper />} />
+          <Route path="/editprofile2/:id" element={<EditProfileHelpee />} />
+          <Route element={<Map />} path="/map" />
+          <Route element={<MarkerList />} path="/markerlist"></Route>
+
+          <Route path="/addtasks/" element={<AddTasks />}></Route>
+          <Route path="/listtasks/" element={<ListTasks />}></Route>
+          <Route path="/edittasks/:id" element={<EditTasks />}></Route>
+          <Route
+            path="/dashboard/helperprofile/getuser/:id"
+            element={<Dashboard />}
+          ></Route>
+          <Route
+            path="/dashboard/helpeeprofile/getuser2/:id"
+            element={<Dashboard />}
+          ></Route>
+          <Route path="/calendar/" element={<CalendarFunction />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </ContextProvider>
