@@ -13,6 +13,7 @@ import {
 } from "@react-google-maps/api";
 import { useState, useRef, useCallback, useContext, useEffect } from "react";
 import Search from "./Search";
+import MapNav from "./MapNav";
 
 import { Context } from "./Context";
 
@@ -180,9 +181,9 @@ function Map() {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading maps";
 
-  const onDirectionsRendererLoad = (directionsRenderer) => {
-    directionsRendererRef.current = directionsRenderer; // Save the reference to the DirectionsRenderer
-  };
+  // const onDirectionsRendererLoad = (directionsRenderer) => {
+  //   directionsRendererRef.current = directionsRenderer; // Save the reference to the DirectionsRenderer
+  // };
 
   const onMarkerDragEnd = async (e) => {
     if (directionsRendererRef.current) {
@@ -212,6 +213,7 @@ function Map() {
   };
   return (
     <div className="map-container">
+      <MapNav />
       <div className="search-container">
         <div
           style={{

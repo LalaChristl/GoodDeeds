@@ -6,6 +6,8 @@ import { Autocomplete } from "@react-google-maps/api";
 import { Context } from "./Context";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer2 from "./Footer2";
 
 const libraries = ["places"];
 
@@ -88,7 +90,17 @@ function AddTasks() {
   };
 
   return (
-    <div>
+    <div className="task-container">
+      <Navbar />
+      <div className="search-list-1">
+        <Link
+          to="/dashboard/helpeeprofile/getuser2/:id"
+          className="list-link"
+          title="back to dashboard"
+        >
+          <button className="dash-btn">Dashboard</button>
+        </Link>
+      </div>
       <div className="task-form">
         <div className="task-input-div">
           {
@@ -100,9 +112,10 @@ function AddTasks() {
               }
               className="select"
               multiple={false}
+              title="task"
             >
               <option value="" className="option-input">
-                Choose a task
+                Request
               </option>
               <option value="shopping" className="option-input">
                 Shopping
@@ -126,10 +139,12 @@ function AddTasks() {
             }
             placeholder="date"
             className="task-input"
+            title="date"
           />
         </div>
         <div className="task-input-div">
           <input
+            title="time"
             type="time"
             name="time"
             value={taskData.time}
@@ -150,6 +165,7 @@ function AddTasks() {
               setTaskData({ ...taskData, taskDetails: e.target.value })
             }
             className="task-input"
+            title="description"
           ></textarea>
         </div>
         <div className="task-input-div">
@@ -166,62 +182,17 @@ function AddTasks() {
                 setTaskData({ ...taskData, location: e.target.value })
               }
               className="task-input"
+              title="location"
             />
           </Autocomplete>
         </div>
         <div className="task-input-div">
-          <Link to="/listtasks/">
+          <Link to="/listtasks/" title="tasklist">
             <button className="task-btn">List</button>
           </Link>
         </div>
       </div>
-      {/* <div className="task-form">
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="task"
-            disabled
-            value={state.task.task}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="date"
-            disabled
-            value={state.task.taskDate}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="time"
-            disabled
-            value={state.task.taskTime}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="details"
-            disabled
-            value={state.task.taskDetails}
-            className="task-input-1"
-          />
-        </div>
-        <div className="task-input-div">
-          <input
-            type="text"
-            name="place"
-            disabled
-            value={state.task.location}
-            className="task-input-1"
-          />
-        </div>
-      </div> */}
+      <Footer2 />
     </div>
   );
 }

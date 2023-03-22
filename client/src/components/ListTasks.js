@@ -12,12 +12,16 @@ import { FiEdit } from "react-icons/fi";
 
 import Navbar from "./Navbar";
 import { FaHandsHelping } from "react-icons/fa";
+import Footer2 from "./Footer2";
 
 function ListTasks() {
+  // Global Context
   const { state, dispatch } = useContext(Context);
 
+  // State for searching/filtering
   const [filter, setFilter] = useState({ task: "" });
 
+  // Api to server
   const handleApplyFilter = async () => {
     const response = await axios.post("/tasks/search", filter);
     console.log("(🇯🇲 handleApplyFilter listTasks", response);
@@ -25,12 +29,12 @@ function ListTasks() {
       dispatch({ type: "listTask", payload: response.data.task });
     }
   };
-
+  // Reset function fo search
   const handleResetFilter = () => {
     setFilter({
       task: "",
     });
-
+    // Funtion to fetch the tasks after filtering
     async function fetchData() {
       try {
         const response = await axios.get("/tasks/list/");
@@ -49,7 +53,7 @@ function ListTasks() {
 
     fetchData();
   };
-
+  // function to display tasks
   useEffect(() => {
     async function fetchData() {
       try {
@@ -98,9 +102,7 @@ function ListTasks() {
     }
   };
 
-  console.log("state taskList", state.taskList);
-  console.log("state", state);
-
+  // Function t accept task
   const handleAdd = async (item) => {
     if (!state.user._id) {
       alert("You must log in first");
@@ -121,16 +123,26 @@ function ListTasks() {
   };
 
   return (
-    <div>
+    <div className="tasklist-container">
       <Navbar />
+      <div className="search-list-1">
+        <Link
+          to="/dashboard/helpeeprofile/getuser2/:id"
+          className="list-link"
+          title="back to dashboard"
+        >
+          <button className="dash-btn">Dashboard</button>
+        </Link>
+      </div>
       <div className="search-list">
         <input
-          placeholder="Search task"
+          placeholder="Search request"
           type="text"
           id="base-input"
           onChange={(e) => setFilter({ ...filter, task: e.target.value })}
           value={filter.task}
           className="list-input"
+          title="search-requests"
         />
       </div>
       <div className="filter">
@@ -138,6 +150,7 @@ function ListTasks() {
           type="button"
           onClick={handleApplyFilter}
           className="list-btn-1"
+          title="apply-filter"
         >
           <FaFilter />
           Apply filter
@@ -147,7 +160,7 @@ function ListTasks() {
           onClick={handleResetFilter}
           className="list-btn-1"
         >
-          <RiFilterOffFill />
+          <RiFilterOffFill title="reset" />
           Reset filter
         </button>
       </div>
@@ -161,6 +174,7 @@ function ListTasks() {
                   src={item.owner.image}
                   alt="helpee"
                   className="list-image"
+                  title="image"
                 />
                 <input
                   type="text"
@@ -168,6 +182,7 @@ function ListTasks() {
                   disabled
                   value={item.owner.firstName}
                   className="list-input-1"
+                  title="name"
                 />
                 <input
                   type="text"
@@ -176,6 +191,7 @@ function ListTasks() {
                   value={item.owner.email}
                   className="list-input-1"
                   id="user-email"
+                  title="email"
                 />
 
                 <input
@@ -184,30 +200,42 @@ function ListTasks() {
                   disabled
                   value={item.task}
                   className="list-input-1"
+                  title="request"
                 />
-                <p className="list-input-1">{item.taskDate}</p>
-                <p className="list-input-1">{item.taskTime}</p>
-                <p className="list-input-1">{item.taskDetails}</p>
-                <p className="list-input-1">{item.location}</p>
+                <p className="list-input-1" title="request-date">
+                  {item.taskDate}
+                </p>
+                <p className="list-input-1" title="request-time">
+                  {item.taskTime}
+                </p>
+                <p className="list-input-1" title="request-details">
+                  {item.taskDetails}
+                </p>
+                <p className="list-input-1" title="request-lcation">
+                  {item.location}
+                </p>
 
                 <div style={{ display: "flex" }}>
                   <Link to={"/edittasks/" + item._id}>
-                    <FiEdit className="list-btn-2" />
+                    <FiEdit className="list-btn-2" title="edit-request" />
                   </Link>
 
                   <MdDeleteForever
                     className="list-btn-2"
                     onClick={() => handleDelete(item._id)}
+                    title="delete-request"
                   />
                   <FaHandsHelping
                     className="list-btn-2"
                     onClick={() => handleAdd(item)}
+                    title="accept-request"
                   />
                 </div>
               </div>
             </div>
           ))}
       </div>
+      <Footer2 />
     </div>
   );
 }
