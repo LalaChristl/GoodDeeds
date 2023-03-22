@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import "./TaskConfirmCard.css";
 
 import axios from "axios";
 import { Context } from "./Context";
@@ -32,21 +33,26 @@ function TaskConfirm() {
   }, []);
   console.log("task", task);
   return (
-    <div className="flex items-center w-full h-[100vh] bg-slate-50 flex-col ">
-      {task.length
-        ? task.map((item, idx) => (
-            <TaskConfirmCard
-              key={idx}
-              task={item}
-              cbDelete={handleDeleteLocally}
-            />
-          ))
-        : "No accepted requests"}
-      <div className="calendar">
-        <CalendarFunction task={task} />
-      </div>
-      <div>
-        <TaskMap task={task} />
+    <div className="taskconfirm1-container">
+      <div className="taskconfirm-container">
+        <h1 className="taskconfirm-heading">Accepted Requests</h1>
+        {task.length
+          ? task.map((item, idx) => (
+              <TaskConfirmCard
+                key={idx}
+                task={item}
+                cbDelete={handleDeleteLocally}
+              />
+            ))
+          : "No accepted requests"}
+        <div className="calender-map-container">
+          <div className="calendar">
+            <CalendarFunction task={task} />
+          </div>
+          <div className="taskmap">
+            <TaskMap task={task} />
+          </div>
+        </div>
       </div>
     </div>
   );
