@@ -51,8 +51,13 @@ function EditTasks() {
       lat: addressObject.geometry.location.lat(),
       lng: addressObject.geometry.location.lng(),
     };
-
+    // Check if user is authorized to edit the task
+    if (state.user._id !== taskToEdit.owner) {
+      console.log("Unauthorized");
+      return;
+    }
     const data = {
+      userID: state.user._id,
       task: taskToEdit.task,
       taskDate: taskToEdit.taskDate,
       taskTime: taskToEdit.taskTime,
