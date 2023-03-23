@@ -1,10 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Logo from "../images/Good Deeds.png";
+import Logo3 from "../images/logo-3.png";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,12 +39,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Navbar() {
   const classes = useStyles();
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Set the initial value to false
+
+  const handleLogin = () => {
+    // Implement the login functionality here
+    setIsLoggedIn(true); // Set the isLoggedIn state to true after the user logs in
+  };
+  const handleLogout = () => {
+    // Implement the logout functionality here
+    setIsLoggedIn(false);
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Link to="/">
-            <img className="p-1 " src={Logo} alt="" />
+            {/* <img className="p-1 " src={Logo} alt="" /> */}
+            <div className="flex justify-center items-center gap-[10px]">
+              <p className="Logo text-[1.5rem]">Good Deeds</p>
+
+              <img className="" src={Logo3} alt="" />
+            </div>
           </Link>
           <div className={classes.linkContainer}>
             <Button component={Link} to="/" className={classes.link}>
@@ -65,9 +82,25 @@ function Navbar() {
             <Button component={Link} to="/map" className={classes.link}>
               Map
             </Button>
-            <Button component={Link} to="/login" className={classes.link}>
-              Login
-            </Button>
+            {isLoggedIn ? (
+              <Button
+                onClick={handleLogout}
+                component={Link}
+                to="/"
+                className={classes.link}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button
+                onClick={handleLogin}
+                component={Link}
+                to="/login"
+                className={classes.link}
+              >
+                Login
+              </Button>
+            )}
           </div>
         </Toolbar>
       </AppBar>
