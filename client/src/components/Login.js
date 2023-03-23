@@ -28,7 +28,6 @@ function Login() {
 
   const handleLogin = async () => {
     const response = await axios.post("/users/login", data);
-    //
 
     if (response.data.success) {
       dispatch({

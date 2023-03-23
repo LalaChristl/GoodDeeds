@@ -59,7 +59,7 @@ const Dashboard = () => {
 
         <div class="dashboard-tasks">
           <div class="dashboard-tasks-header">
-            <h2 class="dashboard-tasks-heading">My Tasks</h2>
+            <h1 class="dashboard-tasks-heading">My Tasks</h1>
           </div>
           {tasks.length > 0 ? (
             <ul class="dashboard-tasks-list">
