@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
+import Navbar from "./Navbar";
+import Footer2 from "./Footer2";
+import "./Profile.css";
 
 const HelpeeProfile = () => {
   const navigate = useNavigate();
@@ -42,40 +45,40 @@ const HelpeeProfile = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="flex justify-center">
-      <div className="helpee-profile-container flex flex-col items-center gap-2">
+      <div className="helpee-profile-container">
         {user && (
           <>
-            <img src={user.image} alt="" className="h-[200px] w-[200px] " />
-            {/* <p>Name: {user.firstName}</p> */}
-            {/* <p>Last Name: {user.lastName}</p> */}
-            <p className="helpee-profile-name text-[2rem]">{user.firstName}</p>
-            <p>Age: {user.age}</p>
-            {/* <p>Gender: {user.gender}</p> */}
-            <p>Language(s): {user.languages}</p>
-            <p>About Me: {user.about}</p>
+            <img src={user.image} alt="" className="profile-image" />
+            <p className="helpee-profile-name">{user.firstName}</p>
+            <div className="profile-text-container">
+            <p className="profile-text">Name: {user.firstName}</p>
+            <p className="profile-text">Last Name: {user.lastName}</p>
+            <p className="profile-text">Age: {user.age}</p>
+            <p className="profile-text">Gender: {user.gender}</p>
+            <p className="profile-text">Language(s): {user.languages}</p>
+            <p className="profile-text">About Me: {user.about}</p>
+            </div>
 
-            <button
-              onClick={handleEdit}
-              className="helpee-profile-button border-[1px] border-black p-2"
-            >
+            
+            <button onClick={handleEdit} className="profile-button">
               Edit Profile
             </button>
-            <button
-              onClick={handleLogout}
-              className="helper-profile-button border-[1px] border-black p-2"
-            >
+            <button onClick={handleLogout} className="profile-button">
               Logout
             </button>
+            
           </>
         )}
         <Link to="/addtasks">
-          <button className="helpee-profile-button border-[1px] border-black p-2">
-            Help request
-          </button>
+          <button className="profile-button">Help Request</button>
         </Link>
       </div>
     </div>
+    <Footer2 />
+  </>
   );
 };
 

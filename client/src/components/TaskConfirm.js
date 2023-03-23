@@ -49,6 +49,14 @@ function TaskConfirm() {
     <div className="taskconfirm1-container">
       <div className="taskconfirm-container">
         <h1 className="taskconfirm-heading">Accepted Requests</h1>
+        <div className="calender-map-container">
+          <div className="calendar">
+            <CalendarFunction task={task} />
+          </div>
+          <div className="taskmap">
+            <TaskMap task={task} />
+          </div>
+        </div>
         {task.length
           ? task.map((item, idx) => (
               <TaskConfirmCard
@@ -58,14 +66,7 @@ function TaskConfirm() {
               />
             ))
           : "No accepted requests"}
-        <div className="calender-map-container">
-          <div className="calendar">
-            <CalendarFunction task={task} />
-          </div>
-          <div className="taskmap">
-            <TaskMap task={task} />
-          </div>
-        </div>
+        
       </div>
     </div>
   );
