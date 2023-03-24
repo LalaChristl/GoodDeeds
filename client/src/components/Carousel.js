@@ -51,7 +51,7 @@ function Slider() {
   ));
 
   return (
-    <div className="carousel-container bg-green-300">
+    <div className="carousel-container">
       <Carousel
         showArrows={false}
         autoPlay={true}

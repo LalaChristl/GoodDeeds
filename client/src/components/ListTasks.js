@@ -171,7 +171,7 @@ function ListTasks() {
             <div key={item._id} list-input-div>
               <div className="list-main">
                 <img
-                  src={item?.owner?.image}
+                  src={item.owner.image}
                   alt="helpee"
                   className="list-image"
                   title="image"
@@ -180,7 +180,7 @@ function ListTasks() {
                   type="text"
                   name="place"
                   disabled
-                  value={item.owner?.firstName}
+                  value={item.owner.firstName}
                   className="list-input-1"
                   title="name"
                 />
@@ -188,7 +188,7 @@ function ListTasks() {
                   type="text"
                   name="place"
                   disabled
-                  value={item.owner?.email}
+                  value={item.owner.email}
                   className="list-input-1"
                   id="user-email"
                   title="email"
@@ -211,7 +211,7 @@ function ListTasks() {
                 <p className="list-input-1" title="request-details">
                   {item.taskDetails}
                 </p>
-                <p className="list-input-1" title="request-location">
+                <p className="list-input-1" title="request-lcation">
                   {item.location}
                 </p>
 

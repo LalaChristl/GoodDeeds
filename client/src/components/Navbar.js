@@ -1,11 +1,14 @@
 import React from "react";
+import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Logo3 from "../images/logo-3.png";
+import { Context } from "./Context";
+import { useContext } from "react";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -39,15 +42,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Navbar() {
   const classes = useStyles();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Set the initial value to false
+  const navigate = useNavigate();
+  const { state, dispatch } = useContext(Context);
 
-  const handleLogin = () => {
-    // Implement the login functionality here
-    setIsLoggedIn(true); // Set the isLoggedIn state to true after the user logs in
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLogin = async () => {
+    const response = await axios.post("/users/login", data);
+
+    if (response.data.success) {
+      dispatch({
+        type: "login",
+        payload: response.data.user,
+      });
+
+      navigate(`/dashboard/helpeeProfile/getuser2/${response.data.user._id}`);
+    }
   };
-  const handleLogout = () => {
-    // Implement the logout functionality here
-    setIsLoggedIn(false);
+  const handleLogout = async () => {
+    const response = await axios.get("http://localhost:5000/users/logout");
+    console.log("🦩 ~ handleLogout ~ response", response);
+
+    dispatch({
+      type: "logout",
+    });
+
+    navigate("/");
   };
 
   return (
@@ -82,7 +105,7 @@ function Navbar() {
             <Button component={Link} to="/map" className={classes.link}>
               Map
             </Button>
-            {isLoggedIn ? (
+            {state.user._id ? (
               <Button
                 onClick={handleLogout}
                 component={Link}
