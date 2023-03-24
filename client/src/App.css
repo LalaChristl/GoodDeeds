@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+}
+
+.Logo {
+  font-family: "Albert Sans", sans-serif;
+  font-weight: 700;
+}
+
 .home-page-header {
   width: 100%;
   margin-top: 60px;
@@ -20,6 +30,8 @@
 .homepage-hero-p {
   position: absolute;
   color: white;
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
 }
 
 .homepage-search-bar {
@@ -57,7 +69,6 @@
 
 .benefits-card-container {
   display: flex;
-
   justify-content: center;
   align-items: center;
 }
@@ -73,6 +84,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .benefits-icon {
@@ -82,7 +94,7 @@
 
 .benefits-p-header {
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .about-us-container {
@@ -138,6 +150,9 @@
 
   .home-icons-section {
     display: none;
+  }
+  .about-us-p {
+    font-size: 1rem;
   }
 }
 
@@ -227,8 +242,11 @@
     display: block;
   }
   .about-us-h3 {
-    font-size: 2.8rem;
+    font-size: 2.9rem;
     margin-bottom: 10px;
+  }
+  .about-us-p {
+    font-size: 1.2rem;
   }
 
   .home-icons-section {
@@ -275,8 +293,12 @@
     display: block;
   }
   .about-us-h3 {
-    font-size: 2.8rem;
+    font-size: 2.9rem;
     margin-bottom: 10px;
+  }
+
+  .about-us-p {
+    font-size: 1.2rem;
   }
 
   .home-icons-section {
@@ -328,6 +350,9 @@
     font-size: 2.9rem;
     margin-bottom: 10px;
   }
+  .about-us-p {
+    font-size: 1.2rem;
+  }
 
   .home-icons-section {
     display: flex;
@@ -369,6 +394,10 @@
 
   .about-us-container {
     margin-top: 30px;
+  }
+
+  .about-us-h3 {
+    font-size: 3rem;
   }
 
   .home-icons-section {

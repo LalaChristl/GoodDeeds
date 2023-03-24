@@ -2,19 +2,24 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import Footer2 from "./Footer2";
+import { TextField, Button, Paper, Typography, Box } from "@mui/material";
 
 const EditUserPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
   const [user, setUser] = useState({
+    image: "",
+    userName: "",
     firstName: "",
     lastName: "",
     email: "",
     languages: "",
     about: "",
   });
-
+  const [image, setImage] = useState(user.image);
+  const [userName, setUserName] = useState(user.userName);
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
   const [email, setEmail] = useState(user.email);
@@ -35,9 +40,34 @@ const EditUserPage = () => {
     fetchData();
   }, [id]);
 
+  const handleUpload = (img) => {
+    if (!img) return;
+    if (img.type === "image/png" || img.type === "image/jpeg") {
+      const data = new FormData();
+      data.append("file", img);
+      data.append("upload_preset", "Volunteer");
+      data.append("cloud_name", "dtbrznssn");
+      fetch("https://api.cloudinary.com/v1_1/dtbrznssn/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Uploaded", data.url);
+          setImage(data.url); // Set the image state variable with the uploaded image
+          setUser((prev) => ({ ...prev, image: data.url }));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   const handleSave = async () => {
     const updatedUser = {
       ...user,
+      image,
+      userName,
       firstName,
       lastName,
       email,
@@ -49,71 +79,156 @@ const EditUserPage = () => {
     if (response.data.success) navigate("/helpeeprofile/getuser2/" + id);
   };
 
+  const handleCancel = () => {
+    navigate("/helpeeprofile/getuser2/" + id);
+  };
+
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="flex justify-center items-center flex-col">
-        <h1 className="edit-helpee-profile-h1 text-black text-[4rem]">
-          Edit User Information
-        </h1>
-        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-          First Name:
-          <input
-            type="text"
+      <Box
+        sx={{
+          height: "vh",
+          display: "flex",
+          gap: 5,
+          maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          paddingTop: 10,
+          backgroundColor: "#FFF3E9",
+          color: "#110931",
+        }}
+      >
+        <Paper
+          sx={{
+            p: 4,
+            mt: 8,
+            mb: 12,
+            maxWidth: 460,
+            backgroundColor: "#FFAF66",
+          }}
+        >
+          <Typography variant="h2" align="center" mb={0}>
+            Edit Profile
+          </Typography>
+          <div className="flex justify-center items-center mt-5">
+            <img
+              className="rounded-full h-28 w-28 border-4 border-white"
+              src={image || user.image}
+              alt="avatar"
+            />
+          </div>
+          <div className="flex justify-center items-center mt-4">
+            <Button
+              variant="contained"
+              component="label"
+              mt={2}
+              mb={2}
+              onClick={() => document.getElementById("image-input").click()}
+              sx={{ backgroundColor: "#0D2237" }}
+              size="small"
+            >
+              Upload Image
+              <input
+                id="image-input"
+                type="file"
+                hidden
+                onChange={(e) => handleUpload(e.target.files[0])}
+              />
+            </Button>
+          </div>
+          <TextField
+            fullWidth
+            label="User Name"
+            name="userName"
+            value={userName || user.userName}
+            onChange={(e) => setUserName(e.target.value)}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          <TextField
+            fullWidth
+            label="First Name"
+            name="firstName"
             value={firstName || user.firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            className="edit-helpee-profile-input border-[1px] border-black"
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
           />
-        </label>
-        <br />
-        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-          Last Name:
-          <input
-            type="text"
+          <TextField
+            fullWidth
+            label="Last Name"
+            name="lastName"
             value={lastName || user.lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="edit-helpee-profile-input border-[1px] border-black"
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
           />
-        </label>
-        <br />
-        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-          Email:
-          <input
-            type="email"
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
             value={email || user.email}
             onChange={(e) => setEmail(e.target.value)}
-            className="edit-helpee-profile-input border-[1px] border-black"
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
           />
-        </label>
-        <br />
-        <label className="edit-helpee-profile-label text-black text-[1.5rem]">
-          Languages:
-          <input
-            type="text"
+
+          <TextField
+            fullWidth
+            label="Languages"
+            name="languages"
             value={languages || user.languages}
             onChange={(e) => setLanguages(e.target.value)}
-            className="eedit-helpee-profile-input border-[1px] border-black"
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
           />
-        </label>
-        <br />
-        <label className="edit-helper-profile-label text-black text-[1.5rem]">
-          About Me:
-          <input
-            type="text"
+          <TextField
+            fullWidth
+            label="About Me"
+            name="about"
             value={about || user.about}
             onChange={(e) => setAbout(e.target.value)}
-            className="edit-helper-profile-input border-[1px] border-black"
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
           />
-        </label>
-        <button
-          type="submit"
-          onClick={handleSave}
-          className="edit-helpee-profile-button border-[1px] border-black"
-        >
-          Save Changes
-        </button>
-      </div>
-    </div>
+
+          <div className="flex justify-center items-center mt-10">
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ backgroundColor: "#0D2237" }}
+              size="large"
+              fullWidth
+              type="submit"
+              onClick={handleSave}
+            >
+              Save Changes
+            </Button>
+          </div>
+          <div className="flex justify-center items-center mt-5">
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ backgroundColor: "#0D2237" }}
+              size="large"
+              fullWidth
+              type="submit"
+              onClick={handleCancel}
+            >
+              Cancel
+            </Button>
+          </div>
+        </Paper>
+      </Box>
+      <Footer2 />
+    </>
   );
 };
 

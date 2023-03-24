@@ -60,7 +60,7 @@ function Slider() {
         selectedItem={imageData[currentIndex]}
         onChange={handleChange}
         status={false}
-        // className="carousel-container h-[500px]"
+        showStatus={false}
         responsive={responsive}
       >
         {renderSlides}

@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Logo from "../images/Good Deeds.png";
+import Logo3 from "../images/logo-3.png";
+import { Context } from "./Context";
+import { useContext } from "react";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,12 +42,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Navbar() {
   const classes = useStyles();
+  const navigate = useNavigate();
+  const { state, dispatch } = useContext(Context);
+
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleLogin = async () => {
+    const response = await axios.post("/users/login", data);
+
+    if (response.data.success) {
+      dispatch({
+        type: "login",
+        payload: response.data.user,
+      });
+
+      navigate(`/dashboard/helpeeProfile/getuser2/${response.data.user._id}`);
+    }
+  };
+  const handleLogout = async () => {
+    const response = await axios.get("http://localhost:5000/users/logout");
+    console.log("🦩 ~ handleLogout ~ response", response);
+
+    dispatch({
+      type: "logout",
+    });
+
+    navigate("/");
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Link to="/">
-            <img className="p-1 " src={Logo} alt="" />
+            {/* <img className="p-1 " src={Logo} alt="" /> */}
+            <div className="flex justify-center items-center gap-[10px]">
+              <p className="Logo text-[1.5rem]">Good Deeds</p>
+
+              <img className="" src={Logo3} alt="" />
+            </div>
           </Link>
           <div className={classes.linkContainer}>
             <Button component={Link} to="/" className={classes.link}>
@@ -65,9 +105,25 @@ function Navbar() {
             <Button component={Link} to="/map" className={classes.link}>
               Map
             </Button>
-            <Button component={Link} to="/login" className={classes.link}>
-              Login
-            </Button>
+            {state.user._id ? (
+              <Button
+                onClick={handleLogout}
+                component={Link}
+                to="/"
+                className={classes.link}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button
+                onClick={handleLogin}
+                component={Link}
+                to="/login"
+                className={classes.link}
+              >
+                Login
+              </Button>
+            )}
           </div>
         </Toolbar>
       </AppBar>

@@ -46,39 +46,37 @@ const HelpeeProfile = () => {
 
   return (
     <>
-    <Navbar />
-    <div className="flex justify-center">
-      <div className="helpee-profile-container">
-        {user && (
-          <>
-            <img src={user.image} alt="" className="profile-image" />
-            <p className="helpee-profile-name">{user.firstName}</p>
-            <div className="profile-text-container">
-            <p className="profile-text">Name: {user.firstName}</p>
-            <p className="profile-text">Last Name: {user.lastName}</p>
-            <p className="profile-text">Age: {user.age}</p>
-            <p className="profile-text">Gender: {user.gender}</p>
-            <p className="profile-text">Language(s): {user.languages}</p>
-            <p className="profile-text">About Me: {user.about}</p>
-            </div>
+      <Navbar />
+      <div className="flex justify-center">
+        <div className="helpee-profile-container">
+          {user && (
+            <>
+              <img src={user.image} alt="" className="profile-image" />
+              <p className="helpee-profile-name">{user.firstName}</p>
+              <div className="profile-text-container">
+                <p className="profile-text">Name: {user.firstName}</p>
+                <p className="profile-text">Last Name: {user.lastName}</p>
+                <p className="profile-text">Age: {user.age}</p>
+                <p className="profile-text">Gender: {user.gender}</p>
+                <p className="profile-text">Language(s): {user.languages}</p>
+                <p className="profile-text">About Me: {user.about}</p>
+              </div>
 
-            
-            <button onClick={handleEdit} className="profile-button">
-              Edit Profile
-            </button>
-            <button onClick={handleLogout} className="profile-button">
-              Logout
-            </button>
-            
-          </>
-        )}
-        <Link to="/addtasks">
-          <button className="profile-button">Help Request</button>
-        </Link>
+              <button onClick={handleEdit} className="profile-button">
+                Edit Profile
+              </button>
+              <button onClick={handleLogout} className="profile-button">
+                Logout
+              </button>
+            </>
+          )}
+          <Link to="/addtasks">
+            <button className="profile-button">Help Request</button>
+          </Link>
+        </div>
       </div>
-    </div>
-    <Footer2 />
-  </>
+      <Footer2 />
+    </>
   );
 };
 
