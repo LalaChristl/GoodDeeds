@@ -99,7 +99,7 @@ const Register = () => {
           <Typography variant="h2" align="center" mb={4}>
             Register
           </Typography>
-          <RadioGroup row name="profileType" value={data.profileType}>
+          {/* <RadioGroup row name="profileType" value={data.profileType}>
             <FormControlLabel
               value="helper"
               control={<Radio />}
@@ -110,7 +110,7 @@ const Register = () => {
               control={<Radio />}
               label="Helpee"
             />
-          </RadioGroup>
+          </RadioGroup> */}
           <TextField
             fullWidth
             label="First Name"
