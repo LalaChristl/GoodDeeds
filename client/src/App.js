@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   header: {
     width: "100%",
     minWidth: 375,
-    height: 400,
+    height: 500,
     position: "relative",
     overflow: "hidden",
   },
@@ -37,12 +37,13 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     objectFit: "cover",
     filter: "brightness(50%)",
+    marginTop: "64px",
   },
   heroContent: {
     position: "absolute",
     top: "50%",
     left: "50%",
-    transform: "translate(-25%, -25%)",
+    transform: "translate(-50%, -25%)",
     textAlign: "center",
   },
   heroTitle: {
@@ -111,8 +112,8 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className="w-[screen] border-2 border-red-600 bg-[#EECDB2] text-[#110931]">
-      <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
+    <div className="w-[screen]">
+      <div className="max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center">
         <Navbar />
         <Box
           sx={{
@@ -144,13 +145,12 @@ function App() {
             sx={{
               display: "flex",
               gap: 5,
-
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
               p: 4,
-              mt: 12,
-              mb: 18,
+              mt: 16,
+              mb: 6,
               maxWidth: 460,
               backgroundColor: "#fff2ea",
               opacity: [1, 1, 1],
@@ -305,8 +305,8 @@ function App() {
           <Typography
             sx={{
               p: 4,
-              mt: 15,
-              mb: 15,
+              mt: 5,
+              mb: 5,
             }}
           >
             <div className="flex flex-col justify-center items-center ">
