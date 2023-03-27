@@ -214,7 +214,11 @@ function Map() {
   };
   return (
     <div className="map-container">
-      <Navbar />
+<<<<<<<<< Temporary merge branch 1
+   
+=========
+      <Navbar/>
+>>>>>>>>> Temporary merge branch 2
       <div className="search-container">
         <div
           style={{
