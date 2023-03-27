@@ -127,8 +127,12 @@ function Navbar() {
               Contact
             </Button>
 
-            <Button component={Link} to="/dashboard/helpeeprofile/getuser1" className={classes.link}>
+            <Button component={Link}   to={"/dashboard/helpeeprofile/getuser2/" + state.user._id} className={classes.link}>
               Dashboard
+            </Button>
+
+            <Button component={Link} to="/map" className={classes.link}>
+              Map
             </Button>
 
                 {state.isAuthenticated ? (
