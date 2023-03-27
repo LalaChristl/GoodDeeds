@@ -49,7 +49,11 @@ function AddTasks() {
     });
   };
   function MyButton({ onClick }) {
-    return <button onClick={onClick}>Click me!</button>;
+    return (
+      <button onClick={onClick} className="edit-task-btn" title="save">
+        Save
+      </button>
+    );
   }
 
   console.log("state", state);
@@ -110,6 +114,17 @@ function AddTasks() {
     <div>
       <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[375px] overflow-hidden items-center bg-[#fff3e9] text-[#110931] ">
         <Navbar />
+        {/* <!-- Scroller Start --> */}
+        <div className="add-task-scroller">
+          <span>
+            Connect
+            <br />
+            Engage
+            <br />
+            Empower
+          </span>
+        </div>
+        {/* <!-- Scroller End --> */}
         <div className="task-container">
           <div className="task-form">
             <div className="task-input-div">

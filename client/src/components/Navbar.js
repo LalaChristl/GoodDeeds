@@ -97,7 +97,7 @@ function Navbar() {
             </Button>
             <Button
               component={Link}
-              to="/dashboard/helpeeprofile/getuser2/:id"
+              to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
               className={classes.link}
             >
               Dashboard

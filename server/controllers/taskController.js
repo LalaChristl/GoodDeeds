@@ -43,6 +43,12 @@ export const listTask = async (req, res) => {
 };
 
 export const deleteTask = async (req, res) => {
+  const userID = req.body.userID;
+  console.log("delete task", req.body);
+  // Check if the user is authorized to edit the task
+  if (userID !== req.body.owner) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
   try {
     const deletedTask = await Task.findByIdAndDelete({
       _id: req.body.id,

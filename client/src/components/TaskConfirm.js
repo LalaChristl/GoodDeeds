@@ -8,7 +8,7 @@ import CalendarFunction from "./Calendar";
 import TaskMap from "./TaskMap";
 
 function TaskConfirm() {
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
 
   // State to set task locally
   const [task, setTask] = useState([]);
@@ -25,9 +25,12 @@ function TaskConfirm() {
       console.log("handleDeleteLocally ID", id);
       const newData = task.filter((item) => item.task._id !== id);
       setTask(newData);
-      return newData; // return the filtered array
+      dispatch({
+        type: "removeTask",
+        payload: id,
+      });
     },
-    [task] // depend on task state
+    [dispatch, task] // depend on task state and dispatch function
   );
 
   // Function to display your tasks coming from the server
@@ -66,7 +69,6 @@ function TaskConfirm() {
               />
             ))
           : "No accepted requests"}
-        
       </div>
     </div>
   );
