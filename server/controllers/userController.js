@@ -244,10 +244,13 @@ export const taskConfirm = async (req, res) => {
         },
       },
       { new: true } // options
-    );
+    )
+      .populate("taskList.owner", "firstName lastName email image") // populate the owner field
+      .exec();
     console.log("taskConfirm user", user);
 
-    res.send({ success: true });
+    // res.send({ success: true });
+    res.send({ success: true, task: user.taskList[user.taskList.length - 1] }); // return the updated task object
   } catch (error) {
     console.log(" taskConfirm error", error.message);
 

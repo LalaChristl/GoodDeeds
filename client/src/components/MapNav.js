@@ -5,6 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Logo from "../images/Good Deeds.png";
+import { Context } from "./Context";
+import { useContext } from "react";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -37,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Navbar() {
+  const { state, dispatch } = useContext(Context);
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -57,7 +60,7 @@ function Navbar() {
             </Button>
             <Button
               component={Link}
-              to="/dashboard/helpeeprofile/getuser2/:id"
+              to={"/dashboard/helpeeprofile/getuser2/ " + state.user._id}
               className={classes.link}
             >
               Dashboard
