@@ -57,10 +57,7 @@ function App() {
   }, [handleApplyFilter]);
 
   return (
-    <div
-      className="w-[screen] border-2 border-red-600 bg-[#eecdb2]
-"
-    >
+    <div className="w-[screen] border-2 border-red-600 bg-[#eecdb2]">
       <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[360px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
         <Navbar />
         <header className="home-page-header w-[100%] min-w-[375px] relative">
