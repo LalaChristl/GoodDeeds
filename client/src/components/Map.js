@@ -215,7 +215,6 @@ function Map() {
   return (
     <div className="map-container">
       <Navbar />
-
       <div className="search-container">
         <div
           style={{
