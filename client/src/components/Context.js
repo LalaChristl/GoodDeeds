@@ -15,7 +15,6 @@ const ContextProvider = ({ children }) => {
       location: "",
       taskDetails: "",
       coordinates: [],
-      
     },
     taskList: [], // Add taskList property here
   };
@@ -110,9 +109,9 @@ const ContextProvider = ({ children }) => {
       case "removeTask":
         console.log("Removing task with ID:", action.payload);
         // filter state (taskList) to remove the deleted task
-        const oldTaskList = [
-          ...state.taskList.filter((item) => item._id !== action.payload),
-        ];
+        const oldTaskList = state.taskList
+          ? [...state.taskList.filter((item) => item._id !== action.payload)]
+          : [];
         console.log("New task list:", oldTaskList);
         return {
           ...state,

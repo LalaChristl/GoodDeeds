@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import Carousel from "./components/Carousel";
 import { IoIosPeople } from "react-icons/io";
 
-import { TbHeartHandshake } from "react-icons/tb";
+import { TbBorderRadius, TbHeartHandshake } from "react-icons/tb";
 import { FaHands } from "react-icons/fa";
 import Footer2 from "./components/Footer2";
 import { FaFilter } from "react-icons/fa";
@@ -19,6 +19,67 @@ import { useState, useContext, useEffect, useCallback } from "react";
 import { Context } from "./components/Context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+
+import {
+  Box,
+  Paper,
+  Typography,
+  TextField,
+} from "@mui/material";
+import { GrWifiNone } from "react-icons/gr";
+
+const useStyles = makeStyles((theme) => ({
+  header: {
+    width: "100%",
+    minWidth: 375,
+    height: 400,
+    position: "relative",
+    overflow: "hidden",
+  },
+  heroImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    filter: "brightness(50%)",
+  },
+  heroContent: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-25%, -25%)",
+    textAlign: "center",
+  },
+  heroTitle: {
+    fontWeight: "bold",
+    fontSize: "2rem",
+    color: "#fff",
+    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+    marginBottom: theme.spacing(2),
+  },
+  searchbar: {
+    color: "#fff",
+    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+    padding: "10px 10px",
+    border: "0px",
+    display: "flex",
+  
+  },
+    input: {
+    color: "white",
+    textTransform: "uppercase",
+    marginRight: theme.spacing(2),
+    fontSize: "14px",
+    fontWeight: 'bold',
+    
+    "&:hover": {
+      color: "black",
+      
+    },
+  },
+}));
+
+
 
 function App() {
   const [filter, setFilter] = useState({ task: "" });
@@ -56,86 +117,175 @@ function App() {
     };
   }, [handleApplyFilter]);
 
+
+  const classes = useStyles();
+
+
+
   return (
-    <div
-      className="w-[screen] border-2 border-red-600 bg-[#eecdb2]
-"
+    <>
+    <Navbar />
+    <Box
+        sx={{
+          height: "vh",
+          display: "flex",
+        
+          maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom: 30,
+          background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          color: "black",
+        }}
     >
-      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[360px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
-        <Navbar />
-        <header className="home-page-header w-[100%] min-w-[375px] relative">
-          <div className="home-page-hero-content">
-            <img className="homepage-hero-image" src={Hero} alt="" />
-            <p className="homepage-hero-p">
-              Join the Movement for Positive Social Change: Volunteer today!
-            </p>
-          </div>
-        </header>
+  
+        <Box className={classes.header}>
+            <img className={classes.heroImage} src={Hero} alt="" />
+            <Box className={classes.heroContent}>
+              <Typography variant="h3" className={classes.heroTitle}>
+                Join the Movement for Positive Social Change:
+              </Typography>
+              <Typography variant="h3" className={classes.heroTitle}>
+                Volunteer today!
+              </Typography>
+            </Box>
+        </Box>
+     {/*Searchbar  */}
+     <Paper
+            sx={{
+              display: "flex",
+              gap: 5,
+             
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              p: 4,
+              mt: 12,
+              mb: 18,
+              maxWidth: 460,
+              backgroundColor: "#fff2ea",
+              opacity: [1,1,1],
+              boxShadow: 5,
+            }}
+          >
+              <section className="homepage-search-bar">
+              <Typography variant="h4" align="center" p={5} 
+                          sx={{ backgroundColor:"#ff7e36",
+                                color:"black",
+                                boxShadow: 5,
+                                fontWeight: 'bold',
+                                borderRadius:"10px"}} >
+                  Do you want to help out?
+                </Typography>
+              <div className="home-search-bar">
+                
+                <TextField
+                  sx={{ width:"300px",
+                        paddingBottom:"20px",
+                        paddingTop:"20px",
+                        
+                        
+                       
+                        }}
+                        className={classes.input}
+                  variant="standard"
+                  align="center"
+                  placeholder="search for tasks in your area"
+                  type="text"
+                  id="base-input"
+                  onChange={(e) => setFilter({ ...filter, task: e.target.value })}
+                  value={filter.task}
+                  
+                  />
+                </div>
+                </section>
+      </Paper>
 
-        <section className="homepage-search-bar">
-          <div className="home-search-bar">
-            <input
-              placeholder="Search Requests"
-              type="text"
-              id="base-input"
-              onChange={(e) => setFilter({ ...filter, task: e.target.value })}
-              value={filter.task}
-              className="home-search-input"
-            />
-          </div>
-          {/* <div className="filter">
-            <button
-              type="button"
-              onClick={handleApplyFilter}
-              className="list-btn-1"
-            >
-              <FaFilter />
-              Apply filter
-            </button>
-            <button
-              type="button"
-              onClick={handleResetFilter}
-              className="list-btn-1"
-            >
-              <RiFilterOffFill />
-              Reset filter
-            </button>
-          </div> */}
-        </section>
-
+      <Paper
+            sx={{
+              pt: 10,
+              mt:12,
+              mb: 12,
+              maxWidth: 2560,
+              width: "100%",
+              backgroundColor: "#ffa472 ",
+              // background: "linear-gradient(90deg, rgba(196,252,240,1) 13%, rgba(255,254,254,1) 100%)",
+              opacity: [1,1,1],
+              boxShadow: 5,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}>
         <section>
           <div className="benefits-container">
             <h3 className="benefits-h3">Benefits of Helping Others</h3>
-
             <div className="benefits-card-container">
-              <div className="benefits-card">
-                <RiMentalHealthLine className="benefits-icon text-red-600" />
+              <Paper
+              sx={{
+                p: 4,
+                mt: 8,
+                mb: 12,
+                maxWidth: 460,
+                backgroundColor: "#fff2ea",
+                opacity: [1,1,1],
+                boxShadow: 10,
+              }}
+              >
+                <div className="benefits-card">
+                  <RiMentalHealthLine className="benefits-icon text-red-600" />
 
-                <p className="benefits-p-header">
-                  Improves Physical and Mental Health
-                </p>
+                  <p className="benefits-p-header">
+                    Improves Physical and Mental Health
+                  </p>
 
-                <p className="benefits-p">
-                  Volunteering reduces stress and increases positive, relaxed
-                  feelings by releasing dopamine. By spending time in service to
-                  others, volunteers report feeling a sense of meaning and
-                  appreciation, both given and received, which can have a
-                  stress-reducing effect.
-                </p>
-              </div>
-              <div className="benefits-card">
-                <GiInnerSelf className="benefits-icon text-blue-500" />
+                  <p className="benefits-p">
+                    Volunteering reduces stress and increases positive, relaxed
+                    feelings by releasing dopamine. By spending time in service to
+                    others, volunteers report feeling a sense of meaning and
+                    appreciation, both given and received, which can have a
+                    stress-reducing effect.
+                  </p>
+                </div>
+              </Paper>
 
-                <p className="benefits-p-header">Provides a Sense of Purpose</p>
+              <Paper
+              sx={{
+                p: 4,
+                mt: 8,
+                mb: 12,
+                maxWidth: 460,
+                backgroundColor: "#fff2ea",
+                opacity: [1,1,1],
+                boxShadow: 10,
+              }}
+              >
+                <div className="benefits-card">
+                  <GiInnerSelf className="benefits-icon text-blue-500" />
 
-                <p className="benefits-p">
-                  The work that volunteers provide is essential to everyday
-                  activities, which gives volunteers a sense of purpose,
-                  especially when volunteering in the areas they find
-                  meaningful. Older volunteers experience greater increases in
-                  life satisfaction and self-esteem.
-                </p>
-              </div>
+                  <p className="benefits-p-header">Provides a Sense of Purpose</p>
+
+                  <p className="benefits-p">
+                    The work that volunteers provide is essential to everyday
+                    activities, which gives volunteers a sense of purpose,
+                    especially when volunteering in the areas they find
+                    meaningful. Older volunteers experience greater increases in
+                    life satisfaction and self-esteem.
+                  </p>
+                </div>
+              </Paper>
+
+            <Paper
+            sx={{
+              p: 4,
+              mt: 8,
+              mb: 12,
+              maxWidth: 460,
+              backgroundColor: "#fff2ea",
+              opacity: [1,1,1],
+              boxShadow: 10,
+            }}
+            >
               <div className="benefits-card">
                 <GiThreeFriends className="benefits-icon text-purple-500" />
 
@@ -150,13 +300,65 @@ function App() {
                   to participate in a shared activity.
                 </p>
               </div>
+              </Paper>
             </div>
+            
           </div>
         </section>
+      </Paper>
+        
+        
+      
+     
+      <Typography   sx={{
+                p: 4,
+                mt: 15,
+                mb: 15,
+              
+
+              }}>
+         <div className="flex flex-col justify-center items-center ">
+            <div className="login-scroller-container">
+              <h1 className="login-h1">
+                Good Deeds
+                {/* <!-- Scroller Start --> */}
+                <div className="login-scroller">
+                  <span>
+                    Connect
+                    <br />
+                    Engage
+                    <br />
+                    Empower
+                  </span>
+                </div>
+                {/* <!-- Scroller End --> */}
+              </h1>
+            </div>
+            </div>
+       
+        </Typography>
+
+      <Paper
+            sx={{
+              pt: 10,
+              mb: 12,
+              mt: 15,
+              maxWidth: 2560,
+              backgroundColor: "#ffa472 ",
+              // background: "linear-gradient(90deg, rgba(196,252,240,1) 13%, rgba(255,254,254,1) 100%)",
+              opacity: [1,1,1],
+              boxShadow: 5,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}>   
         <section className="h-[500px]">
           <Carousel />
         </section>
+     
 
+
+        
         <section>
           <div className="about-us-container">
             <h3 className="about-us-h3">Who We Are</h3>
@@ -199,9 +401,13 @@ function App() {
             </div>
           </div>
         </section>
-        <Footer2 />
-      </div>
-    </div>
+        </Paper>
+     
+       
+
+      </Box>
+      <Footer2/>
+    </>
   );
 }
 

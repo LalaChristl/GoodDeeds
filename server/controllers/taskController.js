@@ -43,6 +43,12 @@ export const listTask = async (req, res) => {
 };
 
 export const deleteTask = async (req, res) => {
+  const userID = req.body.userID;
+  console.log("delete task", req.body);
+  // Check if the user is authorized to edit the task
+  if (userID !== req.body.owner) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
   try {
     const deletedTask = await Task.findByIdAndDelete({
       _id: req.body.id,
@@ -61,11 +67,17 @@ export const deleteTask = async (req, res) => {
 
 export const editTask = async (req, res) => {
   try {
-    console.log("🦩 ~ product editTask hello", req.body);
+    console.log("🦩 ~  editTask hello", req.body);
 
     const { _id, ...task } = req.body;
     console.log("🦩 ~ _id, task", _id, task);
+    // Get userID from req.user._id
+    const userID = req.body.userID;
 
+    // Check if the user is authorized to edit the task
+    if (userID !== task.owner) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
     const newTask = await Task.findByIdAndUpdate(
       { _id },
       { ...task },
