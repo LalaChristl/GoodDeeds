@@ -7,6 +7,7 @@
   /* height: 500px; */
   background: #eecdb2;
   margin-top: 50px;
+  width: 73.7rem;
   /* background: linear-gradient(
     90deg,
     rgb(191, 107, 210) 7%,
@@ -16,12 +17,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('../images/5150295.png');
+  background-size: contain;
+  background-position: top;
 }
 
 .about-us-hero-p {
   font-size: 3.5rem;
-  color: #5722ab;
+  color: #2257AB;
+  position: relative;
+  animation: fade-in-out 5s ease-in-out infinite alternate;
+  padding-bottom: 200px;
 }
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+
 
 .about-us-mission-div-1,
 .about-us-history-div-2 {
@@ -56,6 +80,20 @@
   justify-content: center;
   align-items: center;
   background-color: #fff3e9;
+  position: relative;
+  animation: slide-in-out 4s ease-in ;
+}
+
+@keyframes slide-in-out {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
 }
 .about-us-mission-image {
   height: 500px;

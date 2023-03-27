@@ -5,6 +5,10 @@ import "./calendar.css";
 import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
 
 const CalendarFunction = ({ task }) => {
+
+  // calculate center of screen
+const centerX = window.innerWidth / 1.9;
+const centerY = window.innerHeight / 2;
   const [value, onChange] = useState(new Date());
 
   // Define a function to check if a task exists on a given date
@@ -20,6 +24,7 @@ const CalendarFunction = ({ task }) => {
       return null;
     }
 
+ 
     const tasksOnDate = task.filter((task) => {
       const taskDate = new Date(task.taskDate + "T" + task.taskTime);
       return (
@@ -51,36 +56,42 @@ const CalendarFunction = ({ task }) => {
             <div>{task.taskTime}</div> */}
             {clickedTask && (
               <Popover
-                open={true}
-                anchorEl={anchorEl}
-                onClose={() => setClickedTask(null)}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-              >
-                <div style={{ padding: "10px" }}>
-                  {clickedTask?.taskDetails && (
-                    <Typography variant="h6">
-                      {clickedTask.taskDetails}
-                    </Typography>
-                  )}
-                  {clickedTask?.taskTime && (
-                    <Typography variant="body1">
-                      {clickedTask.taskTime}
-                    </Typography>
-                  )}
-                </div>
-                <Menu>
-                  <MenuItem onClick={() => setClickedTask(null)}>
-                    Cancel
-                  </MenuItem>
-                </Menu>
-              </Popover>
+              open={Boolean(clickedTask)}
+              anchorEl={anchorEl}
+              onClose={() => setClickedTask(null)}
+              anchorReference="anchorPosition"
+              anchorPosition={{ top: centerY, left: centerX }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              <div style={{
+                padding: "50px",
+                backgroundColor: "#FCC560",
+                color: "#000000",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+
+              }}>
+                {clickedTask?.taskDetails && (
+                  <Typography variant="h6">
+                    {clickedTask.taskDetails}
+                  </Typography>
+                )}
+                {clickedTask?.taskTime && (
+                  <Typography variant="body1">
+                    {clickedTask.taskTime}
+                  </Typography>
+                )}
+              </div>
+              <Menu>
+                <MenuItem onClick={() => setClickedTask(null)}>
+                  Cancel
+                </MenuItem>
+              </Menu>
+            </Popover>
             )}
           </>
         ))}
