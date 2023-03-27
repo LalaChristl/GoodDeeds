@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Logo3 from "../images/logo-3.png";
+import Logo from "../images/logo-nav.png";
 import { Context } from "./Context";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
@@ -105,7 +105,7 @@ function Navbar() {
           <Link to="/">
             <div className="flex justify-center items-center gap-[10px]">
               <p className="Logo text-[1.5rem]">Good Deeds</p>
-              <img className="" src={Logo3} alt="" />
+              <img className="" src={Logo} alt="" />
             </div>
           </Link>
 
