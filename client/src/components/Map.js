@@ -214,7 +214,6 @@ function Map() {
   };
   return (
     <div className="map-container">
-      {/* <MapNav /> */}
       <Navbar />
       <div className="search-container">
         <div
