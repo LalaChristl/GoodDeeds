@@ -20,7 +20,6 @@ import { Context } from "./Context";
 
 import { FaMapMarkerAlt } from "react-icons/fa";
 import "./Map.css";
-import Navbar from "./Navbar";
 
 const libraries = ["places"]; //Google Places Libraries variable
 
