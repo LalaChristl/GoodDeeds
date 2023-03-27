@@ -30,6 +30,13 @@ function ListTasks() {
       setClicked(clickedItemId);
     }
   }, []);
+  const [acceptedTasks, setAcceptedTasks] = useState([]);
+
+  useEffect(() => {
+    const storedAcceptedTasks =
+      JSON.parse(localStorage.getItem("acceptedTasks")) || [];
+    setAcceptedTasks(storedAcceptedTasks);
+  }, []);
 
   // Api to server
   const handleApplyFilter = async () => {
@@ -135,31 +142,23 @@ function ListTasks() {
     alert("Task has been accepted successfully!"); // display success message
   };
 
-  // const handleAdd1 = useCallback((item) => {
-  //   // Handle adding the task here
+  // function handleClick(item) {
+  //   // setClicked(item._id);
+  //   handleAdd(item);
+  //   handleDeleteLocally(item._id);
+  //   // handleAdd1(item);
+  //   if (clicked === item._id) {
+  //     // Remove the clicked item from local storage
+  //     localStorage.removeItem("clickedItemId");
+  //     setClicked(null);
+  //   } else {
+  //     // Handle adding the task here
 
-  //   // Save the clicked item to local storage
-  //   localStorage.setItem("clickedItemId", item._id);
-  //   setClicked(item._id);
-  // }, []);
-
-  function handleClick(item) {
-    // setClicked(item._id);
-    handleAdd(item);
-    handleDeleteLocally(item._id);
-    // handleAdd1(item);
-    if (clicked === item._id) {
-      // Remove the clicked item from local storage
-      localStorage.removeItem("clickedItemId");
-      setClicked(null);
-    } else {
-      // Handle adding the task here
-
-      // Save the clicked item to local storage
-      localStorage.setItem("clickedItemId", item._id);
-      setClicked(item._id);
-    }
-  }
+  //     // Save the clicked item to local storage
+  //     localStorage.setItem("clickedItemId", item._id);
+  //     setClicked(...item._id);
+  //   }
+  // }
 
   // const handleDeleteLocally = useCallback(
   //   (id) => {
@@ -173,6 +172,33 @@ function ListTasks() {
   //   },
   //   [dispatch, task] // depend on task state and dispatch function
   // );
+  function handleClick(item) {
+    if (!state.user._id) {
+      alert("You must log in first");
+      return;
+    }
+
+    const taskID = item._id;
+    const userID = state.user._id;
+
+    if (clicked === taskID) {
+      // Remove the clicked item from local storage
+      localStorage.removeItem("clickedItemId");
+      setClicked(false);
+    } else {
+      // Save the clicked item to local storage
+      localStorage.setItem("clickedItemId", taskID);
+      setClicked(taskID);
+      // Mark the task as accepted
+      const acceptedTasks =
+        JSON.parse(localStorage.getItem("acceptedTasks")) || [];
+      acceptedTasks.push(taskID);
+      localStorage.setItem("acceptedTasks", JSON.stringify(acceptedTasks));
+    }
+
+    handleAdd(item);
+    handleDeleteLocally(taskID);
+  }
 
   const handleDeleteLocally = useCallback(
     (id) => {
@@ -189,7 +215,7 @@ function ListTasks() {
   return (
     <div className="tasklist-container">
       <Navbar />
-      <div className="search-list-1"></div>
+
       <div className="search-list">
         <input
           placeholder="Search request"
@@ -224,8 +250,17 @@ function ListTasks() {
       <div className="list-form">
         {state.taskList &&
           state.taskList.map((item) => (
-            <div key={item._id} list-input-div>
-              <div className="list-main">
+            <div
+              key={item._id}
+              className={`list-main ${
+                acceptedTasks.includes(item._id) ? "selected" : "deselected"
+              }`}
+            >
+              <div
+              // className={`list-main ${
+              //   acceptedTasks.includes(item._id) ? "selected" : "deselected"
+              // }`}
+              >
                 <img
                   src={item.owner.image}
                   alt="helpee"
