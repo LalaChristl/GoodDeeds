@@ -4,7 +4,8 @@ Team: Lesley-Ann Christl, Kirk McDowell, Rami Basheer & Boi Schrader
 
 ---
 
-![homeREADME](https://user-images.githubusercontent.com/73485164/212683907-dd27e37a-9b1e-409c-abe0-1f0327e5f614.png)
+![Screenshot from 2023-03-27 21-26-06](https://user-images.githubusercontent.com/73485164/228046315-91422bc9-e231-4b10-96bb-339afaa47d53.png)
+
 
 ## Description
 
