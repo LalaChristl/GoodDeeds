@@ -1,6 +1,6 @@
 /* Profile component styling */
 .helpee-profile-container {
-    background-color: #fffff3;
+    background-color: #fbf9e9;
     border-radius: 16px;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     color: #2d2d2d;
@@ -15,6 +15,7 @@
     
   }
   
+  
   /* Profile component text styles */
   .helpee-profile-name {
     font-size: 32px;
@@ -22,6 +23,8 @@
     color: #ff9f00;
     margin-bottom: 60px;
     margin-right: 33rem;
+    margin-left: 3.5rem;
+    
   }
   .profile-text-container {
     display: flex;
@@ -29,9 +32,25 @@
     align-items: center;
     margin: 20px;
     padding: 20px;
-
-
     border-radius: 10px;
+  }
+  .profile-text-container td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .profile-text-container tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .profile-text-container td:first-child {
+    width: 150px;
+    font-weight: bold;
+  }
+  
+  .profile-text-container td:last-child {
+    text-align: left;
+    color: #555;
   }
   
   .profile-text {
