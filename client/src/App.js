@@ -117,7 +117,6 @@ function App() {
         sx={{
           height: "vh",
           display: "flex",
-
           maxWidth: "100%",
           flexDirection: "column",
           alignItems: "center",
