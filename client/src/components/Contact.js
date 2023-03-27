@@ -15,26 +15,30 @@ function Contact() {
   }
 
   return (
-    <div className="contact-main">
-      <Navbar />
-      <div className="contact-header">
-        <h1 className="contact-heading">Contact Us</h1>
+    <div className="w-[screen] ">
+      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[375px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
+        <div className="contact-main">
+          <Navbar />
+          <div className="contact-header">
+            <h1 className="contact-heading">Contact Us</h1>
+          </div>
+          <div>
+            <p className="contact-email">
+              <label htmlFor="">
+                <input type="email" id="user-email" className="contact-input" />
+                Please enter your email
+              </label>
+              <BsMailbox
+                value=""
+                className="contact-icon"
+                onClick={sendEmail}
+                title="Send Email"
+              />
+            </p>
+          </div>
+        </div>
+        <Footer2 />
       </div>
-      <div>
-        <p className="contact-email">
-          <label htmlFor="">
-            <input type="email" id="user-email" className="contact-input" />
-            Please enter your email
-          </label>
-          <BsMailbox
-            value=""
-            className="contact-icon"
-            onClick={sendEmail}
-            title="Send Email"
-          />
-        </p>
-      </div>
-      <Footer2 />
     </div>
   );
 }

@@ -180,6 +180,7 @@ export const getUser = async (req, res) => {
 
 export const getUser2 = async (req, res) => {
   try {
+    console.log("get user2", req.params);
     const user = await User.findById(req.params._id).select("-password -__v");
     if (!user) return res.status(404).send("User not found");
 
