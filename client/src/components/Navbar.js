@@ -5,14 +5,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Logo3 from "../images/logo-3.png";
+import Logo from "../images/logo-nav.png";
 import { Context } from "./Context";
-import MenuIcon from '@material-ui/icons/Menu';
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-
-
+import MenuIcon from "@material-ui/icons/Menu";
+import IconButton from "@material-ui/core/IconButton";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,23 +26,21 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     marginRight: theme.spacing(2),
     height: "50px",
-    
   },
   linkContainer: {
     flexGrow: 1,
     display: "flex",
     justifyContent: "flex-end",
-    [theme.breakpoints.down('sm')]: {
-      display: "none"
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
     },
-   
   },
   link: {
     color: "white",
     textTransform: "uppercase",
     marginRight: theme.spacing(2),
     fontSize: "14px",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     "&:hover": {
       color: "black",
       backgroundColor: "#ffa472",
@@ -52,11 +48,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuButton: {
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       display: "none",
     },
   },
-  
 }));
 
 function Navbar() {
@@ -110,7 +105,7 @@ function Navbar() {
           <Link to="/">
             <div className="flex justify-center items-center gap-[10px]">
               <p className="Logo text-[1.5rem]">Good Deeds</p>
-              <img className="" src={Logo3} alt="" />
+              <img className="" src={Logo} alt="" />
             </div>
           </Link>
 
@@ -127,84 +122,101 @@ function Navbar() {
               Contact
             </Button>
 
-            <Button component={Link} to="/dashboard/helpeeprofile/getuser1" className={classes.link}>
+            <Button
+              component={Link}
+              to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
+              className={classes.link}
+            >
               Dashboard
             </Button>
 
-                {state.isAuthenticated ? (
-                <Button className={classes.link} onClick={handleLogout}>
+            {state.isAuthenticated ? (
+              <Button className={classes.link} onClick={handleLogout}>
                 Logout
-                </Button> ) 
-                : 
-                (<>
+              </Button>
+            ) : (
+              <>
                 <Button
-                              aria-controls="simple-menu"
-                              aria-haspopup="true"
-                              onClick={handleMenu}
-                              className={classes.menuButton}
-                            >
-                <MenuIcon />
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  className={classes.menuButton}
+                >
+                  <MenuIcon />
                 </Button>
 
-              <Menu
-                             id="simple-menu"
-                             anchorEl={anchorEl}
-                             keepMounted
-                             open={Boolean(anchorEl)}
-                             onClose={handleClose}
-                           >
-                <MenuItem onClick={handleClose}>
-                  <Link to="/" className={classes.link}>
-                    Home
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Link to="/aboutus" className={classes.link} >
-                    About
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Link to="/contact" className={classes.link}>
-                    Contact
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <Link to="/map" className={classes.link}>
-                    Contact
-                  </Link>
-                </MenuItem>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/" className={classes.link}>
+                      Home
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/aboutus" className={classes.link}>
+                      About
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/contact" className={classes.link}>
+                      Contact
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link to="/map" className={classes.link}>
+                      Contact
+                    </Link>
+                  </MenuItem>
 
-                <MenuItem onClick={handleClose}>
-                  <Link 
+                  <MenuItem onClick={handleClose}>
+                    <Link
                       to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
-                      className={classes.link}>
-                    Dashboard
-                  </Link>
-                </MenuItem>
-              </Menu>
+                      className={classes.link}
+                    >
+                      Dashboard
+                    </Link>
+                  </MenuItem>
+                </Menu>
 
-              {state.user._id ? (
-              <Button
-                  onClick={handleLogout} component={Link} to="/" className={classes.link}>
+                {state.user._id ? (
+                  <Button
+                    onClick={handleLogout}
+                    component={Link}
+                    to="/"
+                    className={classes.link}
+                  >
                     Logout
-              </Button>
-              ) : (
-              <Button
-                  onClick={handleLogin} component={Link} to="/login" className={classes.link}>
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleLogin}
+                    component={Link}
+                    to="/login"
+                    className={classes.link}
+                  >
                     Login
-              </Button>
-              )}
+                  </Button>
+                )}
 
-              <Button component={Link} to="/register" className={classes.link}>
-                Register
-              </Button>
-            </>
+                <Button
+                  component={Link}
+                  to="/register"
+                  className={classes.link}
+                >
+                  Register
+                </Button>
+              </>
             )}
           </div>
         </Toolbar>
       </AppBar>
     </div>
- );
+  );
 }
-              
+
 export default Navbar;

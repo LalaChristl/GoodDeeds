@@ -52,12 +52,12 @@ const HelpeeProfile = () => {
           {user && (
             <>
               <img src={user.image} alt="" className="profile-image" />
-              <p className="helpee-profile-name">{user.firstName}</p>
+              <p className="helpee-profile-name">{user.userName}</p>
               <div className="profile-text-container">
                 <p className="profile-text">Name: {user.firstName}</p>
                 <p className="profile-text">Last Name: {user.lastName}</p>
                 <p className="profile-text">Age: {user.age}</p>
-                <p className="profile-text">Gender: {user.gender}</p>
+                {/* <p className="profile-text">Gender: {user.gender}</p> */}
                 <p className="profile-text">Language(s): {user.languages}</p>
                 <p className="profile-text">About Me: {user.about}</p>
               </div>
