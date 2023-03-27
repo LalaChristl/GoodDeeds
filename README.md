@@ -4,15 +4,15 @@ Team: Lesley-Ann Christl, Kirk McDowell, Rami Basheer & Boi Schrader
 
 ---
 
-![homeREADME](https://user-images.githubusercontent.com/73485164/212683907-dd27e37a-9b1e-409c-abe0-1f0327e5f614.png)
+![good-deeds-homepage](https://user-images.githubusercontent.com/73485164/228052876-78f3f6b8-d516-4291-9ccd-25fd4ee28254.png)
 
 ## Description
 
-Good Deeds volunteering app. Our app connects volunteers with people in need. This innovative platform allows individuals to easily find opportunities to give back to their communities and help those who need it most. Whether you're looking to donate your time, skills, or resources, this app makes it simple to connect with individuals in your area in need of support.
+Good Deeds volunteering app that connects volunteers with people in need. This innovative platform allows individuals to easily find opportunities to give back to their communities and help those who need it most. Whether you're looking to donate your time, skills, or resources, this app makes it simple to connect with individuals in your area in need of support.
 
 ---
 
-![mealsREADME](https://user-images.githubusercontent.com/73485164/212684005-3ac5de58-a251-4935-9dcb-439a8b284aef.png)
+![good-deeds-benefits](https://user-images.githubusercontent.com/73485164/228053244-25bf26a9-3b2f-4bf9-91aa-40c558da020d.png)
 
 ---
 
@@ -58,9 +58,7 @@ Good Deeds volunteering app. Our app connects volunteers with people in need. Th
 
 ---
 
-![loginREADME](https://user-images.githubusercontent.com/73485164/212684052-56c95fb8-f383-4e25-b567-67f1f4bc002b.png)
-
-![cartREADME](https://user-images.githubusercontent.com/73485164/212684073-895aa5c7-2da0-4e1b-9cd3-212f08ed7cb2.png)
+![good-deeds-login](https://user-images.githubusercontent.com/73485164/228052938-2e16e79a-7740-4023-87d3-f25a4bbde1ad.png)
 
 ---
 

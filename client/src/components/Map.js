@@ -13,13 +13,12 @@ import {
 } from "@react-google-maps/api";
 import { useState, useRef, useCallback, useContext, useEffect } from "react";
 import Search from "./Search";
-import MapNav from "./MapNav";
+import Navbar from "./Navbar";
 
 import { Context } from "./Context";
 
 import { FaMapMarkerAlt } from "react-icons/fa";
 import "./Map.css";
-import Navbar from "./Navbar";
 
 const libraries = ["places"]; //Google Places Libraries variable
 
@@ -214,7 +213,7 @@ function Map() {
   };
   return (
     <div className="map-container">
-      <Navbar/>
+      <Navbar />
       <div className="search-container">
         <div
           style={{
