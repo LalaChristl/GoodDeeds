@@ -1,9 +1,17 @@
-import Navbar from "./Navbar";
-import "./Contact.css";
-import { BsMailbox } from "react-icons/bs";
+
 import Footer2 from "./Footer2";
+import {
+  TextField,
+  Button,
+  Paper,
+  Typography,
+  Box,
+} from "@mui/material";
+import Navbar from "./Navbar";
+
 
 function Contact() {
+
   function sendEmail() {
     const userEmail = document.getElementById("user-email").value;
     const recipientEmail = "your-email@example.com"; // replace with your email address
@@ -13,33 +21,104 @@ function Contact() {
     )}&body=${encodeURIComponent(userEmail)}`;
     window.open(emailLink);
   }
+  
+
+
 
   return (
-    <div className="w-[screen] ">
-      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[375px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
-        <div className="contact-main">
-          <Navbar />
-          <div className="contact-header">
-            <h1 className="contact-heading">Contact Us</h1>
-          </div>
-          <div>
-            <p className="contact-email">
-              <label htmlFor="">
-                <input type="email" id="user-email" className="contact-input" />
-                Please enter your email
-              </label>
-              <BsMailbox
-                value=""
-                className="contact-icon"
-                onClick={sendEmail}
-                title="Send Email"
-              />
-            </p>
-          </div>
-        </div>
-        <Footer2 />
+    <div className="w-[screen] border-2 border-red-600 bg-[#EECDB2] text-[#110931]">
+    <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
+      <Navbar />
+      <Box
+        sx={{
+          height: "100vh",
+          display: "flex",
+          gap: 5,
+          maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: 10,
+          background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          color: "black",
+        }}
+      >
+          <Typography>
+         <div className="flex flex-col justify-center items-center ">
+            <div className="login-scroller-container">
+              <h1 className="login-h1">
+                Good Deeds
+                {/* <!-- Scroller Start --> */}
+                <div className="login-scroller">
+                  <span>
+                    Connect
+                    <br />
+                    Engage
+                    <br />
+                    Empower
+                  </span>
+                </div>
+                {/* <!-- Scroller End --> */}
+              </h1>
+            </div>
+            </div>
+        </Typography>
+          <Paper
+            sx={{
+              p: 4,
+              mt: 8,
+              mb: 12,
+              maxWidth: 460,
+              backgroundColor: "#ff7e36",
+              opacity: [1,1,1],
+              boxShadow: 10,
+            }}
+          >
+            <Typography variant="h3" align="center" mb={4} sx={{color:"white"}}>
+            Contact us!
+            </Typography>
+            
+            <TextField
+                fullWidth
+                type="email"
+                id="user-email"
+                name="email"
+                className="contact-input"
+              
+                
+                placeholder="Email"
+                margin="normal"
+                variant="outlined"
+                sx={{ backgroundColor: "#fff3e9" 
+                    }}
+
+            />
+          
+          
+            <Button
+              fullWidth
+              sx={{
+                backgroundColor: "#018f8c ",
+                marginTop: "3px",
+                marginBottom: "3px",
+              }}
+              variant="contained"   
+              size="large"
+
+
+              type="submit"
+              onClick={sendEmail}
+            >
+             Send Email
+            </Button>
+           
+          </Paper>
+
+      </Box>
+      <Footer2/>
       </div>
-    </div>
+     </div>
   );
 }
+
 export default Contact;
