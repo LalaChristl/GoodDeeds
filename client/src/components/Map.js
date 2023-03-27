@@ -13,7 +13,8 @@ import {
 } from "@react-google-maps/api";
 import { useState, useRef, useCallback, useContext, useEffect } from "react";
 import Search from "./Search";
-import MapNav from "./MapNav";
+// import MapNav from "./MapNav";
+import Navbar from "./Navbar";
 
 import { Context } from "./Context";
 
@@ -213,7 +214,7 @@ function Map() {
   };
   return (
     <div className="map-container">
-      <MapNav />
+      <Navbar />
       <div className="search-container">
         <div
           style={{

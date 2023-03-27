@@ -111,24 +111,24 @@ function App() {
   const classes = useStyles();
 
   return (
-    <>
-    <Navbar />
-    <Box
-        sx={{
-          height: "vh",
-          display: "flex",
-        
-          maxWidth: "100%",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingBottom: 30,
-          background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
-          color: "black",
-        }}
-    >
-  
-        <Box className={classes.header}>
+    <div className="w-[screen] border-2 border-red-600 bg-[#EECDB2] text-[#110931]">
+      <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
+        <Navbar />
+        <Box
+          sx={{
+            height: "vh",
+            display: "flex",
+            maxWidth: "100%",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingBottom: 30,
+            background:
+              "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            color: "black",
+          }}
+        >
+          <Box className={classes.header}>
             <img className={classes.heroImage} src={Hero} alt="" />
             <Box className={classes.heroContent}>
               <Typography variant="h3" className={classes.heroTitle}>
@@ -342,65 +342,60 @@ function App() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-            }}>   
-        <section className="h-[500px]">
-          <Carousel />
-        </section>
-     
+            }}
+          >
+            <section className="h-[500px]">
+              <Carousel />
+            </section>
 
-
-        
-        <section>
-          <div className="about-us-container">
-            <h3 className="about-us-h3">Who We Are</h3>
-            <p className="about-us-p">
-              Welcome to Good Deeds, a community volunteer organisation
-              dedicated to connecting people and making a positive impact in
-              your local area. Our organisation was founded on the belief that
-              everyone has the power to make a difference and that small acts of
-              kindness can have a big impact. We aim to bring people together
-              and create a sense of community through volunteering and giving
-              back. At Good Deeds, we offer a range of volunteer opportunities
-              that cater to different interests and skillsets. Whether you're
-              passionate about the environment, social justice, or helping those
-              in need, we have a role for you. We believe that volunteering
-              should be accessible to everyone, which is why we offer flexible
-              hours and a supportive community to help you get started. Our
-              volunteers are the heart and soul of our organisation, and we
-              value their time and dedication. We aim to create a positive and
-              inclusive environment where everyone feels welcome and valued. We
-              believe that through our collective efforts, we can create a
-              stronger and more connected community. Join us today and become a
-              part of something bigger. Together, we can make a difference and
-              create a brighter future for all.
-            </p>
-          </div>
-        </section>
-        <section>
-          <div className="home-icons-section flex gap-[300px] justify-center pt-[30px] pb-[30px]">
-            <div className="flex justify-center items-center flex-col">
-              <IoIosPeople className="h-[75px] w-[75px]" />
-              <p>Connect</p>
-            </div>
-            <div className="flex justify-center items-center flex-col">
-              <TbHeartHandshake className="h-[75px] w-[75px]" />
-              <p>Engage</p>
-            </div>
-            <div className="flex justify-center items-center flex-col">
-              <FaHands className="h-[75px] w-[75px]" />
-              <p>Empower</p>
-            </div>
-          </div>
-        </section>
-        </Paper>
-     
-       
-
-      </Box>
-      <Footer2/>
+            <section>
+              <div className="about-us-container">
+                <h3 className="about-us-h3">Who We Are</h3>
+                <p className="about-us-p">
+                  Welcome to Good Deeds, a community volunteer organisation
+                  dedicated to connecting people and making a positive impact in
+                  your local area. Our organisation was founded on the belief
+                  that everyone has the power to make a difference and that
+                  small acts of kindness can have a big impact. We aim to bring
+                  people together and create a sense of community through
+                  volunteering and giving back. At Good Deeds, we offer a range
+                  of volunteer opportunities that cater to different interests
+                  and skillsets. Whether you're passionate about the
+                  environment, social justice, or helping those in need, we have
+                  a role for you. We believe that volunteering should be
+                  accessible to everyone, which is why we offer flexible hours
+                  and a supportive community to help you get started. Our
+                  volunteers are the heart and soul of our organisation, and we
+                  value their time and dedication. We aim to create a positive
+                  and inclusive environment where everyone feels welcome and
+                  valued. We believe that through our collective efforts, we can
+                  create a stronger and more connected community. Join us today
+                  and become a part of something bigger. Together, we can make a
+                  difference and create a brighter future for all.
+                </p>
+              </div>
+            </section>
+            <section>
+              <div className="home-icons-section flex gap-[300px] justify-center pt-[30px] pb-[30px]">
+                <div className="flex justify-center items-center flex-col">
+                  <IoIosPeople className="h-[75px] w-[75px]" />
+                  <p>Connect</p>
+                </div>
+                <div className="flex justify-center items-center flex-col">
+                  <TbHeartHandshake className="h-[75px] w-[75px]" />
+                  <p>Engage</p>
+                </div>
+                <div className="flex justify-center items-center flex-col">
+                  <FaHands className="h-[75px] w-[75px]" />
+                  <p>Empower</p>
+                </div>
+              </div>
+            </section>
+          </Paper>
+        </Box>
+        <Footer2 />
       </div>
-     </div>
-    
+    </div>
   );
 }
 
