@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
 import Navbar from "./Navbar";
+import Footer2 from "./Footer2";
 import "./Dashboard.css";
 import TaskConfirm from "./TaskConfirm";
 
@@ -105,7 +106,10 @@ const Dashboard = () => {
           </button>
         </div>
         <TaskConfirm />
+       
       </div>
+      <Footer2 /> 
+      
     </>
   );
 };
