@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appBar: {
-    backgroundColor: "#ff7e36",
+    backgroundColor: "#FF7E36",
     position: "fixed",
     top: 0,
     left: 0,
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     "&:hover": {
       color: "black",
-      backgroundColor: "#ffa472",
+      backgroundColor: "#FFA472",
       // fontSize: "16px",
     },
   },
@@ -53,51 +53,39 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 function Navbar() {
   const classes = useStyles();
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
-
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-
   const [anchorEl, setAnchorEl] = useState(null);
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleLogin = async () => {
     const response = await axios.post("/users/login", data);
-
     if (response.data.success) {
       dispatch({
         type: "login",
         payload: response.data.user,
       });
-
       navigate(`/dashboard/helpeeProfile/getuser2/${response.data.user._id}`);
     }
   };
-
   const handleLogout = async () => {
     const response = await axios.get("http://localhost:5000/users/logout");
-    console.log("🦩 ~ handleLogout ~ response", response);
-
+    console.log(":flamingo: ~ handleLogout ~ response", response);
     dispatch({
       type: "logout",
     });
-
     navigate("/");
   };
-
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
@@ -108,16 +96,13 @@ function Navbar() {
               <img className="" src={Logo} alt="" />
             </div>
           </Link>
-
           <div className={classes.linkContainer}>
             <Button component={Link} to="/" className={classes.link}>
               Home
             </Button>
-
             <Button component={Link} to="/aboutus" className={classes.link}>
               About
             </Button>
-
             <Button component={Link} to="/contact" className={classes.link}>
               Contact
             </Button>

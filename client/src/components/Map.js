@@ -13,7 +13,6 @@ import {
 } from "@react-google-maps/api";
 import { useState, useRef, useCallback, useContext, useEffect } from "react";
 import Search from "./Search";
-// import MapNav from "./MapNav";
 import Navbar from "./Navbar";
 
 import { Context } from "./Context";
