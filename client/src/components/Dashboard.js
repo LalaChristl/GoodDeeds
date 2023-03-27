@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import { Context } from "./Context";
 import Navbar from "./Navbar";
 import "./Dashboard.css";
@@ -11,13 +11,16 @@ const Dashboard = () => {
   const { state, dispatch } = useContext(Context);
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
-
-  console.log(tasks);
-  console.log(state.user._id);
+  const location = useLocation();
+  console.log("dashboard task", tasks);
+  console.log("dashboard user.id", state.user._id);
 
   const { id } = useParams();
 
   useEffect(() => {
+    console.log("Dashboard mounted with id:", id);
+    console.log("Location:", location.pathname, location.search);
+
     const fetchData = async () => {
       try {
         const response = await axios.get("/users/getuser2/" + id);
@@ -32,7 +35,7 @@ const Dashboard = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, location]);
 
   const handleLogout = async () => {
     const response = await axios.get("http://localhost:5000/users/logout");
@@ -46,7 +49,7 @@ const Dashboard = () => {
   };
 
   return (
-    <>
+    <div key={id}>
       <Navbar />
       <div class="dashboard-container">
         <div class="dashboard-card">
@@ -106,7 +109,7 @@ const Dashboard = () => {
         </div>
         <TaskConfirm />
       </div>
-    </>
+    </div>
   );
 };
 export default Dashboard;

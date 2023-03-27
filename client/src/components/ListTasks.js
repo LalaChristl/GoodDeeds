@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import "./ListTasks.css";
 import { Context } from "./Context";
 import axios from "axios";
@@ -17,6 +17,8 @@ import Footer2 from "./Footer2";
 function ListTasks() {
   // Global Context
   const { state, dispatch } = useContext(Context);
+  // State to set task locally
+  const [task, setTask] = useState([]);
 
   // State for searching/filtering
   const [filter, setFilter] = useState({ task: "" });
@@ -72,9 +74,11 @@ function ListTasks() {
     }
     fetchData();
   }, []);
-  const handleDelete = async (id) => {
-    console.log("🇯🇲 handleDelete ~ id", id);
-    const owner = state.user._id;
+  const handleDelete = async (item) => {
+    const owner = item.owner._id;
+    const id = item._id;
+    const userID = state.user._id;
+    console.log("🇯🇲 handleDelete ~ id, owner", id, owner);
 
     if (!id || !owner === "") {
       console.log("Invalid data for task deletion");
@@ -83,7 +87,7 @@ function ListTasks() {
 
     try {
       const response = await axios.delete(`/tasks/delete/${id}`, {
-        data: { owner, id },
+        data: { owner, id, userID },
       });
       console.log("🇯🇲 handleDelete ~ response", response);
 
@@ -121,6 +125,19 @@ function ListTasks() {
         payload: response.data.task,
       });
   };
+
+  const handleDeleteLocally = useCallback(
+    (id) => {
+      console.log("handleDeleteLocally ID", id);
+      const newData = task.filter((item) => item.task._id !== id);
+      setTask(newData);
+      dispatch({
+        type: "removeTask",
+        payload: id,
+      });
+    },
+    [dispatch, task] // depend on task state and dispatch function
+  );
 
   return (
     <div className="tasklist-container">
@@ -222,12 +239,15 @@ function ListTasks() {
 
                   <MdDeleteForever
                     className="list-btn-2"
-                    onClick={() => handleDelete(item._id)}
+                    onClick={() => handleDelete(item)}
                     title="delete-request"
                   />
                   <FaHandsHelping
                     className="list-btn-2"
-                    onClick={() => handleAdd(item)}
+                    onClick={() => {
+                      handleAdd(item);
+                      handleDeleteLocally(item._id);
+                    }}
                     title="accept-request"
                   />
                 </div>
