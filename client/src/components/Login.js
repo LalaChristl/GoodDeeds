@@ -2,21 +2,20 @@ import axios from "axios";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "./Context";
-import "./Login.css";
-import Footer2 from "./Footer2";
+import { makeStyles } from "@material-ui/core/styles";
 
 import {
   TextField,
   Button,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
   Paper,
   Typography,
   Box,
 } from "@mui/material";
 
+
+import "./Login.css";
 import Navbar from "./Navbar";
+import Footer2 from "./Footer2";
 
 function Login() {
   const { dispatch } = useContext(Context);
@@ -48,16 +47,53 @@ function Login() {
     navigate("/forgotpass");
   };
 
-  const handleInputChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
+  const useStyles = makeStyles((theme) => ({
+    header: {
+      width: "100%",
+      minWidth: 375,
+      height: 400,
+      position: "relative",
+      overflow: "hidden",
+    },
+    heroImage: {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      filter: "brightness(70%)",
+    },
+    heroContent: {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-25%, -25%)",
+      textAlign: "center",
+    },
+    heroTitle: {
+      fontWeight: "bold",
+      fontSize: "2rem",
+      color: "#fff",
+      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+      marginBottom: theme.spacing(2),
+    },
+    searchbar: {
+      color: "#fff",
+      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+      padding: "10px 10px",
+      border: "0px",
+      display: "flex",
+    
+    },
+
+  }));
+  const classes = useStyles();
+
 
   return (
-    <div className="w-[screen] border-2 border-red-600 bg-[#eecdb2] text-[#110931]">
-      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[360px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
-        <Navbar />
-        <Box
-          className="login-box"
+
+    <div className="w-[screen] border-2 border-red-600 bg-[#EECDB2] text-[#110931]">
+      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
+      <Navbar />
+      <Box
           sx={{
             height: "100vh",
             display: "flex",
@@ -67,18 +103,14 @@ function Login() {
             alignItems: "center",
             justifyContent: "center",
             paddingTop: 5,
-            backgroundColor: "#fff3e9",
-            color: "#110931",
-            // marginBottom: "-80px",
+            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            color: "black",
           }}
-        >
-          {/* <div>
-          <div id="typing">
-            <span>One Good Deed At a Time</span>
-          </div>
-          <div id="crow">|</div>
-        </div> */}
-          <div className="flex flex-col justify-center items-center ">
+      >
+
+
+         <Typography>
+         <div className="flex flex-col justify-center items-center ">
             <div className="login-scroller-container">
               <h1 className="login-h1">
                 Good Deeds
@@ -95,75 +127,83 @@ function Login() {
                 {/* <!-- Scroller End --> */}
               </h1>
             </div>
-            <div>
-              <Paper
-                sx={{
-                  p: 4,
-                  mt: 8,
-                  mb: 12,
-                  maxWidth: 460,
-                  backgroundColor: "#ffaf66 ",
-                }}
-              >
-                <Typography variant="h2" align="center" mb={4}>
-                  Login
-                </Typography>
-                <TextField
-                  fullWidth
-                  label="Email"
-                  name="email"
-                  value={data.email}
-                  onChange={(e) => setData({ ...data, email: e.target.value })}
-                  margin="normal"
-                  variant="outlined"
-                  sx={{ backgroundColor: "#fff3e9" }}
-                />
-                <TextField
-                  fullWidth
-                  label="Password"
-                  name="password"
-                  type="password"
-                  value={data.password}
-                  onChange={(e) =>
-                    setData({ ...data, password: e.target.value })
-                  }
-                  margin="normal"
-                  variant="outlined"
-                  sx={{ backgroundColor: "#fff3e9" }}
-                />
-                <Typography
-                  align="center"
-                  mt={2}
-                  mb={1}
-                  sx={{ cursor: "pointer" }}
-                  onClick={handleForgotPass}
-                >
-                  Forgot Password?
-                </Typography>
-                <Button
-                  variant="contained"
-                  onClick={handleLogin}
-                  sx={{ backgroundColor: "#0d2237" }}
-                  size="large"
-                  fullWidth
-                >
-                  Sign In
-                </Button>
-                <Typography
-                  align="center"
-                  mt={2}
-                  sx={{ cursor: "pointer" }}
-                  onClick={handleNotUser}
-                >
-                  Not a user yet?
-                </Typography>
-              </Paper>
             </div>
-          </div>
-        </Box>
-        <Footer2 />
+        </Typography>
+          <Paper
+            sx={{
+              p: 4,
+              mt: 8,
+              mb: 25,
+              maxWidth: 460,
+              backgroundColor: "#ff7e36",
+              opacity: [1,1,1],
+              boxShadow: 10,
+            }}
+          >
+            <Typography variant="h2" align="center" pb={10}  sx={{color:"white"}} >
+              Login
+            </Typography>
+            
+            <TextField
+              fullWidth
+              label="Email"
+              name="email"
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" 
+            }}
+
+            />
+            <TextField
+              fullWidth
+              label="Password"
+              name="password"
+              type="password"
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff3e9" }}
+              
+            />
+            <Typography
+              align="center"
+              mt={2}
+              mb={1}
+              sx={{ cursor: "pointer" }}
+              onClick={handleForgotPass}
+            >
+              Forgot Password?
+            </Typography>
+            <Button
+              sx={{
+                backgroundColor: "#018f8c ",
+              }}
+              variant="contained"
+              onClick={handleLogin}
+
+              size="large"
+              fullWidth
+            >
+              Sign In
+            </Button>
+            <Typography
+              align="center"
+              mt={2}
+              sx={{ cursor: "pointer" }}
+              onClick={handleNotUser}
+            >
+              Not a user yet?
+            </Typography>
+          </Paper>
+       
+      </Box>
+      <Footer2/>
       </div>
-    </div>
+     </div>
+
   );
 }
 
