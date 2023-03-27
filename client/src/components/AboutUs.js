@@ -9,11 +9,29 @@ import Card from "react-bootstrap/Card";
 import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
 
+
+import {
+  Box
+} from "@mui/material";
+
 const AboutUs = () => {
   return (
     <div className="w-[screen] border-2 border-red-600 bg-[#eecdb2] text-[#110931]">
-      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[360px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
+      <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
         <Navbar />
+        <Box
+        sx={{
+          height: "vh",
+          display: "flex",
+          maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingBottom: 30,
+          background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          color: "black",
+        }}
+    >
         <section>
           <div className="about-us-hero-container">
             <p className="about-us-hero-p text-[#5a125a]">
@@ -127,7 +145,7 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-
+        </Box>
         <Footer2 />
       </div>
     </div>

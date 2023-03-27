@@ -91,7 +91,7 @@ function Login() {
   return (
 
     <div className="w-[screen] border-2 border-red-600 bg-[#EECDB2] text-[#110931]">
-      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
+      <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
       <Navbar />
       <Box
           sx={{
