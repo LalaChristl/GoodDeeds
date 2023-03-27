@@ -9,7 +9,7 @@ import { FaFilter } from "react-icons/fa";
 import { RiFilterOffFill } from "react-icons/ri";
 import { MdDeleteForever } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
-
+import { GiSelect } from "react-icons/gi";
 import Navbar from "./Navbar";
 import { FaHandsHelping } from "react-icons/fa";
 import Footer2 from "./Footer2";
@@ -22,6 +22,14 @@ function ListTasks() {
 
   // State for searching/filtering
   const [filter, setFilter] = useState({ task: "" });
+  const [clicked, setClicked] = useState(false);
+
+  useEffect(() => {
+    const clickedItemId = localStorage.getItem("clickedItemId");
+    if (clickedItemId) {
+      setClicked(clickedItemId);
+    }
+  }, []);
 
   // Api to server
   const handleApplyFilter = async () => {
@@ -124,33 +132,64 @@ function ListTasks() {
         type: "taskConfirm",
         payload: response.data.task,
       });
+    alert("Task has been accepted successfully!"); // display success message
   };
+
+  // const handleAdd1 = useCallback((item) => {
+  //   // Handle adding the task here
+
+  //   // Save the clicked item to local storage
+  //   localStorage.setItem("clickedItemId", item._id);
+  //   setClicked(item._id);
+  // }, []);
+
+  function handleClick(item) {
+    // setClicked(item._id);
+    handleAdd(item);
+    handleDeleteLocally(item._id);
+    // handleAdd1(item);
+    if (clicked === item._id) {
+      // Remove the clicked item from local storage
+      localStorage.removeItem("clickedItemId");
+      setClicked(null);
+    } else {
+      // Handle adding the task here
+
+      // Save the clicked item to local storage
+      localStorage.setItem("clickedItemId", item._id);
+      setClicked(item._id);
+    }
+  }
+
+  // const handleDeleteLocally = useCallback(
+  //   (id) => {
+  //     console.log("handleDeleteLocally ID", id);
+  //     const newData = task.filter((item) => item.task._id !== id);
+  //     setTask(newData);
+  //     dispatch({
+  //       type: "removeTask",
+  //       payload: id,
+  //     });
+  //   },
+  //   [dispatch, task] // depend on task state and dispatch function
+  // );
 
   const handleDeleteLocally = useCallback(
     (id) => {
       console.log("handleDeleteLocally ID", id);
-      const newData = task.filter((item) => item.task._id !== id);
-      setTask(newData);
+      const newData = state.taskList.filter((item) => item._id !== id);
       dispatch({
         type: "removeTask",
         payload: id,
       });
     },
-    [dispatch, task] // depend on task state and dispatch function
+    [dispatch, state.taskList]
   );
 
   return (
     <div className="tasklist-container">
       <Navbar />
-      <div className="search-list-1">
-        {/* <Link
-          to="/dashboard/helpeeprofile/getuser2/:id"
-          className="list-link"
-          title="back to dashboard"
-        >
-          <button className="dash-btn">Dashboard</button>
-        </Link> */}
-      </div>
+      <div className="search-list-1"></div>
       <div className="search-list">
         <input
           placeholder="Search request"
@@ -243,10 +282,11 @@ function ListTasks() {
                     title="delete-request"
                   />
                   <FaHandsHelping
-                    className="list-btn-2"
+                    className={`list-btn-2 ${
+                      clicked === item._id ? "selected" : "deselected"
+                    }`}
                     onClick={() => {
-                      handleAdd(item);
-                      handleDeleteLocally(item._id);
+                      handleClick(item);
                     }}
                     title="accept-request"
                   />
