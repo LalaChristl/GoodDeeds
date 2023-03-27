@@ -16,11 +16,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('../images/5150295.png');
+  background-size: contain;
+  background-position: top;
 }
 
 .about-us-hero-p {
   font-size: 3.5rem;
-  color: #5722ab;
+  color: #2257AB;
+  animation: slide-in-out 15s linear infinite;
+  padding-bottom: 200px;
+}
+
+@keyframes slide-in-out {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .about-us-mission-div-1,
