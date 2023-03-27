@@ -252,8 +252,7 @@ function Search({
         >
           <button
             style={{
-              background:
-                "linear-gradient(to bottom,#C9FFE5 0%,#AB274F 50%,#D3212D 50%,#D3212D 100%)",
+              background: "red",
               padding: "4px",
               borderRadius: "5px",
               fontWeight: "bolder",
@@ -269,8 +268,7 @@ function Search({
           </button>
           <button
             style={{
-              background:
-                "linear-gradient(to bottom,#C9FFE5 0%,#AB274F 50%,#D3212D 50%,#D3212D 100%)",
+              background: "red",
               padding: "4px",
               borderRadius: "5px",
               fontWeight: "bolder",
