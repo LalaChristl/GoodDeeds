@@ -18,13 +18,13 @@ const EditUserPage = () => {
     languages: "",
     about: "",
   });
-  const [image, setImage] = useState(user.image);
-  const [userName, setUserName] = useState(user.userName);
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [email, setEmail] = useState(user.email);
-  const [languages, setLanguages] = useState(user.languages);
-  const [about, setAbout] = useState(user.about);
+  // const [image, setImage] = useState(user.image);
+  // const [userName, setUserName] = useState(user.userName);
+  // const [firstName, setFirstName] = useState(user.firstName);
+  // const [lastName, setLastName] = useState(user.lastName);
+  // const [email, setEmail] = useState(user.email);
+  // const [languages, setLanguages] = useState(user.languages);
+  // const [about, setAbout] = useState(user.about);
 
   useEffect(() => {
     async function fetchData() {
@@ -54,7 +54,7 @@ const EditUserPage = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log("Uploaded", data.url);
-          setImage(data.url); // Set the image state variable with the uploaded image
+          // setImage(data.url); // Set the image state variable with the uploaded image
           setUser((prev) => ({ ...prev, image: data.url }));
         })
         .catch((err) => {
@@ -66,15 +66,15 @@ const EditUserPage = () => {
   const handleSave = async () => {
     const updatedUser = {
       ...user,
-      image,
-      userName,
-      firstName,
-      lastName,
-      email,
-      languages,
-      about,
+      // image,
+      // userName,
+      // firstName,
+      // lastName,
+      // email,
+      // languages,
+      // about,
     };
-    const response = await axios.put("/users/edituser2", updatedUser);
+    const response = await axios.put("/users/edituser2", user);
     console.log("handleSave ~ response", response.data);
     if (response.data.success) navigate("/helpeeprofile/getuser2/" + id);
   };
@@ -87,37 +87,43 @@ const EditUserPage = () => {
     <>
       <Navbar />
       <Box
-          sx={{
-            height: "100vh",
-            display: "flex",
-            gap: 5,
-            maxWidth: "100%",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingTop: 25,
-            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
-            color: "black",
-          }}
+        sx={{
+          height: "100vh",
+          display: "flex",
+          gap: 5,
+          maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: 25,
+          background:
+            "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          color: "black",
+        }}
       >
-         <Paper
-            sx={{
-              p: 4,
-              mt: 8,
-              mb: 25,
-              maxWidth: 460,
-              backgroundColor: "#ff7e36",
-              opacity: [1,1,1],
-              boxShadow: 10,
-            }}
+        <Paper
+          sx={{
+            p: 4,
+            mt: 8,
+            mb: 25,
+            maxWidth: 460,
+            backgroundColor: "#ff7e36",
+            opacity: [1, 1, 1],
+            boxShadow: 10,
+          }}
+        >
+          <Typography
+            variant="h2"
+            align="center"
+            mb={0}
+            sx={{ color: "white" }}
           >
-          <Typography variant="h2" align="center" mb={0} sx={{color:"white"}}>
             Edit Profile
           </Typography>
           <div className="flex justify-center items-center mt-5">
             <img
               className="rounded-full h-28 w-28 border-4 border-white"
-              src={image || user.image}
+              src={user.image}
               alt="avatar"
             />
           </div>
@@ -144,8 +150,8 @@ const EditUserPage = () => {
             fullWidth
             label="User Name"
             name="userName"
-            value={userName || user.userName}
-            onChange={(e) => setUserName(e.target.value)}
+            value={user.userName}
+            onChange={(e) => setUser({ ...user, userName: e.target.value })}
             margin="normal"
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
@@ -154,8 +160,8 @@ const EditUserPage = () => {
             fullWidth
             label="First Name"
             name="firstName"
-            value={firstName || user.firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={user.firstName}
+            onChange={(e) => setUser({ ...user, firstName: e.target.value })}
             margin="normal"
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
@@ -164,8 +170,8 @@ const EditUserPage = () => {
             fullWidth
             label="Last Name"
             name="lastName"
-            value={lastName || user.lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            value={user.lastName}
+            onChange={(e) => setUser({ ...user, lastName: e.target.value })}
             margin="normal"
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
@@ -174,8 +180,8 @@ const EditUserPage = () => {
             fullWidth
             label="Email"
             name="email"
-            value={email || user.email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={user.email}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
             margin="normal"
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
@@ -185,8 +191,8 @@ const EditUserPage = () => {
             fullWidth
             label="Languages"
             name="languages"
-            value={languages || user.languages}
-            onChange={(e) => setLanguages(e.target.value)}
+            value={user.languages}
+            onChange={(e) => setUser({ ...user, languages: e.target.value })}
             margin="normal"
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
@@ -195,8 +201,8 @@ const EditUserPage = () => {
             fullWidth
             label="About Me"
             name="about"
-            value={about || user.about}
-            onChange={(e) => setAbout(e.target.value)}
+            value={user.about}
+            onChange={(e) => setUser({ ...user, about: e.target.value })}
             margin="normal"
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}

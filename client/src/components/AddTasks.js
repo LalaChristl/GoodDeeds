@@ -9,6 +9,14 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
 
+import {
+  TextField,
+  Button,
+  Paper,
+  Typography,
+  Box,
+} from "@mui/material";
+
 const libraries = ["places"];
 
 function AddTasks() {
@@ -112,19 +120,45 @@ function AddTasks() {
 
   return (
     <div>
-      <div className="border-2  gap-5 max-w-[1280px] mx-auto min-w-[375px] overflow-hidden items-center bg-[#fff3e9] text-[#110931] ">
+      <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[375px] overflow-hidden items-center bg-[#fff3e9] text-[#110931] ">
         <Navbar />
+        <Box
+          sx={{
+            height: "100vh",
+            display: "flex",
+            gap: 5,
+            maxWidth: "100%",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 5,
+            paddingBottom: 20,
+            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            color: "black",
+          }}
+      >
+        
         {/* <!-- Scroller Start --> */}
-        <div className="add-task-scroller">
-          <span>
-            Connect
-            <br />
-            Engage
-            <br />
-            Empower
-          </span>
-        </div>
-        {/* <!-- Scroller End --> */}
+        <Typography>
+         <div className="flex flex-col justify-center items-center ">
+            <div className="login-scroller-container">
+              <h1 className="login-h1">
+                Good Deeds
+                {/* <!-- Scroller Start --> */}
+                <div className="login-scroller">
+                  <span>
+                    Connect
+                    <br />
+                    Engage
+                    <br />
+                    Empower
+                  </span>
+                </div>
+                {/* <!-- Scroller End --> */}
+              </h1>
+            </div>
+            </div>
+        </Typography>
         <div className="task-container">
           <div className="task-form">
             <div className="task-input-div">
@@ -221,6 +255,7 @@ function AddTasks() {
             </div>
           </div>
         </div>
+        </Box>
         <Footer2 />
       </div>
     </div>
