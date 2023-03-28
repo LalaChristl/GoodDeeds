@@ -114,6 +114,9 @@ function Navbar() {
             >
               Dashboard
             </Button>
+            <Button component={Link} to={"/map/"} className={classes.link}>
+              Map
+            </Button>
 
             {state.isAuthenticated ? (
               <Button className={classes.link} onClick={handleLogout}>
@@ -154,7 +157,7 @@ function Navbar() {
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <Link to="/map" className={classes.link}>
-                      Contact
+                      Map
                     </Link>
                   </MenuItem>
 
