@@ -43,14 +43,15 @@ const Dashboard = () => {
   return (
     <div key={id}>
       <Navbar />
-      <div class="dashboard-container">
-        <div class="dashboard-card">
-          {user && (
-            <>
-              <h2 class="dashboard-heading">
-                Welcome to your Dashboard, {user.firstName}!
-              </h2>
-              <img src={user.image} alt="" class="dashboard-image" />
+      <Box>
+        <div class="dashboard-container">
+          <div class="dashboard-card">
+            {user && (
+              <>
+                <h2 class="dashboard-heading">
+                  Welcome to your Dashboard, {user?.firstName}!
+                </h2>
+                <img src={user?.image} alt="" class="dashboard-image" />
 
                 <div class="dashboard-tasks">
                   <div class="dashboard-tasks-header">
@@ -60,7 +61,7 @@ const Dashboard = () => {
                     <ul class="dashboard-tasks-list">
                       {tasks.map(
                         (task) =>
-                          task.owner??._id === state.user._id && (
+                          task.owner?._id === state.user._id && (
                             <li key={task._id} class="dashboard-task">
                               <h3 class="dashboard-task-heading">
                                 {task.task}
