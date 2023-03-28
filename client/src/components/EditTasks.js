@@ -8,6 +8,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
+import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
 
 const libraries = ["places"];
 
@@ -15,6 +16,8 @@ function EditTasks() {
   // ID for the task to edit
   const { id } = useParams();
   const [errorMessage, setErrorMessage] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [clickedTask, setClickedTask] = useState(null);
 
   // useNavigate hook
   const navigate = useNavigate();
@@ -56,6 +59,9 @@ function EditTasks() {
 
   const handleEditTask = async (e) => {
     e.preventDefault();
+    // Set the anchorEl and clickedTask states to the event target
+    setAnchorEl(e.target);
+    setClickedTask(e.target);
 
     if (
       !id ||
@@ -218,10 +224,23 @@ function EditTasks() {
               </Autocomplete>
               <MyButton onClick={handleEditTask} />
             </div>
-            {errorMessage && (
+            {/* {errorMessage && (
               <div className="error-message">{errorMessage}</div>
-            )}
+            )} */}
           </div>
+          <Popover
+            open={Boolean(clickedTask)}
+            anchorEl={anchorEl}
+            onClose={() => setClickedTask(null)}
+            anchorReference="anchorPosition"
+            anchorPosition={{ top: 100, left: 400 }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}
+          >
+            <div style={{ padding: "20px" }}>{errorMessage}</div>
+          </Popover>
         </div>
         <Footer2 />
       </div>
