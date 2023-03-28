@@ -87,28 +87,31 @@ const EditUserPage = () => {
     <>
       <Navbar />
       <Box
-        sx={{
-          height: "vh",
-          display: "flex",
-          gap: 5,
-          maxWidth: "100%",
-          flexDirection: "column",
-          alignItems: "center",
-          paddingTop: 10,
-          backgroundColor: "#FFF3E9",
-          color: "#110931",
-        }}
-      >
-        <Paper
           sx={{
-            p: 4,
-            mt: 8,
-            mb: 12,
-            maxWidth: 460,
-            backgroundColor: "#FFAF66",
+            height: "100vh",
+            display: "flex",
+            gap: 5,
+            maxWidth: "100%",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 25,
+            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            color: "black",
           }}
-        >
-          <Typography variant="h2" align="center" mb={0}>
+      >
+         <Paper
+            sx={{
+              p: 4,
+              mt: 8,
+              mb: 25,
+              maxWidth: 460,
+              backgroundColor: "#ff7e36",
+              opacity: [1,1,1],
+              boxShadow: 10,
+            }}
+          >
+          <Typography variant="h2" align="center" mb={0} sx={{color:"white"}}>
             Edit Profile
           </Typography>
           <div className="flex justify-center items-center mt-5">
@@ -125,7 +128,7 @@ const EditUserPage = () => {
               mt={2}
               mb={2}
               onClick={() => document.getElementById("image-input").click()}
-              sx={{ backgroundColor: "#0D2237" }}
+              sx={{ backgroundColor: "#018f8c" }}
               size="small"
             >
               Upload Image
@@ -203,7 +206,7 @@ const EditUserPage = () => {
             <Button
               variant="contained"
               color="primary"
-              sx={{ backgroundColor: "#0D2237" }}
+              sx={{ backgroundColor: "#018f8c" }}
               size="large"
               fullWidth
               type="submit"
@@ -216,7 +219,7 @@ const EditUserPage = () => {
             <Button
               variant="contained"
               color="primary"
-              sx={{ backgroundColor: "#0D2237" }}
+              sx={{ backgroundColor: "#018f8c" }}
               size="large"
               fullWidth
               type="submit"
