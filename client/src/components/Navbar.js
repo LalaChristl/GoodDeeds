@@ -107,19 +107,19 @@ function Navbar() {
               Contact
             </Button>
 
-            <Button
-              component={Link}
-              to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
-              className={classes.link}
-            >
+            <Button component={Link}   to={"/dashboard/helpeeprofile/getuser2/" + state.user._id} className={classes.link}>
               Dashboard
             </Button>
             <Button component={Link} to={"/map/"} className={classes.link}>
               Map
             </Button>
 
-            {state.isAuthenticated ? (
-              <Button className={classes.link} onClick={handleLogout}>
+            <Button component={Link} to="/map" className={classes.link}>
+              Map
+            </Button>
+
+                {state.isAuthenticated ? (
+                <Button className={classes.link} onClick={handleLogout}>
                 Logout
               </Button>
             ) : (
@@ -171,6 +171,15 @@ function Navbar() {
                   </MenuItem>
                 </Menu>
 
+
+                <Button
+                  component={Link}
+                  to="/register"
+                  className={classes.link}
+                >
+                  Register
+                </Button>
+
                 {state.user._id ? (
                   <Button
                     onClick={handleLogout}
@@ -191,13 +200,6 @@ function Navbar() {
                   </Button>
                 )}
 
-                <Button
-                  component={Link}
-                  to="/register"
-                  className={classes.link}
-                >
-                  Register
-                </Button>
               </>
             )}
           </div>

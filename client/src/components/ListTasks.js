@@ -14,6 +14,8 @@ import Navbar from "./Navbar";
 import { FaHandsHelping } from "react-icons/fa";
 import Footer2 from "./Footer2";
 
+import { Box } from "@mui/material";
+
 function ListTasks() {
   // Global Context
   const { state, dispatch } = useContext(Context);
@@ -215,6 +217,20 @@ function ListTasks() {
   return (
     <div className="tasklist-container">
       <Navbar />
+      <Box
+          sx={{
+            height: "vh",
+            display: "flex",
+            gap: 5,
+            maxWidth: "100%",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 25,
+            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            color: "black",
+          }}
+      >
 
       <div className="search-list">
         <input
@@ -330,6 +346,7 @@ function ListTasks() {
             </div>
           ))}
       </div>
+      </Box>
       <Footer2 />
     </div>
   );
