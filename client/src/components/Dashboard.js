@@ -7,6 +7,8 @@ import Footer2 from "./Footer2";
 import "./Dashboard.css";
 import TaskConfirm from "./TaskConfirm";
 
+import { Box } from "@mui/material";
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
@@ -52,6 +54,21 @@ const Dashboard = () => {
   return (
     <div key={id}>
       <Navbar />
+      <Box
+          sx={{
+            height: "vh",
+            display: "flex",
+            gap: 5,
+            maxWidth: "100%",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: 25,
+            paddingBottom: 25,
+            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            color: "black",
+          }}
+      >
       <div class="dashboard-container">
         <div class="dashboard-card">
           {user && (
@@ -111,6 +128,7 @@ const Dashboard = () => {
         <TaskConfirm />
        
       </div>
+      </Box>
       <Footer2 /> 
       </div>
     

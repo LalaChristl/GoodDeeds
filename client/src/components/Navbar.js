@@ -168,6 +168,15 @@ function Navbar() {
                   </MenuItem>
                 </Menu>
 
+
+                <Button
+                  component={Link}
+                  to="/register"
+                  className={classes.link}
+                >
+                  Register
+                </Button>
+
                 {state.user._id ? (
                   <Button
                     onClick={handleLogout}
@@ -188,13 +197,6 @@ function Navbar() {
                   </Button>
                 )}
 
-                <Button
-                  component={Link}
-                  to="/register"
-                  className={classes.link}
-                >
-                  Register
-                </Button>
               </>
             )}
           </div>
