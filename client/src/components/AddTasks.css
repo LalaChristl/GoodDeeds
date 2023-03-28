@@ -13,7 +13,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #ffa34d;
+  background-color: #ffa472;
   gap: 5px;
   width: 75%;
   margin: 5rem auto;
@@ -27,12 +27,14 @@
   text-align: center;
   padding: 5px;
   width: 100%;
+  
 }
 .task-input {
   text-align: center;
   width: 100%;
   border-radius: 10px;
   padding: 5px;
+  height:40px;
 }
 .task-input-1 {
   text-align: center;
@@ -54,7 +56,7 @@
   width: 100%;
   border-radius: 10px;
   font-weight: 600;
-  color: green;
+  color: black;
 }
 
 .task-btn {
@@ -64,7 +66,7 @@
   padding: 5px;
   font-weight: 600;
   color: aliceblue;
-  background-color: #303f9f;
+  background-color: #018f8c;
 }
 
 .add-task-scroller-container {
