@@ -14,6 +14,7 @@ const libraries = ["places"];
 function EditTasks() {
   // ID for the task to edit
   const { id } = useParams();
+  const [errorMessage, setErrorMessage] = useState("");
 
   // useNavigate hook
   const navigate = useNavigate();
@@ -90,6 +91,7 @@ function EditTasks() {
     console.log("tasktoedit owner", data.owner);
     if (state.user._id !== data.owner) {
       console.log("Unauthorized");
+      setErrorMessage("Unauthorized!!");
       return;
     }
     console.log("addTasks data", data);
@@ -100,6 +102,7 @@ function EditTasks() {
       if (response.data.success) navigate("/listtasks");
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.response.request.statusText);
     }
   };
 
@@ -215,6 +218,9 @@ function EditTasks() {
               </Autocomplete>
               <MyButton onClick={handleEditTask} />
             </div>
+            {errorMessage && (
+              <div className="error-message">{errorMessage}</div>
+            )}
           </div>
         </div>
         <Footer2 />

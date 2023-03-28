@@ -6,9 +6,7 @@ import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
 import "./Dashboard.css";
 import TaskConfirm from "./TaskConfirm";
-
 import { Box } from "@mui/material";
-
 const Dashboard = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
@@ -17,18 +15,14 @@ const Dashboard = () => {
   const location = useLocation();
   console.log("dashboard task", tasks);
   console.log("dashboard user.id", state.user._id);
-
   const { id } = useParams();
-
   useEffect(() => {
     console.log("Dashboard mounted with id:", id);
     console.log("Location:", location.pathname, location.search);
-
     const fetchData = async () => {
       try {
         const response = await axios.get("/users/getuser2/" + id);
         setUser(response.data.user);
-
         const tasksResponse = await axios.get("/tasks/list/");
         setTasks(tasksResponse.data.tasks);
         console.log("Tasks", tasksResponse.data.tasks);
@@ -36,46 +30,26 @@ const Dashboard = () => {
         console.log(error);
       }
     };
-
     fetchData();
   }, [id, location]);
-
   const handleLogout = async () => {
     const response = await axios.get("http://localhost:5000/users/logout");
-    console.log("🦩 ~ handleLogout ~ response", response);
-
+    console.log(":flamingo: ~ handleLogout ~ response", response);
     dispatch({
       type: "logout",
     });
-
     navigate("/");
   };
-
   return (
     <div key={id}>
       <Navbar />
-      <Box
-        sx={{
-          height: "vh",
-          display: "flex",
-          gap: 5,
-          maxWidth: "100%",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          paddingTop: 25,
-          paddingBottom: 25,
-          background:
-            "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
-          color: "black",
-        }}
-      >
+      <Box>
         <div class="dashboard-container">
           <div class="dashboard-card">
             {user && (
               <>
                 <h2 class="dashboard-heading">
-                  Welcome to your Dashboard, {user.firstName}!
+                  Welcome to your Dashboard, {user?.firstName}!
                 </h2>
                 <img src={user?.image} alt="" class="dashboard-image" />
 

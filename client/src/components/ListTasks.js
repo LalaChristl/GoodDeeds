@@ -20,7 +20,8 @@ function ListTasks() {
   // Global Context
   const { state, dispatch } = useContext(Context);
   // State to set task locally
-  const [task, setTask] = useState([]);
+  // const [task, setTask] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // State for searching/filtering
   const [filter, setFilter] = useState({ task: "" });
@@ -46,6 +47,8 @@ function ListTasks() {
     console.log("(🇯🇲 handleApplyFilter listTasks", response);
     if (response.data.success) {
       dispatch({ type: "listTask", payload: response.data.task });
+    } else {
+      setErrorMessage(response.data.message);
     }
   };
   // Reset function fo search
@@ -120,6 +123,7 @@ function ListTasks() {
       }
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.response.request.statusText);
     }
   };
 
@@ -218,134 +222,137 @@ function ListTasks() {
     <div className="tasklist-container">
       <Navbar />
       <Box
-          sx={{
-            height: "vh",
-            display: "flex",
-            gap: 5,
-            maxWidth: "100%",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingTop: 25,
-            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
-            color: "black",
-          }}
+        sx={{
+          height: "vh",
+          display: "flex",
+          gap: 5,
+          maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: 25,
+          background:
+            "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          color: "black",
+        }}
       >
+        <div className="search-list">
+          <input
+            placeholder="Search request"
+            type="text"
+            id="base-input"
+            onChange={(e) => setFilter({ ...filter, task: e.target.value })}
+            value={filter.task}
+            className="list-input"
+            title="search-requests"
+          />
+        </div>
+        <div className="filter">
+          <button
+            type="button"
+            onClick={handleApplyFilter}
+            className="list-btn-1"
+            title="apply-filter"
+          >
+            <FaFilter />
+            Apply filter
+          </button>
+          <button
+            type="button"
+            onClick={handleResetFilter}
+            className="list-btn-1"
+          >
+            <RiFilterOffFill title="reset" />
+            Reset filter
+          </button>
+        </div>
 
-      <div className="search-list">
-        <input
-          placeholder="Search request"
-          type="text"
-          id="base-input"
-          onChange={(e) => setFilter({ ...filter, task: e.target.value })}
-          value={filter.task}
-          className="list-input"
-          title="search-requests"
-        />
-      </div>
-      <div className="filter">
-        <button
-          type="button"
-          onClick={handleApplyFilter}
-          className="list-btn-1"
-          title="apply-filter"
-        >
-          <FaFilter />
-          Apply filter
-        </button>
-        <button
-          type="button"
-          onClick={handleResetFilter}
-          className="list-btn-1"
-        >
-          <RiFilterOffFill title="reset" />
-          Reset filter
-        </button>
-      </div>
-
-      <div className="list-form">
-        {state.taskList &&
-          state.taskList.map((item) => (
-            <div
-              key={item._id}
-              className={`list-main ${
-                acceptedTasks.includes(item._id) ? "selected" : "deselected"
-              }`}
-            >
+        <div className="list-form">
+          {state.taskList &&
+            state.taskList.map((item) => (
               <div
-              // className={`list-main ${
-              //   acceptedTasks.includes(item._id) ? "selected" : "deselected"
-              // }`}
+                key={item._id}
+                className={`list-main ${
+                  acceptedTasks.includes(item._id) ? "selected" : "deselected"
+                }`}
               >
-                <img
-                  src={item.owner?.image}
-                  alt="helpee"
-                  className="list-image"
-                  title="image"
-                />
-                <input
-                  type="text"
-                  name="place"
-                  disabled
-                  value={item.owner?.firstName}
-                  className="list-input-1"
-                  title="name"
-                />
-                <input
-                  type="text"
-                  name="place"
-                  disabled
-                  value={item.owner?.email}
-                  className="list-input-1"
-                  id="user-email"
-                  title="email"
-                />
-
-                <input
-                  type="text"
-                  name="place"
-                  disabled
-                  value={item.task}
-                  className="list-input-1"
-                  title="request"
-                />
-                <p className="list-input-1" title="request-date">
-                  {item.taskDate}
-                </p>
-                <p className="list-input-1" title="request-time">
-                  {item.taskTime}
-                </p>
-                <p className="list-input-1" title="request-details">
-                  {item.taskDetails}
-                </p>
-                <p className="list-input-1" title="request-lcation">
-                  {item.location}
-                </p>
-
-                <div style={{ display: "flex" }}>
-                  <Link to={"/edittasks/" + item._id}>
-                    <FiEdit className="list-btn-2" title="edit-request" />
-                  </Link>
-
-                  <MdDeleteForever
-                    className="list-btn-2"
-                    onClick={() => handleDelete(item)}
-                    title="delete-request"
+                <div
+                // className={`list-main ${
+                //   acceptedTasks.includes(item._id) ? "selected" : "deselected"
+                // }`}
+                >
+                  <img
+                    src={item.owner?.image}
+                    alt="helpee"
+                    className="list-image"
+                    title="image"
                   />
-                  <FaHandsHelping
-                    className={`list-btn-2 ${
-                      clicked === item._id ? "selected" : "deselected"
-                    }`}
-                    onClick={() => {
-                      handleClick(item);
-                    }}
-                    title="accept-request"
+                  <input
+                    type="text"
+                    name="place"
+                    disabled
+                    value={item.owner?.firstName}
+                    className="list-input-1"
+                    title="name"
                   />
+                  <input
+                    type="text"
+                    name="place"
+                    disabled
+                    value={item.owner?.email}
+                    className="list-input-1"
+                    id="user-email"
+                    title="email"
+                  />
+
+                  <input
+                    type="text"
+                    name="place"
+                    disabled
+                    value={item.task}
+                    className="list-input-1"
+                    title="request"
+                  />
+                  <p className="list-input-1" title="request-date">
+                    {item.taskDate}
+                  </p>
+                  <p className="list-input-1" title="request-time">
+                    {item.taskTime}
+                  </p>
+                  <p className="list-input-1" title="request-details">
+                    {item.taskDetails}
+                  </p>
+                  <p className="list-input-1" title="request-lcation">
+                    {item.location}
+                  </p>
+
+                  <div style={{ display: "flex" }}>
+                    <Link to={"/edittasks/" + item._id}>
+                      <FiEdit className="list-btn-2" title="edit-request" />
+                    </Link>
+
+                    <MdDeleteForever
+                      className="list-btn-2"
+                      onClick={() => handleDelete(item)}
+                      title="delete-request"
+                    />
+                    <FaHandsHelping
+                      className={`list-btn-2 ${
+                        clicked === item._id ? "selected" : "deselected"
+                      }`}
+                      onClick={() => {
+                        handleClick(item);
+                      }}
+                      title="accept-request"
+                    />
+                  </div>
+                  {errorMessage && (
+                    <div className="error-message">{errorMessage}</div>
+                  )}
                 </div>
               </div>
-            </div>
-          ))}
-      </div>
+            ))}
+        </div>
       </Box>
       <Footer2 />
     </div>

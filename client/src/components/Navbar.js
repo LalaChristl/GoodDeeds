@@ -110,6 +110,9 @@ function Navbar() {
             <Button component={Link}   to={"/dashboard/helpeeprofile/getuser2/" + state.user._id} className={classes.link}>
               Dashboard
             </Button>
+            <Button component={Link} to={"/map/"} className={classes.link}>
+              Map
+            </Button>
 
             <Button component={Link} to="/map" className={classes.link}>
               Map
@@ -154,7 +157,7 @@ function Navbar() {
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <Link to="/map" className={classes.link}>
-                      Contact
+                      Map
                     </Link>
                   </MenuItem>
 
