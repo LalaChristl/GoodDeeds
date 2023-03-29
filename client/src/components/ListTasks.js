@@ -13,6 +13,7 @@ import { GiSelect } from "react-icons/gi";
 import Navbar from "./Navbar";
 import { FaHandsHelping } from "react-icons/fa";
 import Footer2 from "./Footer2";
+import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
 
 import { Box } from "@mui/material";
 
@@ -22,6 +23,8 @@ function ListTasks() {
   // State to set task locally
   // const [task, setTask] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [clickedTask, setClickedTask] = useState(null);
 
   // State for searching/filtering
   const [filter, setFilter] = useState({ task: "" });
@@ -98,6 +101,13 @@ function ListTasks() {
     const owner = item.owner._id;
     const id = item._id;
     const userID = state.user._id;
+    // if (!event) {
+    //   console.log("Event is undefined");
+    //   return;
+    // }
+    // Set the anchorEl and clickedTask states to the event target
+    setAnchorEl(item);
+    setClickedTask(item);
     console.log("🇯🇲 handleDelete ~ id, owner", id, owner);
 
     if (!id || !owner === "") {
@@ -116,6 +126,8 @@ function ListTasks() {
           type: "removeTask",
           payload: id,
         });
+        handleDeleteLocally(id); // call the handleDeleteLocally function here
+        setErrorMessage("Your task was deleted successfully");
       } else {
         if (response.data.errorId === 1) {
           alert("User not found");
@@ -133,7 +145,8 @@ function ListTasks() {
       alert("You must log in first");
       return;
     }
-
+    setAnchorEl(item);
+    setClickedTask(item);
     const response = await axios.post("/users/taskconfirm", {
       _id: state.user._id,
       task: item,
@@ -145,7 +158,8 @@ function ListTasks() {
         type: "taskConfirm",
         payload: response.data.task,
       });
-    alert("Task has been accepted successfully!"); // display success message
+    // alert("Task has been accepted successfully!"); // display success message
+    setErrorMessage("Task has been accepted successfully!");
   };
 
   // function handleClick(item) {
@@ -212,7 +226,7 @@ function ListTasks() {
       const newData = state.taskList.filter((item) => item._id !== id);
       dispatch({
         type: "removeTask",
-        payload: id,
+        payload: newData,
       });
     },
     [dispatch, state.taskList]
@@ -327,9 +341,13 @@ function ListTasks() {
                   </p>
 
                   <div style={{ display: "flex" }}>
-                    <Link to={"/edittasks/" + item._id}>
-                      <FiEdit className="list-btn-2" title="edit-request" />
-                    </Link>
+                    {state.user._id === item.owner?._id ? (
+                      <Link to={"/edittasks/" + item._id}>
+                        <FiEdit className="list-btn-2" title="edit-request" />
+                      </Link>
+                    ) : (
+                      ""
+                    )}
 
                     <MdDeleteForever
                       className="list-btn-2"
@@ -346,13 +364,23 @@ function ListTasks() {
                       title="accept-request"
                     />
                   </div>
-                  {errorMessage && (
-                    <div className="error-message">{errorMessage}</div>
-                  )}
                 </div>
               </div>
             ))}
         </div>
+        <Popover
+          open={Boolean(clickedTask)}
+          anchorEl={anchorEl}
+          onClose={() => setClickedTask(null)}
+          anchorReference="anchorPosition"
+          anchorPosition={{ top: 100, left: 400 }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <div style={{ padding: "20px" }}>{errorMessage}</div>
+        </Popover>
       </Box>
       <Footer2 />
     </div>
