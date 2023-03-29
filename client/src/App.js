@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
+  console.log(baseUrl);
 
   const [filter, setFilter] = useState({ task: "" });
   const { state, dispatch } = useContext(Context);

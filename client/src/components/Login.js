@@ -10,6 +10,8 @@ import "./Login.css";
 import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
 
+import { baseUrl } from "../config/baseUrl.js";
+
 function Login() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
 

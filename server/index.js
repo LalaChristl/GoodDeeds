@@ -1,12 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
-import userRoutes from "./routes/userRoutes.js";
-import markerRoutes from "./routes/markerRoutes.js";
-import taskRoutes from "./routes/taskRoutes.js";
+import userRoutes from "./src/routes/userRoutes.js";
+import markerRoutes from "./src/routes/markerRoutes.js";
+import taskRoutes from "./src/routes/taskRoutes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import db from "./config/db.js";
+import db from "./src/config/db.js";
 
 dotenv.config();
 
