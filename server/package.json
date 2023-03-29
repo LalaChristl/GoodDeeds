@@ -5,22 +5,22 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node server/server.js",
-    "server": "nodemon ./server/server.js",
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server \" \"npm run client \""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LalaChristl/HelpingTheHood.git"
+    "url": "git+https://github.com/LalaChristl/GoodDeeds"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LalaChristl/HelpingTheHood/issues"
+    "url": "https://github.com/LalaChristl/GoodDeeds/issues"
   },
-  "homepage": "https://github.com/LalaChristl/HelpingTheHood#readme",
+  "homepage": "https://github.com/LalaChristl/GoodDeeds#readme",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
