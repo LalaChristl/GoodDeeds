@@ -20,6 +20,8 @@ import {
 const libraries = ["places"];
 
 function AddTasks() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const { state, dispatch } = useContext(Context);
   const [taskData, setTaskData] = useState({
     task: [],
@@ -35,7 +37,9 @@ function AddTasks() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`/tasks/list`);
+        const response = await axios.get(baseUrl + `/tasks/list`, {
+          withCredentials: true,
+        });
         console.log("🇯🇲~ getData ~ response", response);
 
         if (response.data.success) {
@@ -111,7 +115,9 @@ function AddTasks() {
     console.log("addTasks data", data);
 
     try {
-      const response = await axios.post("/tasks/add", data);
+      const response = await axios.post(baseUrl + "/tasks/add", data, {
+        withCredentials: true,
+      });
 
       console.log("🌞 AddTasks", response.data);
 

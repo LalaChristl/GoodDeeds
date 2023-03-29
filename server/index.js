@@ -16,8 +16,12 @@ db();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://good-deeds.vercel.app/"
+        : "http://localhost:3000",
     credentials: true,
+    preflightContinue: true,
   })
 );
 

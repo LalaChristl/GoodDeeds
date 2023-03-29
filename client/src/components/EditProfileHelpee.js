@@ -6,6 +6,8 @@ import Footer2 from "./Footer2";
 import { TextField, Button, Paper, Typography, Box } from "@mui/material";
 
 const EditUserPage = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -18,18 +20,13 @@ const EditUserPage = () => {
     languages: "",
     about: "",
   });
-  // const [image, setImage] = useState(user.image);
-  // const [userName, setUserName] = useState(user.userName);
-  // const [firstName, setFirstName] = useState(user.firstName);
-  // const [lastName, setLastName] = useState(user.lastName);
-  // const [email, setEmail] = useState(user.email);
-  // const [languages, setLanguages] = useState(user.languages);
-  // const [about, setAbout] = useState(user.about);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/users/getuser2/" + id);
+        const response = await axios.get(baseUrl + "/users/getuser2/" + id, {
+          withCredentials: true,
+        });
         console.log("🦩 ~ fetchData ~ response:", response);
 
         if (response.data.success) setUser(response.data.user);
@@ -66,15 +63,10 @@ const EditUserPage = () => {
   const handleSave = async () => {
     const updatedUser = {
       ...user,
-      // image,
-      // userName,
-      // firstName,
-      // lastName,
-      // email,
-      // languages,
-      // about,
     };
-    const response = await axios.put("/users/edituser2", user);
+    const response = await axios.put(baseUrl + "/users/edituser2", user, {
+      withCredentials: true,
+    });
     console.log("handleSave ~ response", response.data);
     if (response.data.success) navigate("/helpeeprofile/getuser2/" + id);
   };

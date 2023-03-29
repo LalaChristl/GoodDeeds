@@ -18,6 +18,8 @@ import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import P
 import { Box } from "@mui/material";
 
 function ListTasks() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   // Global Context
   const { state, dispatch } = useContext(Context);
   // State to set task locally
@@ -46,7 +48,9 @@ function ListTasks() {
 
   // Api to server
   const handleApplyFilter = async () => {
-    const response = await axios.post("/tasks/search", filter);
+    const response = await axios.post(baseUrl + "/tasks/search", filter, {
+      withCredentials: true,
+    });
     console.log("(🇯🇲 handleApplyFilter listTasks", response);
     if (response.data.success) {
       dispatch({ type: "listTask", payload: response.data.task });
@@ -62,7 +66,9 @@ function ListTasks() {
     // Funtion to fetch the tasks after filtering
     async function fetchData() {
       try {
-        const response = await axios.get("/tasks/list/");
+        const response = await axios.get(baseUrl + "/tasks/list/", {
+          withCredentials: true,
+        });
 
         console.log(" 🇯🇲 taskList response", response);
         if (response.data.success) {
@@ -82,7 +88,9 @@ function ListTasks() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("/tasks/list/");
+        const response = await axios.get(baseUrl + "/tasks/list/", {
+          withCredentials: true,
+        });
 
         console.log(" 🇯🇲 taskList response", response);
         if (response.data.success) {
@@ -116,9 +124,15 @@ function ListTasks() {
     }
 
     try {
-      const response = await axios.delete(`/tasks/delete/${id}`, {
-        data: { owner, id, userID },
-      });
+      const response = await axios.delete(
+        baseUrl + `/tasks/delete/${id}`,
+        {
+          data: { owner, id, userID },
+        },
+        {
+          withCredentials: true,
+        }
+      );
       console.log("🇯🇲 handleDelete ~ response", response);
 
       if (response.data.success) {
@@ -147,10 +161,16 @@ function ListTasks() {
     }
     setAnchorEl(item);
     setClickedTask(item);
-    const response = await axios.post("/users/taskconfirm", {
-      _id: state.user._id,
-      task: item,
-    });
+    const response = await axios.post(
+      baseUrl + "/users/taskconfirm",
+      {
+        _id: state.user._id,
+        task: item,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     console.log("🚀 ~ handleAdd ~ response", response);
 
     if (response.data.success)
@@ -162,36 +182,6 @@ function ListTasks() {
     setErrorMessage("Task has been accepted successfully!");
   };
 
-  // function handleClick(item) {
-  //   // setClicked(item._id);
-  //   handleAdd(item);
-  //   handleDeleteLocally(item._id);
-  //   // handleAdd1(item);
-  //   if (clicked === item._id) {
-  //     // Remove the clicked item from local storage
-  //     localStorage.removeItem("clickedItemId");
-  //     setClicked(null);
-  //   } else {
-  //     // Handle adding the task here
-
-  //     // Save the clicked item to local storage
-  //     localStorage.setItem("clickedItemId", item._id);
-  //     setClicked(...item._id);
-  //   }
-  // }
-
-  // const handleDeleteLocally = useCallback(
-  //   (id) => {
-  //     console.log("handleDeleteLocally ID", id);
-  //     const newData = task.filter((item) => item.task._id !== id);
-  //     setTask(newData);
-  //     dispatch({
-  //       type: "removeTask",
-  //       payload: id,
-  //     });
-  //   },
-  //   [dispatch, task] // depend on task state and dispatch function
-  // );
   function handleClick(item) {
     if (!state.user._id) {
       alert("You must log in first");

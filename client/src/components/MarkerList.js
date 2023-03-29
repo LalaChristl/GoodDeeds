@@ -9,6 +9,8 @@ import { RiFilterOffFill } from "react-icons/ri";
 import ScrollButton from "./ScrollButton";
 
 function MarkerList() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const { state, dispatch } = useContext(Context);
   const getData = async () => {
     const response = await axios.get("/markers/listmarker");
@@ -27,7 +29,12 @@ function MarkerList() {
     getData();
   }, []);
   const handleDelete = async (id) => {
-    const response = await axios.delete("/markers/deletemarker/" + id);
+    const response = await axios.delete(
+      baseUrl + "/markers/deletemarker/" + id,
+      {
+        withCredentials: true,
+      }
+    );
     console.log("🌞~ handleDelete Marker~ response", response);
 
     if (response.data.success)
@@ -43,7 +50,13 @@ function MarkerList() {
   console.log("MarkerList state", state);
 
   const handleApplyFilter = async () => {
-    const response = await axios.post("/markers/searchmarker", filter);
+    const response = await axios.post(
+      baseUrl + "/markers/searchmarker",
+      filter,
+      {
+        withCredentials: true,
+      }
+    );
     console.log("🌞~ handleApplyFilter markerlist ~ response", response);
 
     if (response.data.success) {

@@ -74,6 +74,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const [filter, setFilter] = useState({ task: "" });
   const { state, dispatch } = useContext(Context);
   const navigate = useNavigate();
@@ -84,7 +86,9 @@ function App() {
 
   const handleApplyFilter = useCallback(async () => {
     try {
-      const response = await axios.post("/tasks/search", filter);
+      const response = await axios.post(baseUrl + "/tasks/search", filter, {
+        withCredentials: true,
+      });
       console.log("(🇯🇲 handleApplyFilter listTasks", response);
       if (response.data.success) {
         dispatch({ type: "listTask", payload: response.data.task });
