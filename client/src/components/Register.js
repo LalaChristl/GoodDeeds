@@ -86,7 +86,7 @@ const Register = () => {
             alignItems: "center",
             justifyContent: "center",
             paddingTop: 10,
-            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            background:"linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
         }}
       >
@@ -96,7 +96,7 @@ const Register = () => {
               mt: 8,
               mb: 12,
               maxWidth: 460,
-              backgroundColor: "#ff7e36",
+              backgroundColor: "#018f8c",
               opacity: [1,1,1],
               boxShadow: 10,
           }}
@@ -130,7 +130,7 @@ const Register = () => {
               mt={2}
               mb={2}
               onChange={(e) => handleUpload(e.target.files[0])}
-              sx={{ backgroundColor: "#018f8c" }}
+              sx={{ backgroundColor: "#ff7e36" }}
               size="small"
             >
               Upload Image
@@ -237,7 +237,7 @@ const Register = () => {
             <Button
               variant="contained"
               color="primary"
-              sx={{ backgroundColor: "#018f8c" }}
+              sx={{ backgroundColor: "#ff7e36" }}
               size="large"
               fullWidth
               //disabled={!handlePasswordMatch()}
@@ -250,7 +250,7 @@ const Register = () => {
             <Typography variant="body2" align="center" mb={2}>
               Already have an account?{" "}
               <span
-                className="text-blue-500 cursor-pointer"
+                className="text-white  cursor-pointer"
                 onClick={handleAlreadyUser}
               >
                 Login

@@ -59,7 +59,7 @@ function ForgotPass() {
           justifyContent: "center",
           paddingTop: 10,
           paddingBottom: 30,
-          background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          background:"linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
           color: "black",
         }}  
       >
@@ -89,7 +89,7 @@ function ForgotPass() {
               mt: 8,
               mb: 12,
               maxWidth: 460,
-              backgroundColor: "#ff7e36",
+              backgroundColor: "#018f8c",
               opacity: [1,1,1],
               boxShadow: 10,
             }}
@@ -116,7 +116,7 @@ function ForgotPass() {
             <Button
               fullWidth
               sx={{
-                backgroundColor: "#018f8c ",
+                backgroundColor: "#ff7e36 ",
                 marginTop: "3px",
                 marginBottom: "3px",
               }}
@@ -131,7 +131,7 @@ function ForgotPass() {
             <Button
               fullWidth
               sx={{
-                backgroundColor: "#018f8c ",
+                backgroundColor: "#ff7e36 ",
                 marginTop: "3px",
                 marginBottom: "3px",
               }}

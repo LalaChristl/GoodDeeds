@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -83,8 +83,20 @@ function Login() {
       display: "flex",
     
     },
-
-  }));
+    button: {
+      color: "black",
+      backgroundColor: "#fff2ea ",
+      textTransform: "uppercase",
+      marginRight: theme.spacing(2),
+      fontSize: "14px",
+      fontWeight: "bold",
+      "&:hover": {
+        color: "black",
+        backgroundColor: "#FFA472",
+        // fontSize: "16px",
+      },
+    },
+     }));
   const classes = useStyles();
 
 
@@ -103,7 +115,8 @@ function Login() {
             alignItems: "center",
             justifyContent: "center",
             paddingTop: 5,
-            background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            background:
+            "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
           }}
       >
@@ -135,7 +148,7 @@ function Login() {
               mt: 8,
               mb: 25,
               maxWidth: 460,
-              backgroundColor: "#ff7e36",
+              backgroundColor: "#018f8c",
               opacity: [1,1,1],
               boxShadow: 10,
             }}
@@ -152,7 +165,7 @@ function Login() {
               onChange={(e) => setData({ ...data, email: e.target.value })}
               margin="normal"
               variant="outlined"
-              sx={{ backgroundColor: "#fff3e9" 
+              sx={{ backgroundColor: "#fff2ea" 
             }}
 
             />
@@ -165,9 +178,10 @@ function Login() {
               onChange={(e) => setData({ ...data, password: e.target.value })}
               margin="normal"
               variant="outlined"
-              sx={{ backgroundColor: "#fff3e9" }}
+              sx={{ backgroundColor: "#fff2ea" }}
               
             />
+               <div className={classes.linkContainer}>
             <Typography
               align="center"
               mt={2}
@@ -178,17 +192,16 @@ function Login() {
               Forgot Password?
             </Typography>
             <Button
-              sx={{
-                backgroundColor: "#018f8c ",
-              }}
+              sx={{ backgroundColor: "#ff7e36" }}
               variant="contained"
               onClick={handleLogin}
-
+              className={classes.button}
               size="large"
               fullWidth
             >
               Sign In
             </Button>
+
             <Typography
               align="center"
               mt={2}
@@ -197,6 +210,7 @@ function Login() {
             >
               Not a user yet?
             </Typography>
+            </div>
           </Paper>
        
       </Box>

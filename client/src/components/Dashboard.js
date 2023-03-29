@@ -66,8 +66,9 @@ const Dashboard = () => {
           paddingTop: 25,
           paddingBottom: 25,
           background:
-            "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
           color: "black",
+         
         }}
       >
         <div class="dashboard-container">

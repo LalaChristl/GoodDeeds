@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appBar: {
-    backgroundColor: "#FF7E36",
+    backgroundColor: "#018f8c",
     position: "fixed",
     top: 0,
     left: 0,
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   link: {
     color: "white",
     textTransform: "uppercase",
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
     fontSize: "14px",
     fontWeight: "bold",
     "&:hover": {
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuButton: {
+    backgroundColor:"black",
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
