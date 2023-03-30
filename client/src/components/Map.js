@@ -175,8 +175,9 @@ function Map() {
     mapRef.current.setZoom(16);
   }, []);
   // console.log(process.env);
+
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
     libraries,
   }); // Loading function for Google maps
 
