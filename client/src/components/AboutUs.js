@@ -28,7 +28,7 @@ const AboutUs = () => {
           alignItems: "center",
           justifyContent: "center",
           paddingBottom: 30,
-          background: "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          background:  "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
           color: "black",
         }}
     >

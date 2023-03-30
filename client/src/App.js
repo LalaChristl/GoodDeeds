@@ -130,7 +130,7 @@ function App() {
             justifyContent: "center",
             paddingBottom: 30,
             background:
-              "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+              "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
           }}
         >
@@ -168,11 +168,12 @@ function App() {
                 align="center"
                 p={5}
                 sx={{
-                  backgroundColor: "#ff7e36",
+                  backgroundColor: "#018f8c",
                   color: "black",
                   boxShadow: 5,
                   fontWeight: "bold",
                   borderRadius: "10px",
+                  color: "white", 
                 }}
               >
                 Do you want to help out?
@@ -206,7 +207,7 @@ function App() {
               mb: 12,
               maxWidth: 2560,
               width: "100%",
-              backgroundColor: "#ffa472 ",
+              backgroundColor: "#FFE8D2 ",
               // background: "linear-gradient(90deg, rgba(196,252,240,1) 13%, rgba(255,254,254,1) 100%)",
               opacity: [1, 1, 1],
               boxShadow: 5,
@@ -340,7 +341,7 @@ function App() {
               mb: 12,
               mt: 15,
               maxWidth: 2560,
-              backgroundColor: "#ffa472 ",
+              backgroundColor: "#FFE8D2 ",
               // background: "linear-gradient(90deg, rgba(196,252,240,1) 13%, rgba(255,254,254,1) 100%)",
               opacity: [1, 1, 1],
               boxShadow: 5,
