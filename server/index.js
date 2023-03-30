@@ -18,10 +18,17 @@ app.use(
   cors({
     origin:
       process.env.NODE_ENV === "production"
-        ? "https://good-deeds-6cnn.vercel.app/"
+        ? "https://good-deeds-6cnn.vercel.app"
         : "http://localhost:3000",
     credentials: true,
     preflightContinue: true,
+  })
+);
+app.options(
+  "*",
+  cors({
+    origin: "https://good-deeds-6cnn.vercel.app",
+    credentials: true,
   })
 );
 
