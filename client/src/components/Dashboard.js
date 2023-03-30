@@ -50,7 +50,23 @@ const Dashboard = () => {
   return (
     <div key={id}>
       <Navbar />
-      <Box>
+      <Box
+        sx={{
+          height: "vh",
+          display: "flex",
+          gap: 5,
+          maxWidth: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: 25,
+          paddingBottom: 25,
+          background:
+          "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
+          color: "black",
+         
+        }}
+      >
         <div class="dashboard-container">
           <div class="dashboard-card">
             {user && (

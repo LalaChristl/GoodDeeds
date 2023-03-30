@@ -90,8 +90,7 @@ const Register = () => {
             alignItems: "center",
             justifyContent: "center",
             paddingTop: 10,
-            background:
-              "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            background:"linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
           }}
         >
@@ -101,8 +100,8 @@ const Register = () => {
               mt: 8,
               mb: 12,
               maxWidth: 460,
-              backgroundColor: "#ff7e36",
-              opacity: [1, 1, 1],
+              backgroundColor: "#018f8c",
+              opacity: [1,1,1],
               boxShadow: 10,
             }}
           >
@@ -157,61 +156,86 @@ const Register = () => {
               variant="outlined"
               sx={{ backgroundColor: "#FFF3E9" }}
             />
-            <TextField
-              fullWidth
-              label="Last Name"
-              name="lastName"
-              value={data.lastName}
-              onChange={(e) => setData({ ...data, lastName: e.target.value })}
-              margin="normal"
-              variant="outlined"
-              sx={{ backgroundColor: "#FFF3E9" }}
-            />
-            <TextField
-              fullWidth
-              label="Username"
-              name="userName"
-              value={data.userName}
-              onChange={(e) => setData({ ...data, userName: e.target.value })}
-              margin="normal"
-              variant="outlined"
-              sx={{ backgroundColor: "#FFF3E9" }}
-            />
-            <TextField
-              fullWidth
-              label="Email"
-              name="email"
-              value={data.email}
-              onChange={(e) => setData({ ...data, email: e.target.value })}
-              margin="normal"
-              variant="outlined"
-              sx={{ backgroundColor: "#FFF3E9" }}
-            />
-            <TextField
-              fullWidth
-              label="Password"
-              name="password"
-              type="password"
-              value={data.password}
-              onChange={(e) => setData({ ...data, password: e.target.value })}
-              margin="normal"
-              variant="outlined"
-              sx={{ backgroundColor: "#FFF3E9" }}
-            />
-            <TextField
-              fullWidth
-              label="Confirm Password"
-              name="confirmPassword"
-              type="password"
-              value={data.confirmPassword}
-              onChange={(e) =>
-                setData({ ...data, confirmPassword: e.target.value })
-              }
-              margin="normal"
-              variant="outlined"
-              sx={{ backgroundColor: "#FFF3E9" }}
-            />
-            {/* <TextField
+          
+          <div className="flex justify-center items-center mt-4 mb-10">
+            <Button
+              variant="contained"
+              component="label"
+              mt={2}
+              mb={2}
+              onChange={(e) => handleUpload(e.target.files[0])}
+              sx={{ backgroundColor: "#ff7e36" }}
+              size="small"
+            >
+              Upload Image
+              <input type="file" hidden />
+            </Button>
+          </div>
+          <TextField
+            fullWidth
+            label="First Name"
+            name="firstName"
+            value={data.firstName}
+            onChange={(e) => setData({ ...data, firstName: e.target.value })}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          <TextField
+            fullWidth
+            label="Last Name"
+            name="lastName"
+            value={data.lastName}
+            onChange={(e) => setData({ ...data, lastName: e.target.value })}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          <TextField
+            fullWidth
+            label="Username"
+            name="userName"
+            value={data.userName}
+            onChange={(e) => setData({ ...data, userName: e.target.value })}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            value={data.email}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            name="password"
+            type="password"
+            value={data.password}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          <TextField
+            fullWidth
+            label="Confirm Password"
+            name="confirmPassword"
+            type="password"
+            value={data.confirmPassword}
+            onChange={(e) =>
+              setData({ ...data, confirmPassword: e.target.value })
+            }
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          {/* <TextField
             fullWidth
             label="Gender"
             name="gender"
@@ -221,40 +245,51 @@ const Register = () => {
             variant="outlined"
             sx={{ backgroundColor: "#FFF3E9" }}
           /> */}
-            <TextField
+          <TextField
+            fullWidth
+            label="Age"
+            name="age"
+            type="number"
+            value={data.age}
+            onChange={(e) => setData({ ...data, age: e.target.value })}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+          <TextField
+            fullWidth
+            label="Languages"
+            name="languages"
+            value={data.languages}
+            onChange={(e) => setData({ ...data, languages: e.target.value })}
+            margin="normal"
+            variant="outlined"
+            sx={{ backgroundColor: "#FFF3E9" }}
+          />
+         
+          <div className="flex justify-center items-center mt-5">
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ backgroundColor: "#ff7e36" }}
+              size="large"
               fullWidth
-              label="Age"
-              name="age"
-              type="number"
-              value={data.age}
-              onChange={(e) => setData({ ...data, age: e.target.value })}
-              margin="normal"
-              variant="outlined"
-              sx={{ backgroundColor: "#FFF3E9" }}
-            />
-            <TextField
-              fullWidth
-              label="Languages"
-              name="languages"
-              value={data.languages}
-              onChange={(e) => setData({ ...data, languages: e.target.value })}
-              margin="normal"
-              variant="outlined"
-              sx={{ backgroundColor: "#FFF3E9" }}
-            />
-
-            <div className="flex justify-center items-center mt-5">
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ backgroundColor: "#018f8c" }}
-                size="large"
-                fullWidth
-                //disabled={!handlePasswordMatch()}
-                onClick={handleRegister}
+              //disabled={!handlePasswordMatch()}
+              onClick={handleRegister}
+            >
+              Register
+            </Button>
+          </div>
+          <div className="flex justify-center items-center mt-3">
+            <Typography variant="body2" align="center" mb={2}>
+              Already have an account?{" "}
+              <span
+                className="text-white  cursor-pointer"
+                onClick={handleAlreadyUser}
               >
                 Register
-              </Button>
+                </span>
+              </Typography>
             </div>
             <div className="flex justify-center items-center mt-3">
               <Typography variant="body2" align="center" mb={2}>
