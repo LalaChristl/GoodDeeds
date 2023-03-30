@@ -11,7 +11,7 @@ import {
 function TaskMap({ task }) {
   // Map load
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
   });
 
   // Map reference
