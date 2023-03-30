@@ -21,9 +21,9 @@ const Footer2 = () => {
 
         <div className="footer-apps-container">
           <div className="footer-socials">
-            <BsFacebook className="h-[35px] w-[50px]" />
-            <GrInstagram className="h-[35px] w-[50px]" />
-            <BsTwitter className="h-[35px] w-[50px]" />
+            <BsFacebook className="social" />
+            <GrInstagram className="social" />
+            <BsTwitter className="social" />
           </div>
           <div className="footer-apps">
             <img src={Play} alt="" className="w-[126px] h-[42px]" />
