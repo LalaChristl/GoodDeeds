@@ -13,7 +13,7 @@ body {
   font-family: "Albert Sans", sans-serif;
   font-weight: 700;
 }
-
+/* 
 .home-page-header {
   width: 100%;
   margin-top: 60px;
@@ -32,9 +32,9 @@ body {
   color: white;
   font-family: "Barlow", sans-serif;
   font-weight: 500;
-}
+} */
 
-.homepage-search-bar {
+/* .homepage-search-bar {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,7 +55,7 @@ body {
   border: 1px solid orange;
   -webkit-box-shadow: 2px 3px 9px 2px rgba(0, 0, 0, 0.43);
   box-shadow: 2px 3px 9px 2px rgba(0, 0, 0, 0.43);
-}
+} */
 
 .benefits-container {
   width: 100%;
@@ -111,7 +111,10 @@ body {
 }
 
 @media only screen and (min-width: 360px) {
-  .homepage-hero-image {
+  /* herocontent: {
+    fontsize: "1.5rem";
+  } */
+  /* .homepage-hero-image {
     height: 250px;
   }
 
@@ -120,7 +123,7 @@ body {
     bottom: 25px;
     right: 5px;
     text-align: center;
-  }
+  } */
 
   .benefits-h3 {
     font-size: 1.5rem;

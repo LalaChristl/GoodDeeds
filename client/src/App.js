@@ -48,10 +48,17 @@ const useStyles = makeStyles((theme) => ({
   },
   heroTitle: {
     fontWeight: "bold",
-    fontSize: "2rem",
     color: "#fff",
     textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+    fontSize: "4rem",
     marginBottom: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      color: "red",
+    },
+    // [theme.breakpoints.down("md")]: {
+    //   color: "blue",
+    //   fontSize: "40px",
+    // },
   },
   searchbar: {
     color: "#fff",
@@ -137,10 +144,10 @@ function App() {
           <Box className={classes.header}>
             <img className={classes.heroImage} src={Hero} alt="" />
             <Box className={classes.heroContent}>
-              <Typography variant="h3" className={classes.heroTitle}>
+              <Typography className={classes.heroTitle}>
                 Join the Movement for Positive Social Change:
               </Typography>
-              <Typography variant="h3" className={classes.heroTitle}>
+              <Typography className={classes.heroTitle}>
                 Volunteer today!
               </Typography>
             </Box>
@@ -173,7 +180,7 @@ function App() {
                   boxShadow: 5,
                   fontWeight: "bold",
                   borderRadius: "10px",
-                  color: "white", 
+                  color: "white",
                 }}
               >
                 Do you want to help out?
