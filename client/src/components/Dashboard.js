@@ -8,6 +8,7 @@ import "./Dashboard.css";
 import TaskConfirm from "./TaskConfirm";
 import { Box } from "@mui/material";
 const Dashboard = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
   const [user, setUser] = useState(null);
@@ -21,9 +22,13 @@ const Dashboard = () => {
     console.log("Location:", location.pathname, location.search);
     const fetchData = async () => {
       try {
-        const response = await axios.get("/users/getuser2/" + id);
+        const response = await axios.get(baseUrl + "/users/getuser2/" + id, {
+          withCredentials: true,
+        });
         setUser(response.data.user);
-        const tasksResponse = await axios.get("/tasks/list/");
+        const tasksResponse = await axios.get(baseUrl + "/tasks/list/", {
+          withCredentials: true,
+        });
         setTasks(tasksResponse.data.tasks);
         console.log("Tasks", tasksResponse.data.tasks);
       } catch (error) {
@@ -33,7 +38,9 @@ const Dashboard = () => {
     fetchData();
   }, [id, location]);
   const handleLogout = async () => {
-    const response = await axios.get("http://localhost:5000/users/logout");
+    const response = await axios.get(baseUrl + "/users/logout", {
+      withCredentials: true,
+    });
     console.log(":flamingo: ~ handleLogout ~ response", response);
     dispatch({
       type: "logout",

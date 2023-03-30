@@ -54,6 +54,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Navbar() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const classes = useStyles();
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
@@ -70,7 +72,9 @@ function Navbar() {
     setAnchorEl(null);
   };
   const handleLogin = async () => {
-    const response = await axios.post("/users/login", data);
+    const response = await axios.post(baseUrl + "/users/login", data, {
+      withCredentials: true,
+    });
     if (response.data.success) {
       dispatch({
         type: "login",
@@ -80,7 +84,12 @@ function Navbar() {
     }
   };
   const handleLogout = async () => {
-    const response = await axios.get("http://localhost:5000/users/logout");
+    const response = await axios.get(
+      baseUrl + "http://localhost:5000/users/logout",
+      {
+        withCredentials: true,
+      }
+    );
     console.log(":flamingo: ~ handleLogout ~ response", response);
     dispatch({
       type: "logout",

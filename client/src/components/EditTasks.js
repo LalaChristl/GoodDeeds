@@ -13,6 +13,8 @@ import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import P
 const libraries = ["places"];
 
 function EditTasks() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   // ID for the task to edit
   const { id } = useParams();
   const [errorMessage, setErrorMessage] = useState("");
@@ -43,7 +45,9 @@ function EditTasks() {
   useEffect(() => {
     console.log("id useeffect", id);
     async function getData() {
-      const response = await axios.get("/tasks/findone/" + id);
+      const response = await axios.get(baseUrl + "/tasks/findone/" + id, {
+        withCredentials: true,
+      });
       console.log(" ~ getData ~ response", response);
       if (response.data.success) setTaskToEdit(response.data.task);
     }
@@ -102,7 +106,9 @@ function EditTasks() {
     }
     console.log("addTasks data", data);
     try {
-      const response = await axios.put("/tasks/edit", data);
+      const response = await axios.put(baseUrl + "/tasks/edit", data, {
+        withCredentials: true,
+      });
 
       console.log("🌞 EditTasks", response.data); // log the response from the server
       if (response.data.success) navigate("/listtasks");
