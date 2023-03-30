@@ -6,10 +6,9 @@ import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
 import "./Dashboard.css";
 import TaskConfirm from "./TaskConfirm";
-
 import { Box } from "@mui/material";
-
 const Dashboard = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
   const [user, setUser] = useState(null);
@@ -17,40 +16,37 @@ const Dashboard = () => {
   const location = useLocation();
   console.log("dashboard task", tasks);
   console.log("dashboard user.id", state.user._id);
-
   const { id } = useParams();
-
   useEffect(() => {
     console.log("Dashboard mounted with id:", id);
     console.log("Location:", location.pathname, location.search);
-
     const fetchData = async () => {
       try {
-        const response = await axios.get("/users/getuser2/" + id);
+        const response = await axios.get(baseUrl + "/users/getuser2/" + id, {
+          withCredentials: true,
+        });
         setUser(response.data.user);
-
-        const tasksResponse = await axios.get("/tasks/list/");
+        const tasksResponse = await axios.get(baseUrl + "/tasks/list/", {
+          withCredentials: true,
+        });
         setTasks(tasksResponse.data.tasks);
         console.log("Tasks", tasksResponse.data.tasks);
       } catch (error) {
         console.log(error);
       }
     };
-
     fetchData();
   }, [id, location]);
-
   const handleLogout = async () => {
-    const response = await axios.get("http://localhost:5000/users/logout");
-    console.log("🦩 ~ handleLogout ~ response", response);
-
+    const response = await axios.get(baseUrl + "/users/logout", {
+      withCredentials: true,
+    });
+    console.log(":flamingo: ~ handleLogout ~ response", response);
     dispatch({
       type: "logout",
     });
-
     navigate("/");
   };
-
   return (
     <div key={id}>
       <Navbar />
@@ -76,7 +72,7 @@ const Dashboard = () => {
             {user && (
               <>
                 <h2 class="dashboard-heading">
-                  Welcome to your Dashboard, {user.firstName}!
+                  Welcome to your Dashboard, {user?.firstName}!
                 </h2>
                 <img src={user?.image} alt="" class="dashboard-image" />
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const ChangePass = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
   const { token } = useParams();
   const navigate = useNavigate();
 
@@ -14,10 +15,16 @@ const ChangePass = () => {
   const handleSubmit = async () => {
     if (!data.password || data.password !== data.retypepassword)
       return alert("passwords do not match");
-    const response = await axios.post("/users/changepass", {
-      token,
-      password: data.password,
-    });
+    const response = await axios.post(
+      baseUrl + "/users/changepass",
+      {
+        token,
+        password: data.password,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     console.log("🦩 ~ getData ~ response", response);
 
     if (response.data.success) {

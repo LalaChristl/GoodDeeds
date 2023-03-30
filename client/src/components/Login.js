@@ -4,20 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "./Context";
 import { makeStyles } from "@material-ui/core/styles";
 
-import {
-  TextField,
-  Button,
-  Paper,
-  Typography,
-  Box,
-} from "@mui/material";
-
+import { TextField, Button, Paper, Typography, Box } from "@mui/material";
 
 import "./Login.css";
 import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
 
 function Login() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const { dispatch } = useContext(Context);
   const navigate = useNavigate();
 
@@ -27,7 +22,9 @@ function Login() {
   });
 
   const handleLogin = async () => {
-    const response = await axios.post("/users/login", data);
+    const response = await axios.post(baseUrl + "/users/login", data, {
+      withCredentials: true,
+    });
 
     if (response.data.success) {
       dispatch({
@@ -81,7 +78,6 @@ function Login() {
       padding: "10px 10px",
       border: "0px",
       display: "flex",
-    
     },
     button: {
       color: "black",
@@ -99,13 +95,11 @@ function Login() {
      }));
   const classes = useStyles();
 
-
   return (
-
     <div className="w-[screen] border-2 border-red-600 bg-[#EECDB2] text-[#110931]">
       <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
-      <Navbar />
-      <Box
+        <Navbar />
+        <Box
           sx={{
             height: "100vh",
             display: "flex",
@@ -119,29 +113,27 @@ function Login() {
             "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
           }}
-      >
-
-
-         <Typography>
-         <div className="flex flex-col justify-center items-center ">
-            <div className="login-scroller-container">
-              <h1 className="login-h1">
-                Good Deeds
-                {/* <!-- Scroller Start --> */}
-                <div className="login-scroller">
-                  <span>
-                    Connect
-                    <br />
-                    Engage
-                    <br />
-                    Empower
-                  </span>
-                </div>
-                {/* <!-- Scroller End --> */}
-              </h1>
+        >
+          <Typography>
+            <div className="flex flex-col justify-center items-center ">
+              <div className="login-scroller-container">
+                <h1 className="login-h1">
+                  Good Deeds
+                  {/* <!-- Scroller Start --> */}
+                  <div className="login-scroller">
+                    <span>
+                      Connect
+                      <br />
+                      Engage
+                      <br />
+                      Empower
+                    </span>
+                  </div>
+                  {/* <!-- Scroller End --> */}
+                </h1>
+              </div>
             </div>
-            </div>
-        </Typography>
+          </Typography>
           <Paper
             sx={{
               p: 4,
@@ -153,10 +145,15 @@ function Login() {
               boxShadow: 10,
             }}
           >
-            <Typography variant="h2" align="center" pb={10}  sx={{color:"white"}} >
+            <Typography
+              variant="h2"
+              align="center"
+              pb={10}
+              sx={{ color: "white" }}
+            >
               Login
             </Typography>
-            
+
             <TextField
               fullWidth
               label="Email"
@@ -212,12 +209,10 @@ function Login() {
             </Typography>
             </div>
           </Paper>
-       
-      </Box>
-      <Footer2/>
+        </Box>
+        <Footer2 />
       </div>
-     </div>
-
+    </div>
   );
 }
 

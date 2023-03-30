@@ -8,12 +8,18 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
+import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
 
 const libraries = ["places"];
 
 function EditTasks() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   // ID for the task to edit
   const { id } = useParams();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [clickedTask, setClickedTask] = useState(null);
 
   // useNavigate hook
   const navigate = useNavigate();
@@ -39,7 +45,9 @@ function EditTasks() {
   useEffect(() => {
     console.log("id useeffect", id);
     async function getData() {
-      const response = await axios.get("/tasks/findone/" + id);
+      const response = await axios.get(baseUrl + "/tasks/findone/" + id, {
+        withCredentials: true,
+      });
       console.log(" ~ getData ~ response", response);
       if (response.data.success) setTaskToEdit(response.data.task);
     }
@@ -55,6 +63,9 @@ function EditTasks() {
 
   const handleEditTask = async (e) => {
     e.preventDefault();
+    // Set the anchorEl and clickedTask states to the event target
+    setAnchorEl(e.target);
+    setClickedTask(e.target);
 
     if (
       !id ||
@@ -90,16 +101,20 @@ function EditTasks() {
     console.log("tasktoedit owner", data.owner);
     if (state.user._id !== data.owner) {
       console.log("Unauthorized");
+      setErrorMessage("Unauthorized!!");
       return;
     }
     console.log("addTasks data", data);
     try {
-      const response = await axios.put("/tasks/edit", data);
+      const response = await axios.put(baseUrl + "/tasks/edit", data, {
+        withCredentials: true,
+      });
 
       console.log("🌞 EditTasks", response.data); // log the response from the server
       if (response.data.success) navigate("/listtasks");
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.response.request.statusText);
     }
   };
 
@@ -215,7 +230,23 @@ function EditTasks() {
               </Autocomplete>
               <MyButton onClick={handleEditTask} />
             </div>
+            {/* {errorMessage && (
+              <div className="error-message">{errorMessage}</div>
+            )} */}
           </div>
+          <Popover
+            open={Boolean(clickedTask)}
+            anchorEl={anchorEl}
+            onClose={() => setClickedTask(null)}
+            anchorReference="anchorPosition"
+            anchorPosition={{ top: 100, left: 400 }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "center",
+            }}
+          >
+            <div style={{ padding: "20px" }}>{errorMessage}</div>
+          </Popover>
         </div>
         <Footer2 />
       </div>

@@ -37,27 +37,16 @@ root.render(
         <Route path="/contact/" element={<Contact />} />
         <Route path="/aboutus/" element={<AboutUs />}></Route>
         <Route element={<AdminLayout />}>
-          {/* <Route
-            path="/helperprofile/getuser/:id"
-            element={<HelperProfile />}
-          /> */}
           <Route
             path="/helpeeprofile/getuser2/:id"
             element={<HelpeeProfile />}
           />
-
-          {/* <Route path="/editprofile/:id" element={<EditProfileHelper />} /> */}
           <Route path="/editprofile2/:id" element={<EditProfileHelpee />} />
           <Route element={<Map />} path="/map" />
           <Route element={<MarkerList />} path="/markerlist"></Route>
-
           <Route path="/addtasks/" element={<AddTasks />}></Route>
           <Route path="/listtasks/" element={<ListTasks />}></Route>
           <Route path="/edittasks/:id" element={<EditTasks />}></Route>
-          {/* <Route
-            path="/dashboard/helperprofile/getuser/:id"
-            element={<Dashboard />}
-          ></Route> */}
           <Route
             path="/dashboard/helpeeprofile/getuser2/:id"
             element={<Dashboard />}

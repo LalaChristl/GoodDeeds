@@ -55,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Navbar() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const classes = useStyles();
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
@@ -70,7 +72,9 @@ function Navbar() {
     setAnchorEl(null);
   };
   const handleLogin = async () => {
-    const response = await axios.post("/users/login", data);
+    const response = await axios.post(baseUrl + "/users/login", data, {
+      withCredentials: true,
+    });
     if (response.data.success) {
       dispatch({
         type: "login",
@@ -80,7 +84,12 @@ function Navbar() {
     }
   };
   const handleLogout = async () => {
-    const response = await axios.get("http://localhost:5000/users/logout");
+    const response = await axios.get(
+      baseUrl + "http://localhost:5000/users/logout",
+      {
+        withCredentials: true,
+      }
+    );
     console.log(":flamingo: ~ handleLogout ~ response", response);
     dispatch({
       type: "logout",
@@ -108,16 +117,19 @@ function Navbar() {
               Contact
             </Button>
 
-            <Button component={Link}   to={"/dashboard/helpeeprofile/getuser2/" + state.user._id} className={classes.link}>
+            <Button
+              component={Link}
+              to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
+              className={classes.link}
+            >
               Dashboard
             </Button>
-
-            <Button component={Link} to="/map" className={classes.link}>
+            <Button component={Link} to={"/map"} className={classes.link}>
               Map
             </Button>
 
-                {state.isAuthenticated ? (
-                <Button className={classes.link} onClick={handleLogout}>
+            {state.isAuthenticated ? (
+              <Button className={classes.link} onClick={handleLogout}>
                 Logout
               </Button>
             ) : (
@@ -155,7 +167,7 @@ function Navbar() {
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <Link to="/map" className={classes.link}>
-                      Contact
+                      Map
                     </Link>
                   </MenuItem>
 
@@ -168,7 +180,6 @@ function Navbar() {
                     </Link>
                   </MenuItem>
                 </Menu>
-
 
                 <Button
                   component={Link}
@@ -197,7 +208,6 @@ function Navbar() {
                     Login
                   </Button>
                 )}
-
               </>
             )}
           </div>
