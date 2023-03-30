@@ -8,6 +8,8 @@ import CalendarFunction from "./Calendar";
 import TaskMap from "./TaskMap";
 
 function TaskConfirm() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const { state, dispatch } = useContext(Context);
 
   // State to set task locally
@@ -37,7 +39,10 @@ function TaskConfirm() {
   useEffect(() => {
     async function getData() {
       const response = await axios.get(
-        "/users/listtaskconfirm/" + state.user._id
+        baseUrl + "/users/listtaskconfirm/" + state.user._id,
+        {
+          withCredentials: true,
+        }
       );
 
       console.log(" getData ~ response", response);

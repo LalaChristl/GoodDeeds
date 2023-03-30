@@ -72,6 +72,8 @@ const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let labelIndex = 0;
 
 function Map() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const [selected, setSelected] = useState(null);
 
   const originRef = useRef();
@@ -119,7 +121,9 @@ function Map() {
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.get("/markers/listmarker");
+      const response = await axios.get(baseUrl + "/markers/listmarker", {
+        withCredentials: true,
+      });
 
       console.log("getData", response);
 
@@ -138,12 +142,18 @@ function Map() {
     //   alert("You must log in to use the map feature");
     //   return;
     // }
-    const response = await axios.post("/markers/addmarker", {
-      address: state.address,
-      lng: e.latLng.lng(),
-      lat: e.latLng.lat(),
-      label: labels[labelIndex++ % labels.length],
-    });
+    const response = await axios.post(
+      baseUrl + "/markers/addmarker",
+      {
+        address: state.address,
+        lng: e.latLng.lng(),
+        lat: e.latLng.lat(),
+        label: labels[labelIndex++ % labels.length],
+      },
+      {
+        withCredentials: true,
+      }
+    );
     console.log("handleAddToMap ~ response", response);
 
     if (response.data.success) {
@@ -165,8 +175,9 @@ function Map() {
     mapRef.current.setZoom(16);
   }, []);
   // console.log(process.env);
+
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCwMXMD2cIppB_Cwbuo0do4rJhVbKYiRUw",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
     libraries,
   }); // Loading function for Google maps
 

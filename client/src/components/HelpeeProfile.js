@@ -7,6 +7,8 @@ import Footer2 from "./Footer2";
 import "./Profile.css";
 import { Box } from "@mui/material";
 const HelpeeProfile = () => {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
 
@@ -16,7 +18,9 @@ const HelpeeProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/users/getuser2/" + id);
+        const response = await axios.get(baseUrl + "/users/getuser2/" + id, {
+          withCredentials: true,
+        });
         console.log(response);
         setUser(response.data.user);
         dispatch({
@@ -34,7 +38,9 @@ const HelpeeProfile = () => {
   };
 
   const handleLogout = async () => {
-    const response = await axios.get("/users/logout");
+    const response = await axios.get(baseUrl + "/users/logout", {
+      withCredentials: true,
+    });
     console.log("🦩 ~ handleLogout ~ response", response);
 
     dispatch({

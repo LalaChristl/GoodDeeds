@@ -114,3 +114,7 @@ img {
 .deselected {
   color: rgb(42, 168, 38);
 }
+.error-message {
+  text-align: center;
+  padding: 5px;
+}
