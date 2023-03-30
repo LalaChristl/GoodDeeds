@@ -8,7 +8,7 @@ Team: Lesley-Ann Christl, Kirk McDowell, Rami Basheer & Boi Schrader
 
 ## Description
 
-Good Deeds volunteering app that connects volunteers with people in need. This innovative platform allows individuals to easily find opportunities to give back to their communities and help those who need it most. Whether you're looking to donate your time, skills, or resources, this app makes it simple to connect with individuals in your area in need of support.
+Good Deeds volunteering app that connects volunteers with people in need. This innovative platform allows individuals to easily find opportunities to give back to their communities and help those who need it most. Whether you're looking to donate your time, skills, or resources, this app makes it simple to connect with individuals in your area who are in need of support.
 
 ---
 
