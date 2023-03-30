@@ -67,7 +67,9 @@ export const login = async (req, res) => {
         expiresIn: "1h",
       });
 
-      res.cookie("volunteer", token);
+      res.cookie("volunteer", token, { sameSite: "none", secure: true });
+
+      // res.cookie("volunteer", token);
 
       res.send({ success: true, user: newUser });
     } else {

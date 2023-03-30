@@ -1,4 +1,4 @@
-  import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
 import "./TaskConfirmCard.css";
 import { Context } from "./Context";
 import { useContext } from "react";
@@ -6,6 +6,8 @@ import axios from "axios";
 import { BsMailbox } from "react-icons/bs";
 
 function TaskConfirmCard({ task, cbDelete }) {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const { state, dispatch } = useContext(Context);
 
   // SendEmail Function
@@ -18,10 +20,16 @@ function TaskConfirmCard({ task, cbDelete }) {
   // HandleDelete Function
   const handleDelete = async (taskId) => {
     console.log("taskId", taskId);
-    const response = await axios.post("/users/removefromconfirm", {
-      user: state.user._id,
-      task: taskId,
-    });
+    const response = await axios.post(
+      baseUrl + "/users/removefromconfirm",
+      {
+        user: state.user._id,
+        task: taskId,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     console.log("🇯🇲 handleDelete ~ response", response);
 
     if (response.data.success) {
@@ -36,7 +44,10 @@ function TaskConfirmCard({ task, cbDelete }) {
   // Function to fetch task list
   const fetchTaskList = async () => {
     const response = await axios.get(
-      "/users/listtaskconfirm/" + state.user._id
+      baseUrl + "/users/listtaskconfirm/" + state.user._id,
+      {
+        withCredentials: true,
+      }
     );
 
     console.log("fetchTaskList ~ response", response);

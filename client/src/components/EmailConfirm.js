@@ -3,12 +3,20 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 function EmailConfirm() {
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+
   const { token } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getData() {
-      const response = await axios.post("/users/emailconfirm", { token });
+      const response = await axios.post(
+        baseUrl + "/users/emailconfirm",
+        { token },
+        {
+          withCredentials: true,
+        }
+      );
       console.log("🦩 ~ getData ~ response", response);
 
       if (response.data.success) {
