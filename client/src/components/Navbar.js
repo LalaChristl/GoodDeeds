@@ -8,9 +8,9 @@ import Button from "@material-ui/core/Button";
 import Logo from "../images/logo-nav.png";
 import { Context } from "./Context";
 import MenuIcon from "@material-ui/icons/Menu";
-import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import MusicPlayer from "./MusicPlayer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,6 +65,7 @@ function Navbar() {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -96,6 +97,7 @@ function Navbar() {
               <img className="" src={Logo} alt="" />
             </div>
           </Link>
+          <MusicPlayer />
           <div className={classes.linkContainer}>
             <Button component={Link} to="/" className={classes.link}>
               Home
