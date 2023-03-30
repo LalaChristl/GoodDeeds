@@ -139,7 +139,7 @@ const Register = () => {
                 mt={2}
                 mb={2}
                 onChange={(e) => handleUpload(e.target.files[0])}
-                sx={{ backgroundColor: "#018f8c" }}
+                sx={{ backgroundColor: "#ff7e36" }}
                 size="small"
               >
                 Upload Image
@@ -157,20 +157,7 @@ const Register = () => {
               sx={{ backgroundColor: "#FFF3E9" }}
             />
           
-          <div className="flex justify-center items-center mt-4 mb-10">
-            <Button
-              variant="contained"
-              component="label"
-              mt={2}
-              mb={2}
-              onChange={(e) => handleUpload(e.target.files[0])}
-              sx={{ backgroundColor: "#ff7e36" }}
-              size="small"
-            >
-              Upload Image
-              <input type="file" hidden />
-            </Button>
-          </div>
+       
           <TextField
             fullWidth
             label="First Name"
