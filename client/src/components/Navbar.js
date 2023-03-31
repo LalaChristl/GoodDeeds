@@ -116,12 +116,9 @@ function Navbar() {
     }
   };
   const handleLogout = async () => {
-    const response = await axios.get(
-      baseUrl + "http://localhost:5000/users/logout",
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.get(baseUrl + "/users/logout", {
+      withCredentials: true,
+    });
     console.log(":flamingo: ~ handleLogout ~ response", response);
     dispatch({
       type: "logout",
@@ -194,7 +191,7 @@ function Navbar() {
                   <MenuItem onClick={handleClose}>
                     <Link to="/aboutus" className={classes.menuLink}>
                       About
-                    </Link>
+                    </Link>     
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <Link to="/contact" className={classes.menuLink}>

@@ -1,10 +1,13 @@
 .task-container {
-  background-color: #fff3e9;
+  background-color: #fff2ea;
   width: 50%;
   margin: 0 auto;
   height: 40rem;
   display: flex;
   justify-content: center;
+  border-radius: 10px;
+  
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.43);
 }
 
 .task-form {
@@ -13,7 +16,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #ffa472;
+  background-color: #018f8c;
   gap: 5px;
   width: 75%;
   margin: 5rem auto;
@@ -25,7 +28,7 @@
 .task-input-div {
   border: none;
   text-align: center;
-  padding: 5px;
+  padding: 12px;
   width: 100%;
   
 }
@@ -60,14 +63,15 @@
 }
 
 .task-btn {
-  width: 100%;
+  width: 90%;
   border: none;
   border-radius: 10px;
   padding: 5px;
   font-weight: 600;
-  color: aliceblue;
-  background-color: #018f8c;
+  color: white;
+  background-color: #ff7e36;
 }
+
 
 .add-task-scroller-container {
   /* height: 200px; */
