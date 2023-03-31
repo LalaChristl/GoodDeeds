@@ -1,41 +1,196 @@
-.contact-heading {
-  color: #303f9f;
-  padding: 5px;
-  margin-left: 17px;
+.contact-h1 {
+  color: black;
+  font-size: 5rem;
+  font-family: "Albert Sans", sans-serif;
+}
+.contact-scroller {
+  height: 1.2em;
+  line-height: 1.2em;
+  position: relative;
+  overflow: hidden;
+}
+.contact-scroller > span {
+  position: absolute;
+  top: 0;
+  animation: slide 5s infinite;
+  font-weight: bold;
+  color: black;
+  font-size: 5rem;
+  font-family: "Albert Sans", sans-serif;
+}
+@keyframes slide {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -1.2em;
+  }
+  50% {
+    top: -2.4em;
+  }
+  75% {
+    top: -3.6em;
+  }
 }
 
-.contact-main {
-  width: 100vw;
-  height: 100vh;
-  margin-top: 4rem;
-  background-color: #fff3e9;
+@media only screen and (min-width: 160px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 200px;
+  }
+  .contact-h1 {
+    font-size: 40px;
+  }
+  .contact-scroller > span {
+    font-size: 40px;
+  }
 }
-.contact-email {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  width: 50%;
-  margin: 3rem auto;
-  text-align: center;
-  background-color: #ff8e25;
-  border-radius: 10px;
-  color: #303f9f;
-  -webkit-box-shadow: 2px 3px 10px 2px rgba(0, 0, 0, 0.43);
-  box-shadow: 2px 3px 10px 2px rgba(0, 0, 0, 0.43);
+@media only screen and (min-width: 360px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 200px;
+  }
+  .contact-h1 {
+    font-size: 40px;
+  }
+  .contact-scroller > span {
+    font-size: 40px;
+  }
 }
-.contact-input {
-  width: 100%;
-  border-radius: 10px;
-  padding: 2px;
-  margin-bottom: 5px;
+@media only screen and (min-width: 375px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 200px;
+  }
+  .contact-h1 {
+    font-size: 40px;
+  }
+  .contact-scroller > span {
+    font-size: 40px;
+  }
 }
-.contact-icon {
-  color: #303f9f;
-  font-size: 1.5rem;
+@media only screen and (min-width: 390px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 200px;
+  }
+  .contact-h1 {
+    font-size: 40px;
+  }
+  .contact-scroller > span {
+    font-size: 40px;
+  }
+  .contact-box {
+  }
 }
-.contact-icon:hover {
-  font-size: 2rem;
-  color: aliceblue;
+
+@media only screen and (min-width: 414px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 200px;
+  }
+  .contact-h1 {
+    font-size: 40px;
+  }
+  .contact-scroller > span {
+    font-size: 40px;
+  }
+  .contact-box {
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 200px;
+  }
+  .contact-h1 {
+    font-size: 3rem;
+  }
+  .contact-scroller > span {
+    font-size: 3rem;
+  }
+  .contact-box {
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 220px;
+  }
+  .contact-h1 {
+    font-size: 4rem;
+  }
+  .contact-scroller > span {
+    font-size: 4rem;
+  }
+  .contact-box {
+  }
+}
+@media only screen and (min-width: 820px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 220px;
+  }
+  .contact-h1 {
+    font-size: 4rem;
+  }
+  .contact-scroller > span {
+    font-size: 4rem;
+  }
+  .contact-box {
+  }
+}
+
+@media only screen and (min-width: 912px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 250px;
+  }
+  .contact-h1 {
+    font-size: 5rem;
+  }
+  .contact-scroller > span {
+    font-size: 5rem;
+  }
+  .contact-box {
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 250px;
+  }
+  .contact-h1 {
+    font-size: 5rem;
+  }
+  .contact-scroller > span {
+    font-size: 5rem;
+  }
+  .contact-box {
+    padding-bottom: 150px;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 250px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .contact-scroller-container {
+    height: 150px;
+    margin-top: 250px;
+  }
+  .contact-h1 {
+    font-size: 5rem;
+  }
+  .contact-scroller > span {
+    font-size: 5rem;
+  }
+  .contact-box {
+  }
 }
