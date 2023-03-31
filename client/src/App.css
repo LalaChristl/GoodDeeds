@@ -160,7 +160,7 @@ body {
 }
 
 @media only screen and (min-width: 414px) {
-  .homepage-hero-image {
+  /* .homepage-hero-image {
     height: 250px;
   }
 
@@ -169,7 +169,7 @@ body {
     bottom: 15px;
     right: 2px;
     text-align: center;
-  }
+  } */
   .benefits-card-container {
     display: flex;
     flex-direction: column;
@@ -191,7 +191,7 @@ body {
 }
 
 @media only screen and (min-width: 540px) {
-  .homepage-hero-image {
+  /* .homepage-hero-image {
     height: 300px;
   }
 
@@ -199,7 +199,7 @@ body {
     font-size: 1.1rem;
     bottom: 50px;
     right: 12px;
-  }
+  } */
   .benefits-card-container {
     display: flex;
     flex-direction: column;
@@ -230,8 +230,8 @@ body {
   }
 
   .benefits-card {
-    width: 650px;
-    height: 250px;
+    width: 350px;
+    height: 450px;
   }
 
   .benefits-icon {
@@ -258,7 +258,7 @@ body {
   }
 }
 @media only screen and (min-width: 820px) {
-  .homepage-hero-image {
+  /* .homepage-hero-image {
     height: 400px;
   }
 
@@ -267,7 +267,7 @@ body {
     bottom: 60px;
     right: 15px;
     text-align: center;
-  }
+  } */
 
   .benefits-h3 {
     font-size: 2.5rem;
@@ -281,8 +281,8 @@ body {
   }
 
   .benefits-card {
-    width: 650px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
   }
 
   .benefits-icon {
@@ -311,7 +311,7 @@ body {
 }
 
 @media only screen and (min-width: 912px) {
-  .homepage-hero-image {
+  /* .homepage-hero-image {
     height: 450px;
   }
 
@@ -319,7 +319,7 @@ body {
     font-size: 1.7rem;
     bottom: 60px;
     right: 60px;
-  }
+  } */
 
   .benefits-h3 {
     font-size: 2.7rem;
@@ -329,12 +329,11 @@ body {
   .benefits-card-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
   }
 
   .benefits-card {
-    width: 750px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
   }
 
   .benefits-icon {
@@ -364,7 +363,7 @@ body {
 }
 
 @media only screen and (min-width: 1024px) {
-  .homepage-hero-image {
+  /* .homepage-hero-image {
     height: 500px;
   }
 
@@ -372,7 +371,7 @@ body {
     font-size: 2rem;
     bottom: 75px;
     right: 45px;
-  }
+  } */
 
   .benefits-card-container {
     display: flex;
@@ -410,7 +409,7 @@ body {
 }
 
 @media only screen and (min-width: 1080px) {
-  .homepage-hero-image {
+  /* .homepage-hero-image {
     height: 500px;
   }
 
@@ -418,14 +417,14 @@ body {
     font-size: 2.3rem;
     bottom: 50px;
     right: 55px;
-  }
+  } */
 
   .about-us-container {
     margin-top: 30px;
   }
 }
 @media only screen and (min-width: 1280px) {
-  .homepage-hero-image {
+  /* .homepage-hero-image {
     height: 550px;
   }
 
@@ -433,7 +432,7 @@ body {
     font-size: 2.5rem;
     bottom: 65px;
     right: 60px;
-  }
+  } */
 
   .benefits-card-container {
     display: flex;
