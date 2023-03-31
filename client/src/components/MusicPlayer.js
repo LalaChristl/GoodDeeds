@@ -11,7 +11,7 @@ function MusicPlayer() {
   const player = useRef();
 
   const PSlider = styled(Slider)(({ ...props }) => ({
-    color: "blue",
+    color: "aliceblue",
     height: 2,
     "&:hover": { cursor: "auto", color: "lime" },
     "& .MuiSlider-thumb": {
