@@ -145,14 +145,15 @@
   margin-top: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 375px) {
   .about-us-hero-container {
     height: 170px;
     padding: 10px;
+    margin-top: 4.5rem;
   }
   .about-us-hero-p {
     font-size: 0.8rem;
-    color: rgb(248, 227, 69);
+    margin-top: 5rem;
   }
 
   .about-us-mission-container {
@@ -168,6 +169,7 @@
   .about-us-mission-div-2 {
     width: 280px;
     padding-bottom: 10px;
+    margin-top: 10px;
   }
 
   .about-us-mission-image {
@@ -188,6 +190,123 @@
   }
   .about-us-history-container {
     gap: 25px;
+    width: 300px;
+    margin-top: 5px;
+  }
+
+  .about-us-team-h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .about-us-card {
+    width: 10rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .about-us-hero-container {
+    height: 170px;
+    padding: 10px;
+    margin-top: 4.5rem;
+  }
+  .about-us-hero-p {
+    font-size: 0.8rem;
+    margin-top: 5rem;
+  }
+
+  .about-us-mission-container {
+    padding: 12px;
+    gap: 0px;
+    flex-direction: column;
+  }
+
+  .about-us-mission-div-1,
+  .about-us-history-div-2 {
+    width: 250px;
+  }
+  .about-us-mission-div-2 {
+    width: 280px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .about-us-mission-image {
+    height: 250px;
+    width: 250px;
+    margin-top: 0;
+  }
+
+  .about-us-mission-h3,
+  .about-us-history-h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .about-us-mission-p,
+  .about-us-history-p {
+    font-size: 0.7rem;
+  }
+  .about-us-history-container {
+    gap: 25px;
+    width: 300px;
+    margin-top: 5px;
+  }
+
+  .about-us-team-h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .about-us-card {
+    width: 10rem;
+  }
+}
+@media (max-width: 540px) {
+  .about-us-hero-container {
+    height: 170px;
+    padding: 10px;
+    margin-top: 4.5rem;
+  }
+  .about-us-hero-p {
+    font-size: 1rem;
+    margin-top: 5rem;
+  }
+
+  .about-us-mission-container {
+    padding: 12px;
+    gap: 0px;
+    flex-direction: column;
+  }
+
+  .about-us-mission-div-1,
+  .about-us-history-div-2 {
+    width: 250px;
+  }
+  .about-us-mission-div-2 {
+    width: 280px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .about-us-mission-image {
+    height: 250px;
+    width: 250px;
+    margin-top: 0;
+  }
+
+  .about-us-mission-h3,
+  .about-us-history-h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .about-us-mission-p,
+  .about-us-history-p {
+    font-size: 0.7rem;
+  }
+  .about-us-history-container {
+    gap: 25px;
+    width: 300px;
+    margin-top: 5px;
   }
 
   .about-us-team-h3 {
@@ -211,6 +330,11 @@
     font-size: 1.5rem;
     /* color: rgb(248, 227, 69); */
   }
+  .about-us-history-container {
+    gap: 25px;
+
+    margin-top: 5px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -222,9 +346,14 @@
     /* color: rgb(248, 227, 69); */
   }
 }
-@media only screen and (min-width: 840px) {
+@media only screen and (min-width: 820px) {
   .about-us-card {
     width: 20rem;
+  }
+  .about-us-history-container {
+    gap: 25px;
+
+    margin-top: 5px;
   }
 }
 
@@ -250,5 +379,10 @@
   .about-us-hero-p {
     font-size: 3rem;
     /* color: rgb(248, 227, 69); */
+  }
+  .about-us-history-container {
+    gap: 25px;
+    width: 100%;
+    margin-top: 5px;
   }
 }
