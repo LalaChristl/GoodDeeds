@@ -30,6 +30,8 @@ const theme = createTheme({
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    fontFamily: "Barlow, sans-serif",
+    fontWeight: 500, 
   },
   appBar: {
     backgroundColor: "#018f8c",

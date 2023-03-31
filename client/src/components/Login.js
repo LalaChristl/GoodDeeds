@@ -7,8 +7,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Paper, Typography, Box } from "@mui/material";
 
 import "./Login.css";
+
 import Navbar from "./Navbar";
 import Footer2 from "./Footer2";
+import { fontStyle } from "@mui/system";
+
+
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 
 function Login() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
@@ -44,7 +50,12 @@ function Login() {
     navigate("/forgotpass");
   };
 
+
+
+
+
   const useStyles = makeStyles((theme) => ({
+   
     header: {
       width: "100%",
       minWidth: 375,
@@ -96,10 +107,12 @@ function Login() {
   const classes = useStyles();
 
   return (
+
     <div className="w-[screen] border-2 border-red-600 bg-[#EECDB2] text-[#110931]">
       <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#FFF3E9] text-[#110931]">
         <Navbar />
         <Box
+      
           sx={{
             height: "100vh",
             display: "flex",
@@ -112,8 +125,10 @@ function Login() {
             background:
             "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
+            
           }}
         >
+          
           <Typography>
             <div className="flex flex-col justify-center items-center ">
               <div className="login-scroller-container">
@@ -143,13 +158,18 @@ function Login() {
               backgroundColor: "#018f8c",
               opacity: [1,1,1],
               boxShadow: 10,
+            
             }}
+            className={classes.body}
           >
             <Typography
               variant="h2"
               align="center"
               pb={10}
-              sx={{ color: "white" }}
+              sx={{ color: "white",
+                    fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,
+                   }}
             >
               Login
             </Typography>
@@ -162,7 +182,9 @@ function Login() {
               onChange={(e) => setData({ ...data, email: e.target.value })}
               margin="normal"
               variant="outlined"
-              sx={{ backgroundColor: "#fff2ea" 
+              sx={{ backgroundColor: "#fff2ea",
+                    fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,
             }}
 
             />
@@ -175,7 +197,9 @@ function Login() {
               onChange={(e) => setData({ ...data, password: e.target.value })}
               margin="normal"
               variant="outlined"
-              sx={{ backgroundColor: "#fff2ea" }}
+              sx={{ backgroundColor: "#fff2ea",
+                    fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500, }}
               
             />
                <div className={classes.linkContainer}>
@@ -183,13 +207,17 @@ function Login() {
               align="center"
               mt={2}
               mb={1}
-              sx={{ cursor: "pointer" }}
+              sx={{ cursor: "pointer",
+                    fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500, }}
               onClick={handleForgotPass}
             >
               Forgot Password?
             </Typography>
             <Button
-              sx={{ backgroundColor: "#ff7e36" }}
+              sx={{ backgroundColor: "#ff7e36",
+                    fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500, }}
               variant="contained"
               onClick={handleLogin}
               className={classes.button}
@@ -202,7 +230,9 @@ function Login() {
             <Typography
               align="center"
               mt={2}
-              sx={{ cursor: "pointer" }}
+              sx={{ cursor: "pointer",
+                    fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500, }}
               onClick={handleNotUser}
             >
               Not a user yet?
@@ -213,6 +243,7 @@ function Login() {
         <Footer2 />
       </div>
     </div>
+
   );
 }
 
