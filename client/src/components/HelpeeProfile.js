@@ -71,8 +71,12 @@ const HelpeeProfile = () => {
           <div className="helpee-profile-container">
             {user && (
               <>
-                <img src={user.image} alt="" className="profile-image" />
-                <p className="helpee-profile-name">{user.userName}</p>
+                <h1 className="profile-h1">Profile Page</h1>
+                <div className="header-container">
+                  <img src={user.image} alt="" className="profile-image" />
+
+                  <p className="helpee-profile-name">{user.userName}</p>
+                </div>
                 <div class="profile-text-container">
                   <table>
                     <tr>

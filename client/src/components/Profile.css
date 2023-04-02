@@ -1,96 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Frank+Ruhl+Libre:wght@300&family=Montserrat:ital,wght@1,500&display=swap");
+
+
 /* Profile component styling */
 .helpee-profile-container {
-    background-color: #fbf9e9;
-    border-radius: 16px;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-    color: #2d2d2d;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 32px;
-    text-align: center;
-    max-width: 800px;
-    width: 100%;
-    margin-top: 80px;
-    
-  }
-  
-  
-  /* Profile component text styles */
+  background-color: #f5eae0;
+  border-radius: 16px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  color: #2d2d2d;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  margin-top: 110px;
+}
+
+/* Profile component text styles */
+.helpee-profile-name {
+  font-size: 42px;
+  font-weight: bold;
+  color: #ff9f00;
+  margin-bottom: 60px;
+  margin-right: 33rem;
+  margin-left: 3.9rem;
+  font-family: sans-serif;
+}
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #35908c;
+  height: 19rem;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  background: #f6ece3;
+  box-shadow: -5px -5px 10px #ece3da, 5px 5px 10px #fff5ec;
+}
+
+.profile-image {
+  border-radius: 50%;
+  height: 260px;
+  width: 260px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(315deg, #fffdf3, #ddd4cc);
+  box-shadow: -20px -20px 60px #d1c9c1, 20px 20px 60px #ffffff;
+}
+
+.profile-h1 {
+  color: #018F8C;
+  font-size: 3.5rem;
+  font-family: sans-serif;
+}
+
+.profile-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+
+  font-family: "Montserrat", sans-serif;
+}
+.profile-text-container td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-text-container tr:last-child td {
+  border-bottom: none;
+}
+
+.profile-text-container td:first-child {
+  width: 150px;
+  font-weight: bold;
+}
+
+.profile-text-container td:last-child {
+  text-align: left;
+  color: #555;
+}
+
+.profile-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+/* Profile component button styles */
+
+.profile-button {
+  background-color: #ffffff;
+  border: 2px solid #ff9f00;
+  border-radius: 8px;
+  color: #ff9f00;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  font-family: sans-serif;
+
+  box-shadow: -24px -24px 48px #e7ded5, 24px 24px 48px #fffaf1;
+}
+
+.profile-button:hover {
+  background-color: #ff9f00;
+  color: #ffffff;
+}
+
+/* Profile component image styles */
+
+@media only screen and (max-width: 768px) {
   .helpee-profile-name {
     font-size: 32px;
-    font-weight: bold;
-    color: #ff9f00;
-    margin-bottom: 60px;
-    margin-right: 33rem;
-    margin-left: 3.5rem;
-    
+    margin-bottom: 30px;
+    margin-right: 0;
+    margin-left: 0;
   }
-  .profile-text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  .profile-text-container td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .profile-text-container tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .profile-text-container td:first-child {
-    width: 150px;
-    font-weight: bold;
-  }
-  
-  .profile-text-container td:last-child {
-    text-align: left;
-    color: #555;
-  }
-  
-  .profile-text {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-    font-family: 'Open Sans', sans-serif;
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-    
-  }
-  /* Profile component button styles */
 
-
-
-    .profile-button {
-        background-color: #ff9f00;
-        border: none;
-        border-radius: 8px;
-        color: #fff;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 8px 16px;
-        margin-left: 150px;
-        margin-right: 150px;
-        text-decoration: none;
-        transition: background-color 0.2s ease-in-out;
-    }
-  
-  .profile-button:hover {
-    background-color: #ffc04d;
+  .profile-button {
+    margin-left: 50px;
+    margin-right: 50px;
   }
-  
-  /* Profile component image styles */
+
   .profile-image {
-    border-radius: 50%;
     height: 200px;
     width: 200px;
-    object-fit: cover;
-    object-position: center;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   }
+}
