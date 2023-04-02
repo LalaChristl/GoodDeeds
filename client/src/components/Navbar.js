@@ -145,16 +145,16 @@ function Navbar() {
               Contact
             </Button>
 
-            {/* <Button
+            <Button
               component={Link}
               to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
               className={classes.link}
             >
               Dashboard
-            </Button> */}
-            {/* <Button component={Link} to={"/map"} className={classes.link}>
+            </Button>
+            <Button component={Link} to={"/map"} className={classes.link}>
               Map
-            </Button> */}
+            </Button>
 
             <Button
               aria-controls="simple-menu"
@@ -195,20 +195,20 @@ function Navbar() {
                   Login
                 </Link>
               </MenuItem>
-              {/* <MenuItem onClick={handleClose}>
+              <MenuItem onClick={handleClose}>
                 <Link to="/map" className={classes.menuLink}>
                   Map
                 </Link>
-              </MenuItem> */}
+              </MenuItem>
 
-              {/* <MenuItem onClick={handleClose}>
+              <MenuItem onClick={handleClose}>
                 <Link
                   to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
                   className={classes.menuLink}
                 >
                   Dashboard
                 </Link>
-              </MenuItem> */}
+              </MenuItem>
             </Menu>
 
             {/* <Button component={Link} to="/register" className={classes.link}>
