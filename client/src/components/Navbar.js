@@ -12,6 +12,9 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 
+import MusicPlayer from "./MusicPlayer";
+
+
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -134,6 +137,7 @@ function Navbar() {
               <img className="" src={Logo} alt="" />
             </div>
           </Link>
+          <MusicPlayer />
           <div className={classes.linkContainer}>
             <Button component={Link} to="/" className={classes.link}>
               Home
@@ -191,6 +195,14 @@ function Navbar() {
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
+
+                <Link to="/map" className={classes.menuLink}>
+                  Map
+                </Link>
+              </MenuItem>
+
+              <MenuItem onClick={handleClose}>
+
                 <Link to="/login" className={classes.menuLink}>
                   Login
                 </Link>
@@ -202,18 +214,28 @@ function Navbar() {
               </MenuItem> */}
 
               {/* <MenuItem onClick={handleClose}>
+
                 <Link
                   to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
                   className={classes.menuLink}
                 >
                   Dashboard
                 </Link>
+
+              </MenuItem>
+            </Menu>
+
+            <Button component={Link} to="/register" className={classes.link}>
+              Register
+            </Button>
+
               </MenuItem> */}
             </Menu>
 
             {/* <Button component={Link} to="/register" className={classes.link}>
               Register
             </Button> */}
+
 
             {state.isAuthenticated ? (
               <Button className={classes.link} onClick={handleLogout}>
