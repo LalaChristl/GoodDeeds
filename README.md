@@ -4,7 +4,7 @@ Team: Lesley-Ann Christl, Kirk McDowell, Rami Basheer & Boi Schrader
 
 ---
 
-![good-deeds-homepage](https://user-images.githubusercontent.com/73485164/228052876-78f3f6b8-d516-4291-9ccd-25fd4ee28254.png)
+![homepage-gooddeeds](https://user-images.githubusercontent.com/73485164/229362574-0c3968ed-2dcb-4308-b1f4-74d2cd11f03a.png)
 
 ## Description
 
@@ -12,7 +12,7 @@ Good Deeds volunteering app that connects volunteers with people in need. This i
 
 ---
 
-![good-deeds-benefits](https://user-images.githubusercontent.com/73485164/228053244-25bf26a9-3b2f-4bf9-91aa-40c558da020d.png)
+![benefits-gooddeeds](https://user-images.githubusercontent.com/73485164/229362648-c3c3be79-32f9-4bc6-a3a2-584977c68ed7.png)
 
 ---
 
