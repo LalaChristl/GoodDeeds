@@ -8,13 +8,33 @@ import Button from "@material-ui/core/Button";
 import Logo from "../images/logo-nav.png";
 import { Context } from "./Context";
 import MenuIcon from "@material-ui/icons/Menu";
+import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+
 import MusicPlayer from "./MusicPlayer";
+
+
+import { createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      m: 899,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    fontFamily: "Barlow, sans-serif",
+    fontWeight: 500,
   },
   appBar: {
     backgroundColor: "#018f8c",
@@ -31,9 +51,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     display: "flex",
     justifyContent: "flex-end",
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
-    },
   },
   link: {
     color: "white",
@@ -41,14 +58,31 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
     fontSize: "14px",
     fontWeight: "bold",
+    display: "none",
     "&:hover": {
       color: "black",
       backgroundColor: "#FFA472",
       // fontSize: "16px",
     },
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
   },
+
   menuButton: {
-    backgroundColor: "black",
+    color: "white",
+    display: "none",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#FFA472",
+      // fontSize: "16px",
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+    },
+    [theme.breakpoints.up("xs")]: {
+      display: "flex",
+    },
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
@@ -68,7 +102,6 @@ function Navbar() {
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -116,16 +149,93 @@ function Navbar() {
               Contact
             </Button>
 
-            <Button
+            {/* <Button
               component={Link}
               to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
               className={classes.link}
             >
               Dashboard
-            </Button>
-            <Button component={Link} to={"/map"} className={classes.link}>
+            </Button> */}
+            {/* <Button component={Link} to={"/map"} className={classes.link}>
               Map
+            </Button> */}
+
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
             </Button>
+
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              sx={{
+                backgroundColor: "#018f8c",
+              }}
+            >
+              <MenuItem onClick={handleClose}>
+                <Link to="/" className={classes.menuLink}>
+                  Home
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/aboutus" className={classes.menuLink}>
+                  About
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/contact" className={classes.menuLink}>
+                  Contact
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+
+                <Link to="/map" className={classes.menuLink}>
+                  Map
+                </Link>
+              </MenuItem>
+
+              <MenuItem onClick={handleClose}>
+
+                <Link to="/login" className={classes.menuLink}>
+                  Login
+                </Link>
+              </MenuItem>
+              {/* <MenuItem onClick={handleClose}>
+                <Link to="/map" className={classes.menuLink}>
+                  Map
+                </Link>
+              </MenuItem> */}
+
+              {/* <MenuItem onClick={handleClose}>
+
+                <Link
+                  to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
+                  className={classes.menuLink}
+                >
+                  Dashboard
+                </Link>
+
+              </MenuItem>
+            </Menu>
+
+            <Button component={Link} to="/register" className={classes.link}>
+              Register
+            </Button>
+
+              </MenuItem> */}
+            </Menu>
+
+            {/* <Button component={Link} to="/register" className={classes.link}>
+              Register
+            </Button> */}
+
 
             {state.isAuthenticated ? (
               <Button className={classes.link} onClick={handleLogout}>
@@ -133,61 +243,6 @@ function Navbar() {
               </Button>
             ) : (
               <>
-                <Button
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  className={classes.menuButton}
-                >
-                  <MenuIcon />
-                </Button>
-
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/" className={classes.link}>
-                      Home
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/aboutus" className={classes.link}>
-                      About
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/contact" className={classes.link}>
-                      Contact
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/map" className={classes.link}>
-                      Map
-                    </Link>
-                  </MenuItem>
-
-                  <MenuItem onClick={handleClose}>
-                    <Link
-                      to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
-                      className={classes.link}
-                    >
-                      Dashboard
-                    </Link>
-                  </MenuItem>
-                </Menu>
-
-                <Button
-                  component={Link}
-                  to="/register"
-                  className={classes.link}
-                >
-                  Register
-                </Button>
-
                 {state.user._id ? (
                   <Button
                     onClick={handleLogout}

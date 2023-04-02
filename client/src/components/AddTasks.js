@@ -66,7 +66,7 @@ function AddTasks() {
   };
   function MyButton({ onClick }) {
     return (
-      <button onClick={onClick} className="edit-task-btn" title="save">
+      <button onClick={onClick} className="task-btn" title="save">
         Save
       </button>
     );
@@ -124,7 +124,7 @@ function AddTasks() {
       if (response.data.success) {
         resetInput();
         // alert("Your request was added");
-        setErrorMessage("Your request was added");
+        setErrorMessage("Your request was added!");
       }
     } catch (error) {
       console.log(error);
@@ -148,7 +148,7 @@ function AddTasks() {
             paddingTop: 5,
             paddingBottom: 20,
             background:
-              "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
           }}
         >
@@ -275,13 +275,20 @@ function AddTasks() {
               anchorEl={anchorEl}
               onClose={() => setClickedTask(null)}
               anchorReference="anchorPosition"
-              anchorPosition={{ top: 100, left: 400 }}
+              anchorPosition={{ top: 700, left: 820 }}
               transformOrigin={{
                 vertical: "top",
                 horizontal: "center",
               }}
             >
-              <div style={{ padding: "20px" }}>{errorMessage}</div>
+              <div
+                style={{
+                  padding: "50px",
+                  backgroundColor: "#9DDBD0",
+                }}
+              >
+                {errorMessage}
+              </div>
             </Popover>
           )}
         </Box>

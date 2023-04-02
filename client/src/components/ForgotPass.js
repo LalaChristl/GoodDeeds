@@ -6,14 +6,11 @@ import "./Login.css";
 import Footer2 from "./Footer2";
 
 import {
-  TextField,
   Button,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
   Paper,
   Typography,
   Box,
+  TextField,
 } from "@mui/material";
 
 import Navbar from "./Navbar";
@@ -95,20 +92,38 @@ function ForgotPass() {
           variant="h2"
           align="center"
           pb={10}
-          sx={{ color: "white" }}
+          sx={{ color: "white",
+                fontFamily: "Barlow, sans-serif",
+                fontWeight: 500,
+               }}
         >
           Please enter your email
         </Typography>
 
            
           
-          
+        <TextField
+              fullWidth
+              label="Email"
+              name="email"
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
+              margin="normal"
+              variant="outlined"
+              sx={{ backgroundColor: "#fff2ea",
+                    fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,
+            }}
+
+            />
             <Button
               fullWidth
               sx={{
                 backgroundColor: "#ff7e36 ",
                 marginTop: "3px",
                 marginBottom: "3px",
+                fontFamily: "Barlow, sans-serif",
+                fontWeight: 500,
               }}
               variant="contained"   
               size="large"
@@ -124,6 +139,8 @@ function ForgotPass() {
                 backgroundColor: "#ff7e36 ",
                 marginTop: "3px",
                 marginBottom: "3px",
+                fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,
               }}
               variant="contained"   
               size="large"
@@ -132,34 +149,10 @@ function ForgotPass() {
                 Login
             </Button>
           
+         
 
-          <Button
-            fullWidth
-            sx={{
-              backgroundColor: "#018f8c ",
-              marginTop: "3px",
-              marginBottom: "3px",
-            }}
-            variant="contained"
-            size="large"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Sign In
-          </Button>
-          <Button
-            fullWidth
-            sx={{
-              backgroundColor: "#018f8c ",
-              marginTop: "3px",
-              marginBottom: "3px",
-            }}
-            variant="contained"
-            size="large"
-            onClick={handleNavLogin}
-          >
-            Login
-          </Button>
+
+        
         </Paper>
       </Box>
       <Footer2 />

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import { HiVolumeOff, HiVolumeUp } from "react-icons/hi";
 import { BsPlayFill, BsPause } from "react-icons/bs";
 import "./MusicPlayer.css";
@@ -38,6 +37,7 @@ function MusicPlayer() {
   }, [play]);
 
   const setVideoRunner = () => {
+    console.log("setVideoRunner: play=", play);
     setPlay(!play);
   };
 

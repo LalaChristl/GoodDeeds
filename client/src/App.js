@@ -50,15 +50,16 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#fff",
     textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-    fontSize: "4rem",
     marginBottom: theme.spacing(2),
     [theme.breakpoints.down("sm")]: {
-      color: "red",
+      fontSize: "25px !important",
     },
-    // [theme.breakpoints.down("md")]: {
-    //   color: "blue",
-    //   fontSize: "40px",
-    // },
+    [theme.breakpoints.up("md")]: {
+      fontSize: "35px !important",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "35px !important",
+    },
   },
   searchbar: {
     color: "#fff",
@@ -181,6 +182,8 @@ function App() {
                   fontWeight: "bold",
                   borderRadius: "10px",
                   color: "white",
+                  fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,
                 }}
               >
                 Do you want to help out?
