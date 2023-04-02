@@ -12,14 +12,14 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
       sm: 600,
-      m:899,
+      m: 899,
       md: 900,
       lg: 1200,
       xl: 1536,
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     fontFamily: "Barlow, sans-serif",
-    fontWeight: 500, 
+    fontWeight: 500,
   },
   appBar: {
     backgroundColor: "#018f8c",
@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     display: "flex",
     justifyContent: "flex-end",
-   
   },
   link: {
     color: "white",
@@ -65,28 +64,26 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "flex",
     },
-   
   },
 
   menuButton: {
-   color:"white",
-   display: "none",
-   "&:hover": {
-    color: "black",
-    backgroundColor: "#FFA472",
-    // fontSize: "16px",
+    color: "white",
+    display: "none",
+    "&:hover": {
+      color: "black",
+      backgroundColor: "#FFA472",
+      // fontSize: "16px",
+    },
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+    },
+    [theme.breakpoints.up("xs")]: {
+      display: "flex",
+    },
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
   },
-   [theme.breakpoints.down("md")]: {
-     display: "flex",
-   },
-   [theme.breakpoints.up("xs")]: {
-     display: "flex",
-   },
-   [theme.breakpoints.up("md")]: {
-     display: "none",
-   },
-  },
-
 }));
 function Navbar() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
@@ -138,8 +135,6 @@ function Navbar() {
             </div>
           </Link>
           <div className={classes.linkContainer}>
-
-
             <Button component={Link} to="/" className={classes.link}>
               Home
             </Button>
@@ -150,80 +145,75 @@ function Navbar() {
               Contact
             </Button>
 
-            <Button
+            {/* <Button
               component={Link}
               to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
               className={classes.link}
             >
               Dashboard
-            </Button>
-            <Button component={Link} to={"/map"} className={classes.link}>
+            </Button> */}
+            {/* <Button component={Link} to={"/map"} className={classes.link}>
               Map
-            </Button>
+            </Button> */}
 
             <Button
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  className={classes.menuButton}
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </Button>
+
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              sx={{
+                backgroundColor: "#018f8c",
+              }}
+            >
+              <MenuItem onClick={handleClose}>
+                <Link to="/" className={classes.menuLink}>
+                  Home
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/aboutus" className={classes.menuLink}>
+                  About
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/contact" className={classes.menuLink}>
+                  Contact
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/login" className={classes.menuLink}>
+                  Login
+                </Link>
+              </MenuItem>
+              {/* <MenuItem onClick={handleClose}>
+                <Link to="/map" className={classes.menuLink}>
+                  Map
+                </Link>
+              </MenuItem> */}
+
+              {/* <MenuItem onClick={handleClose}>
+                <Link
+                  to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
+                  className={classes.menuLink}
                 >
-                  <MenuIcon />
-                </Button>
+                  Dashboard
+                </Link>
+              </MenuItem> */}
+            </Menu>
 
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                
-                  sx={{
-                  
-                    backgroundColor: "#018f8c",
-                
-                
-                  }}
-                >
-                  <MenuItem onClick={handleClose}>
-                    
-                    <Link to="/" className={classes.menuLink}>
-                      Home
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/aboutus" className={classes.menuLink}>
-                      About
-                    </Link>     
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/contact" className={classes.menuLink}>
-                      Contact
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/map" className={classes.menuLink}>
-                      Map
-                    </Link>
-                  </MenuItem>
-
-                  <MenuItem onClick={handleClose}>
-                    <Link
-                      to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
-                      className={classes.menuLink}
-                    >
-                      Dashboard
-                    </Link>
-                  </MenuItem>
-                </Menu>
-
-                <Button
-                  component={Link}
-                  to="/register"
-                  className={classes.link}
-                >
-                  Register
-                </Button>
-
+            {/* <Button component={Link} to="/register" className={classes.link}>
+              Register
+            </Button> */}
 
             {state.isAuthenticated ? (
               <Button className={classes.link} onClick={handleLogout}>
@@ -231,8 +221,6 @@ function Navbar() {
               </Button>
             ) : (
               <>
-                
-
                 {state.user._id ? (
                   <Button
                     onClick={handleLogout}
