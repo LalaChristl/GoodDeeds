@@ -124,7 +124,7 @@ function AddTasks() {
       if (response.data.success) {
         resetInput();
         // alert("Your request was added");
-        setErrorMessage("Your request was added");
+        setErrorMessage("Your request was added!");
       }
     } catch (error) {
       console.log(error);
@@ -275,13 +275,20 @@ function AddTasks() {
               anchorEl={anchorEl}
               onClose={() => setClickedTask(null)}
               anchorReference="anchorPosition"
-              anchorPosition={{ top: 100, left: 400 }}
+              anchorPosition={{ top: 700, left: 820 }}
               transformOrigin={{
                 vertical: "top",
                 horizontal: "center",
               }}
             >
-              <div style={{ padding: "20px" }}>{errorMessage}</div>
+              <div
+                style={{
+                  padding: "50px",
+                  backgroundColor: "#9DDBD0",
+                }}
+              >
+                {errorMessage}
+              </div>
             </Popover>
           )}
         </Box>
