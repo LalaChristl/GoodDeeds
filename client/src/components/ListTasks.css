@@ -1,5 +1,5 @@
 .tasklist-container {
-  background-color: #fff3e9;
+  background-color: #fff2ea;
   width: 100vw;
 }
 
@@ -10,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  background-color: rgb(61, 61, 61);
+  background-color: #018f8c;
   width: 75%;
   margin: 5rem auto;
   border-radius: 10px;
@@ -44,7 +44,7 @@
   margin-bottom: 2px;
 }
 .list-main {
-  background-color: #ffa34d;
+  background-color: #fff2ea;
   border-radius: 10px;
 }
 

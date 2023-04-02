@@ -109,7 +109,9 @@ const Register = () => {
               variant="h2"
               align="center"
               mb={4}
-              sx={{ color: "white" }}
+              sx={{ color: "white",
+              fontFamily: "Barlow, sans-serif",
+              fontWeight: 500, }}
             >
               Register
             </Typography>
@@ -139,7 +141,10 @@ const Register = () => {
                 mt={2}
                 mb={2}
                 onChange={(e) => handleUpload(e.target.files[0])}
-                sx={{ backgroundColor: "#018f8c" }}
+                sx={{ backgroundColor: "#ff7e36" ,
+                fontFamily: "Barlow, sans-serif",
+                fontWeight: 500,}}
+                
                 size="small"
               >
                 Upload Image
@@ -157,20 +162,7 @@ const Register = () => {
               sx={{ backgroundColor: "#FFF3E9" }}
             />
           
-          <div className="flex justify-center items-center mt-4 mb-10">
-            <Button
-              variant="contained"
-              component="label"
-              mt={2}
-              mb={2}
-              onChange={(e) => handleUpload(e.target.files[0])}
-              sx={{ backgroundColor: "#ff7e36" }}
-              size="small"
-            >
-              Upload Image
-              <input type="file" hidden />
-            </Button>
-          </div>
+       
           <TextField
             fullWidth
             label="First Name"
@@ -271,7 +263,9 @@ const Register = () => {
             <Button
               variant="contained"
               color="primary"
-              sx={{ backgroundColor: "#ff7e36" }}
+              sx={{ backgroundColor: "#ff7e36",
+              fontFamily: "Barlow, sans-serif",
+              fontWeight: 500, }}
               size="large"
               fullWidth
               //disabled={!handlePasswordMatch()}
@@ -280,19 +274,10 @@ const Register = () => {
               Register
             </Button>
           </div>
-          <div className="flex justify-center items-center mt-3">
-            <Typography variant="body2" align="center" mb={2}>
-              Already have an account?{" "}
-              <span
-                className="text-white  cursor-pointer"
-                onClick={handleAlreadyUser}
-              >
-                Register
-                </span>
-              </Typography>
-            </div>
+         
             <div className="flex justify-center items-center mt-3">
-              <Typography variant="body2" align="center" mb={2}>
+              <Typography variant="body2" align="center" mb={2} sx={{fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,}}>
                 Already have an account?{" "}
                 <span
                   className="text-blue-500 cursor-pointer"
