@@ -89,7 +89,7 @@ const EditUserPage = () => {
           justifyContent: "center",
           paddingTop: 25,
           background:
-            "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
           color: "black",
         }}
       >
@@ -99,7 +99,7 @@ const EditUserPage = () => {
             mt: 8,
             mb: 25,
             maxWidth: 460,
-            backgroundColor: "#ff7e36",
+            backgroundColor: "#018f8c",
             opacity: [1, 1, 1],
             boxShadow: 10,
           }}
@@ -126,7 +126,7 @@ const EditUserPage = () => {
               mt={2}
               mb={2}
               onClick={() => document.getElementById("image-input").click()}
-              sx={{ backgroundColor: "#018f8c" }}
+              sx={{ backgroundColor: "#ff7e36" }}
               size="small"
             >
               Upload Image
@@ -146,7 +146,7 @@ const EditUserPage = () => {
             onChange={(e) => setUser({ ...user, userName: e.target.value })}
             margin="normal"
             variant="outlined"
-            sx={{ backgroundColor: "#FFF3E9" }}
+            sx={{ backgroundColor: "#fff2ea" }}
           />
           <TextField
             fullWidth
@@ -156,7 +156,7 @@ const EditUserPage = () => {
             onChange={(e) => setUser({ ...user, firstName: e.target.value })}
             margin="normal"
             variant="outlined"
-            sx={{ backgroundColor: "#FFF3E9" }}
+            sx={{ backgroundColor: "#fff2ea" }}
           />
           <TextField
             fullWidth
@@ -166,7 +166,7 @@ const EditUserPage = () => {
             onChange={(e) => setUser({ ...user, lastName: e.target.value })}
             margin="normal"
             variant="outlined"
-            sx={{ backgroundColor: "#FFF3E9" }}
+            sx={{ backgroundColor: "#fff2ea" }}
           />
           <TextField
             fullWidth
@@ -176,7 +176,7 @@ const EditUserPage = () => {
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             margin="normal"
             variant="outlined"
-            sx={{ backgroundColor: "#FFF3E9" }}
+            sx={{ backgroundColor: "#fff2ea" }}
           />
 
           <TextField
@@ -187,7 +187,7 @@ const EditUserPage = () => {
             onChange={(e) => setUser({ ...user, languages: e.target.value })}
             margin="normal"
             variant="outlined"
-            sx={{ backgroundColor: "#FFF3E9" }}
+            sx={{ backgroundColor: "#fff2ea" }}
           />
           <TextField
             fullWidth
@@ -197,14 +197,14 @@ const EditUserPage = () => {
             onChange={(e) => setUser({ ...user, about: e.target.value })}
             margin="normal"
             variant="outlined"
-            sx={{ backgroundColor: "#FFF3E9" }}
+            sx={{ backgroundColor: "#fff2ea" }}
           />
 
           <div className="flex justify-center items-center mt-10">
             <Button
               variant="contained"
               color="primary"
-              sx={{ backgroundColor: "#018f8c" }}
+              sx={{ backgroundColor: "#ff7e36" }}
               size="large"
               fullWidth
               type="submit"
@@ -217,7 +217,7 @@ const EditUserPage = () => {
             <Button
               variant="contained"
               color="primary"
-              sx={{ backgroundColor: "#018f8c" }}
+              sx={{ backgroundColor: "#ff7e36" }}
               size="large"
               fullWidth
               type="submit"

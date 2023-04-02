@@ -66,7 +66,7 @@ function AddTasks() {
   };
   function MyButton({ onClick }) {
     return (
-      <button onClick={onClick} className="edit-task-btn" title="save">
+      <button onClick={onClick} className="task-btn" title="save">
         Save
       </button>
     );
@@ -148,7 +148,7 @@ function AddTasks() {
             paddingTop: 5,
             paddingBottom: 20,
             background:
-              "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+            "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
             color: "black",
           }}
         >
