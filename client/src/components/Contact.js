@@ -70,7 +70,8 @@ function Contact() {
               variant="h3"
               align="center"
               mb={4}
-              sx={{ color: "white" }}
+              sx={{ color: "white",fontFamily: "Barlow, sans-serif",
+              fontWeight: 500, }}
             >
               Contact us!
             </Typography>
@@ -84,7 +85,9 @@ function Contact() {
               placeholder="Email"
               margin="normal"
               variant="outlined"
-              sx={{ backgroundColor: "#fff3e9" }}
+              sx={{ backgroundColor: "#fff3e9",
+              fontFamily: "Barlow, sans-serif",
+              fontWeight: 500, }}
             />
 
             <Button
@@ -93,6 +96,8 @@ function Contact() {
                 backgroundColor: "#FF7E36 ",
                 marginTop: "3px",
                 marginBottom: "3px",
+                fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,
               }}
               variant="contained"
               size="large"

@@ -15,7 +15,7 @@ import { FaHandsHelping } from "react-icons/fa";
 import Footer2 from "./Footer2";
 import { Popover, MenuItem, Menu, Typography } from "@mui/material"; // import Popover and other MUI components
 
-import { Box } from "@mui/material";
+import { Box , Paper} from "@mui/material";
 
 function ListTasks() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
@@ -236,10 +236,12 @@ function ListTasks() {
           justifyContent: "center",
           paddingTop: 25,
           background:
-            "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
           color: "black",
         }}
       >
+
+     
         <div className="search-list">
           <input
             placeholder="Search request"
@@ -270,6 +272,7 @@ function ListTasks() {
             Reset filter
           </button>
         </div>
+
 
         <div className="list-form">
           {state.taskList &&

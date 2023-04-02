@@ -181,6 +181,8 @@ function App() {
                   fontWeight: "bold",
                   borderRadius: "10px",
                   color: "white",
+                  fontFamily: "Barlow, sans-serif",
+                    fontWeight: 500,
                 }}
               >
                 Do you want to help out?
