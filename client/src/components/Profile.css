@@ -18,15 +18,7 @@
 }
 
 /* Profile component text styles */
-.helpee-profile-name {
-  font-size: 42px;
-  font-weight: bold;
-  color: #ff9f00;
-  margin-bottom: 60px;
-  margin-right: 33rem;
-  margin-left: 3.9rem;
-  font-family: sans-serif;
-}
+
 .header-container {
   display: flex;
   flex-direction: row;
@@ -40,6 +32,16 @@
   padding: 20px;
   background: #f6ece3;
   box-shadow: -5px -5px 10px #ece3da, 5px 5px 10px #fff5ec;
+}
+.profile-container-2{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-right: 13rem;
+  gap: 10px;
+
 }
 
 .profile-image {
@@ -56,6 +58,35 @@
 .profile-h1 {
   color: #018F8C;
   font-size: 3.5rem;
+  font-family: sans-serif;
+}
+
+.profile-button-dashboard{
+  margin-right: 30px;
+  background-color: #018F8C;
+  border: none;
+  border-radius: 20px;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 9px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.10s ease;
+}
+
+.profile-button-dashboard:hover {
+  background-color: #fee7d3;
+  color: #310505;
+}
+
+.helpee-profile-name {
+  font-size: 42px;
+  font-weight: bold;
+  color: #ff9f00;
+
+
   font-family: sans-serif;
 }
 
@@ -113,7 +144,6 @@
   transition: background-color 0.2s ease-in-out;
   font-family: sans-serif;
 
-  box-shadow: -24px -24px 48px #e7ded5, 24px 24px 48px #fffaf1;
 }
 
 .profile-button:hover {
