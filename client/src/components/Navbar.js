@@ -11,12 +11,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-
 import MusicPlayer from "./MusicPlayer";
-
-
 import { createTheme } from "@mui/material/styles";
-
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -29,7 +25,6 @@ const theme = createTheme({
     },
   },
 });
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -37,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
   },
   appBar: {
-    backgroundColor: "#018f8c",
+    backgroundColor: "#018F8C",
     position: "fixed",
     top: 0,
     left: 0,
@@ -68,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
       display: "flex",
     },
   },
-
   menuButton: {
     color: "white",
     display: "none",
@@ -90,7 +84,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Navbar() {
   const baseUrl = process.env.REACT_APP_BASE_URL;
-
   const classes = useStyles();
   const navigate = useNavigate();
   const { state, dispatch } = useContext(Context);
@@ -148,18 +141,16 @@ function Navbar() {
             <Button component={Link} to="/contact" className={classes.link}>
               Contact
             </Button>
-
-            {/* <Button
+            <Button
               component={Link}
               to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
               className={classes.link}
             >
               Dashboard
-            </Button> */}
-            {/* <Button component={Link} to={"/map"} className={classes.link}>
+            </Button>
+            <Button component={Link} to={"/map"} className={classes.link}>
               Map
-            </Button> */}
-
+            </Button>
             <Button
               aria-controls="simple-menu"
               aria-haspopup="true"
@@ -168,7 +159,6 @@ function Navbar() {
             >
               <MenuIcon />
             </Button>
-
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
@@ -176,7 +166,7 @@ function Navbar() {
               open={Boolean(anchorEl)}
               onClose={handleClose}
               sx={{
-                backgroundColor: "#018f8c",
+                backgroundColor: "#018F8C",
               }}
             >
               <MenuItem onClick={handleClose}>
@@ -195,48 +185,32 @@ function Navbar() {
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-
                 <Link to="/map" className={classes.menuLink}>
                   Map
                 </Link>
               </MenuItem>
-
               <MenuItem onClick={handleClose}>
-
                 <Link to="/login" className={classes.menuLink}>
                   Login
                 </Link>
               </MenuItem>
-              {/* <MenuItem onClick={handleClose}>
+              <MenuItem onClick={handleClose}>
                 <Link to="/map" className={classes.menuLink}>
                   Map
                 </Link>
-              </MenuItem> */}
-
-              {/* <MenuItem onClick={handleClose}>
-
+              </MenuItem>{" "}
+              <MenuItem onClick={handleClose}>
                 <Link
                   to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
                   className={classes.menuLink}
                 >
                   Dashboard
                 </Link>
-
-              </MenuItem>
+              </MenuItem>{" "}
             </Menu>
-
-            <Button component={Link} to="/register" className={classes.link}>
-              Register
-            </Button>
-
-              </MenuItem> */}
-            </Menu>
-
             {/* <Button component={Link} to="/register" className={classes.link}>
               Register
             </Button> */}
-
-
             {state.isAuthenticated ? (
               <Button className={classes.link} onClick={handleLogout}>
                 Logout
@@ -270,5 +244,4 @@ function Navbar() {
     </div>
   );
 }
-
 export default Navbar;

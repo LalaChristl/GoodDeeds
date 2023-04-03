@@ -49,6 +49,8 @@ const Dashboard = () => {
     navigate("/");
   };
   return (
+    <div className="w-[screen] border-2 border-red-600 bg-[#eecdb2] text-[#110931]">
+    <div className="border-2  gap-5 max-w-[full] mx-auto min-w-[360px] overflow-hidden items-center bg-[#fff3e9] text-[#110931]">
     <div key={id}>
       <Navbar />
       <Box
@@ -60,8 +62,9 @@ const Dashboard = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          paddingTop: 25,
+          paddingTop: 15,
           paddingBottom: 25,
+          paddingLeft: 5,
           background:
             "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
           color: "black",
@@ -129,6 +132,8 @@ const Dashboard = () => {
         </div>
       </Box>
       <Footer2 />
+    </div>
+    </div>
     </div>
   );
 };

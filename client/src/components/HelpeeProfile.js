@@ -63,7 +63,7 @@ const HelpeeProfile = () => {
           justifyContent: "center",
           paddingBottom: 30,
           background:
-            "linear-gradient(90deg, rgba(0,82,70,1) 0%, rgba(196,252,240,1) 100%)",
+          "linear-gradient(90deg, rgba(255,232,210,1) 0%, rgba(196,252,240,1) 100%)",
           color: "black",
         }}
       >
@@ -71,8 +71,22 @@ const HelpeeProfile = () => {
           <div className="helpee-profile-container">
             {user && (
               <>
-                <img src={user.image} alt="" className="profile-image" />
-                <p className="helpee-profile-name">{user.userName}</p>
+                <h1 className="profile-h1">Profile Page</h1>
+                <div className="header-container">
+                  <img src={user.image} alt="" className="profile-image" />
+                  <div className="profile-container-2">
+                  <p className="helpee-profile-name">{user.userName}</p>
+                  <Link
+                    to={"/dashboard/helpeeprofile/getuser2/" + state.user._id}
+                  >
+                    <button className="profile-button-dashboard">
+                      Back to Dashboard
+                    </button>
+                  </Link>
+
+                 
+                  </div>
+                </div>
                 <div class="profile-text-container">
                   <table>
                     <tr>
