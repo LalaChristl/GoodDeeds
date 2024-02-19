@@ -45,7 +45,7 @@ Good Deeds is a volunteering app that connects volunteers with people in need. T
 - JWT
 - CORS
 - Bcrypt
-- Cloudianry
+- Cloudinary
 - Nodemailer
 - Google Maps API
 - React Calendar API
@@ -81,4 +81,4 @@ Good Deeds is a volunteering app that connects volunteers with people in need. T
 
 ## More about us
 
-We are a group of students persuing our certificate for Full-Stack Web Development. This is our final project that will bring us to the cpmpletion of our course. We hope you enjoy our website!
+We are a group of students persuing our certificate for Full-Stack Web Development. This is our final project that will bring us to the completion of our course. We hope you enjoy our website!
